@@ -1,0 +1,13 @@
+{
+  "name": "Kwarwp",
+  "description": " The intrepid Tchukarramae temple rescuer",
+  "launch_path": "/kwarwp.html",
+  "icons": {
+    "128": "/image/saida.gif"
+  },
+  "developer": {
+    "name": "Carlo Oliveira",
+    "url": "http://j.mp/carlo_e"
+  },
+  "default_locale": "en"
+}

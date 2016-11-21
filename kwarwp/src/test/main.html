@@ -1,0 +1,440 @@
+#KUARUP<!--
+"""-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"><!--
+
+############################################################
+Vitallino - Criador de Jogos Simplificado
+############################################################
+
+:Author: *Carlo E. T. Oliveira*
+:Contact: carlo@nce.ufrj.br
+:Date: $Date: 2013/01/09  $
+:Status: This is a "work in progress"
+:Revision: $Revision: 0.1 $
+:Home: `Labase http://labase.nce.ufrj.br/`__
+:Copyright: ©2011, `GPL http://is.gd/3Udt`__. 
+__author__  = "Carlo E. T. Oliveira (carlo@nce.ufrj.br) $Author: carlo $"
+__version__ = "0.1 $Revision$"[10:-1]
+__date__    = "2013/01/09 $Date$"
+-->
+
+<html>
+<head>
+<meta charset="iso-8859-1">
+<script src="../brython.js"></script>
+<script type="text/javascript">
+    var jsptdate = new Date();
+    function jsptrand(){ return Number(Math.floor(Math.random()*1001))}
+</script>
+<!--
+"""
+#--><script type="text/python">
+
+WIND=[(0,-1),(1,0),(0,1),(-1,0)]
+NN,EE,SS,WW = WIND
+def noop(nop=''):
+    pass
+HANDLER = {"_NOOP_":'noop()'}
+VKHANDLER = dict([(k,noop) for k in range(32,40)])
+
+def uuid():
+    r = jsptrand()
+    return '%i'%(JSObject(jsptdate).getTime()*1000+r)
+
+def jshandler(event):
+    code = event.keyCode
+    if code in VKHANDLER:
+        VKHANDLER[code]()
+    #alert(event.keyCode)
+
+def eventify(owner):
+    #alert('owner :'+owner)
+    HANDLER[owner]()
+    
+doc.onkeypress=jshandler
+
+class GUI:
+    def __init__(self,panel):
+        self.args = {}
+        self.panel =panel
+        
+    def get_args(self):
+        args = self.args
+        for key, value in self.args.items():
+            args[key]= 'eventify(\\"%s\\")'%value
+        self.args = {}
+        p='"'
+        if len(args) != 0:
+            args = ', '+','.join(['%s = %s%s%s'%(k,p,v,p)
+                                     for k, v in args.items()])
+        else:
+            args = ''
+        return args
+            
+
+    def text(self, text,x=150,y=25, font_size=22,text_anchor="middle",
+      style= {}):
+      element = SVG.text(text,x=x,y=y,
+      font_size=font_size,text_anchor=text_anchor,
+      style=style)
+      self.panel <= element
+      return element
+  
+    def path(self, d,style={}, onMouseOver="noop",  onMouseOut="noop"):
+        exec('element = SVG.path(d=%s,style=%s%s)'%(
+            str(d),str(style),self.get_args()))
+        self.panel <= element
+        return element
+  
+    def image(self,  href, x=0, y=0, width=100, height=50):
+        exec('element = SVG.image(href="%s", x=%i, y=%i, width=%i, height=%i%s)'%(
+            href, x, y, width, height,self.get_args()))
+        self.panel <= element
+        return element
+  
+    def rect(self, x=0, y=0, width=100, height=50,style={}):
+        exec('element = SVG.rect(x=%i, y=%i, width=%i, height=%i,style=%s%s)'%(
+            x, y, width, height,str(style),self.get_args()))
+        self.panel <= element
+        return element
+    
+    def _decorate(self, handler, **kw):
+      self.args = {} #kw #dict(kw)
+      #alert(' '.join([k for k,v in kw.items()]))
+      for key, value in kw.items():
+          handler_id = uuid()
+          HANDLER[handler_id] = handler
+          self.args[key] = handler_id
+          #alert(key+':'+ self.args[key])
+          x =self.args
+      #alert(' ,'.join([k+':'+v for k,v in x.items()]))
+      return self
+    def click(self,handler):
+      self._decorate(handler, onClick=handler)
+      return self
+    def over(self,handler):
+      self._decorate(handler, onMouseOver=handler)
+      return self
+CLAZZ ={}
+INSTANCE={}
+
+def inherit(base, child):
+    overriden, inherited = dir(child), dir(base)
+    for member in inherited:
+        if member not in overriden:
+            setattr(child, member, getattr(base,member))
+'''
+class Base:
+    def _load_attr(self,target,**kw):
+        for attribute, value in kw.items():
+            self._load_part(target, atribute, **value) if attribute in CLAZZ \
+                else target.attribute = value
+    def _load_part(self,target, member,**kw):
+        target.__setAttr__(CLAZZ[member](**kw))
+    def __init__(self,**kw):
+        self._load_attr(**kw)
+class Sprite:
+    def _show(self, x, y):
+        self.avatar.setAttribute('x', x) 
+        self.avatar.setAttribute('y', y)
+        self.avatar.setAttribute("visibility",'visible')
+    def move(place,x,y):
+        self.place, self.x, self.y = place, x, y
+        self._show(*self.place.position(x,y))
+    def __init__(self,avatar, place, x, y):
+        self.avatar = avatar
+        self.move(place, x, y)
+
+class Thing:
+    def _enter(self, doing):
+        return doing()
+    def _dont(self, doing):
+        return noop
+    def passable(letin=True,letout=True):
+        self.enter = letin and self._enter or self._dont
+        self.leave = letout and self._leave or self._dont
+    def __init__(self, place = None, x=0, y=0, img=None, **kw):
+        self.gui,self.place, self.x, self.y = gui, place, x, y
+    def _enter(self,thing, action):
+        x,y = self.position()
+        self.plan[x][y].enter(thing)
+'''
+
+class nWay:
+    def __init__(self, avatar, place, x, y, **kw):
+        self.avatar,self.place, self.x, self.y = avatar, place, x, y
+        self.thing = self.place
+    def enter(self,entry, action=noop, position=None):
+        thing = self.thing
+        ##print( 'way,enter %s %s'%(thing, entry))
+        thing.enter(entry, action, position = position)
+    def leave(self,thing, action=noop):
+        ##print( 'way,leave %d %d'%(self.x, self.y))
+        self.thing.leave(entry, action)
+
+
+class Way:
+    def __init__(self, avatar, place, x, y, **kw):
+        self.avatar,self.place, self.x, self.y = avatar, place, x, y
+        self.thing = self.place
+    def get_position(self,x=0,y=0):
+        return self.place.get_position(x=x,y=y)
+    def _move(self, x, y, entry):
+        ##print( 'place,enter, position %d %d'%(x, y))
+        self.action( self.x, self.y, self)
+    def enter(self,entry, action=noop, position=None):
+        thing = self.thing
+        self.action = action
+        ##print( 'way,enter %s %s'%(thing, entry))
+        thing.enter(entry, self._move, position = position)
+        ##print( 'place,enter,thing position %s %s'%(thing, position))
+    def leave(self,entry, action=noop, reverse =0):
+        locus = self.place.get_next(entry,reverse)
+        #print( 'place,leave xy %s nxy %s d %d'%((x,y), pos, thing.get_direction()))
+        locus.enter(entry, action = action, position =(locus.x,locus.y))
+'''
+class Door:
+    def __init__(self, avatar, place, x, y, **kw):
+        self.avatar,self.place = avatar, place
+        self.thing, self.x, self.y = place, x, y
+        #print('door: ', dir(self))
+        #inherit(Way(avatar, place, x, y),self)
+        self.place.x, self.place.y =  x, y
+    def get_position(self,x=0,y=0):
+        return self.place.get_position(x=x,y=y)
+    def _move(self, x, y, entry):
+        self.thing = entry
+        print( 'place,enter, position %d %d thing %s'%(x, y, self.thing))
+        self._action( self.x, self.y, self)
+    def enter(self,entry, action=noop, position=None):
+        self._action, thing, x, y = action, self.thing, self.x,self.y
+        pos= (x, y)
+        ##print( 'way,enter %s %s'%(thing, entry))
+        if not position:
+            position = pos
+        print( 'door,enter,thing position %s %s'%(thing, position))
+        thing.enter(entry, action=self._move, position = position)
+    def _left(self, x, y , entry):
+        self.thing = self.place
+        self._leaver( x, y, self)
+    def leave(self,entry, action=noop, reverse =0):
+        self._leaver = action
+        locus = self.place.get_next(entry,reverse)
+        #print( 'place,leave xy %s nxy %s d %d'%((x,y), pos, thing.get_direction()))
+        locus.enter(entry, action = self._left, position =(locus.x,locus.y))
+'''
+class Tar:
+    def __init__(self, avatar, place, x, y, **kw):
+        #self.avatar,self.place, self.x, self.y = avatar, place, x, y
+        inherit(Way(avatar, place, x, y),self)
+        #self.place.x, self.place.y =  x, y
+    def nleave(self,thing, action=noop):
+        print('Youre STUCK!!!')
+        pass
+
+class Door:
+    def __init__(self, avatar, place, x, y, **kw):
+        self.avatar,self.place, self.x, self.y = avatar, place, x, y
+        self.place.x, self.place.y =  x, y
+
+    def enter(self,entry, action=noop, position=None):
+        print( 'door,enter xy %s nxy %s d %d'%((self.x,self.y), position, entry.get_direction()))
+        place = self.place
+        ##print( 'way,enter %s %s'%(thing, entry))
+        place.enter(entry, action, position = position)
+
+    def leave(self,entry, action=noop, reverse =0):
+        place = self.place
+        locus = place.get_next(entry,reverse)
+        pos = (locus.x,locus.y)
+        #print( 'place,leave xy %s nxy %s d %d'%((x,y), pos, thing.get_direction()))
+        locus.enter(entry, action = action, position =pos)
+
+    def get_position(self, x=0, y=0):
+        return self.place.get_position(x=x,y=y)
+        pass
+        
+class Border:
+    def __init__(self, avatar, place, x, y, **kw):
+        self.avatar,self.place, self.x, self.y = avatar, place, x, y
+        self.thing = self.place
+    def enter(self, *a, **kw):
+        pass
+
+        
+class Avatar:
+    def _load_images(self,img,gui):
+        cardinames = [c for c in 'nesw']
+        #self.directions=[(0,-1),(1,0),(0,1),(-1,0)]
+        self.images =[]
+        for direction in cardinames:
+            line = []
+            for step in range(3):
+                im = gui.image(href=img%(direction,step),
+                    x=100,y=100, width=32,height=32)
+                im.setAttribute("visibility",'hidden')
+                line.append(im)
+            self.images.append(line)
+        self.heading = 1
+        self.current = 0
+    def _show(self):
+        self.current = (self.current + 1) % 3
+        self.avatar.setAttribute("visibility",'hidden')
+        self.avatar= self.images[self.heading][self.current]
+        self.avatar.setAttribute('x', self.x) 
+        self.avatar.setAttribute('y', self.y)
+        self.avatar.setAttribute("visibility",'visible')
+    def move(self, x, y):
+        self.x, self.y = x, y
+        self._show()
+    def go_forward(self):
+        self.x += WIND[self.heading][0]
+        self.y += WIND[self.heading][1]
+        self._show()
+    def go_left(self):
+        self.heading = (self.heading - 1)%4
+        self._show()
+    def go_right(self):
+        self.heading = (self.heading + 1)%4
+        self._show()
+
+    def __init__(self,gui):
+        VKHANDLER[37]=self.go_left
+        VKHANDLER[39]=self.go_right
+        print( 'Avatar,init') 
+        self.x, self.y = 0, 0
+        self._load_images('public/image/smkp-%s0%d.gif',gui)
+        self.avatar = self.images[self.heading][self.current]
+
+class Actor:
+    def get_direction(self):
+        return self.avatar.heading
+    def get_position(self):
+        return (self.x, self.y)
+    def move(self, x, y, entry= None):
+        self.x, self.y = x, y
+        self.thing = entry or self.thing
+        ##print( 'actor,move, position thing %d %d %s'%(x, y, self.thing))
+        avatar = self.avatar
+        mx, my = self.thing.get_position(x=x, y=y)
+        print( 'actor,move, position %d %d  entry%s real %d %d'%(x, y, entry, mx, my))
+        avatar.move(mx, my)
+    def go_backward(self):
+        ##print( 'actor,leave %d %d %s'%(self.x, self.y, dir(self)))
+        ##self.avatar.go_left()
+        thing = self.thing
+        thing.leave(self, action=self.move, reverse=2)
+    def go_forward(self):
+        ##print( 'actor,leave %d %d %s'%(self.x, self.y, dir(self)))
+        ##self.avatar.go_left()
+        thing = self.thing
+        thing.leave(self, action=self.move)
+    def __init__(self, avatar, place, x, y, **kw):
+        print( 'actor,init',avatar, place, x, y)
+        self.avatar, self.place, self.x, self.y = avatar, place, x, y
+        #aplace = Door(avatar, place, x, y)
+        #self.place.plan[y][x] = aplace
+        self.thing = place
+        VKHANDLER[38] = self.go_forward
+        VKHANDLER[40] = self.go_backward
+        print( 'actor,init %d %d %s'%(self.x, self.y, dir(self.thing)))
+        
+INVENTORY = {'.':Way, ' ': Border, '&':Door, '@':Tar}
+SIMPLE = ('@@&'+'.'*2+('\n'+'.'*5)*4)
+#p = [['%s%d%d'%(p,x,y) for x, p in enumerate(' %s '%row)] for y, row in enumerate(border)]
+class Place:
+    def get_position(self,x=0,y=0):
+        return (x * 32 + 100 - 32, y * 32 + 100 -32)
+    def get_next(self,thing, reverse =0):
+        x, y = thing.get_position()
+        dx, dy = WIND[thing.get_direction() - reverse]
+        self.pos = (x+dx, y+dy)
+        px, py = self.pos
+        locus = self.plan[py][px]
+        return locus
+    def enter(self,thing, action, position=None):
+        ##print( 'place,enter,thing position %s %s'%(thing, position))
+        x,y = position #or (self.x, self.y)
+        ##print( 'place,enter, position %d %d'%(x, y))
+        action( x, y, thing)
+    def nleave(self,thing, action=None, reverse =0):
+        #x, y = thing.get_position()
+        ###print( 'place,leave, position %d %d'%(x, y))
+        #dx, dy = WIND[thing.get_direction() - reverse]
+        #pos = (x+dy, y+dx)
+        #px, py = pos
+        locus = self.get_next(thing,reverse)
+        #print( 'place,leave xy %s nxy %s d %d'%((x,y), pos, thing.get_direction()))
+        locus.enter(thing, action = action, position =self.pos)
+        return
+    def __init__(self, gui, plan =SIMPLE, **kw):
+        self.av = Avatar(gui)
+        self._load(plan, gui)
+        x, y = self.x, self.y
+        actor = Actor(self.av, self, x, y )
+        door = self.plan[y][x]
+        print( 'place,init xy %s actor %s door %s'%((x,y), actor, door))
+        #door.enter(actor, action=actor.move)
+        actor.move(x,y,self)
+        actor.thing = door
+    def _load(self,plan, gui):
+        def line(y, row):
+            #x = ['%s%d%d'%(p,x,y) for x, p in enumerate(' %s '%row)]
+            me, av = self, self.av
+            x = [INVENTORY[p](av,me,x,y) for x, p in enumerate(' %s '%row)]
+            return x
+        
+        w = len(plan.split('\n')[0])
+        border =[' '*w]
+        border.extend(plan.split('\n'))
+        border.extend([' '*w])
+        self.plan = []
+        for y,row in enumerate(border):
+            self.plan += [line(y,row)]
+        ##print(self.plan)
+        plan = self.plan
+        print ([(p[1],p[1].x) for p in plan])
+
+def go(dc, pn, svg):
+    # Setup main scenario
+    for child in pn: # iteration on child nodes
+            pn.remove(child)
+    image = svg.rect(x=10,y=10, width=780, height=580,style={'fill':'forestgreen'})
+    image = svg.rect(x=100,y=100, width=600, height=400,style={'fill':'navajowhite'})
+    legend = svg.text('Welcome to Kuarup!',x=350,y=45,
+        font_size=20,text_anchor="middle",
+        style={"stroke":"gold", 'fill':"gold"})
+
+def main(dc, pn, asvg):
+    go(dc, pn, asvg)
+    place= Place(asvg)
+
+main(doc,doc['panel'], GUI(doc['panel']))
+
+#</script><!--
+"""
+<h1>SVG and Import test</h1>
+<p>
+-->
+</head>
+<body onLoad="brython(1)">
+
+<table>
+<tr>
+<td id="data"></td>
+<td>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
+    width="800" height="600" style="border-style:solid;border-width:1;border-color:#000;">
+  <g id="panel">
+  </g>
+</svg>
+</td>
+</tr>
+</table>
+
+
+</body>
+</html>
+<!--
+"""
+#-->
