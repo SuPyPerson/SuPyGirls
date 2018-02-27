@@ -1,30 +1,34 @@
 from github import Github
 import os.path
 import os as op
+import model.datasource as dsc
 
 LOCAL_FOLDER = os.path.abspath(os.path.join(os.path.dirname(__file__), '../model/git/spg'))
 REMOTE_URL = "https://github.com/SuPyPackage/SuPyGirls.git"
 USERNAME = "carlotolla"
 PASSWORD = op.environ["ISME"]
 
-g = Github(USERNAME, PASSWORD)
-u = g.get_user()
-r = None
-for repo in u.get_repos():
-    if "SuPyGirls" in str(repo.name):
-        r = repo
-        break
-    print(type(repo.name), repo.name)
 
-rp = u.get_repo("supyjogo")  # "activlets")
+def spike():
 
-print(r)
-[print(org) for org in rp.get_branches()]
-al = rp.get_branch("uva")
-cm = al.commit
+    g = Github(USERNAME, PASSWORD)
+    u = g.get_user()
+    r = None
+    for repo in u.get_repos():
+        if "SuPyGirls" in str(repo.name):
+            r = repo
+            break
+        print(type(repo.name), repo.name)
 
-print(al.etag, al.commit.sha)
-print("cont", rp.get_file_contents("/uva/main.py", cm.sha).decoded_content)
+    rp = u.get_repo("supyjogo")  # "activlets")
+
+    print(r)
+    [print(org) for org in rp.get_branches()]
+    al = rp.get_branch("uva")
+    cm = al.commit
+
+    print(al.etag, al.commit.sha)
+    print("cont", rp.get_file_contents("/uva/main.py", cm.sha).decoded_content)
 
 
 class Project:
@@ -49,7 +53,11 @@ class Project:
 
     @classmethod
     def ismember(cls, project, person):
-        pass
+        return dsc.DS.get_file_contents(project, person) is not None
+
+    @classmethod
+    def modules(cls, project):
+        return [branch for branch in dsc.DS.get_branches(project)]
 
     @classmethod
     def islogged(cls, person):
@@ -66,14 +74,15 @@ class Package:
     """
 
     @classmethod
-    def get(cls, name):
+    def get(cls, project, name):
         """
         Find a package with a given name.
         
+        :param project: repository name to be found.
         :param name: package name to be found.
         :return: the package retrieved or None if not found.
         """
-        return cls if name else None
+        return cls if name and project else None
 
     @classmethod
     def create(cls, project, name, content=None):
@@ -87,18 +96,19 @@ class Module:
     content = ""
 
     @classmethod
-    def get(cls, name):
+    def get(cls, project, moduler):
         """
         Find a module with a given name.
         
-        :param name: package name to be found.
+        :param project: Repository to retrieve.
+        :param moduler: package name to be found.
         :return: the package retrieved or None if not found.
         """
-        return cls if name else None
+        return dsc.DS.get_file_contents(project, moduler)
 
     @classmethod
-    def obtain(cls, name, content):
-        return cls if name and content else None
+    def obtain(cls, project, moduler, content):
+        return dsc.DS.update_file(project, moduler, content)
 
     @classmethod
     def create(cls, name, content):
@@ -114,8 +124,8 @@ class Fachada:
         return project if project else Project.create(project, users)
 
     @classmethod
-    def load(cls, name):
-        code = Module.get(name=name)
+    def load(cls, project, person):
+        code = Module.get(project, person)
         return code and code.content
 
     @classmethod
@@ -124,9 +134,13 @@ class Fachada:
         return code
 
     @classmethod
+    def modules(cls, project):
+        return Project.modules(project)
+
+    @classmethod
     def ismember(cls, project, person):
         if not project:
-            return Package.get(person)
+            return Package.get(project, person)
         return Project.ismember(project, person)
 
     @classmethod
@@ -140,66 +154,11 @@ class Fachada:
         project.removesession(person)
 
     @classmethod
-    def login(cls, project, person, session=None):
-        return
-
-    @classmethod
-    def lastcode(cls, lastsession):
-        session = lastsession.get()
-        person = session.person.get()
-        lastcode = person.lastcode
-        if lastcode:
-            code = lastcode.get()
-            name = code.name if code else "nono"
-            content = code.content if code else "# empty"
-        else:
-            name = "nono"
-            content = "# empty"
-
-        print("lastcode", person.name, person.lastsession, name, content)
-        code = (name, content) if lastcode else ("%s/main.py" % session.person.get().name, "# main")
-        return code
-
-    @classmethod
-    def _populate_codes(cls, session, persons):
-        prj = session.project.get()  # Project.kget(key=session.project)
-        if prj.populated:
-            return prj.questions
-        oquestions = [
-            Module.create(name=key, content=value) for key, value in persons
-            ]
-        print(oquestions)
-        prj.populated = True
-        prj.questions = oquestions
-        prj.put()
-        return oquestions
+    def login(cls, project, person):
+        return Project.ismember(project, person)
 
     @classmethod
     def init_db_(cls):
 
         if "AUTH_DOMAIN" not in os.environ.keys():
             return
-
-    @classmethod
-    def _populate_persons(cls, projectname, persons, sprites):
-        prj = Project.get(name=projectname)
-        if not prj:
-            prj = Project.create(name=projectname, sprite=sprites)
-        if not prj.persons:
-            print("_populate_persons if not prj.persons", ' '.join(persons), projectname)
-            prj.persons = ' '.join(persons)
-            # prj.put()
-        if prj.populated:
-            return prj.persons
-        new_persons = [
-            Package.create(project=prj.key, name=key) for key in persons
-            ]
-        print(new_persons)
-        prj.sessions = {person: False for person in persons}
-        prj.populated = True
-        # prj.put()
-        return new_persons
-
-
-Fachada.init_db_()
-DB = Fachada
