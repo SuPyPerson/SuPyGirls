@@ -34,9 +34,9 @@ import model.database as dbs
 import model.datasource as dsrc
 
 if sys.version_info[0] == 2:
-    from mock import MagicMock, patch, ANY
+    from mock import MagicMock
 else:
-    from unittest.mock import MagicMock, patch, ANY
+    from unittest.mock import MagicMock
 
 
 class SpyDBTest(unittest.TestCase):
@@ -75,7 +75,7 @@ class SpyDBTest(unittest.TestCase):
         self.wb.assert_filexists("supyjogo", "uva")
         pass
 
-    def test_load_module(self):
+    def test_save_module(self):
         """module content must be: # updated uva main.py"""
         self.db.save(project="supyjogo", moduler="uva", content="# updated uva main.py")
         self.wb.assert_file_updated("supyjogo", "uva", "# updated uva main.py")

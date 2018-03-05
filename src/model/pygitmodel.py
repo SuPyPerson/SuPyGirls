@@ -2,11 +2,12 @@ from github import Github
 import os.path
 import os as op
 import model.datasource as dsc
+import base64 as b
 
 LOCAL_FOLDER = os.path.abspath(os.path.join(os.path.dirname(__file__), '../model/git/spg'))
 REMOTE_URL = "https://github.com/SuPyPackage/SuPyGirls.git"
 USERNAME = "carlotolla"
-PASSWORD = op.environ["ISME"]
+PASSWORD = b.decodebytes(str.encode(op.environ["ISME"])).decode("utf-8")
 
 
 def spike():
