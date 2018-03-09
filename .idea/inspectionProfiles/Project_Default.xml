@@ -1,20 +1,21 @@
 <component name="InspectionProjectProfileManager">
   <profile version="1.0">
     <option name="myName" value="Project Default" />
-    <option name="myLocal" value="true" />
     <inspection_tool class="PyBroadExceptionInspection" enabled="false" level="WEAK WARNING" enabled_by_default="false" />
     <inspection_tool class="PyMethodMayBeStaticInspection" enabled="false" level="WEAK WARNING" enabled_by_default="false" />
     <inspection_tool class="PyMissingConstructorInspection" enabled="false" level="WARNING" enabled_by_default="false" />
     <inspection_tool class="PyPackageRequirementsInspection" enabled="true" level="WARNING" enabled_by_default="true">
       <option name="ignoredPackages">
         <value>
-          <list size="6">
+          <list size="8">
             <item index="0" class="java.lang.String" itemvalue="gunicorn" />
             <item index="1" class="java.lang.String" itemvalue="distribute" />
             <item index="2" class="java.lang.String" itemvalue="WebTest" />
             <item index="3" class="java.lang.String" itemvalue="couchdb" />
             <item index="4" class="java.lang.String" itemvalue="bottle" />
             <item index="5" class="java.lang.String" itemvalue="argparse" />
+            <item index="6" class="java.lang.String" itemvalue="Werkzeug" />
+            <item index="7" class="java.lang.String" itemvalue="wsgiref" />
           </list>
         </value>
       </option>
