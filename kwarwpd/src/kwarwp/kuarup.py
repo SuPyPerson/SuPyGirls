@@ -19,12 +19,12 @@ __date__ = "2011/02/19 $Date$"
 
 import time
 from threading import Event, Thread
-from kuarupfest import Mapas
+from .kuarupfest import Mapas
 
 try:
-    from tkinter_factory import GUI, CANVASW, CANVASH
+    from .tkinter_factory import GUI, CANVASW, CANVASH
 except ImportError:
-    from svg_factory import GUI, CANVASW, CANVASH
+    from .svg_factory import GUI, CANVASW, CANVASH
 
 HS = 48
 HX, HY = 1, 2

@@ -17,7 +17,7 @@ __author__ = "Carlo E. T. Oliveira (cetoli@yahoo.com.br) $Author: cetoli $"
 __version__ = "1.0 $Revision$"[10:-1]
 __date__ = "2011/02/13 $Date$"
 
-from kuarup import Kuarup
+from kwarwp.kuarup import Kuarup
 
 
 class Tchuk(Kuarup):

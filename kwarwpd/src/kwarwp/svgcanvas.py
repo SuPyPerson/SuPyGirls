@@ -20,7 +20,7 @@ __date__ = "2012/03/04 $Date$"
 # The following is provided for the convenience of end users.
 import re
 
-from colors import COLOR
+from .colors import COLOR
 
 
 # variable that start with "_" are not displayed in Crunchy's "help";

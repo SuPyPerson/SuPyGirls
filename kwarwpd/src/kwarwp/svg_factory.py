@@ -20,8 +20,8 @@ __date__ = "2012/03/16 $Date$"
 from random import choice, seed
 from threading import Event, Thread
 
-import svgcanvas as gi
-from svgcanvas import *
+from . import svgcanvas as gi
+from .svgcanvas import *
 
 seed()
 IMAGEREPO = '/image/'
