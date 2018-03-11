@@ -22,12 +22,8 @@
 .. moduleauthor:: Carlo Oliveira <carlo@nce.ufrj.br>
 
 """
-import asyncio
-import random
-from asyncio import sleep, coroutine
-
-
-q = asyncio.Queue(10)
+from .kuarup import Kuarup
+from .brython_factory import GUI
 
 
 class Queue:
@@ -54,9 +50,14 @@ class Main:
         self.queue = Queue()
         self.count = 0
         self.doc, self.svg, self.ww = params
-
-        print("def main(doc, svg)")
         self.panel = self.doc["svgdiv"]
+        self.title = None
+        self.settings()
+        self.mundo = Kuarup(gui=GUI(svg=self.svg, document=self.doc))
+        self.mundo.inicia()
+
+    def settings(self):
+        print("def main(doc, svg)")
         self.title = self.svg.text(
             'LOADING..', x=200, y=30,
             font_size=22, text_anchor="middle",
@@ -79,102 +80,8 @@ class Main:
         nexter()
 
 
-@asyncio.coroutine
-def _produce():
-    while True:
-        yield from q.put(random.random())
-        print("yield from q.put(random.random())")
-        # yield from asyncio.sleep(0.5 + random.random())
-
-
-@asyncio.coroutine
-def _consume():
-    while True:
-        print("To be Consumed", q.qsize())
-        value = yield from q.get()
-        print("Consumed", value)
-
-
-@asyncio.coroutine
-def produce():
-    while True:
-        yield from asyncio.ensure_future(q.put(random.random()))
-        print("yield from q.put(random.random())")
-        # yield from asyncio.sleep(0.5 + random.random())
-
-
-@asyncio.coroutine
-def consume():
-    while True:
-        print("To be Consumed", q.qsize())
-        value = yield from asyncio.ensure_future(q.get())
-        print("Consumed", value)
-
-
-def tallyman(w, ww):
-    # w = ww.WorkerParent('kwarwp/worker.py', [1, 2, 3], {"test": "Ahoj"})
-    m = ww.Message('ping', "ahoj")
-    print("ww.Message('ping'", m)
-    r = w.post_message(m, want_reply=True)
-    print("w.post_message(m, want_reply=True)", r)
-    w.post_message(ww.Message('quit', None))
-
-
-@coroutine
-def tally(w):
-    # Wait for the worker to start
-    yield w.wait_for_status(ww.S_RUNNING)
-
-    print("w.wait_for_status(ww.S_RUNNING)", w)
-    # Call the remote add method
-    a = yield w.add(10, 20)
-    assert a == 30
-
-    # Call the remote log method
-    yield w.log("Test output")
-
-    # Destroy the worker
-    w.terminate()
-
-
-count = 0
-
-
 def main(doc, svg, ww):
     Main((doc, svg, ww))
-
-
-def _main(doc, svg, ww):
-    print("def main(doc, svg)")
-    panel = doc["svgdiv"]
-    title = svg.text('LOADING..', x=200, y=30,
-                     font_size=22, text_anchor="middle",
-                     style={"stroke": "yellow", "fill": "yellow"})
-    panel <= title
-
-    def mouseclick(*_):
-        global count
-        count += 1
-        title.textContent = "Contagem {}".format(count)
-        produce()
-    doc["svg_circle"].bind('click', mouseclick)
-
-    print("ww.RPCWorkerParent")
-    # w = ww.RPCWorkerParent('kwarwp/worker.py',[1,2,3],{"USER":"nobody"})
-
-    # Run the main method
-    # tally(w)
-    # print("ensure_future(produce(0))", asyncio.ensure_future(produce()))
-    # print("ensure_future(produce(1))", asyncio.ensure_future(produce()))
-    # print("ensure_future(produce(2))", asyncio.ensure_future(produce()))
-    loop = asyncio.get_event_loop()
-    print("ensure_future(produce(0))", asyncio.ensure_future(produce()))
-    print("ensure_future(produce(1))", asyncio.ensure_future(produce()))
-    print("ensure_future(consume(0))", asyncio.ensure_future(consume()))
-    print("ensure_future(consume(1))", asyncio.ensure_future(consume()))
-    print("ensure_future(consume(2))", asyncio.ensure_future(consume()))
-    print("ensure_future(consume(3))", asyncio.ensure_future(consume()))
-    loop = asyncio.get_event_loop()
 
 
 if __name__ == '__main__':

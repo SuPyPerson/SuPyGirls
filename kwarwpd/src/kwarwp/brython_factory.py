@@ -24,34 +24,82 @@
 """
 
 from random import choice, seed
-from threading import Event, Thread
 
-from . import svgcanvas as gi
-from .svgcanvas import *
-
-seed()
-IMAGEREPO = '/image/'
+# seed()
+IMAGEREPO = 'server_root/image/'
+CANVASW, CANVASH = 800, 600
 
 
 #############################################################################
 
+"""
+page up 	33
+page down 	34
+end 	35
+home 	36
+left arrow 	37
+up arrow 	38
+right arrow 	39
+down arrow 	40
+insert 	45
+
+"""
+
+
 class TECLA:
-    ACIMA = 111
-    ABAIXO = 116
-    DIREITA = 114
-    ESQUERDA = 113
+    ACIMA = 38
+    ABAIXO = 40
+    DIREITA = 39
+    ESQUERDA = 37
 
-    BRANCO = 65
-    ENTER = 36
-    SOBE = 112
-    DESCE = 117
-    EMPURRA = 97
-    PUXA = 103
+    BRANCO = 32
+    ENTER = 13
+    SOBE = 33
+    DESCE = 34
+    EMPURRA = 35
+    PUXA = 36
 
 
-class _GUI(gi.GUI):
+class EmpacotadorDeImagem:
+    def __init__(self, canvas, glyph, x, y, dx, dy):
+        self.canvas = canvas  # .canvas
+        self.img = self.canvas.image(
+            href=IMAGEREPO+glyph, x=x, y=y,
+            height="{}px".format(dy), width="{}px".format(dx))
+        self.x, self.y = x, y
+
+    def __le__(self, other):
+        other <= self.img
+
+    def remove(self):
+        self.img.remove()
+
+    def translate(self, x, y):
+        self.x, self.y = self.x + x, self.y + y
+        self.img.x, self.img.y = self.x, self.y
+
+
+class _GUI:
+    def __init__(self, width, height, svg, document):
+        self.mundo_Kuarup = self.evs = None
+        self.svg = svg
+        self.evs = [getattr(TECLA, at) for at in dir(TECLA) if at.isupper()]
+        self.panel = document["svgdiv"]
+
+        # document["keyCodeKeydown"].bind("keydown", self.keyCode)
+        document.bind("keypress", self.keyCode)
+        # document["keyCodeKeyup"].bind("keyup", self.keyCode)
+        self.events = {}
+
+    def keyCode(self, ev):
+        if ev.keyCode in self.evs:
+            self.mundo_Kuarup.quandoApertaUmaTecla(ev.keyCode)
+            ev.stopPropagation()
+
     def inicia(self, mundo):
         self.mundo_Kuarup = mundo
+        print("def inicia(self, mundo):", self.evs)
+        # mundo.inicia()
 
     def Return(self, ev): self.mundo_Kuarup.quandoApertaUmaTecla(TECLA.ENTER)
 
@@ -73,16 +121,21 @@ class _GUI(gi.GUI):
 
     def End(self, ev): self.mundo_Kuarup.quandoApertaUmaTecla(TECLA.PUXA)
 
-    def rect(self, x, y, w, h, **kwargs):
-        gi.GUI.rect(self, x, y, w - x, h - y, **kwargs)
+    def text(self, x, y, texto, color='navajowhite'):
+        img = self.svg.text(
+            texto, x=x, y=y,
+            font_size=22, text_anchor="middle",
+            style={"stroke": color, "fill": color})
+        self.panel <= img
 
-    def image(self, href, x, y, w, h, **kwargs):
-        """ Returns an Image
-        x,y - position; w,h - size
-        """
-        parent = kwargs.pop(PARENT, self)
-        return Image(IMAGEREPO + href, x=x, y=y, width=w, height=h,
-                     parent=parent, **kwargs)
+    def rect(self, x, y, dx, dy, color):
+        img = self.svg.rect(x=x, y=y, width=dx, height=dy, stroke=color, fill=color)
+        self.panel <= img
+
+    def image(self, glyph, x, y, dx, dy):
+        img = EmpacotadorDeImagem(self.svg, glyph, x, y, dx, dy)
+        self.panel <= img.img
+        return img
 
     def escolha(self, lista):
         return choice(lista)
@@ -92,23 +145,18 @@ class GUI(_GUI):
     """ O terreno onde o Festival Kuarup é apresentado
     """
 
-    def __init__(self, width=CANVASW, height=CANVASH):
-        _GUI.__init__(self, width=width, height=height)
+    def __init__(self, width=CANVASW, height=CANVASH, svg=None, document=None):
+        _GUI.__init__(self, width=width, height=height, svg=svg, document=document)
         self.executante = None
-        self.evento = Event()
 
     def run(self):
         self.executante()
 
     def registra_executante(self, executante):
         self.executante = executante
-        self.evento = Event()
-        Thread.__init__(self)
-        self.start()
 
     def espera(self):
-        self.evento.wait()
-        self.evento.clear()
+        pass
 
     def continua(self):
-        self.evento.set()
+        pass

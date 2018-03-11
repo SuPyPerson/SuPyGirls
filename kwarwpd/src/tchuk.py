@@ -18,6 +18,7 @@ __version__ = "1.0 $Revision$"[10:-1]
 __date__ = "2011/02/13 $Date$"
 
 from kwarwp.kuarup import Kuarup
+from kwarwp.tkinter_factory import GUI
 
 
 class Tchuk(Kuarup):
@@ -44,6 +45,6 @@ class Tchuk(Kuarup):
 # INICIO, CORREDOR, ZIGZAG, CARACOL, CORREDOR_ROCHOSO
 # BETUMES, ROCHAS, BETUMES_ROCHAS, POR_ONDE,PISA_NA_FULO
 if __name__ == "__main__":
-    mundo = Tchuk(Kuarup.CORREDOR_ROCHOSO, Tchuk)
+    mundo = Tchuk(Kuarup.CORREDOR_ROCHOSO, Tchuk, gui=GUI)
     # mundo = Tchuk(Kuarup.RECORDAR_E_VIVER,Tchuk)
     mundo.inicia()

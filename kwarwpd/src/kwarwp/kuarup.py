@@ -17,15 +17,15 @@ __author__ = "Carlo E. T. Oliveira (cetoli@yahoo.com.br) $Author: cetoli $"
 __version__ = "1.1 $Revision$"[10:-1]
 __date__ = "2011/02/19 $Date$"
 
-import time
-from threading import Event, Thread
+# import time
+# from threading import Event, Thread
 from .kuarupfest import Mapas
-
+'''
 try:
     from .tkinter_factory import GUI, CANVASW, CANVASH
 except ImportError:
     from .svg_factory import GUI, CANVASW, CANVASH
-
+'''
 HS = 48
 HX, HY = 1, 2
 STEPX, STEPY = 32, 32
@@ -35,8 +35,9 @@ TWO1DR = range(-2, 3)
 TWO2DR = [(x, y) for x in TWO1DR for y in TWO1DR]
 FABRICA, ARGUMENTOS = 0, 1
 GLIFO, NOME, IMAGEM, GRADE = 0, 1, 2, 3
+CANVASW, CANVASH = 800, 600
 
-
+'''
 class TECLA:
     ACIMA = 111
     ABAIXO = 116
@@ -49,7 +50,21 @@ class TECLA:
     DESCE = 117
     EMPURRA = 97
     PUXA = 103
+'''
 
+
+class TECLA:
+    ACIMA = 38
+    ABAIXO = 40
+    DIREITA = 39
+    ESQUERDA = 37
+
+    BRANCO = 32
+    ENTER = 13
+    SOBE = 33
+    DESCE = 34
+    EMPURRA = 35
+    PUXA = 36
 
 # def enum(*sequential, **named):
 #    enums = dict(zip(sequential, range(len(sequential))), **named)
@@ -589,7 +604,7 @@ class Cenario(Elemento):
             instancia.glifo_imagem = imagem
         LDX, LDY = DX + imgxy, DY + imgxy
         canvas.rect(
-            LDX, LDY, LDX + nx * imgxy, LDY + ny * imgxy, color='navajo white')
+            LDX, LDY, LDX + nx * imgxy, LDY + ny * imgxy, color='navajowhite')
         return instancia
 
     def registra_tempo(self, registrado):
