@@ -50,51 +50,47 @@ from .kuarup import Kuarup
 from .brython_factory import GUI
 
 
-class Queue:
-    def __init__(self, promise, timer):
-        self.queue = []
-        self.promise = promise.Promise
-        self.async = promise.doAsync
-        self.tout = timer.set_timeout
-        self.resolved = self.val = lambda *_: None
+class Tchuk(Kuarup):
+    """ O personagem controlado pelo jogador conectado
+    """
 
-    def timeoutPromise(self):
-        def resolver(resolve, rej, sf=self):
-            if sf.queue:
-                item = sf.queue.pop(0)
-                resolve(item)
-                return item
-            else:
-                rej(lambda *_: None)
-                return lambda *_: None
-        return self.promise.new(lambda resolve, rej: self.tout(lambda: resolver(resolve, rej), 1000))
-
-    def get(self):
-        def promise():
-            return self.timeoutPromise()
-
-        def res(val):
-            self.val = val
-            print("def get(self):def res(val)", self.val)
-            return val
-        result = self.async(promise)  # .then(res)
-        # print("def get(self):", result.then(res))
-        result.then(res, res)  # lambda *_: None
-        val, self.val = self.val, lambda *_: None
-        return val  # lambda *_: None
-
-    def pop(self):
-        if self.queue:
-            yield self.queue.pop(0)
-        else:
-            yield lambda *_: None
-
-    def push(self, item):
-        self.queue.append(item)
-
-    def run(self):
-        while self.pop():
-            pass
+    def define_comportamento(self):
+        self.fala('olá a todos')
+        self.direita()
+        self.anda()
+        self.pega()
+        self.esquerda()
+        self.esquerda()
+        self.larga()
+        self.direita()
+        self.direita()
+        self.anda()
+        self.pega()
+        self.esquerda()
+        self.esquerda()
+        self.larga()
+        self.direita()
+        self.direita()
+        self.anda()
+        self.pega()
+        self.esquerda()
+        self.esquerda()
+        self.larga()
+        self.direita()
+        self.direita()
+        self.anda()
+        self.pega()
+        self.esquerda()
+        self.esquerda()
+        self.larga()
+        self.direita()
+        self.direita()
+        self.anda()
+        self.pega()
+        self.anda()
+        self.anda()
+        self.direita()
+        self.anda()
 
 
 class Main:
@@ -103,19 +99,15 @@ class Main:
         self.count = 0
         self.doc, self.svg, self.ww, self.tt = params
         self.Promise = self.ww.Promise
-        self.queue = Queue(self.ww, self.tt)
         self.panel = self.doc["svgdiv"]
         self.title = None
-        # asyncio.ensure_future(process_file())
-        self.queue.push(self.paint)
-        self.queue.push(self.paint)
-        print("self.queue.pop().__next__()")
         self.settings()
-        return
-        self.mundo = Kuarup(Kuarup.CORREDOR_ROCHOSO, gui=GUI(svg=self.svg, document=self.doc))
+        self.mundo = Tchuk(Kuarup.CORREDOR_ROCHOSO, Tchuk, gui=GUI(svg=self.svg, document=self.doc))
         self.mundo.inicia()
 
     def settings(self):
+        # asyncio.ensure_future(process_file())
+        print("self.queue.pop().__next__()")
         print("def main(doc, svg)")
         self.title = self.svg.text(
             'LOADING..', x=200, y=30,
@@ -123,9 +115,9 @@ class Main:
             style={"stroke": "yellow", "fill": "yellow"})
         self.panel <= self.title
         self.doc["svg_circle"].bind('click', self.mouseclick)
-        self.fill()
+        # self.fill()
 
-    def fill(self, *_):
+    def _fill(self, *_):
         def value(res):
             pass
         for it in range(0, 10):
@@ -134,18 +126,21 @@ class Main:
             # res() if hasattr(res, '__call__') else None
             res()
 
+    # def fill(self, *_):
+    #     for it in range(0, 10):
+    #         self.queue.push(self.paint)
+
     def paint(self, *_):
         self.count += 1
         self.title.textContent = "Contagem {}".format(self.count)
 
-    def mouseclick(self, *_):
-        self.queue.push(self.paint)
+    def _mouseclick(self, *_):
         print("self.queue.pop().__next__()")
 
-    def _mouseclick(self, *_):
-        nexter = self.queue.pop().__next__()
+    def mouseclick(self, *_):
+        # nexter = self.queue.pop().__next__()
         print("self.queue.pop().__next__()", nexter)
-        nexter()
+        # nexter()
 
 
 def main(doc, svg, ww, tt):
@@ -153,4 +148,4 @@ def main(doc, svg, ww, tt):
 
 
 if __name__ == '__main__':
-    main([], "", None)
+    main([], "", None, None)

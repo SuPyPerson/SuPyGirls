@@ -46,6 +46,25 @@ insert 	45
 """
 
 
+class Queue:
+    def __init__(self):
+        self.queue = []
+        self.resolved = self.val = lambda *_: None
+
+    def pop(self):
+        if self.queue:
+            yield self.queue.pop(0)
+        else:
+            yield lambda *_: None
+
+    def push(self, item):
+        self.queue.append(item)
+
+    def run(self):
+        while self.pop():
+            pass
+
+
 class TECLA:
     ACIMA = 38
     ABAIXO = 40
@@ -62,7 +81,8 @@ class TECLA:
 
 class EmpacotadorDeImagem:
     def __init__(self, canvas, glyph, x, y, dx, dy):
-        self.canvas = canvas  # .canvas
+        self.canvas = canvas.svg  # .canvas
+        self.render = canvas.renderer
         self.img = self.canvas.image(
             href=IMAGEREPO+glyph, x=x, y=y,
             height="{}px".format(dy), width="{}px".format(dx))
@@ -71,16 +91,24 @@ class EmpacotadorDeImagem:
     def __le__(self, other):
         other <= self.img
 
-    def remove(self):
+    def do_remove(self):
         self.img.remove()
 
-    def translate(self, x, y):
+    def remove(self):
+        self.render(render=lambda: self.do_remove())
+
+    def do_translate(self, x, y):
         self.x, self.y = self.x + x, self.y + y
         self.img.x, self.img.y = self.x, self.y
+
+    def translate(self, x, y):
+
+        self.render(render=lambda: self.do_translate(x, y))
 
 
 class _GUI:
     def __init__(self, width, height, svg, document):
+        self.queue = Queue()
         self.mundo_Kuarup = self.evs = None
         self.svg = svg
         self.evs = [getattr(TECLA, at) for at in dir(TECLA) if at.isupper()]
@@ -129,15 +157,24 @@ class _GUI:
             texto, x=x, y=y,
             font_size=22, text_anchor="middle",
             style={"stroke": color, "fill": color})
-        self.panel <= img
+        self.render(img)
+
+    def render(self, img, render=None):
+        if False:
+            self.panel <= img
+
+    def __render(self, img):
+        def do_render(img):
+            self.panel <= img
+        self.queue.push(lambda: do_render(img))
 
     def rect(self, x, y, dx, dy, color):
         img = self.svg.rect(x=x, y=y, width=dx, height=dy, stroke=color, fill=color)
-        self.panel <= img
+        self.render(img)
 
     def image(self, glyph, x, y, dx, dy):
-        img = EmpacotadorDeImagem(self.svg, glyph, x, y, dx, dy)
-        self.panel <= img.img
+        img = EmpacotadorDeImagem(self, glyph, x, y, dx, dy)
+        self.render(img.img)
         return img
 
     def escolha(self, lista):
@@ -151,15 +188,29 @@ class GUI(_GUI):
     def __init__(self, width=CANVASW, height=CANVASH, svg=None, document=None):
         _GUI.__init__(self, width=width, height=height, svg=svg, document=document)
         self.executante = None
+        self.queue = Queue()
+        self.render = self.do_render
 
     def run(self):
         self.executante()
 
+    def do_render(self, img, render=None):
+        self.panel <= img
+
+    def renderer(self, render=None):
+        self.queue.push(lambda: render())
+
+    def _render(self, img):
+        self.queue.push(lambda: self.do_render(img))
+
     def registra_executante(self, executante):
+        self.render = self._render
         self.executante = executante
+        executante()
 
     def espera(self):
         pass
 
     def continua(self):
-        pass
+        print("def continua(self):", len(self.queue.queue))
+        self.queue.pop().__next__()()
