@@ -127,7 +127,7 @@ class Main:
         self.title = None
         self.settings()
         gui = GUI(svg=self.svg, document=self.doc, html=self.ht)
-        self.mundo = Kuarup(getattr(Kuarup, self.cena, "CORREDOR_ROCHOSO"), gui=GUI(**kwargs))
+        self.mundo = Tchuk(getattr(Kuarup, self.cena, "CORREDOR_ROCHOSO"), indio=Tchuk, gui=GUI(**kwargs))
         self.mundo.inicia()
 
     def settings(self):
