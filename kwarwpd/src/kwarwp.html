@@ -42,10 +42,10 @@
         </script>
         <script type="text/python">
             from browser import document, svg
-            from browser import window as ww
+            from browser import html as ht
             from browser import timer as tt
             from kwarwp.main import main
-            main(document, svg, ww, tt)
+            main(document, svg, ht, tt, "CORREDOR_ROCHOSO")
         </script>
     </head>
     <body onLoad="brython({debug:1, cache:'browser', static_stdlib_import:true})">

@@ -42,6 +42,8 @@ IMAPA = [
     ("^","ar","sky.gif",(10,4)),
     ("=","caminho"),("a","ator","smkp-%s0%s.gif"),
     ("#","cenario","soil.gif",".a=")]
+
+
 class Mapas:
     MAPA = [
     ("^","ar","sky.gif",(10,4)),
@@ -268,79 +270,47 @@ o&&awx
 oooooo''')
 ]
 
-#############################################################################
-'''
-
-class EmpacotadorDeImagem:
-    def __init__(self, canvas, glyph, x, y, dx, dy):
-        self.canvas = canvas.canvas
-        tk = canvas.tk
-        self.pi = tk.PhotoImage(file = IMAGEREPO + glyph)
-        self.imageinstance = self.canvas.create_image(
-            x,y, image = self.pi,anchor = tk.NW)
-        self.x,self.y = x, y
-    def remove(self):
-        self.canvas.delete(self.imageinstance)
-    def translate(self,x,y):
-        self.x,self.y= self.x +x , self.y+y
-        self.canvas.coords(self.imageinstance,self.x,self.y)
-
-class Kuarup(Thread):
-    def __init__(self):
-        self.tk = Tkinter
-        self.top = Tkinter.Tk()
-        self.canvas = Tkinter.Canvas(
-            self.top, bg="forest green", height=640, width=800)
-        self.canvas.pack()
-        EVENTOS = {"<Return>":self.Return,"<space>":self.space,
-           "<Right>":self.Right,"<Left>":self.Left,
-           "<Up>":self.Up,"<Down>":self.Down,
-           "<Next>":self.Next,"<Prior>":self.Prior,
-           "<Home>":self.Home,"<End>":self.End}
-
-        for evento, lidador in EVENTOS.items():
-            self.top.bind_all(evento,lidador)
-        
-    def text(self,x,y,texto,color='navajo white'):
-        self.canvas.create_text(x,y,text=texto , fill=color,
-                                font=("Helvectica", "16"))# width=0)
-    def rect(self,x,y,dx,dy,color):
-        self.canvas.create_rectangle(x,y,dx,dy, fill=color, width=0)
-    def image(self,glyph,x,y,dx,dy):
-        img = EmpacotadorDeImagem(self,glyph,x,y,dx,dy)
-        return img
-    def inicia(self):
-        self.mundo_Kuarup = MundoKuarup(self,MAPA)
-        self.top.mainloop()
-    def run(self):
-        self.executante()
-    def registra_executante(self,executante):
-        self.executante= executante
-        self.evento = Event()
-        Thread.__init__(self)
-        self.start()
-    def espera(self):
-        self.evento.wait()
-        self.evento.clear()
-    def continua(self):
-        self.evento.set()
-        
-    def Return(self, ev): self.mundo_Kuarup.quandoApertaUmaTecla(TECLA.ENTER)
-    def space(self, ev): self.mundo_Kuarup.quandoApertaUmaTecla(TECLA.BRANCO)
-    def Right(self, ev): self.mundo_Kuarup.quandoApertaUmaTecla(TECLA.DIREITA)
-    def Left(self, ev): self.mundo_Kuarup.quandoApertaUmaTecla(TECLA.ESQUERDA)
-    def Up(self, ev): self.mundo_Kuarup.quandoApertaUmaTecla(TECLA.ACIMA)
-    def Down(self, ev): self.mundo_Kuarup.quandoApertaUmaTecla(TECLA.ABAIXO)
-    def Next(self, ev): self.mundo_Kuarup.quandoApertaUmaTecla(TECLA.DESCE)
-    def Prior(self, ev): self.mundo_Kuarup.quandoApertaUmaTecla(TECLA.SOBE)
-    def Home(self, ev): self.mundo_Kuarup.quandoApertaUmaTecla(TECLA.EMPURRA)
-    def End(self, ev): self.mundo_Kuarup.quandoApertaUmaTecla(TECLA.PUXA)
-
-    def escolha(self, lista):
-        return choice(lista)
-    
-if __name__ == "__main__":
-    mundo = Kuarup()
-    mundo.inicia()
 
 '''
+class Tchuk(Kuarup):
+    """ O personagem controlado pelo jogador conectado
+    """
+
+    def define_comportamento(self):
+        self.fala('olá a todos')
+        self.direita()
+        self.anda()
+        self.pega()
+        self.esquerda()
+        self.esquerda()
+        self.larga()
+        self.direita()
+        self.direita()
+        self.anda()
+        self.pega()
+        self.esquerda()
+        self.esquerda()
+        self.larga()
+        self.direita()
+        self.direita()
+        self.anda()
+        self.pega()
+        self.esquerda()
+        self.esquerda()
+        self.larga()
+        self.direita()
+        self.direita()
+        self.anda()
+        self.pega()
+        self.esquerda()
+        self.esquerda()
+        self.larga()
+        self.direita()
+        self.direita()
+        self.anda()
+        self.pega()
+        self.anda()
+        self.anda()
+        self.direita()
+        self.anda()
+    '''

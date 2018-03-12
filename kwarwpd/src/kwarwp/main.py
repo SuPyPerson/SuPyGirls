@@ -50,6 +50,29 @@ from .kuarup import Kuarup
 from .brython_factory import GUI
 
 
+class Cenas:
+    CORREDOR_ROCHOSO = '''class Tchuk(Kuarup):
+    """ O personagem controlado pelo jogador conectado
+    """
+
+    def define_comportamento(self):
+        self.fala('olá a todos')
+        self.direita()
+        self.anda()
+        self.pega()
+        self.esquerda()
+        self.esquerda()
+        self.larga()
+        self.direita()
+        self.direita()
+        self.anda()
+    
+    '''
+
+    def __init__(self):
+        pass
+
+
 class Tchuk(Kuarup):
     """ O personagem controlado pelo jogador conectado
     """
@@ -95,14 +118,16 @@ class Tchuk(Kuarup):
 
 class Main:
 
-    def __init__(self, params):
+    def __init__(self, *args):
         self.count = 0
-        self.doc, self.svg, self.ww, self.tt = params
-        self.Promise = self.ww.Promise
+        self.doc, self.svg, self.ht, self.tt, self.cena = args
+        cena = getattr(Cenas, self.cena, "CORREDOR_ROCHOSO")
+        kwargs = dict(svg=self.svg, document=self.doc, html=self.ht, cena=cena)
         self.panel = self.doc["svgdiv"]
         self.title = None
         self.settings()
-        self.mundo = Tchuk(Kuarup.CORREDOR_ROCHOSO, Tchuk, gui=GUI(svg=self.svg, document=self.doc))
+        gui = GUI(svg=self.svg, document=self.doc, html=self.ht)
+        self.mundo = Kuarup(getattr(Kuarup, self.cena, "CORREDOR_ROCHOSO"), gui=GUI(**kwargs))
         self.mundo.inicia()
 
     def settings(self):
@@ -143,8 +168,8 @@ class Main:
         # nexter()
 
 
-def main(doc, svg, ww, tt):
-    Main((doc, svg, ww, tt))
+def main(*args):
+    Main(*args)
 
 
 if __name__ == '__main__':
