@@ -157,8 +157,8 @@ class _GUI:
         self.svg, self.html, self.cena = svg, html, cena
         self.evs = [getattr(TECLA, at) for at in dir(TECLA) if at.isupper()]
         document["svgdiv"].remove()
-        svgpanel = svg.svg(id="svgdiv", width=width, height=height)
-        document["pydiv"] <= svgpanel
+        self.svgpanel = svg.svg(id="svgdiv", width=width, height=height)
+        document["pydiv"] <= self.svgpanel
         self.panel = document["svgdiv"]
         self.dom = document["pydiv"]
         self.document = document
@@ -172,6 +172,9 @@ class _GUI:
             ev.stopPropagation()
 
     def inicia(self, mundo):
+        self.panel.remove()
+        self.dom <= self.svgpanel
+        self.panel = self.document["svgdiv"]
         self.mundo_Kuarup = mundo
         self.document.bind("keypress", lambda ev: self.keyCode(ev))
         print("def inicia(self, mundo):", self.evs, mundo)
@@ -271,9 +274,10 @@ class GUI(_GUI):
     def executa_acao(self, dialog):
         code = dialog.get_text()
         self.renderer = self._render
+        self.renderer = self.do_render
         self.executante = code
         exec(code, globals())
-        o_indio = Tchuk(indio=Tchuk, gui=self)
+        o_indio = Tchuk(Kuarup.CORREDOR_ROCHOSO, indio=Tchuk, gui=self)
         o_indio.inicia()
         return
         print("o_indio = Tchuk()", dir(o_indio))
