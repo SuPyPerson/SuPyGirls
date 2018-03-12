@@ -24,6 +24,7 @@
 """
 
 from random import choice, seed
+from .kuarup import Kuarup
 
 # seed()
 IMAGEREPO = 'server_root/image/'
@@ -160,6 +161,7 @@ class _GUI:
         document["pydiv"] <= svgpanel
         self.panel = document["svgdiv"]
         self.dom = document["pydiv"]
+        self.document = document
         self.events = {}
         self.edit = self._edit
         self.dialogue = None
@@ -171,7 +173,7 @@ class _GUI:
 
     def inicia(self, mundo):
         self.mundo_Kuarup = mundo
-        document.bind("keypress", lambda ev: self.keyCode(ev))
+        self.document.bind("keypress", lambda ev: self.keyCode(ev))
         print("def inicia(self, mundo):", self.evs, mundo)
 
     def text(self, x, y, texto, color='navajowhite'):
@@ -202,8 +204,11 @@ class _GUI:
         self.renderer(img)
         return img
 
+    def executa_acao(self, dialog):
+        pass
+
     def _edit(self, *_):
-        self.dialog("ola")
+        self.dialog("ola", act=self.executa_acao)
 
     def editor(self, glyph):
         glyph.bind('click', lambda *_: self._edit)
@@ -267,10 +272,18 @@ class GUI(_GUI):
         code = dialog.get_text()
         self.renderer = self._render
         self.executante = code
-        exec(code)
+        exec(code, globals())
+        o_indio = Tchuk(indio=Tchuk, gui=self)
+        o_indio.inicia()
+        return
+        print("o_indio = Tchuk()", dir(o_indio))
+        self.mundo_Kuarup.indio = o_indio
+        ind = self.mundo_Kuarup.indio
+        self.registra_executante(o_indio.define_comportamento)
+        # o_indio.define_comportamento()
 
     def registra_executante(self, executante):
-        # self.renderer = self._render
+        self.renderer = self._render
         self.executante = executante
         executante()
 

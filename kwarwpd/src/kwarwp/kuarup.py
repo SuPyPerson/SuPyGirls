@@ -694,12 +694,12 @@ class Kuarup(Personagem, Mapas):
         self._mapa = mapa
         self.__gui = gui
         self.canvas = self._indio = None
+        self.canvas = gui
+        self._constroi_inventario_de_classes(self._mapa)
         if indio:
             INVENTARIO['ator'] = indio
 
     def inicia(self):
-        self.canvas = self.__gui or GUI()
-        self._constroi_inventario_de_classes(self._mapa)
         self._indio = self._inventario['a'][FABRICA]
         self.canvas.inicia(self)
         pass
