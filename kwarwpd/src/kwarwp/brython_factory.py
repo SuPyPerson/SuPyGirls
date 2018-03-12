@@ -84,6 +84,7 @@ class TECLA:
 
 class Dialog:
     def __init__(self, gui, text='xxxx', act=lambda x: None):
+        self.text = text
         self._rect = gui.back(0, 66, 800, 540, 'black', '0.85')
         self._area = gui.textarea(text, 20, 80, 760, 500)
         self.edit = gui.edit
@@ -91,7 +92,6 @@ class Dialog:
         self.gui = gui
         gui.edit = self.action
         self.act = act
-        self.text = ""
 
     def remove(self):
         self._rect.remove()
@@ -101,14 +101,10 @@ class Dialog:
         self.remove()
         # self._rect.style.visibility = 'hidden'
         # self._area.style.visibility = 'hidden'
-        # self._imag.style.visibility = 'hidden'
-        # self._area.setVisible(self._area,False)
 
     def show(self):
         self._rect.style.visibility = 'visible'
         self._area.style.visibility = 'visible'
-        # self._imag.style.visibility = 'visible'
-        # self._area.setVisible(self._area,True)
 
     def get_text(self):
         return self.text
@@ -272,19 +268,12 @@ class GUI(_GUI):
         self.queue.push(lambda: render() if render else self.do_render(img))
 
     def executa_acao(self, dialog):
-        code = dialog.get_text()
+        self.cena = dialog.get_text()
         self.renderer = self._render
         self.renderer = self.do_render
-        self.executante = code
-        exec(code, globals())
+        exec(self.cena, globals())
         o_indio = Tchuk(Kuarup.CORREDOR_ROCHOSO, indio=Tchuk, gui=self)
         o_indio.inicia()
-        return
-        print("o_indio = Tchuk()", dir(o_indio))
-        self.mundo_Kuarup.indio = o_indio
-        ind = self.mundo_Kuarup.indio
-        self.registra_executante(o_indio.define_comportamento)
-        # o_indio.define_comportamento()
 
     def registra_executante(self, executante):
         self.renderer = self._render
