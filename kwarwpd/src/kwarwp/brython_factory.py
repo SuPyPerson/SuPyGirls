@@ -126,7 +126,7 @@ class Dialog:
 class EmpacotadorDeImagem:
     def __init__(self, canvas, glyph, x, y, dx, dy):
         self.canvas = canvas.svg  # .canvas
-        self.render = canvas.renderer
+        self.render = canvas
         self.img = self.canvas.image(
             href=IMAGEREPO+glyph, x=x, y=y,
             height="{}px".format(dy), width="{}px".format(dx))
@@ -139,14 +139,14 @@ class EmpacotadorDeImagem:
         self.img.remove()
 
     def remove(self):
-        self.render(render=lambda: self.do_remove())
+        self.render.renderer(self.img, render=lambda: self.do_remove())
 
     def do_translate(self, x, y):
         self.x, self.y = self.x + x, self.y + y
         self.img.x, self.img.y = self.x, self.y
 
     def translate(self, x, y):
-        self.render(render=lambda: self.do_translate(x, y))
+        self.render.renderer(self.img, render=lambda: self.do_translate(x, y))
 
 
 class _GUI:
@@ -160,7 +160,6 @@ class _GUI:
         document["pydiv"] <= svgpanel
         self.panel = document["svgdiv"]
         self.dom = document["pydiv"]
-        document.bind("keypress", self.keyCode)
         self.events = {}
         self.edit = self._edit
         self.dialogue = None
@@ -172,16 +171,17 @@ class _GUI:
 
     def inicia(self, mundo):
         self.mundo_Kuarup = mundo
-        print("def inicia(self, mundo):", self.evs)
+        document.bind("keypress", lambda ev: self.keyCode(ev))
+        print("def inicia(self, mundo):", self.evs, mundo)
 
     def text(self, x, y, texto, color='navajowhite'):
         img = self.svg.text(
             texto, x=x, y=y,
             font_size=22, text_anchor="middle",
             style={"stroke": color, "fill": color})
-        self.render(img)
+        self.renderer(img)
 
-    def render(self, img, render=None):
+    def renderer(self, img, render=None):
         if False:
             self.panel <= img
 
@@ -199,7 +199,7 @@ class _GUI:
     def rect(self, x, y, dx, dy, color, opacity="1.0"):
         img = self.svg.rect(x=x, y=y, width=dx, height=dy, stroke=color, fill=color,
                             style=dict(fillOpacity=opacity))
-        self.render(img)
+        self.renderer(img)
         return img
 
     def _edit(self, *_):
@@ -213,7 +213,7 @@ class _GUI:
         if "sun.gif" in glyph:
             img.img.bind('click', lambda *_: self.edit())
             self.editor(img.img)
-        self.render(img.img)
+        self.renderer(img.img)
         return img
 
     def escolha(self, lista):
@@ -249,15 +249,15 @@ class GUI(_GUI):
         _GUI.__init__(self, width=width, height=height, svg=svg, document=document, html=html, cena=cena)
         self.executante = None
         self.queue = Queue()
-        self.render = self.do_render
+        self.renderer = self.do_render
 
     def run(self):
         self.executante()
 
     def do_render(self, img, render=None):
-        self.panel <= img
+        render() if render else self.panel <= img
 
-    def renderer(self, render=None):
+    def _renderer(self, render=None):
         self.queue.push(lambda: render())
 
     def _render(self, img):
@@ -265,12 +265,12 @@ class GUI(_GUI):
 
     def executa_acao(self, dialog):
         code = dialog.get_text()
-        self.render = self._render
+        self.renderer = self._render
         self.executante = code
         exec(code)
 
     def registra_executante(self, executante):
-        self.render = self._render
+        # self.renderer = self._render
         self.executante = executante
         executante()
 

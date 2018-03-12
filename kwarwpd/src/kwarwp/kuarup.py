@@ -704,12 +704,17 @@ class Kuarup(Personagem, Mapas):
         self.canvas.inicia(self)
         pass
 
-    def _get_indio(self):
+    @property
+    def indio(self):
         self._indio.luzes_camera_acao()
         return self._indio
 
-    indio = property(_get_indio, None)
-    "indio: retorna o herói do Kuarup"
+    @indio.setter
+    def indio(self, value):
+        INVENTARIO['ator'] = value
+
+    # indio = property(_get_indio, None)
+    # "indio: retorna o herói do Kuarup"
 
     def _constroi_inventario_de_classes(self, inventario):
         """ Cria a descrição das classes disponíveis no inventário
