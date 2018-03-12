@@ -28,6 +28,8 @@ from random import choice, seed
 # seed()
 IMAGEREPO = 'server_root/image/'
 CANVASW, CANVASH = 800, 600
+NODICT = {}
+EDIT = "{}/{}".format(IMAGEREPO, "sun.gif")
 
 
 #############################################################################
@@ -79,6 +81,48 @@ class TECLA:
     PUXA = 36
 
 
+class Dialog:
+    def __init__(self, gui, text='xxxx', act=lambda x: None):
+        self._rect = gui.back(0, 66, 800, 540, 'black', '0.85')
+        self._area = gui.textarea(text, 20, 80, 760, 500)
+        self.edit = gui.edit
+        gui.continua, self.continua = lambda *_: None, gui.continua
+        self.gui = gui
+        gui.edit = self.action
+        self.act = act
+        self.text = ""
+
+    def remove(self):
+        self._rect.remove()
+        self._area.remove()
+
+    def hide(self):
+        self.remove()
+        # self._rect.style.visibility = 'hidden'
+        # self._area.style.visibility = 'hidden'
+        # self._imag.style.visibility = 'hidden'
+        # self._area.setVisible(self._area,False)
+
+    def show(self):
+        self._rect.style.visibility = 'visible'
+        self._area.style.visibility = 'visible'
+        # self._imag.style.visibility = 'visible'
+        # self._area.setVisible(self._area,True)
+
+    def get_text(self):
+        return self.text
+
+    def set_text(self, text):
+        self._area.value = text
+
+    def action(self, event=None):
+        self.text = self._area.value
+        self.hide()
+        self.act(self)
+        self.gui.edit = self.edit
+        self.gui.continua = self.continua
+
+
 class EmpacotadorDeImagem:
     def __init__(self, canvas, glyph, x, y, dx, dy):
         self.canvas = canvas.svg  # .canvas
@@ -102,25 +146,24 @@ class EmpacotadorDeImagem:
         self.img.x, self.img.y = self.x, self.y
 
     def translate(self, x, y):
-
         self.render(render=lambda: self.do_translate(x, y))
 
 
 class _GUI:
-    def __init__(self, width, height, svg, document):
+    def __init__(self, width, height, svg=None, document=None, html=None, cena=None, **kw):
         self.queue = Queue()
         self.mundo_Kuarup = self.evs = None
-        self.svg = svg
+        self.svg, self.html, self.cena = svg, html, cena
         self.evs = [getattr(TECLA, at) for at in dir(TECLA) if at.isupper()]
         document["svgdiv"].remove()
         svgpanel = svg.svg(id="svgdiv", width=width, height=height)
         document["pydiv"] <= svgpanel
         self.panel = document["svgdiv"]
-
-        # document["keyCodeKeydown"].bind("keydown", self.keyCode)
+        self.dom = document["pydiv"]
         document.bind("keypress", self.keyCode)
-        # document["keyCodeKeyup"].bind("keyup", self.keyCode)
         self.events = {}
+        self.edit = self._edit
+        self.dialogue = None
 
     def keyCode(self, ev):
         if ev.keyCode in self.evs:
@@ -130,27 +173,6 @@ class _GUI:
     def inicia(self, mundo):
         self.mundo_Kuarup = mundo
         print("def inicia(self, mundo):", self.evs)
-        # mundo.inicia()
-
-    def Return(self, ev): self.mundo_Kuarup.quandoApertaUmaTecla(TECLA.ENTER)
-
-    def space(self, ev): self.mundo_Kuarup.quandoApertaUmaTecla(TECLA.BRANCO)
-
-    def Right(self, ev): self.mundo_Kuarup.quandoApertaUmaTecla(TECLA.DIREITA)
-
-    def Left(self, ev): self.mundo_Kuarup.quandoApertaUmaTecla(TECLA.ESQUERDA)
-
-    def Up(self, ev): self.mundo_Kuarup.quandoApertaUmaTecla(TECLA.ACIMA)
-
-    def Down(self, ev): self.mundo_Kuarup.quandoApertaUmaTecla(TECLA.ABAIXO)
-
-    def Next(self, ev): self.mundo_Kuarup.quandoApertaUmaTecla(TECLA.DESCE)
-
-    def Prior(self, ev): self.mundo_Kuarup.quandoApertaUmaTecla(TECLA.SOBE)
-
-    def Home(self, ev): self.mundo_Kuarup.quandoApertaUmaTecla(TECLA.EMPURRA)
-
-    def End(self, ev): self.mundo_Kuarup.quandoApertaUmaTecla(TECLA.PUXA)
 
     def text(self, x, y, texto, color='navajowhite'):
         img = self.svg.text(
@@ -168,25 +190,63 @@ class _GUI:
             self.panel <= img
         self.queue.push(lambda: do_render(img))
 
-    def rect(self, x, y, dx, dy, color):
-        img = self.svg.rect(x=x, y=y, width=dx, height=dy, stroke=color, fill=color)
+    def back(self, x, y, dx, dy, color, opacity="1.0"):
+        rec = self.svg.rect(x=x, y=y, width=dx, height=dy, stroke=color, fill=color,
+                            style=dict(fillOpacity=opacity, visibility="visible"))
+        self.panel <= rec
+        return rec
+
+    def rect(self, x, y, dx, dy, color, opacity="1.0"):
+        img = self.svg.rect(x=x, y=y, width=dx, height=dy, stroke=color, fill=color,
+                            style=dict(fillOpacity=opacity))
         self.render(img)
+        return img
+
+    def _edit(self, *_):
+        self.dialog("ola")
+
+    def editor(self, glyph):
+        glyph.bind('click', lambda *_: self._edit)
 
     def image(self, glyph, x, y, dx, dy):
         img = EmpacotadorDeImagem(self, glyph, x, y, dx, dy)
+        if "sun.gif" in glyph:
+            img.img.bind('click', lambda *_: self.edit())
+            self.editor(img.img)
         self.render(img.img)
         return img
 
     def escolha(self, lista):
         return choice(lista)
 
+    def textarea(self, text, x, y, w, h, style=NODICT):
+
+        def dpx(d):
+            return '%spx' % d
+
+        attrs = {'position': 'absolute', 'top': dpx(y), 'left': dpx(x),
+                 'width': dpx(w), 'height': dpx(h), 'resize': 'none', 'borderColor': 'darkslategrey',
+                 'color': 'navajowhite', 'border': 1, 'background': 'transparent'}
+        t = self.html.TEXTAREA(text, style=attrs)
+        self.dom <= t
+        return t
+
+    def dialog(self, text, img=EDIT, act=lambda x: None):
+        text = self.cena
+        if self.dialogue:
+            self.dialogue.remove()
+        self.dialogue = Dialog(self, text=text, act=act)
+        self.dialogue.set_text(text)
+        self.dialogue.show()
+        return self.dialogue
+
 
 class GUI(_GUI):
     """ O terreno onde o Festival Kuarup é apresentado
     """
 
-    def __init__(self, width=CANVASW, height=CANVASH, svg=None, document=None):
-        _GUI.__init__(self, width=width, height=height, svg=svg, document=document)
+    def __init__(self, width=CANVASW, height=CANVASH, svg=None, document=None, html=None, cena=None):
+        _GUI.__init__(self, width=width, height=height, svg=svg, document=document, html=html, cena=cena)
         self.executante = None
         self.queue = Queue()
         self.render = self.do_render
@@ -202,6 +262,12 @@ class GUI(_GUI):
 
     def _render(self, img):
         self.queue.push(lambda: self.do_render(img))
+
+    def executa_acao(self, dialog):
+        code = dialog.get_text()
+        self.render = self._render
+        self.executante = code
+        exec(code)
 
     def registra_executante(self, executante):
         self.render = self._render
