@@ -265,8 +265,8 @@ class GUI(_GUI):
     def _renderer(self, render=None):
         self.queue.push(lambda: render())
 
-    def _render(self, img):
-        self.queue.push(lambda: self.do_render(img))
+    def _render(self, img, render=None):
+        self.queue.push(lambda: render() if render else self.do_render(img))
 
     def executa_acao(self, dialog):
         code = dialog.get_text()
