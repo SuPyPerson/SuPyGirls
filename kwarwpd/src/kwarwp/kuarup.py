@@ -72,6 +72,8 @@ class TECLA:
 #
 # TECLA = enum(ACIMA=111,ABAIXO=116,DIREITA=114,ESQUERDA=113,
 #             BRANCO=65,ENTER=36,SOBE=112,DESCE=117,EMPURRA=97,PUXA=103)
+
+
 class Elemento:
     TEMPO = 0
 
@@ -80,7 +82,7 @@ class Elemento:
         """
         self.x, self.y = x, y
         self.imgxy = imgxy
-        self.image = self
+        self.image = self.cenario = self
         self.glifo_imagem = imagem
 
     def atravessa(self, movimento):
@@ -247,7 +249,7 @@ class Animado(Elemento):
         return self.terreno.olha(vaix, vaiy)
 
     def somos_da_patria_amada(self, texto=None):
-        self.r = self.canvas.rect(100, 66, 700, 128, color='forest green')
+        self.r = self.canvas.rect(100, 66, 700, 128, color='forestgreen')
         if texto:
             self.canvas.text(400, 96, texto)
         else:
@@ -631,11 +633,6 @@ class Cenario(Elemento):
         """
         self.grade[y][x].atravessa(movement)
         return
-        if (x < 0) or (y < 0): return
-        try:
-            self.grade[y][x].atravessa(movement)
-        except:
-            pass
 
     def abandona(self, movimento, x=0, y=0):
         self.grade[y][x].abandona(movimento)
@@ -664,11 +661,6 @@ class Cenario(Elemento):
         """
         self.grade[y][x].pega(acao, x, y)
         return
-        # if (x < 0) or (y < 0) : return
-        try:
-            self.grade[y][x].sai(acao, x, y)
-        except:
-            pass
 
     def pinta(self, canvas):
         pass
@@ -701,6 +693,7 @@ class Kuarup(Personagem, Mapas):
         dx, dy = STEPX * len(mapinha[0]) + 50, STEPY * len(mapinha) + 90
         self._mapa = mapa
         self.__gui = gui
+        self.canvas = self._indio = None
         if indio:
             INVENTARIO['ator'] = indio
 
@@ -764,7 +757,9 @@ class Kuarup(Personagem, Mapas):
 
 
 #############################################################################
-# MAPA = [("*","cerca","fence.gif"),("+","grande","stone.gif"),("=","caminho"),("a","ator","smkp-%s0%s.gif"),("#","cenario","soil.gif","**********.*++======*.*=a==*===*.**********")]
+# MAPA = [("*","cerca","fence.gif"),
+# ("+","grande","stone.gif"),("=","caminho"),("a","ator","smkp-%s0%s.gif"),
+# ("#","cenario","soil.gif","**********.*++======*.*=a==*===*.**********")]
 # MAPA = "00~*&cerca&fence.gif^=&caminho^a&ator&smkp-%s0%s.gif~**********.*a=======*.*========*.**********~00"
 #############################################################################
 if __name__ == "__main__":

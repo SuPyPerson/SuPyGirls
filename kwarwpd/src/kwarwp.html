@@ -34,27 +34,22 @@
         """
 
         -->
+        <script type="text/javascript">
+            async function doAsync (doSomethingAsync) {
+              return await doSomethingAsync();
+            }
+
+        </script>
         <script type="text/python">
             from browser import document, svg
-            from browser import webworker as ww
+            from browser import window as ww
+            from browser import timer as tt
             from kwarwp.main import main
-            main(document, svg, ww)
+            main(document, svg, ww, tt)
         </script>
     </head>
     <body onLoad="brython({debug:1, cache:'browser', static_stdlib_import:true})">
         <div id="pydiv"  title="" style="width: 99%;
-            height: 99%;
-            position: absolute;
-            top:0;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            margin: auto;
-            background-color: forestgreen;
-        ">
-            <span style="color:white">LOADING..</span>
-        </div>
-        <div style="width: 99%;
             height: 99%;
             position: absolute;
             top:0;

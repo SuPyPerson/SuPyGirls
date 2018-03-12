@@ -84,6 +84,9 @@ class _GUI:
         self.mundo_Kuarup = self.evs = None
         self.svg = svg
         self.evs = [getattr(TECLA, at) for at in dir(TECLA) if at.isupper()]
+        document["svgdiv"].remove()
+        svgpanel = svg.svg(id="svgdiv", width=width, height=height)
+        document["pydiv"] <= svgpanel
         self.panel = document["svgdiv"]
 
         # document["keyCodeKeydown"].bind("keydown", self.keyCode)
