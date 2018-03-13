@@ -138,8 +138,9 @@ class EmpacotadorDeImagem:
     def do_remove(self):
         self.img.remove()
 
-    def _remove(self):
-        self.render.renderer(self.img, render=lambda: self.do_remove())
+    def remove(self):
+        pass
+        # self.render.renderer(self.img, render=lambda: self.do_remove())
 
     def do_move(self, x, y, image=None):
         self.img.x, self.img.y = x, y
@@ -192,7 +193,7 @@ class _GUI:
         self.document.bind("keypress", lambda ev: self.keyCode(ev))
         print("def inicia(self, mundo):", self.evs, mundo)
 
-    def text(self, x, y, texto, color='navajowhite'):
+    def do_text(self, x, y, texto, color='navajowhite'):
         self.current_text.remove() if self.current_text else None
         x = self.wsize["width"]
         x //= 2
@@ -200,7 +201,9 @@ class _GUI:
             texto, x=x, y=y,
             font_size=22, text_anchor="middle",
             style={"stroke": color, "fill": color})
-        self.renderer(img)
+
+    def text(self, x, y, texto, color='navajowhite'):
+        self.renderer(None, render=lambda: self.do_text(x, y, texto, color))
 
     def renderer(self, img, render=None):
         if False:
