@@ -84,6 +84,9 @@ class Elemento:
         self.imgxy = imgxy
         self.image = self.cenario = self
         self.glifo_imagem = imagem
+        self.cardinames = self.cardinals = self.heroImages = self.numHero = self.nextHead = 0
+        self.curHero = self.vaiX = self.vaiY = 0
+        self.acoes = self.terreno = self.implemento = self.canvas = self.curDirection = None
 
     def atravessa(self, movimento):
         movimento()
@@ -96,6 +99,9 @@ class Elemento:
 
     def empurrando(self, x, y, dx, dy, movement, canvas):
         pass
+
+    def _mover(self, x, y, imager, canvas):
+        self.image = canvas.image(imager, x, y, HS, HS)
 
     def move(self, x, y, movimento, canvas):
         self.x, self.y = x, y
@@ -156,7 +162,7 @@ class Ar(Elemento):
     def fabricar(self, construtor, *argumento):
         global DX, DY, HDX, HDY
         HDX = DX = -HS//2
-        HDY = DY = HS//1.4
+        HDY = DY = 2*HS//1.4
         HDX, HDY = DX - 8, DY - 7
         pass
 
@@ -208,14 +214,17 @@ class Animado(Elemento):
         self.curHero = 0
 
     def pinta(self, canvas, x=0, y=0, posicao_heroi=0):
-        self.image.remove()
         self.curHero = posicao_heroi or self.curHero + 1
         self.curDirection = self.nextHead
         self.x, self.y = self.vaiX, self.vaiY
         self.curHero = self.curHero % self.numHero
         nx, ny = self.x * STEPX + HDX, self.y * STEPY + HDY
-        himage = self.heroImages[self.curDirection]
-        self.image = canvas.image(himage % self.curHero, nx, ny, HS, HS)
+        himage = self.heroImages[self.curDirection] % self.curHero
+        if hasattr(self.image, "mover"):
+            print("hasattr(self.image):", self.image)
+            self.image.mover(nx, ny, himage, canvas)
+        else:
+            self.image = canvas.image(himage, nx, ny, HS, HS)
 
     def movimenta(self, direcao=None, x=10, y=10):
         """ Move um heroi
@@ -256,7 +265,7 @@ class Animado(Elemento):
         return self.terreno.olha(vaix, vaiy)
 
     def somos_da_patria_amada(self, texto=None):
-        self.r = self.canvas.rect(100, 66, 700, 128, color='forestgreen')
+        # self.r = self.canvas.rect(100, 66, 700, 128, color='forestgreen')
         if texto:
             self.canvas.text(400, 96, texto)
         else:
@@ -288,7 +297,8 @@ class Animado(Elemento):
         self.terreno.pega(self.pega_o_implemento, self.vaiX, self.vaiY)
 
     def pega_o_implemento(self, implemento, sai):
-        if self.implemento != self.terreno: return False
+        if self.implemento != self.terreno:
+            return False
         sai()
         self.implemento = implemento
         self.implemento.move(self.x, self.y, self.remove, self.canvas)
@@ -612,7 +622,7 @@ class Cenario(Elemento):
         if imagem:
             instancia.glifo_imagem = imagem
         # LDX, LDY = DX + imgxy, DY + imgxy
-        LDX, LDY = 0, 2 * imgxy
+        LDX, LDY = 0, 3 * imgxy
         print("LDX, LDY = DX + imgxy, DY + imgxy", LDX, LDY, nx, ny, LDX + nx * imgxy, LDY + ny * imgxy)
         canvas.rect(
             LDX, LDY, nx * imgxy, ny * imgxy, color='navajowhite')
@@ -701,7 +711,10 @@ class Kuarup(Personagem, Mapas):
         mapinha = mapa[-1][-1]
         separador = ',' in mapinha and ',' or ' '
         mapinha = mapinha.split(separador)
-        self.dx, dy = STEPX * len(mapinha[0]) + 50, STEPY * len(mapinha) + 90
+        imgxy = int(HS * 0.7)
+        self.dx, dy = imgxy * len(mapinha[0]), imgxy * len(mapinha)
+        print("imgxy * len(mapinha[0])", self.dx, imgxy, len(mapinha[0]), len(mapinha))
+        # self.dx, dy = STEPX * len(mapinha[0]) + 50, STEPY * len(mapinha) + 90
         self._mapa = mapa
         self.__gui = gui
         self.canvas = self._indio = None

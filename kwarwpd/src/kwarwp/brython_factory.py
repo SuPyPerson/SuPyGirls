@@ -63,6 +63,9 @@ class Queue:
     def push(self, item):
         self.queue.append(item)
 
+    def flush(self):
+        self.queue = []
+
     def run(self):
         while self.pop():
             pass
@@ -135,8 +138,17 @@ class EmpacotadorDeImagem:
     def do_remove(self):
         self.img.remove()
 
-    def remove(self):
+    def _remove(self):
         self.render.renderer(self.img, render=lambda: self.do_remove())
+
+    def do_move(self, x, y, image=None):
+        self.img.x, self.img.y = x, y
+        if image:
+            self.img.href.baseVal = IMAGEREPO+image
+
+    def mover(self, x, y, image=None, *_):
+        self.x, self.y = x, y
+        self.render.renderer(self.img, render=lambda: self.do_move(x, y, image))
 
     def do_translate(self, x, y):
         self.x, self.y = self.x + x, self.y + y
@@ -148,6 +160,7 @@ class EmpacotadorDeImagem:
 
 class _GUI:
     def __init__(self, width, height, svg=None, document=None, html=None, cena=None, **kw):
+        self.current_text = None
         self.wsize = dict(width=width, height=height)
         self.queue = Queue()
         self.mundo_Kuarup = self.evs = None
@@ -170,6 +183,7 @@ class _GUI:
 
     def inicia(self, mundo, dx=0):
         self.wsize.update(width=dx) if dx else None
+        self.current_text = None
         self.panel.remove()
         # self.svgpanel = self.svg.svg(id="svgdiv", **self.wsize)
         self.dom <= self.svgpanel
@@ -179,7 +193,10 @@ class _GUI:
         print("def inicia(self, mundo):", self.evs, mundo)
 
     def text(self, x, y, texto, color='navajowhite'):
-        img = self.svg.text(
+        self.current_text.remove() if self.current_text else None
+        x = self.wsize["width"]
+        x //= 2
+        self.current_text = img = self.svg.text(
             texto, x=x, y=y,
             font_size=22, text_anchor="middle",
             style={"stroke": color, "fill": color})
