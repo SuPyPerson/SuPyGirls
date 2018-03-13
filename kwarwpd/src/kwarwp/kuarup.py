@@ -100,9 +100,6 @@ class Elemento:
     def empurrando(self, x, y, dx, dy, movement, canvas):
         pass
 
-    def _mover(self, x, y, imager, canvas):
-        self.image = canvas.image(imager, x, y, HS, HS)
-
     def move(self, x, y, movimento, canvas):
         self.x, self.y = x, y
         self.pinta(canvas)
@@ -111,6 +108,7 @@ class Elemento:
     def entra(self, cenario, x=0, y=0):
         self.cenario = cenario
         self.x, self.y = x, y
+        # self.pinta(cenario.canvas)
         return self
 
     def sai(self, movimento, x=0, y=0):
@@ -132,14 +130,16 @@ class Elemento:
         instancia = fabrica(x=x, y=y)
         if imagem:
             instancia.glifo_imagem = imagem
-            instancia.pinta(canvas)
+            instancia.image = canvas.image(
+                instancia.glifo_imagem, instancia.x * STEPX + DX,
+                instancia.y * STEPY + DY, instancia.imgxy, instancia.imgxy)
         return instancia
 
     def pinta(self, canvas):
         imgxy = self.imgxy
-        self.image.remove()
-        self.image = canvas.image(
-            self.glifo_imagem, self.x * STEPX + DX, self.y * STEPY + DY, imgxy, imgxy)
+        # self.image.remove()
+        print("self.x, self.y, self.glifo_imagem", self.x, self.y, self.glifo_imagem)
+        self.image.mover(self.x * STEPX + DX, self.y * STEPY + DY, self.glifo_imagem)
 
 
 class Empty(Elemento):
@@ -212,6 +212,8 @@ class Animado(Elemento):
         self.numHero = 3
         self.nextHead = 0
         self.curHero = 0
+        himage = self.heroImages[0] % self.curHero
+        self.image = canvas.image(himage, 0, 0, HS, HS)
 
     def pinta(self, canvas, x=0, y=0, posicao_heroi=0):
         self.curHero = posicao_heroi or self.curHero + 1
@@ -220,11 +222,7 @@ class Animado(Elemento):
         self.curHero = self.curHero % self.numHero
         nx, ny = self.x * STEPX + HDX, self.y * STEPY + HDY
         himage = self.heroImages[self.curDirection] % self.curHero
-        if hasattr(self.image, "mover"):
-            print("hasattr(self.image):", self.image)
-            self.image.mover(nx, ny, himage, canvas)
-        else:
-            self.image = canvas.image(himage, nx, ny, HS, HS)
+        self.image.mover(nx, ny, himage, canvas)
 
     def movimenta(self, direcao=None, x=10, y=10):
         """ Move um heroi
@@ -453,7 +451,9 @@ class Saida(Fixo):
         instancia.canvas = canvas
         if imagem:
             instancia.glifo_imagem = imagem
-            instancia.pinta(canvas)
+            instancia.image = canvas.image(
+                instancia.glifo_imagem, instancia.x * STEPX + DX,
+                instancia.y * STEPY + DY, instancia.imgxy, instancia.imgxy)
         return instancia
 
     def atravessa(self, movement):
@@ -522,8 +522,8 @@ class Grande(Elemento):
     def empurrando(self, x, y, dx, dy, movimento, canvas):
         nx, ny = self.x + dx, self.y - dy
         self.cenario.empurrando(nx, ny, dx, dy,
-                                lambda self=self, x=nx, y=ny, m=movimento, c=canvas
-                                : self.vai_e_empurra(x, y, m, c),
+                                lambda self=self, x=nx, y=ny, m=movimento, c=canvas:
+                                self.vai_e_empurra(x, y, m, c),
                                 canvas)
 
     def vai_e_empurra(self, nx, ny, movimento, canvas):
@@ -747,7 +747,7 @@ class Kuarup(Personagem, Mapas):
             [(item[GLIFO], [INVENTARIO[item[NOME]](), item])
              for item in inventario])
         BORDER = Borda()
-        self._inventario.update({_BD: [BORDER, (_BD, "borda", "cercado.gif")]})
+        self._inventario.update({_BD: [BORDER, (_BD, "borda", "livre.gif")]})
         fabrica = self._inventario['^']
         fabrica[FABRICA].fabricar(self, *fabrica[ARGUMENTOS])
         for fabrica in self._inventario.values():
