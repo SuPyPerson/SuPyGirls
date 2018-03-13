@@ -148,6 +148,7 @@ class EmpacotadorDeImagem:
 
 class _GUI:
     def __init__(self, width, height, svg=None, document=None, html=None, cena=None, **kw):
+        self.wsize = dict(width=width, height=height)
         self.queue = Queue()
         self.mundo_Kuarup = self.evs = None
         self.svg, self.html, self.cena = svg, html, cena
@@ -167,8 +168,10 @@ class _GUI:
             self.mundo_Kuarup.quandoApertaUmaTecla(ev.keyCode)
             ev.stopPropagation()
 
-    def inicia(self, mundo):
+    def inicia(self, mundo, dx=0):
+        self.wsize.update(width=dx) if dx else None
         self.panel.remove()
+        # self.svgpanel = self.svg.svg(id="svgdiv", **self.wsize)
         self.dom <= self.svgpanel
         self.panel = self.document["svgdiv"]
         self.mundo_Kuarup = mundo
