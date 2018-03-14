@@ -137,8 +137,7 @@ class Elemento:
 
     def pinta(self, canvas):
         imgxy = self.imgxy
-        # self.image.remove()
-        print("self.x, self.y, self.glifo_imagem", self.x, self.y, self.glifo_imagem)
+        # print("self.x, self.y, self.glifo_imagem", self.x, self.y, self.glifo_imagem)
         self.image.mover(self.x * STEPX + DX, self.y * STEPY + DY, self.glifo_imagem)
 
 
@@ -427,7 +426,7 @@ class Grudante(Fixo):
         return instancia
 
     def atravessa(self, movement):
-        self.r = self.canvas.rect(100, 66, 700, 128, color='forest green')
+        # self.r = self.canvas.rect(100, 66, 700, 128, color='forest green')
         self.canvas.text(400, 96, self.texto)
         movement()
 
@@ -457,7 +456,7 @@ class Saida(Fixo):
         return instancia
 
     def atravessa(self, movement):
-        self.r = self.canvas.rect(100, 66, 700, 128, color='forest green')
+        # self.r = self.canvas.rect(100, 66, 700, 128, color='forest green')
         self.canvas.text(400, 96, 'Você achou a saída!')
 
         movement()
@@ -623,7 +622,7 @@ class Cenario(Elemento):
             instancia.glifo_imagem = imagem
         # LDX, LDY = DX + imgxy, DY + imgxy
         LDX, LDY = 0, 3 * imgxy
-        print("LDX, LDY = DX + imgxy, DY + imgxy", LDX, LDY, nx, ny, LDX + nx * imgxy, LDY + ny * imgxy)
+        # print("LDX, LDY = DX + imgxy, DY + imgxy", LDX, LDY, nx, ny, LDX + nx * imgxy, LDY + ny * imgxy)
         canvas.rect(
             LDX, LDY, nx * imgxy, ny * imgxy, color='navajowhite')
         # canvas.rect(
@@ -713,7 +712,7 @@ class Kuarup(Personagem, Mapas):
         mapinha = mapinha.split(separador)
         imgxy = int(HS * 0.7)
         self.dx, dy = imgxy * len(mapinha[0]), imgxy * len(mapinha)
-        print("imgxy * len(mapinha[0])", self.dx, imgxy, len(mapinha[0]), len(mapinha))
+        # print("imgxy * len(mapinha[0])", self.dx, imgxy, len(mapinha[0]), len(mapinha))
         # self.dx, dy = STEPX * len(mapinha[0]) + 50, STEPY * len(mapinha) + 90
         self._mapa = mapa
         self.__gui = gui
