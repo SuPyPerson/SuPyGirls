@@ -23,7 +23,8 @@
 
 """
 
-from random import choice, seed
+from random import choice
+
 from .kuarup import Kuarup
 
 # seed()
@@ -31,7 +32,6 @@ IMAGEREPO = 'server_root/image/'
 CANVASW, CANVASH = 800, 600
 NODICT = {}
 EDIT = "{}/{}".format(IMAGEREPO, "sun.gif")
-
 
 #############################################################################
 
@@ -85,10 +85,14 @@ class TECLA:
     PUXA = 36
 
 
+DIALOGS = [('black', 20, 80, 760, 500), ('red', 20, 380, 760, 200)]
+
+
 class Dialog:
-    def __init__(self, gui, text='xxxx', act=lambda x: None):
+    def __init__(self, gui, text='xxxx', act=lambda x: None, kind=0):
+        background, *dimensions = DIALOGS[kind]
         self.text = text
-        self._rect = gui.back(0, 66, 800, 540, 'black', '0.85')
+        self._rect = gui.back(0, 66, 800, 540, background, '0.85')
         self._area = gui.textarea(text, 20, 80, 760, 500)
         self.edit = gui.edit
         gui.continua, self.continua = lambda *_: None, gui.continua
@@ -128,7 +132,7 @@ class EmpacotadorDeImagem:
         self.canvas = canvas.svg  # .canvas
         self.render = canvas
         self.img = self.canvas.image(
-            href=IMAGEREPO+glyph, x=x, y=y,
+            href=IMAGEREPO + glyph, x=x, y=y,
             height="{}px".format(dy), width="{}px".format(dx))
         self.x, self.y = x, y
 
@@ -145,7 +149,7 @@ class EmpacotadorDeImagem:
     def do_move(self, x, y, image=None):
         self.img.x, self.img.y = x, y
         if image:
-            self.img.href.baseVal = IMAGEREPO+image
+            self.img.href.baseVal = IMAGEREPO + image
 
     def mover(self, x, y, image=None, *_):
         self.x, self.y = x, y
@@ -214,6 +218,7 @@ class _GUI:
     def __render(self, img):
         def do_render(img):
             self.panel <= img
+
         self.queue.push(lambda: do_render(img))
 
     def back(self, x, y, dx, dy, color, opacity="1.0"):
@@ -232,7 +237,7 @@ class _GUI:
         pass
 
     def _edit(self, *_):
-        self.dialog("ola", act=self.executa_acao)
+        self.dialog("", act=self.executa_acao)
 
     def editor(self, glyph):
         glyph.bind('click', lambda *_: self._edit)
@@ -253,15 +258,21 @@ class _GUI:
         def dpx(d):
             return '%spx' % d
 
-        attrs = {'position': 'absolute', 'top': dpx(y), 'left': dpx(x),
-                 'width': dpx(w), 'height': dpx(h), 'resize': 'none', 'borderColor': 'darkslategrey',
-                 'color': 'navajowhite', 'border': 1, 'background': 'transparent'}
+
+
+        attrs = {'position': 'relative', 'padding': 10, 'margin': 10,
+                 'width': '100%', 'height': '100%', 'resize': 'none', 'borderColor': 'darkslategrey',
+                 'color': 'navajowhite', 'border': 1, 'background': rgba(200, 54, 54, 0.5)}
+        divat = {'position': 'absolute', 'top': dpx(y), 'left': dpx(x),
+                 'width': dpx(w), 'height': dpx(h), 'background': 'transparent'}
+        d = self.html.DIV(style=divat)
         t = self.html.TEXTAREA(text, style=attrs)
-        self.dom <= t
+        d <= t
+        self.dom <= d
         return t
 
-    def dialog(self, text, img=EDIT, act=lambda x: None):
-        text = self.cena
+    def dialog(self, text=None, img=EDIT, act=lambda x: None):
+        text = text if text else self.cena
         if self.dialogue:
             self.dialogue.remove()
         self.dialogue = Dialog(self, text=text, act=act)
@@ -294,6 +305,33 @@ class GUI(_GUI):
 
     def _render(self, img, render=None):
         self.queue.push(lambda: render() if render else self.do_render(img))
+
+    def _first_response(self, action):
+        value = self.value = cons_out()
+        sys_out, sys.stdout = sys.stdout, value
+        sys_err, sys.stderr = sys.stderr, value
+        # logger('first response %s %s %s' % (dialog, sys.stdout, sys.stderr))
+        # TODO action += self.challenge[1]
+        # logger('first response code %s' % action)
+        try:
+            exec(action)
+            pass
+        except Exception as err:
+            # logger('first response error %s' % self.value.value)
+            self.challenge[0] = dialog.get_text()
+            dialog.set_text(self.value.value)
+            self._response = self._second_response
+            self.place.talk('Something went wrong in your attempt!!')
+            dialog.show()
+        else:
+            logger('first response else %s' % self.world.plan[0][0])
+            self.challenge[0] = dialog.get_text()
+            self.move(self.world.plan[0][0])
+            self.place.talk('It looks like you did it!!')
+            self._response = self._first_response
+        sys.stdout = sys_out
+        sys.stderr = sys_err
+        logger('first response value error %s' % self.value.value)
 
     def executa_acao(self, dialog):
         self.cena = dialog.get_text()
