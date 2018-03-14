@@ -184,6 +184,7 @@ class _GUI:
 
     def inicia(self, mundo, dx=0):
         self.wsize.update(width=dx) if dx else None
+        self.current_text.remove() if self.current_text else None
         self.current_text = None
         self.panel.remove()
         # self.svgpanel = self.svg.svg(id="svgdiv", **self.wsize)
@@ -191,16 +192,17 @@ class _GUI:
         self.panel = self.document["svgdiv"]
         self.mundo_Kuarup = mundo
         self.document.bind("keypress", lambda ev: self.keyCode(ev))
-        print("def inicia(self, mundo):", self.evs, mundo)
+        # print("def inicia(self, mundo):", self.evs, mundo)
 
     def do_text(self, x, y, texto, color='navajowhite'):
         self.current_text.remove() if self.current_text else None
-        x = self.wsize["width"]
-        x //= 2
+        # x = self.wsize["width"]
+        # x //= 2
         self.current_text = img = self.svg.text(
             texto, x=x, y=y,
             font_size=22, text_anchor="middle",
             style={"stroke": color, "fill": color})
+        self.panel <= img
 
     def text(self, x, y, texto, color='navajowhite'):
         self.renderer(None, render=lambda: self.do_text(x, y, texto, color))
@@ -267,6 +269,9 @@ class _GUI:
         self.dialogue.show()
         return self.dialogue
 
+    def continua(self):
+        pass
+
 
 class GUI(_GUI):
     """ O terreno onde o Festival Kuarup é apresentado
@@ -307,5 +312,5 @@ class GUI(_GUI):
         pass
 
     def continua(self):
-        print("def continua(self):", len(self.queue.queue))
+        # print("def continua(self):", len(self.queue.queue))
         self.queue.pop().__next__()()
