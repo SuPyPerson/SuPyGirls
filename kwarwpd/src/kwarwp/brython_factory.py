@@ -102,6 +102,7 @@ class Dialog:
                  'flex-direction': 'column', 'align-items': 'stretch',
                  'width': '786px', 'height': '536px', 'background': 'rgba(10, 10, 10, 0.85)'}
         background, *dimensions = DIALOGS[kind]
+        self.gui = gui
         self.text = text
         self.html, self.dom = gui.html, gui.dom
         self._div = self._err = self._area = None
@@ -109,17 +110,24 @@ class Dialog:
         self.dom <= self._div
         # self._rect = gui.back(0, 66, 800, 540, background, '0.85')
         text = text if text else self.text
-        self._area = self.textarea(text, style=EDTST)
+        self.__area = self.textarea(text, style=EDTST)
         self._set_code(text)
         # self.set_err(text)
         self.edit = gui.edit
         gui.continua, self.continua = lambda *_: None, gui.continua
-        self.gui = gui
         gui.edit = self.action
         self.act = act
 
     def _set_code(self, text=None):
-        self._div <= self._area
+        self._div <= self.__area
+        self.__area.value = text
+        self.gui.window.CodeMirror.background = 'transparent'
+        self._area = self.gui.window.CodeMirror.fromTextArea(
+            self.__area, dict(mode="python", theme="solarized", lineNumbers=True))
+        self._area.background = 'transparent'
+        self._area.height = 'auto'
+        self._area.save()
+        self._area.value = text
 
     def textarea(self, text, style=EDTST):
 
@@ -141,8 +149,8 @@ class Dialog:
 
     def show(self):
         # self._rect.style.visibility = 'visible'
-        self._set_code()
-        self._area.style.visibility = 'visible'
+        # self._set_code()
+        # self._area.style.visibility = 'visible'
         self._div.style.visibility = 'visible'
 
     def _update_text(self):
@@ -210,12 +218,12 @@ class EmpacotadorDeImagem:
 
 
 class _GUI:
-    def __init__(self, width, height, svg=None, document=None, html=None, cena=None, **kw):
+    def __init__(self, width, height, svg=None, doc=None, html=None, win=None, cena=None, **kw):
         self.current_text = None
         self.wsize = dict(width=width, height=height)
         self.queue = Queue()
         self.mundo_Kuarup = self.evs = None
-        self.svg, self.html, self.cena = svg, html, cena
+        self.svg, self.html, self.cena, self.window = svg, html, cena, win
         self.evs = [getattr(TECLA, at) for at in dir(TECLA) if at.isupper()]
         document["svgdiv"].remove()
         self.svgpanel = svg.svg(id="svgdiv", width=width, height=height)
@@ -335,8 +343,11 @@ class GUI(_GUI):
     """ O terreno onde o Festival Kuarup é apresentado
     """
 
-    def __init__(self, width=CANVASW, height=CANVASH, svg=None, document=None, html=None, cena=None):
-        _GUI.__init__(self, width=width, height=height, svg=svg, document=document, html=html, cena=cena)
+    # def __init__(self, width=CANVASW, height=CANVASH, svg=None, document=None, html=None, win=None, cena=None):
+    #     _GUI.__init__(self, width=width, height=height, svg=svg, document=document, html=html, win=win, cena=cena)
+
+    def __init__(self, width=CANVASW, height=CANVASH, **kwargs):
+        _GUI.__init__(self, width=width, height=height, **kwargs)
         self.executante = None
         self.queue = Queue()
         self.renderer = self.do_render
