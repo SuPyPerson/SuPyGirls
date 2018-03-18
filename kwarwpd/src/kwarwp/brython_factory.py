@@ -37,7 +37,7 @@ EDTST = {'position': 'relative', 'padding': 10, 'margin': '0', 'flex': '3 1 auto
          'width': '99%', 'resize': 'none', 'borderColor': 'darkslategrey',
          'color': 'navajowhite', 'border': 1, 'background': 'rgba(10, 10, 10, 0.5)'}
 ERRST = {'position': 'relative', 'padding': 10, 'margin': '0', 'visibility': 'visible', 'flex': '1',
-         'width': '99%', 'height': '34%', 'resize': 'none', 'borderColor': 'darkslategrey',
+         'width': '99%', 'min-height': '30%', 'resize': 'none', 'borderColor': 'darkslategrey',
          'color': 'navajowhite', 'border': 1, 'background': 'rgba(200, 54, 54, 0.5)'}
 
 #############################################################################
@@ -102,15 +102,15 @@ class Dialog:
                  'flex-direction': 'column', 'align-items': 'stretch',
                  'width': '786px', 'height': '536px', 'background': 'rgba(10, 10, 10, 0.85)'}
         background, *dimensions = DIALOGS[kind]
-        self.gui = gui
         self.text = text
+        self.gui = gui
         self.html, self.dom = gui.html, gui.dom
         self._div = self._err = self._area = None
         self._div = self._div if self._div else self.html.DIV(style=divat)
         self.dom <= self._div
         # self._rect = gui.back(0, 66, 800, 540, background, '0.85')
         text = text if text else self.text
-        self.__area = self.textarea(text, style=EDTST)
+        self._area = self.textarea(text, style=EDTST)
         self._set_code(text)
         # self.set_err(text)
         self.edit = gui.edit
@@ -119,20 +119,14 @@ class Dialog:
         self.act = act
 
     def _set_code(self, text=None):
-        self._div <= self.__area
-        self.__area.value = text
-        self.gui.window.CodeMirror.background = 'transparent'
-        self._area = self.gui.window.CodeMirror.fromTextArea(
-            self.__area, dict(mode="python", theme="solarized", lineNumbers=True))
-        self._area.background = 'transparent'
-        self._area.height = 'auto'
-        self._area.save()
-        self._area.value = text
+        self._div <= self._area
+        self.__area = self.gui.window.CodeMirror.fromTextArea(
+            self._area, dict(mode="python", theme="solarized", lineNumbers=True))
 
     def textarea(self, text, style=EDTST):
-
         def dpx(d):
             return '%spx' % d
+
         # divat = {'position': 'absolute', 'top': dpx(y), 'left': dpx(x),
         #          'width': dpx(w), 'height': dpx(h), 'background': 'rgba(10, 10, 10, 0.85)'}
         t = self.html.TEXTAREA(text, style=style)
@@ -155,9 +149,11 @@ class Dialog:
 
     def _update_text(self):
         self.text = self._area.value
-        return self.text if self.text else self._update_text()
+        return self.text
 
     def get_text(self):
+        self.__area.save()
+        self.text = ''
         return self.text if self.text else self._update_text()
 
     def set_err(self, text):
@@ -385,7 +381,7 @@ class GUI(_GUI):
         # logger('first response code %s' % action)
         try:
             action()
-        except Exception as err:
+        except SyntaxError as err:
             # except Exception as err:
             traceback.print_exc(file=sys.stderr)
             dialog = self.dialog(self.cena, act=self.executa_acao)  # +str(self.value.value))
