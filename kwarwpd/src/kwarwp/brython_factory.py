@@ -98,9 +98,9 @@ DIALOGS = [('black', 20, 80, 760, 500), ('red', 20, 380, 760, 200)]
 class Dialog:
     def __init__(self, gui, text='xxxx', act=lambda x: None, kind=0):
 
-        divat = {'position': 'absolute', 'top': 64, 'left': 0, 'display': 'flex', 'padding': '1%',
+        divat = {'position': 'absolute', 'top': 64, 'left': 0, 'display': 'flex', 'padding': '7px',
                  'flex-direction': 'column', 'align-items': 'stretch',
-                 'width': '800px', 'height': '536px', 'background': 'rgba(10, 10, 10, 0.85)'}
+                 'width': '786px', 'height': '536px', 'background': 'rgba(10, 10, 10, 0.85)'}
         background, *dimensions = DIALOGS[kind]
         self.text = text
         self.html, self.dom = gui.html, gui.dom
@@ -168,9 +168,9 @@ class Dialog:
     def action(self, event=None):
         self.text = self._area.value
         self.hide()
-        self.act(self)
         self.gui.edit = self.edit
         self.gui.continua = self.continua
+        self.act(self)
 
 
 class EmpacotadorDeImagem:
@@ -352,7 +352,7 @@ class GUI(_GUI):
     def _render(self, img, render=None):
         self.queue.push(lambda: render() if render else self.do_render(img))
 
-    def _first_response(self, dialog):
+    def _first_response(self, dialog, action):
         class ConsoleOutput:
 
             def __init__(self):
@@ -372,30 +372,36 @@ class GUI(_GUI):
         # TODO action += self.challenge[1]
         # logger('first response code %s' % action)
         try:
-            exec(self.cena, globals())
-            pass
+            action()
         except Exception as err:
+            # except Exception as err:
             traceback.print_exc(file=sys.stderr)
-            dialog = self.dialog(self.cena)  # +str(self.value.value))
+            dialog = self.dialog(self.cena, act=self.executa_acao)  # +str(self.value.value))
             dialog.set_err(str(self.value.value))
         else:
             self.cena = dialog.get_text()
-            o_indio = Tchuk(Kuarup.CORREDOR_ROCHOSO, indio=Tchuk, gui=self)
-            o_indio.inicia()
             pass
         sys.stdout = sys_out
         sys.stderr = sys_err
+
+    def _executa_acao(self):
+        exec(self.cena, globals())
+        o_indio = Tchuk(Kuarup.CORREDOR_ROCHOSO, indio=Tchuk, gui=self)
+        o_indio.inicia()
 
     def executa_acao(self, dialog):
         self.cena = dialog.get_text()
         self.renderer = self._render
         self.renderer = self.do_render
-        self._first_response(dialog)
+        self._first_response(dialog, self._executa_acao)
+
+    def _registra_executante(self, executante):
+        executante()
 
     def registra_executante(self, executante):
         self.renderer = self._render
         self.executante = executante
-        executante()
+        self._first_response(self.dialogue, executante)
 
     def espera(self):
         pass
