@@ -275,7 +275,8 @@ class _GUI:
 
     def rect(self, x, y, dx, dy, color, opacity="1.0"):
         img = self.svg.rect(x=x, y=y, width=dx, height=dy, stroke=color, fill=color,
-                            style=dict(fillOpacity=opacity))
+                            style={'fillOpacity': opacity})
+        # img.setAttribute('class', 'arena')
         self.renderer(img)
         return img
 

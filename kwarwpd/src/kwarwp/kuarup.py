@@ -605,6 +605,7 @@ class Cenario(Elemento):
         self.grade = construtor._fabricar_grade(cenario.split(separador), self)
 
     def criar(self, canvas, fabrica, x, y, glifo='', nome='', imagem='', *args):
+        global HDX, HDY, DX, DY
         instancia = fabrica(x=x, y=y)
         instancia.temporizados = []
         grade = args[0][1:].split(args[0][0])
@@ -621,7 +622,11 @@ class Cenario(Elemento):
         if imagem:
             instancia.glifo_imagem = imagem
         # LDX, LDY = DX + imgxy, DY + imgxy
-        LDX, LDY = 0, 3 * imgxy
+        HDX, HDY = 400-(nx*imgxy)/2-imgxy, 200 + 3 * imgxy - (ny*imgxy)/2-imgxy
+        DX, DY = HDX*1.05, HDY*1.005
+        HDX, HDY = HDX*0.98, HDY*0.98
+        LDX, LDY = 400-(nx*imgxy)/2, 200 + 3 * imgxy - (ny*imgxy)/2
+        # LDX, LDY = 0, 3 * imgxy
         # print("LDX, LDY = DX + imgxy, DY + imgxy", LDX, LDY, nx, ny, LDX + nx * imgxy, LDY + ny * imgxy)
         canvas.rect(
             LDX, LDY, nx * imgxy, ny * imgxy, color='navajowhite')
