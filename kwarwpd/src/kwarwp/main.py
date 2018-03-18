@@ -118,16 +118,17 @@ class Tchuk(Kuarup):
 
 class Main:
 
-    def __init__(self, *args):
+    def __init__(self, **kwargs):
         self.count = 0
-        self.doc, self.svg, self.ht, self.tt, self.cena = args
+        self.doc, self.svg, self.cena = kwargs['doc'], kwargs['svg'], kwargs['cena']
         cena = getattr(Cenas, self.cena, "CORREDOR_ROCHOSO")
-        kwargs = dict(svg=self.svg, document=self.doc, html=self.ht, cena=cena)
+        kwargs['cena'] = cena
+        # kwargs = dict(svg=self.svg, document=self.doc, html=self.ht, win=wd, cena=cena)
         self.panel = self.doc["svgdiv"]
         self.title = None
         self.settings()
-        gui = GUI(svg=self.svg, document=self.doc, html=self.ht)
-        self.mundo = Tchuk(getattr(Kuarup, self.cena, "CORREDOR_ROCHOSO"), indio=Tchuk, gui=GUI(**kwargs))
+        gui = GUI(**kwargs)
+        self.mundo = Tchuk(getattr(Kuarup, self.cena, "CORREDOR_ROCHOSO"), indio=Tchuk, gui=gui)
         self.mundo.inicia()
 
     def settings(self):
@@ -168,9 +169,9 @@ class Main:
         # nexter()
 
 
-def main(*args):
-    Main(*args)
+def main(**kwargs):
+    Main(**kwargs)
 
 
 if __name__ == '__main__':
-    main([], "", None, None)
+    main(**{})

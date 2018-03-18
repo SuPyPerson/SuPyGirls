@@ -37,7 +37,7 @@ EDTST = {'position': 'relative', 'padding': 10, 'margin': '0', 'flex': '3 1 auto
          'width': '99%', 'resize': 'none', 'borderColor': 'darkslategrey',
          'color': 'navajowhite', 'border': 1, 'background': 'rgba(10, 10, 10, 0.5)'}
 ERRST = {'position': 'relative', 'padding': 10, 'margin': '0', 'visibility': 'visible', 'flex': '1',
-         'width': '99%', 'height': '34%', 'resize': 'none', 'borderColor': 'darkslategrey',
+         'width': '99%', 'min-height': '30%', 'resize': 'none', 'borderColor': 'darkslategrey',
          'color': 'navajowhite', 'border': 1, 'background': 'rgba(200, 54, 54, 0.5)'}
 
 #############################################################################
@@ -103,6 +103,7 @@ class Dialog:
                  'width': '786px', 'height': '536px', 'background': 'rgba(10, 10, 10, 0.85)'}
         background, *dimensions = DIALOGS[kind]
         self.text = text
+        self.gui = gui
         self.html, self.dom = gui.html, gui.dom
         self._div = self._err = self._area = None
         self._div = self._div if self._div else self.html.DIV(style=divat)
@@ -114,17 +115,18 @@ class Dialog:
         # self.set_err(text)
         self.edit = gui.edit
         gui.continua, self.continua = lambda *_: None, gui.continua
-        self.gui = gui
         gui.edit = self.action
         self.act = act
 
     def _set_code(self, text=None):
         self._div <= self._area
+        self.__area = self.gui.window.CodeMirror.fromTextArea(
+            self._area, dict(mode="python", theme="solarized", lineNumbers=True))
 
     def textarea(self, text, style=EDTST):
-
         def dpx(d):
             return '%spx' % d
+
         # divat = {'position': 'absolute', 'top': dpx(y), 'left': dpx(x),
         #          'width': dpx(w), 'height': dpx(h), 'background': 'rgba(10, 10, 10, 0.85)'}
         t = self.html.TEXTAREA(text, style=style)
@@ -141,15 +143,17 @@ class Dialog:
 
     def show(self):
         # self._rect.style.visibility = 'visible'
-        self._set_code()
-        self._area.style.visibility = 'visible'
+        # self._set_code()
+        # self._area.style.visibility = 'visible'
         self._div.style.visibility = 'visible'
 
     def _update_text(self):
         self.text = self._area.value
-        return self.text if self.text else self._update_text()
+        return self.text
 
     def get_text(self):
+        self.__area.save()
+        self.text = ''
         return self.text if self.text else self._update_text()
 
     def set_err(self, text):
@@ -210,12 +214,12 @@ class EmpacotadorDeImagem:
 
 
 class _GUI:
-    def __init__(self, width, height, svg=None, document=None, html=None, cena=None, **kw):
+    def __init__(self, width, height, svg=None, doc=None, html=None, win=None, cena=None, **kw):
         self.current_text = None
         self.wsize = dict(width=width, height=height)
         self.queue = Queue()
         self.mundo_Kuarup = self.evs = None
-        self.svg, self.html, self.cena = svg, html, cena
+        self.svg, self.html, self.cena, self.window = svg, html, cena, win
         self.evs = [getattr(TECLA, at) for at in dir(TECLA) if at.isupper()]
         document["svgdiv"].remove()
         self.svgpanel = svg.svg(id="svgdiv", width=width, height=height)
@@ -335,8 +339,11 @@ class GUI(_GUI):
     """ O terreno onde o Festival Kuarup é apresentado
     """
 
-    def __init__(self, width=CANVASW, height=CANVASH, svg=None, document=None, html=None, cena=None):
-        _GUI.__init__(self, width=width, height=height, svg=svg, document=document, html=html, cena=cena)
+    # def __init__(self, width=CANVASW, height=CANVASH, svg=None, document=None, html=None, win=None, cena=None):
+    #     _GUI.__init__(self, width=width, height=height, svg=svg, document=document, html=html, win=win, cena=cena)
+
+    def __init__(self, width=CANVASW, height=CANVASH, **kwargs):
+        _GUI.__init__(self, width=width, height=height, **kwargs)
         self.executante = None
         self.queue = Queue()
         self.renderer = self.do_render
@@ -374,7 +381,7 @@ class GUI(_GUI):
         # logger('first response code %s' % action)
         try:
             action()
-        except Exception as err:
+        except SyntaxError as err:
             # except Exception as err:
             traceback.print_exc(file=sys.stderr)
             dialog = self.dialog(self.cena, act=self.executa_acao)  # +str(self.value.value))
