@@ -342,11 +342,14 @@ class _GUI:
 class GUI(_GUI):
     """ O terreno onde o Festival Kuarup é apresentado
     """
-    def __init__(self, width=CANVASW, height=CANVASH, **kwargs):
+    def __init__(self, reloader, width=CANVASW, height=CANVASH, **kwargs):
         _GUI.__init__(self, width=width, height=height, **kwargs)
-        self.executante = None
+        self.executante, self.reloader = None, reloader
         self.queue = Queue()
         self.renderer = self.do_render
+
+    def reload(self):
+        self.reloader()
 
     def run(self):
         self.executante()
