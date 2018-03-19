@@ -49,6 +49,11 @@ doAsync();
 from .kuarup import Kuarup
 from .brython_factory import GUI
 from .kuarupfest import Mapas
+CENAS = [
+    'INICIO', 'ROCHAS', 'CORREDOR', 'CORREDOR_ROCHOSO', 'ZIGZAG', 'CARACOL',
+    'BETUMES', 'BETUMES_ROCHAS', 'POR_ONDE', 'RECORDAR_E_VIVER', 'PISA_NA_FULO',
+    'MIRAFLOR',
+    ]
 
 
 class Cenas:
@@ -179,10 +184,38 @@ class Main:
     def select_scene(self, scene):
         self.start(scene)
 
+    def _paint_scenes(self):
+        """
+                    <div style="position: absolute; top=0; left=0;">
+                <img src="server_root/image/sky.gif"/>
+            </div>
+            <div id='the_sun' style="position: absolute; top=0; left=0;
+             animation-name: daylight; animation-duration: 300s">
+                <img src="server_root/image/sun.gif"/>
+            </div>
+            <svg id="svgdiv" width="800" height="66"></svg>
+            <div id="selector" style="position: relative; margin-top: 4px;
+            display:flex; max-width: 800px; flex-wrap: wrap; padding:10px;"></div>
+
+        :return: 
+        """
+        ht = self.ht
+        pyd = self.doc["pydiv"]
+        pyd.html = ''
+        sky = ht.DIV(style={'position': 'absolute', 'top': 0, 'left': 0})
+        sky <= ht.IMG(src="server_root/image/sky.gif")
+        sun = ht.DIV(id='the_sun', style={'position': 'absolute', 'top': 0, 'left': 0})
+        sun <= ht.IMG(src="server_root/image/sky.gif")
+        pyd <= sky
+        pyd <= sun
+        pyd <= ht.SVG(id="svgdiv", width="800", height="66")
+        pyd <= ht.DIV(id='selector', style={
+            'position': 'relative', 'margin-top': '4px', 'display': 'flex',
+            'max-width': '800px', 'flex-wrap': 'wrap', 'padding': '10px'})
+
     def paint_scenes(self):
         ht = self.ht
-        scenes = [scene for scene in dir(Mapas) if scene.isupper()]
-        for scene in scenes:
+        for scene in CENAS:
             the_scene = scene
             icon = ht.DIV(onclick=lambda *_: self.select_scene(scene))
             icon.setAttribute("style", 'flex:1;min-width: 160px; flex-wrap: wrap; margin: 10px;' +
