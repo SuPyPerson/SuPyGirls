@@ -120,20 +120,23 @@ class Tchuk(Kuarup):
 class Main:
 
     def __init__(self, **kwargs):
-        self.count = 0
+        self.count, self.kwargs = 0, kwargs
         self.doc, self.svg, self.cena, self.ht = [kwargs[key] for key in 'doc svg cena html'.split()]
-        cena = getattr(Cenas, self.cena, Cenas.CORREDOR_ROCHOSO)
-        kwargs['cena'] = cena
+        code = getattr(Cenas, self.cena, Cenas.CORREDOR_ROCHOSO)
+        cena = getattr(Kuarup, self.cena, Kuarup.CORREDOR_ROCHOSO)
+        self.scene = kwargs['cena'] = cena
+        kwargs['code'] = code
         # kwargs = dict(svg=self.svg, document=self.doc, html=self.ht, win=wd, cena=cena)
         # self.panel = self.doc["svgdiv"]
         self.title = self.mundo = None
         # self.settings()
-        self.gui = GUI(**kwargs)
 
     def start(self, scene):
+        cena = getattr(Kuarup, scene, Kuarup.CORREDOR_ROCHOSO)
+        self.kwargs.update(cena=cena)
+        gui = GUI(**self.kwargs)
         self.doc["pydiv"].html = ""
-        print("getattr(Kuarup, scene)", scene, getattr(Kuarup, scene, "CORREDOR_ROCHOSO"))
-        self.mundo = Kuarup(getattr(Kuarup, scene, "CORREDOR_ROCHOSO"), indio=Tchuk, gui=self.gui)
+        self.mundo = Kuarup(cena, indio=Tchuk, gui=gui)
         self.mundo.inicia()
 
     def settings(self):

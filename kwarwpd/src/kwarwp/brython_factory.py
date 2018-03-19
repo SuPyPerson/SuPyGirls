@@ -24,11 +24,12 @@
 """
 import sys
 import traceback
-from random import choice
+from random import choice, random
 
 from .kuarup import Kuarup
 
-# seed()
+# seed(27356)
+random()
 IMAGEREPO = 'server_root/image/'
 CANVASW, CANVASH = 800, 600
 NODICT = {}
@@ -126,7 +127,6 @@ class Dialog:
     def textarea(self, text, style=EDTST):
         def dpx(d):
             return '%spx' % d
-
         # divat = {'position': 'absolute', 'top': dpx(y), 'left': dpx(x),
         #          'width': dpx(w), 'height': dpx(h), 'background': 'rgba(10, 10, 10, 0.85)'}
         t = self.html.TEXTAREA(text, style=style)
@@ -194,14 +194,14 @@ class EmpacotadorDeImagem:
 
     def remove(self):
         pass
-        # self.render.renderer(self.img, render=lambda: self.do_remove())
+        self.render.renderer(self.img, render=lambda: self.do_remove())
 
     def do_move(self, x, y, image=None):
         self.img.x, self.img.y = x, y
         if image:
             self.img.href.baseVal = IMAGEREPO + image
 
-    def mover(self, x, y, image=None, *_):
+    def mover(self, x, y, image=None, *_, **__):
         self.x, self.y = x, y
         self.render.renderer(self.img, render=lambda: self.do_move(x, y, image))
 
@@ -214,19 +214,20 @@ class EmpacotadorDeImagem:
 
 
 class _GUI:
-    def __init__(self, width, height, svg=None, doc=None, html=None, win=None, cena=None, **kw):
+    def __init__(self, width, height, svg=None, doc=None,
+                 html=None, win=None, cena=None, code=None, **kw):
         self.current_text = None
         self.wsize = dict(width=width, height=height)
         self.queue = Queue()
         self.mundo_Kuarup = self.evs = None
-        self.svg, self.html, self.cena, self.window = svg, html, cena, win
+        self.svg, self.html, self.cena, self.code, self.window = svg, html, cena, code, win
         self.evs = [getattr(TECLA, at) for at in dir(TECLA) if at.isupper()]
-        document["svgdiv"].remove()
+        doc["svgdiv"].remove()
         self.svgpanel = svg.svg(id="svgdiv", width=width, height=height)
-        document["pydiv"] <= self.svgpanel
-        self.panel = document["svgdiv"]
-        self.dom = document["pydiv"]
-        self.document = document
+        doc["pydiv"] <= self.svgpanel
+        self.panel = doc["svgdiv"]
+        self.dom = doc["pydiv"]
+        self.document = doc
         self.events = {}
         self.edit = self._edit
         self.dialogue = None
@@ -302,6 +303,8 @@ class _GUI:
         return img
 
     def escolha(self, lista):
+        # seed(3456)
+        random()
         return choice(lista)
 
     def textarea(self, text, x, y, w, h, style=EDTST):
@@ -323,7 +326,7 @@ class _GUI:
         return t
 
     def dialog(self, text=None, img=EDIT, act=lambda x: None):
-        text = text if text else self.cena
+        text = text if text else self.code
         if self.dialogue:
             self.dialogue.remove()
         self.dialogue = Dialog(self, text=text, act=act)
@@ -338,10 +341,6 @@ class _GUI:
 class GUI(_GUI):
     """ O terreno onde o Festival Kuarup é apresentado
     """
-
-    # def __init__(self, width=CANVASW, height=CANVASH, svg=None, document=None, html=None, win=None, cena=None):
-    #     _GUI.__init__(self, width=width, height=height, svg=svg, document=document, html=html, win=win, cena=cena)
-
     def __init__(self, width=CANVASW, height=CANVASH, **kwargs):
         _GUI.__init__(self, width=width, height=height, **kwargs)
         self.executante = None
@@ -381,24 +380,24 @@ class GUI(_GUI):
         # logger('first response code %s' % action)
         try:
             action()
-        except IndentationError as err:
+        except Exception as err:
             # except Exception as err:
             traceback.print_exc(file=sys.stderr)
-            dialog = self.dialog(self.cena, act=self.executa_acao)  # +str(self.value.value))
+            dialog = self.dialog(self.code, act=self.executa_acao)  # +str(self.value.value))
             dialog.set_err(str(self.value.value))
         else:
-            self.cena = dialog.get_text()
+            self.code = dialog.get_text()
             pass
         sys.stdout = sys_out
         sys.stderr = sys_err
 
     def _executa_acao(self):
-        exec(self.cena, globals())
+        exec(self.code, globals())
         o_indio = Tchuk(self.cena, indio=Tchuk, gui=self)
         o_indio.inicia()
 
     def executa_acao(self, dialog):
-        self.cena = dialog.get_text()
+        self.code = dialog.get_text()
         self.renderer = self._render
         self.renderer = self.do_render
         self._first_response(dialog, self._executa_acao)
