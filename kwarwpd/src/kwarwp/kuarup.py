@@ -100,6 +100,10 @@ class Elemento:
     def empurrando(self, x, y, dx, dy, movement, canvas):
         pass
 
+    def mover(self, x, y, glif, canvas=None):
+        self.image = canvas.image(glif, x, y, HS*0.7, HS*0.7) if canvas else None
+        pass
+
     def move(self, x, y, movimento, canvas):
         self.x, self.y = x, y
         self.pinta(canvas)
@@ -138,7 +142,7 @@ class Elemento:
     def pinta(self, canvas):
         imgxy = self.imgxy
         # print("self.x, self.y, self.glifo_imagem", self.x, self.y, self.glifo_imagem)
-        self.image.mover(self.x * STEPX + DX, self.y * STEPY + DY, self.glifo_imagem)
+        self.image.mover(self.x * STEPX + DX, self.y * STEPY + DY, self.glifo_imagem, canvas=canvas)
 
 
 class Empty(Elemento):
@@ -548,18 +552,24 @@ class Fragil(Elemento):
     """ Um elemento que se não se pode pegar e é destruído quando se passa
     """
 
+    def sai(self, implemento, x, y):
+        """ Sai um implemento do cenário
+        """
+        self.cenario.remover(self, self.x, self.y)
+        return
+
     def pega(self, movimento, x=0, y=0):
-        self.cenario.sai(self, self.x, self.y)
+        self.sai(self, self.x, self.y)
 
     def larga(self, movimento, x=0, y=0):
-        self.cenario.sai(self, self.x, self.y)
+        self.sai(self, self.x, self.y)
 
     def atravessa(self, movimento):
-        self.cenario.sai(self, self.x, self.y)
+        self.sai(self, self.x, self.y)
         movimento()
 
     def empurrando(self, x, y, dx, dy, movimento, canvas):
-        self.cenario.sai(self, self.x, self.y)
+        self.sai(self, self.x, self.y)
         movimento()
 
 
@@ -622,10 +632,10 @@ class Cenario(Elemento):
         if imagem:
             instancia.glifo_imagem = imagem
         # LDX, LDY = DX + imgxy, DY + imgxy
-        HDX, HDY = 400-(nx*imgxy)/2-imgxy, 200 + 3 * imgxy - (ny*imgxy)/2-imgxy
+        HDX, HDY = 400-(nx*imgxy)/2-imgxy, 250 + 3 * imgxy - (ny*imgxy)/2-imgxy
         DX, DY = HDX*1.05, HDY*1.005
         HDX, HDY = HDX*0.98, HDY*0.98
-        LDX, LDY = 400-(nx*imgxy)/2, 200 + 3 * imgxy - (ny*imgxy)/2
+        LDX, LDY = 400-(nx*imgxy)/2, 250 + 3 * imgxy - (ny*imgxy)/2
         # LDX, LDY = 0, 3 * imgxy
         # print("LDX, LDY = DX + imgxy, DY + imgxy", LDX, LDY, nx, ny, LDX + nx * imgxy, LDY + ny * imgxy)
         canvas.rect(
@@ -669,10 +679,17 @@ class Cenario(Elemento):
         self.grade[y][x] = implemento
         return
 
-    def sai(self, implemento, x, y):
+    def remover(self, implemento, x, y):
         """ Sai um implemento do cenário
         """
         implemento.image.remove()
+        self.grade[y][x] = Empty()
+        return
+
+    def sai(self, implemento, x, y):
+        """ Sai um implemento do cenário
+        """
+        # implemento.image.remove()
         self.grade[y][x] = Empty()
         return
 

@@ -48,6 +48,7 @@ doAsync();
 """
 from .kuarup import Kuarup
 from .brython_factory import GUI
+from .kuarupfest import Mapas
 
 
 class Cenas:
@@ -119,16 +120,23 @@ class Tchuk(Kuarup):
 class Main:
 
     def __init__(self, **kwargs):
-        self.count = 0
-        self.doc, self.svg, self.cena = kwargs['doc'], kwargs['svg'], kwargs['cena']
-        cena = getattr(Cenas, self.cena, "CORREDOR_ROCHOSO")
-        kwargs['cena'] = cena
+        self.count, self.kwargs = 0, kwargs
+        self.doc, self.svg, self.cena, self.ht = [kwargs[key] for key in 'doc svg cena html'.split()]
+        code = getattr(Cenas, self.cena, Cenas.CORREDOR_ROCHOSO)
+        cena = getattr(Kuarup, self.cena, Kuarup.CORREDOR_ROCHOSO)
+        self.scene = kwargs['cena'] = cena
+        kwargs['code'] = code
         # kwargs = dict(svg=self.svg, document=self.doc, html=self.ht, win=wd, cena=cena)
-        self.panel = self.doc["svgdiv"]
-        self.title = None
-        self.settings()
-        gui = GUI(**kwargs)
-        self.mundo = Tchuk(getattr(Kuarup, self.cena, "CORREDOR_ROCHOSO"), indio=Tchuk, gui=gui)
+        # self.panel = self.doc["svgdiv"]
+        self.title = self.mundo = None
+        # self.settings()
+
+    def start(self, scene):
+        cena = getattr(Kuarup, scene, Kuarup.CORREDOR_ROCHOSO)
+        self.kwargs.update(cena=cena)
+        gui = GUI(**self.kwargs)
+        self.doc["pydiv"].html = ""
+        self.mundo = Kuarup(cena, indio=Tchuk, gui=gui)
         self.mundo.inicia()
 
     def settings(self):
@@ -167,6 +175,27 @@ class Main:
         # nexter = self.queue.pop().__next__()
         print("self.queue.pop().__next__()", nexter)
         # nexter()
+
+    def select_scene(self, scene):
+        self.start(scene)
+
+    def paint_scenes(self):
+        ht = self.ht
+        scenes = [scene for scene in dir(Mapas) if scene.isupper()]
+        for scene in scenes:
+            the_scene = scene
+            icon = ht.DIV(onclick=lambda *_: self.select_scene(scene))
+            icon.setAttribute("style", 'flex:1;min-width: 160px; flex-wrap: wrap; margin: 10px;' +
+                              'background-color: navajowhite; border-radius: 60px; padding:4px;')
+            img = ht.IMG(src="server_root/image/saida.gif", width=60, title=scene,
+                         style=dict(display='block',  margin="0 auto"))
+            # icon.onclick = lambda ev: self.select_scene(scene)
+            img.onclick = lambda ev: self.select_scene(ev.target.title)
+            div, span, legend = ht.DIV(), ht.H6(scene, style={'text-align': 'center'}), ht.LEGEND(scene)
+            div <= img
+            icon <= span
+            icon <= div
+            document['selector'] <= icon
 
 
 def main(**kwargs):
