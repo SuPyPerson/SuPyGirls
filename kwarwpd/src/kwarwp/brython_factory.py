@@ -25,6 +25,7 @@
 import sys
 import traceback
 from random import choice, random
+from math import pi
 
 from .kuarup import Kuarup
 
