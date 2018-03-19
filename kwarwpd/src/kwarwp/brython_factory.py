@@ -381,7 +381,7 @@ class GUI(_GUI):
         # logger('first response code %s' % action)
         try:
             action()
-        except SyntaxError as err:
+        except IndentationError as err:
             # except Exception as err:
             traceback.print_exc(file=sys.stderr)
             dialog = self.dialog(self.cena, act=self.executa_acao)  # +str(self.value.value))
@@ -394,7 +394,7 @@ class GUI(_GUI):
 
     def _executa_acao(self):
         exec(self.cena, globals())
-        o_indio = Tchuk(Kuarup.CORREDOR_ROCHOSO, indio=Tchuk, gui=self)
+        o_indio = Tchuk(self.cena, indio=Tchuk, gui=self)
         o_indio.inicia()
 
     def executa_acao(self, dialog):
