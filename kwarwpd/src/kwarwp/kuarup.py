@@ -457,6 +457,7 @@ class Saida(Fixo):
             instancia.image = canvas.image(
                 instancia.glifo_imagem, instancia.x * STEPX + DX,
                 instancia.y * STEPY + DY, instancia.imgxy, instancia.imgxy)
+            instancia.image.img.onclick = lambda *_: canvas.reload()
         return instancia
 
     def atravessa(self, movement):
