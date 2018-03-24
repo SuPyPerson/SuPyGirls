@@ -264,7 +264,7 @@ class Main:
         code = getattr(Cenas, scene, Cenas.CORREDOR_ROCHOSO)
         cena = getattr(Kuarup, scene, Kuarup.CORREDOR_ROCHOSO)
         self.kwargs.update(cena=cena, code=code)
-        gui = GUI(**self.kwargs)
+        gui = GUI(self.paint_scenes, **self.kwargs)
         self.doc["pydiv"].html = ""
         self.mundo = Kuarup(cena, indio=Tchuk, gui=gui)
         self.mundo.inicia()
@@ -319,17 +319,22 @@ class Main:
         pyd.html = ''
         sky = ht.DIV(style={'position': 'absolute', 'top': 0, 'left': 0})
         sky <= ht.IMG(src="server_root/image/sky.gif")
-        sun = ht.DIV(id='the_sun', style={'position': 'absolute', 'top': 0, 'left': 0})
-        sun <= ht.IMG(src="server_root/image/sky.gif")
+        sun = ht.DIV(
+            id='the_sun', style={'position': 'absolute', 'top': 0, 'left': 0,
+                                 'animation-name': 'daylight', 'animation-duration': '300s'})
+        sun <= ht.IMG(src="server_root/image/sun.gif")
         pyd <= sky
-        pyd <= sun
-        pyd <= ht.SVG(id="svgdiv", width="800", height="66")
+        svg = ht.SVG(id="svgdiv", width="800", height="66")
+        svg.setAttribute('height', "66")
+        pyd <= svg
         pyd <= ht.DIV(id='selector', style={
             'position': 'relative', 'margin-top': '4px', 'display': 'flex',
             'max-width': '800px', 'flex-wrap': 'wrap', 'padding': '10px'})
+        pyd <= sun
 
     def paint_scenes(self):
         ht = self.ht
+        self._paint_scenes()
         for scene in CENAS:
             the_scene = scene
             icon = ht.DIV(onclick=lambda *_: self.select_scene(scene))
