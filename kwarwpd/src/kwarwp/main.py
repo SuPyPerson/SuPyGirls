@@ -21,30 +21,6 @@
 
 .. moduleauthor:: Carlo Oliveira <carlo@nce.ufrj.br>
 
-function timeoutPromise (time) {
-  return new Promise(function (resolve) {
-    setTimeout(function () {
-      resolve(Date.now());
-    }, time)
-  })
-}
-
-function doSomethingAsync () {
-  return timeoutPromise(1000);
-}
-
-async function doAsync () {
-  var start = Date.now(), time;
-  console.log(0);
-  time = await doSomethingAsync();
-  console.log(time - start);
-  time = await doSomethingAsync();
-  console.log(time - start);
-  time = await doSomethingAsync();
-  console.log(time - start);
-}
-
-doAsync();
 """
 from .kuarup import Kuarup
 from .brython_factory import GUI
@@ -57,10 +33,9 @@ CENAS = [
 
 
 class Cenas:
-    CORREDOR_ROCHOSO = '''class Tchuk(Kuarup):
-    """ O personagem controlado pelo jogador conectado
+    INICIO = '''class Tchuk(Kuarup):
+    """ Tchuk tenta proteger o pajé limpando a aldeia.
     """
-
     def define_comportamento(self):
         self.fala('olá a todos')
         self.direita()
@@ -72,7 +47,189 @@ class Cenas:
         self.direita()
         self.direita()
         self.anda()
+    '''
+
+    ROCHAS = '''class Tchuk(Kuarup):
+    """ Tchuk quer chegar na oca mas tem
+        uma pedra no caminho.
+        Use self.empurre() quando estiver
+        de frente para a pedra.
+    """
+    def define_comportamento(self):
+        self.fala('olá a todos')
+        self.direita()
+    '''
+
+    CORREDOR = '''class Tchuk(Kuarup):
+    """ Use o comando de repetição para
+        repetir o comando self.anda().
+        for cada_passo in range(4):
+            self.anda()
+    """
+    def define_comportamento(self):
+        self.fala('olá a todos')
+        self.direita()
+    '''
+
+    CORREDOR_ROCHOSO = '''class Tchuk(Kuarup):
+    """ Use o comando de repetição para
+        remover cada pedra e chegar na oca.
+        for cada_passo in range(4):
+            self.anda()
+            self.pega()
+            # .....
+    """
+    def define_comportamento(self):
+        self.fala('olá a todos')
+        self.direita()
+        for cada_passo in range(4):
+            self.anda()
+            self.pega()
+            # Coloque aqui algo que largue
+            # a  pedra atrás do índio
+            # e volte ao caminho para
+            # pegar a próxima pedra.
+    '''
+
+    ZIGZAG = '''class Tchuk(Kuarup):
+    """ Crie um novo comportamento que
+        possa caminhar por um corredor.
+    """
+    def caminha_por_um_corredor(self, quantos_passos):
+        # Use um comando de repetição que anda
+        # por quantos_passos forem pedidos.
+        
+    def define_comportamento(self):
+        self.fala('olá a todos')
+        self.direita()
+        self.caminha_por_um_corredor(2)  # na verdade não é dois!!
+        self.esquerda()
+        self.caminha_por_um_corredor(2)  # na verdade não é dois!!
+        # faça mais comandos até completar o Zigue Zaqgue
+    '''
+
+    CARACOL = '''class Tchuk(Kuarup):
+    """ Use o comportamento que pode caminhar por um corredor.
+        Ajuste para que funcione no Caracol.
+        Use o comando self.olhe() para saber
+         se chegou ao fim do corredor.
+    """
+    def caminha_por_um_corredor(self):
+        # Use um comando de repetição que
+        # anda enquanto está livre.
+        while self.olha == 'livre':
+            self.anda()
+        
+    def define_comportamento(self):
+        self.fala('olá a todos')
+        self.direita()
+        self.caminha_por_um_corredor()
+        self.esquerda()
+        self.caminha_por_um_corredor()
+        # faça mais comandos até completar o Caracol
+        # mas o melhor seria usar um for
+    '''
+
+    BETUMES = '''class Tchuk(Kuarup):
+    """ Use o comando if para saber se tem um obstáculo à frente.
+        Volte e tente outro caminho
+    """
+    def define_comportamento(self):
+        self.fala('olá a todos')
+        self.direita()
+    '''
+
+    BETUMES_ROCHAS = '''class Tchuk(Kuarup):
+    """ Use o comando if para saber se tem um obstáculo à frente.
+        Volte e tente outro caminho
+    """
+    def define_comportamento(self):
+        self.fala('olá a todos')
+        self.direita()
+    '''
+
+    POR_ONDE = '''class Tchuk(Kuarup):
+    """ Armazene em uma lista onde estão as flores
+        para poder voltar pelo mesmo caminho.
+    """
+    def segue_pelo_caminho(self):
+        # Desenvolva um jeito de seguir pelo caminho.
+        # Guarde as guinadas na lista.
+        guinada = "esquerda"
+        self.caminho_das_flores.append(guinada)
+        
+    def volta_pelo_caminho(self):
+        # Recupere a última guinada do caminho
+        guinada = caminho_das_flores.pop()
+        # Desenvolva um jeito de voltar pelo caminho.
     
+    def define_comportamento(self):
+        self.caminho_das_flores = []
+        self.fala('olá a todos')
+        self.direita()
+   '''
+
+    RECORDAR_E_VIVER = '''class Tchuk(Kuarup):
+    """ Armazene em uma lista onde estão as flores
+        para poder voltar pelo mesmo caminho.
+    """
+    def segue_pelo_caminho(self):
+        # Desenvolva um jeito de seguir pelo caminho.
+        # Guarde as guinadas na lista.
+        guinada = "esquerda"
+        self.caminho_das_flores.append(guinada)
+        
+    def volta_pelo_caminho(self):
+        # Recupere a última guinada do caminho
+        guinada = caminho_das_flores.pop()
+        # Desenvolva um jeito de voltar pelo caminho.
+    
+    def define_comportamento(self):
+        self.caminho_das_flores = []
+        self.fala('olá a todos')
+        self.direita()
+    '''
+
+    PISA_NA_FULO = '''class Tchuk(Kuarup):
+    """ Armazene em uma lista onde estão as flores
+        para poder voltar pelo mesmo caminho.
+    """
+    def segue_pelo_caminho(self):
+        # Desenvolva um jeito de seguir pelo caminho.
+        # Guarde as guinadas na lista.
+        guinada = "esquerda"
+        self.caminho_das_flores.append(guinada)
+        
+    def volta_pelo_caminho(self):
+        # Recupere a última guinada do caminho
+        guinada = caminho_das_flores.pop()
+        # Desenvolva um jeito de voltar pelo caminho.
+    
+    def define_comportamento(self):
+        self.caminho_das_flores = []
+        self.fala('olá a todos')
+        self.direita()
+    '''
+
+    MIRAFLOR = '''class Tchuk(Kuarup):
+    """ Armazene em uma lista onde estão as flores
+        para poder voltar pelo mesmo caminho.
+    """
+    def segue_pelo_caminho(self):
+        # Desenvolva um jeito de seguir pelo caminho.
+        # Guarde as guinadas na lista.
+        guinada = "esquerda"
+        self.caminho_das_flores.append(guinada)
+        
+    def volta_pelo_caminho(self):
+        # Recupere a última guinada do caminho
+        guinada = caminho_das_flores.pop()
+        # Desenvolva um jeito de voltar pelo caminho.
+    
+    def define_comportamento(self):
+        self.caminho_das_flores = []
+        self.fala('olá a todos')
+        self.direita()
     '''
 
     def __init__(self):
@@ -85,39 +242,6 @@ class Tchuk(Kuarup):
 
     def define_comportamento(self):
         self.fala('olá a todos')
-        self.direita()
-        self.anda()
-        self.pega()
-        self.esquerda()
-        self.esquerda()
-        self.larga()
-        self.direita()
-        self.direita()
-        self.anda()
-        self.pega()
-        self.esquerda()
-        self.esquerda()
-        self.larga()
-        self.direita()
-        self.direita()
-        self.anda()
-        self.pega()
-        self.esquerda()
-        self.esquerda()
-        self.larga()
-        self.direita()
-        self.direita()
-        self.anda()
-        self.pega()
-        self.esquerda()
-        self.esquerda()
-        self.larga()
-        self.direita()
-        self.direita()
-        self.anda()
-        self.pega()
-        self.anda()
-        self.anda()
         self.direita()
         self.anda()
 
@@ -137,8 +261,9 @@ class Main:
         # self.settings()
 
     def start(self, scene):
+        code = getattr(Cenas, scene, Cenas.CORREDOR_ROCHOSO)
         cena = getattr(Kuarup, scene, Kuarup.CORREDOR_ROCHOSO)
-        self.kwargs.update(cena=cena)
+        self.kwargs.update(cena=cena, code=code)
         gui = GUI(self.paint_scenes, **self.kwargs)
         self.doc["pydiv"].html = ""
         self.mundo = Kuarup(cena, indio=Tchuk, gui=gui)
@@ -186,16 +311,6 @@ class Main:
 
     def _paint_scenes(self):
         """
-                    <div style="position: absolute; top=0; left=0;">
-                <img src="server_root/image/sky.gif"/>
-            </div>
-            <div id='the_sun' style="position: absolute; top=0; left=0;
-             animation-name: daylight; animation-duration: 300s">
-                <img src="server_root/image/sun.gif"/>
-            </div>
-            <svg id="svgdiv" width="800" height="66"></svg>
-            <div id="selector" style="position: relative; margin-top: 4px;
-            display:flex; max-width: 800px; flex-wrap: wrap; padding:10px;"></div>
 
         :return: 
         """
