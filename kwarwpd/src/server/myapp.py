@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 from bottle import route, run, default_app, get, static_file
 import os
-project_server = os.getcwd()
+project_server = os.path.dirname(os.path.abspath(__file__))
 # make sure the default templates directory is known to Bottle
 templates_dir = os.path.join(project_server, '../../src')
 js_dir = os.path.join(project_server, '../server_root/stlib')
@@ -16,13 +16,13 @@ def index():
 
 # Static Routes
 @get("<filepath:re:.*\.py>")
-def css(filepath):
+def py(filepath):
     return static_file(filepath, root=templates_dir)
 
 
 # Static Routes
 @get("/server_root/stlib/<filepath:re:.*\.(js|css)>")
-def js(filepath):
+def ajs(filepath):
     return static_file(filepath, root=js_dir)
 
 
