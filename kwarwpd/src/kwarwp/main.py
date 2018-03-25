@@ -98,6 +98,7 @@ class Cenas:
     def caminha_por_um_corredor(self, quantos_passos):
         # Use um comando de repetição que anda
         # por quantos_passos forem pedidos.
+        pass
         
     def define_comportamento(self):
         self.fala('olá a todos')
