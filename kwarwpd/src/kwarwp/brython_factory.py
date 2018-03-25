@@ -124,6 +124,7 @@ class Dialog:
         self._div <= self._area
         self.__area = self.gui.window.CodeMirror.fromTextArea(
             self._area, dict(mode="python", theme="solarized", lineNumbers=True))
+        self._doc = self.__area.getDoc()
 
     def textarea(self, text, style=EDTST):
         def dpx(d):
@@ -162,6 +163,15 @@ class Dialog:
         self._err = self.textarea(text, style=ERRST)
         self._div <= self._err
         self.text = ''
+        error = text
+        lines = error.split(' line ')
+        if len(lines) > 1:
+            try:
+                line = int(lines[-1].split("\n")[0])
+                error = error.split("\n")[-2]
+                h = self._doc.setSelection(dict(line=line-1, ch=0), dict(line=line-1, ch=60))
+            except Exception as x:
+                print("Exception", x)
 
     def del_err(self):
         self._err.remove() if self._err else None
@@ -392,6 +402,8 @@ class GUI(_GUI):
         except Exception as err:
             # except Exception as err:
             traceback.print_exc(file=sys.stderr)
+            sys.stdout = sys_out
+            sys.stderr = sys_err
             dialog = self.dialog(self.code, act=self.executa_acao)  # +str(self.value.value))
             dialog.set_err(str(self.value.value))
         else:
