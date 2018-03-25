@@ -457,12 +457,13 @@ class Saida(Fixo):
             instancia.image = canvas.image(
                 instancia.glifo_imagem, instancia.x * STEPX + DX,
                 instancia.y * STEPY + DY, instancia.imgxy, instancia.imgxy)
-            instancia.image.img.onclick = lambda *_: canvas.reload()
+            instancia.image.img.onclick = lambda *_: canvas.do_reload()
         return instancia
 
     def atravessa(self, movement):
         # self.r = self.canvas.rect(100, 66, 700, 128, color='forest green')
         self.canvas.text(400, 96, 'Você achou a saída!')
+        self.canvas.reload()
 
         movement()
 

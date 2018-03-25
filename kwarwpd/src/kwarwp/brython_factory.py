@@ -215,13 +215,14 @@ class EmpacotadorDeImagem:
 
 
 class _GUI:
-    def __init__(self, width, height, svg=None, doc=None,
-                 html=None, win=None, cena=None, code=None, **kw):
+    def __init__(self, width, height, svg=None, doc=None, html=None,
+                 win=None, sto=None, cena=None, code=None,  codename=None, **kw):
         self.current_text = None
         self.wsize = dict(width=width, height=height)
         self.queue = Queue()
         self.mundo_Kuarup = self.evs = None
         self.svg, self.html, self.cena, self.code, self.window = svg, html, cena, code, win
+        self.storage,  self.codename = sto,  codename
         self.evs = [getattr(TECLA, at) for at in dir(TECLA) if at.isupper()]
         doc["svgdiv"].remove()
         self.svgpanel = svg.svg(id="svgdiv", width=width, height=height)
@@ -348,8 +349,12 @@ class GUI(_GUI):
         self.queue = Queue()
         self.renderer = self.do_render
 
+    def do_reload(self, alert=False):
+        self.queue.flush()
+        self.reloader(alert=alert)
+
     def reload(self):
-        self.reloader()
+        self.queue.push(lambda: self.do_reload(True))
 
     def run(self):
         self.executante()
@@ -396,12 +401,14 @@ class GUI(_GUI):
         sys.stderr = sys_err
 
     def _executa_acao(self):
+        self.queue.flush()
         exec(self.code, globals())
         o_indio = Tchuk(self.cena, indio=Tchuk, gui=self)
         o_indio.inicia()
 
     def executa_acao(self, dialog):
         self.code = dialog.get_text()
+        self.storage[self.codename] = self.code
         self.renderer = self._render
         self.renderer = self.do_render
         self._first_response(dialog, self._executa_acao)

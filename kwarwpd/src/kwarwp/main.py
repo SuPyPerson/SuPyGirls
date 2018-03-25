@@ -250,7 +250,8 @@ class Main:
 
     def __init__(self, **kwargs):
         self.count, self.kwargs = 0, kwargs
-        self.doc, self.svg, self.cena, self.ht = [kwargs[key] for key in 'doc svg cena html'.split()]
+        self.doc, self.svg, self.cena, self.ht, self.alert, self.storage = [
+            kwargs[key] for key in 'doc svg cena html alr sto'.split()]
         code = getattr(Cenas, self.cena, Cenas.CORREDOR_ROCHOSO)
         cena = getattr(Kuarup, self.cena, Kuarup.CORREDOR_ROCHOSO)
         self.scene = kwargs['cena'] = cena
@@ -261,10 +262,13 @@ class Main:
         # self.settings()
 
     def start(self, scene):
-        code = getattr(Cenas, scene, Cenas.CORREDOR_ROCHOSO)
+        def reload(slf=self, alert=False):
+            slf.alert("você achou a saída") if alert else None
+            slf.paint_scenes()
+        code = self.storage[scene] if scene in self.storage else getattr(Cenas, scene, Cenas.CORREDOR_ROCHOSO)
         cena = getattr(Kuarup, scene, Kuarup.CORREDOR_ROCHOSO)
-        self.kwargs.update(cena=cena, code=code)
-        gui = GUI(self.paint_scenes, **self.kwargs)
+        self.kwargs.update(cena=cena, code=code, codename=scene)
+        gui = GUI(reload, **self.kwargs)
         self.doc["pydiv"].html = ""
         self.mundo = Kuarup(cena, indio=Tchuk, gui=gui)
         self.mundo.inicia()

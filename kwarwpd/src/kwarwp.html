@@ -61,10 +61,12 @@
         <script type="text/python">
             from browser import document, svg
             from browser import html as ht
-            from browser import timer as tt
+            from browser import alert as at
+            from browser.local_storage import storage as str
             from browser import window as wd
             from kwarwp.main import Main
-            main = Main(svg=svg, doc=document, html=ht, win=wd, cena="SIMPLES")
+            main = Main(svg=svg, doc=document, html=ht, win=wd,
+                        alr=at, sto=str, cena="SIMPLES")
             main.paint_scenes()
        </script>
     </head>
