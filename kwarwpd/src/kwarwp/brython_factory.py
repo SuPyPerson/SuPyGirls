@@ -230,7 +230,7 @@ class _GUI:
         self.current_text = None
         self.wsize = dict(width=width, height=height)
         self.queue = Queue()
-        self.mundo_Kuarup = self.evs = None
+        self.mundo_Kuarup = self.evs = self.o_indio = None
         self.svg, self.html, self.cena, self.code, self.window = svg, html, cena, code, win
         self.storage,  self.codename = sto,  codename
         self.evs = [getattr(TECLA, at) for at in dir(TECLA) if at.isupper()]
@@ -310,6 +310,9 @@ class _GUI:
         img = EmpacotadorDeImagem(self, glyph, x, y, dx, dy)
         if "sun.gif" in glyph:
             img.img.bind('click', lambda *_: self.edit())
+            self.editor(img.img)
+        if "sky." in glyph:
+            img.img.bind('click', lambda *_: self.mundo_Kuarup.indio.luzes_camera_acao())
             self.editor(img.img)
         self.renderer(img.img)
         return img
@@ -415,8 +418,8 @@ class GUI(_GUI):
     def _executa_acao(self):
         self.queue.flush()
         exec(self.code, globals())
-        o_indio = Tchuk(self.cena, indio=Tchuk, gui=self)
-        o_indio.inicia()
+        self.o_indio = Tchuk(self.cena, indio=Tchuk, gui=self)
+        self.o_indio.inicia()
 
     def executa_acao(self, dialog):
         self.code = dialog.get_text()

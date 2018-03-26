@@ -322,8 +322,9 @@ class Main:
         ht = self.ht
         pyd = self.doc["pydiv"]
         pyd.html = ''
-        sky = ht.DIV(style={'position': 'absolute', 'top': 0, 'left': 0})
-        sky <= ht.IMG(src="server_root/image/sky.gif")
+        sky = ht.DIV(id='the_sky', style={'position': 'absolute', 'top': 0, 'left': 0})
+        self.sky = skyimg = ht.IMG(src="server_root/image/sky.gif")
+        sky <= skyimg
         sun = ht.DIV(
             id='the_sun', style={'position': 'absolute', 'top': 0, 'left': 0,
                                  'animation-name': 'daylight', 'animation-duration': '300s'})
