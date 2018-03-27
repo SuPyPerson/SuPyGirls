@@ -53,7 +53,7 @@
         <script type="text/python">
             from browser import *
             from browser.local_storage import storage
-            from main import Main
+            from _core.main import Main
             class MockBrython:
                 document = document
                 html = html
@@ -63,7 +63,7 @@
             main.paint_scenes()
        </script>
     </head>
-    <body onLoad="brython({debug:1, cache:'browser', static_stdlib_import:true})">
+    <body onLoad="brython({debug:1, cache:'browser', static_stdlib_import:true, pythonpath :['_spy','_vit/{{mod}}']})">
         <div id="pydiv"  title="" style="width: 99%;
             height: 99%;
             position: absolute;

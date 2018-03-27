@@ -87,6 +87,44 @@ class SpyDBTest(unittest.TestCase):
         self.wb.assert_modules("supyjogo")
         pass
 
+    def test_ismember(self):
+        """modules must be: ["uva", "abacate"]"""
+        self.db.ismember("supyjogo", "uva")
+        self.wb.assert_modules("supyjogo")
+        pass
+
+
+'''
+    @classmethod
+    def modules(cls, project):
+        return Project.modules(project)
+
+    @classmethod
+    def ismember(cls, project, person):
+        if not project:
+            return Package.get(project, person)
+        return Project.ismember(project, person)
+
+    @classmethod
+    def islogged(cls, project, person):
+        project = Project.get(project)
+        return project.islogged(person)
+
+    @classmethod
+    def logout(cls, project, person):
+        project = Project.get(project)
+        project.removesession(person)
+
+    @classmethod
+    def login(cls, project, person):
+        return Project.ismember(project, person)
+
+    @classmethod
+    def init_db_(cls):
+
+        if "AUTH_DOMAIN" not in os.environ.keys():
+            return
+'''
 
 if __name__ == '__main__':
     unittest.main()

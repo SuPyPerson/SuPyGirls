@@ -20,8 +20,9 @@
 """Controller handles routes starting with /code.
 .. moduleauthor:: Carlo Oliveira <carlo@nce.ufrj.br>
 """
-from bottle import Bottle, view, request, response, HTTPError
+from bottle import Bottle, view, HTTPError, static_file
 from model import database as cs
+from control import py_dir
 # from lib.bottle import Bottle, view, request, response, HTTPError
 # from ..models import code_store as cs
 __author__ = 'carlo'
@@ -39,7 +40,15 @@ bottle = Bottle()  # create another WSGI application for this controller and res
 # debug(True) #  uncomment for verbose error logging. Do not use in production
 
 
-@bottle.get('/_<module>')
+# Static Routes
+@bottle.get("/_spy/_core/<filepath:re:.*\.py>")
+def py(filepath):
+    print("py(filepath):", filepath, py_dir)
+    return static_file(filepath, root=py_dir)
+
+
+'''
+@bottle.get('/_<a_module>')
 @view('game')
 def game(a_module):
     """ Return Project editor"""
@@ -76,4 +85,4 @@ def handle(pypath):
         return "#"
 
     raise HTTPError(404, "No such module.")
-
+'''
