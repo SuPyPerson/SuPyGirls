@@ -23,8 +23,6 @@ Loads the Bottle framework and mounts controllers.  Also adds a custom error
 handler.
 """
 import os
-# name and list your controllers here so their routes become accessible.
-# Enable debugging, which gives us tracebacks
 project_server = os.path.dirname(os.path.abspath(__file__))
 js_dir = os.path.join(project_server, '../view/stlib')
 img_dir = os.path.join(project_server, '../view/image')

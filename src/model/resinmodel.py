@@ -1,48 +1,23 @@
-from github import Github
+from walrus import Model, TextField
 import os.path
 import os as op
 import model.datasource as dsc
-import base64 as b
-
-LOCAL_FOLDER = os.path.abspath(os.path.join(os.path.dirname(__file__), '../model/git/spg'))
 REMOTE_URL = "https://github.com/SuPyPackage/SuPyGirls.git"
 USERNAME = "carlotolla"
-PASSWORD = b.decodebytes(str.encode(op.environ["ISME"])).decode("utf-8")
+PASSWORD = op.environ["ISME"]
 
 
-def spike():
-
-    g = Github(USERNAME, PASSWORD)
-    u = g.get_user()
-    r = None
-    for repo in u.get_repos():
-        if "SuPyGirls" in str(repo.name):
-            r = repo
-            break
-        print(type(repo.name), repo.name)
-
-    rp = u.get_repo("supyjogo")  # "activlets")
-
-    print(r)
-    [print(org) for org in rp.get_branches()]
-    al = rp.get_branch("uva")
-    cm = al.commit
-
-    print(al.etag, al.commit.sha)
-    print("cont", rp.get_file_contents("/uva/main.py", cm.sha).decoded_content)
-
-
-class Project:
+class Project(Model):
     """
     Contains a collection of packages to be assigned to each user
     """
-    key = ""
+    name = TextField()
 
     @classmethod
     def get(cls, name):
         """
         Find a project with a given name.
-        
+
         :param name: project name to be found.
         :return: the project retrieved or None if not found.
         """
@@ -78,7 +53,7 @@ class Package:
     def get(cls, project, name):
         """
         Find a package with a given name.
-        
+
         :param project: repository name to be found.
         :param name: package name to be found.
         :return: the package retrieved or None if not found.
@@ -100,7 +75,7 @@ class Module:
     def get(cls, project, moduler):
         """
         Find a module with a given name.
-        
+
         :param project: Repository to retrieve.
         :param moduler: package name to be found.
         :return: the package retrieved or None if not found.

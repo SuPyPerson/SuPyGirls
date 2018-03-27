@@ -34,9 +34,9 @@ import model.database as dbs
 import model.datasource as dsrc
 
 if sys.version_info[0] == 2:
-    from mock import MagicMock, patch, ANY
+    from mock import MagicMock
 else:
-    from unittest.mock import MagicMock, patch, ANY
+    from unittest.mock import MagicMock
 
 
 class SpyDBTest(unittest.TestCase):
@@ -75,7 +75,7 @@ class SpyDBTest(unittest.TestCase):
         self.wb.assert_filexists("supyjogo", "uva")
         pass
 
-    def test_load_module(self):
+    def test_save_module(self):
         """module content must be: # updated uva main.py"""
         self.db.save(project="supyjogo", moduler="uva", content="# updated uva main.py")
         self.wb.assert_file_updated("supyjogo", "uva", "# updated uva main.py")
@@ -87,6 +87,44 @@ class SpyDBTest(unittest.TestCase):
         self.wb.assert_modules("supyjogo")
         pass
 
+    def test_ismember(self):
+        """modules must be: ["uva", "abacate"]"""
+        self.db.ismember("supyjogo", "uva")
+        self.wb.assert_modules("supyjogo")
+        pass
+
+
+'''
+    @classmethod
+    def modules(cls, project):
+        return Project.modules(project)
+
+    @classmethod
+    def ismember(cls, project, person):
+        if not project:
+            return Package.get(project, person)
+        return Project.ismember(project, person)
+
+    @classmethod
+    def islogged(cls, project, person):
+        project = Project.get(project)
+        return project.islogged(person)
+
+    @classmethod
+    def logout(cls, project, person):
+        project = Project.get(project)
+        project.removesession(person)
+
+    @classmethod
+    def login(cls, project, person):
+        return Project.ismember(project, person)
+
+    @classmethod
+    def init_db_(cls):
+
+        if "AUTH_DOMAIN" not in os.environ.keys():
+            return
+'''
 
 if __name__ == '__main__':
     unittest.main()
