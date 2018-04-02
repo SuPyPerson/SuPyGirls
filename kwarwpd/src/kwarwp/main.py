@@ -314,10 +314,24 @@ class Main:
     def select_scene(self, scene):
         self.start(scene)
 
-    def _paint_scenes(self):
+    def _splash_screen(self):
         """
 
         :return: 
+        """
+        ht = self.ht
+        pyd = self.doc["pydiv"]
+        # pyd.html = ''
+        splash = ht.DIV(id='the_splash', style={'position': 'absolute', 'top': 66, 'left': 0})
+        self.splash = splashimg = ht.IMG(src="server_root/image/abertura_kwarwpp.jpg", width=800)
+        splash <= splashimg
+        pyd <= splash
+        splash.onclick = lambda *_: self._paint_scenes()
+
+    def _paint_scenes(self):
+        """
+
+        :return:
         """
         ht = self.ht
         pyd = self.doc["pydiv"]
@@ -337,10 +351,13 @@ class Main:
             'position': 'relative', 'margin-top': '4px', 'display': 'flex',
             'max-width': '800px', 'flex-wrap': 'wrap', 'padding': '10px'})
         pyd <= sun
+        self._paint_tasks()
 
     def paint_scenes(self):
+        self._splash_screen()
+
+    def _paint_tasks(self):
         ht = self.ht
-        self._paint_scenes()
         for scene in CENAS:
             the_scene = scene
             icon = ht.DIV(onclick=lambda *_: self.select_scene(scene))
