@@ -33,7 +33,7 @@ def js(filepath):
 
 
 # Static Routes
-@get("/server_root/image/<filepath:re:.*\.(png|jpg|svg|gif)>")
+@get("/server_root/image/<filepath:re:.*\.(png|jpg|svg|gif|ico)>")
 def img(filepath):
     return static_file(filepath, root=img_dir)
 
