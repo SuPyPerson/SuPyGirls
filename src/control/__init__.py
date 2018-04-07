@@ -27,6 +27,7 @@ import os
 # Enable debugging, which gives us tracebacks
 project_server = os.path.dirname(os.path.abspath(__file__))
 js_dir = os.path.join(project_server, '../view/stlib')
+css_dir = os.path.join(project_server, '../view/css')
 img_dir = os.path.join(project_server, '../view/image')
 py_dir = os.path.join(project_server, '../view')
 print("js_dir = ", js_dir)

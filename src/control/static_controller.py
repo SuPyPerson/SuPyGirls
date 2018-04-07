@@ -25,7 +25,7 @@ handler.
 import bottle
 from bottle import Bottle, redirect, request, get, static_file
 # name and list your controllers here so their routes become accessible.
-from . import img_dir, js_dir
+from . import img_dir, js_dir, css_dir
 # Enable debugging, which gives us tracebacks
 bottle.DEBUG = True
 
@@ -46,6 +46,12 @@ def home():
 @get("<_:re:.*favicon.ico>")
 def favicon(_):
     return static_file("favicon.ico", root=img_dir)
+
+
+# Static Routes
+@get("/css/<filepath:re:.*\.(js|css)>")
+def ajs(filepath):
+    return static_file(filepath, root=css_dir)
 
 
 # Static Routes

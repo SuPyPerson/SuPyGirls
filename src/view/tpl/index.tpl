@@ -64,7 +64,7 @@
        </script>
     </head>
     <body onLoad="brython({debug:1, cache:'browser', static_stdlib_import:true, pythonpath :['_spy','_vit/{{mod}}']})">
-        <div id="pydiv"  title="" style="width: 99%;
+        <div id="backdiv"  title="" style="width: 99%;
             height: 99%;
             position: absolute;
             top:0;
@@ -73,13 +73,30 @@
             right: 0;
             margin: auto;
             background-color: forestgreen;
+            background: url(image/kwarwp.jpg) no-repeat center center fixed;
+            background-size: cover;
         ">
-            <div style="position: absolute; top=0; left=0;">
-                <img src="image/sky.gif"/>
-            </div>
-            <div id='the_sun' style="position: absolute; top=0; left=0;
-             animation-name: daylight; animation-duration: 300s">
-                <img src="image/sun.gif"/>
+            <div id="pydiv"  title="" style="width: 99%;
+                height: 100%;
+                position: absolute;
+                top:0;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                margin: auto;
+                background-color: transparent;
+                max-width: 800px;
+            ">
+                <div style="position: absolute; top=0; left=0;">
+                    <img src="server_root/image/sky.gif"/>
+                </div>
+                <div id='the_sun' style="position: absolute; top=0; left=0;
+                 animation-name: daylight; animation-duration: 300s">
+                    <img src="server_root/image/sun.gif"/>
+                </div>
+                <svg id="svgdiv" width="800" height="66"></svg>
+                <div id="selector" style="position: relative; margin-top: 4px;
+                display:flex; max-width: 800px; flex-wrap: wrap; padding:10px;"></div>
             </div>
         </div>
     </body>

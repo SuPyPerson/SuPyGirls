@@ -15,6 +15,7 @@ _ = application
 # application.mount("/<:re:.*>/_spy", code_controller.bottle)
 application.mount("/<:re:.*>/stlib", static_controller.appbottle)
 application.mount("/<:re:.*>/image", static_controller.appbottle)
+application.mount("/<:re:.*>/css", static_controller.appbottle)
 
 
 @get('/')
