@@ -9,7 +9,6 @@ _ = application
 
 @bottle.route('/')
 def index():
-    print("@bottle.route('/')", tpl_dir)
     return bottle.static_file('index.html', root=tpl_dir)
 
 
