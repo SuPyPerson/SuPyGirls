@@ -37,6 +37,9 @@ EDTST = {'position': 'relative', 'padding': 10, 'margin': '0', 'flex': '3 1 auto
 ERRST = {'position': 'relative', 'padding': 10, 'margin': '0', 'visibility': 'visible', 'flex': '1',
          'width': '99%', 'min-height': '30%', 'resize': 'none', 'borderColor': 'darkslategrey',
          'color': 'navajowhite', 'border': 1, 'background': 'rgba(200, 54, 54, 0.5)'}
+CSLST = {'position': 'relative', 'padding': 10, 'margin': '0', 'visibility': 'visible', 'flex': '1',
+         'width': '99%', 'min-height': '30%', 'resize': 'none', 'borderColor': 'darkslategrey',
+         'color': 'navajowhite', 'border': 1, 'background': 'rgba(74, 200, 74, 0.5)'}
 
 
 #############################################################################
@@ -54,11 +57,9 @@ class Dialog:
         self._div = self._err = self._area = None
         self._div = self._div if self._div else self.html.DIV(style=divat)
         self.dom <= self._div
-        # self._rect = gui.back(0, 66, 800, 540, background, '0.85')
         text = text if text else self.text
         self._area = self.textarea(text, style=EDTST)
         self._set_code(text)
-        # self.set_err(text)
         self.act = act
 
     def _set_code(self, *_):
@@ -73,22 +74,15 @@ class Dialog:
 
     def remove(self):
         self._div.remove()
-        # self._area.remove()
 
     def hide(self):
         self.remove()
-        # self._rect.style.visibility = 'hidden'
-        # self._area.style.visibility = 'hidden'
 
     def show(self):
-        # self._rect.style.visibility = 'visible'
-        # self._set_code()
-        # self._area.style.visibility = 'visible'
         self._div.style.visibility = 'visible'
 
     def _update_text(self):
         self.text = self._doc.getValue()  # self._area.value
-        print("_update_text(self):", self.text, self._area.value)
         return self.text
 
     def get_text(self):
@@ -96,6 +90,12 @@ class Dialog:
         self.text = ''
         # return self._doc.getValue()  # self.text if self.text else self._update_text()
         return self._update_text()
+
+    def set_csl(self, text):
+        self._err.remove() if self._err else None
+        self._err = self.textarea(text, style=CSLST)
+        self._div <= self._err
+        self.text = ''
 
     def set_err(self, text):
         self._err.remove() if self._err else None
@@ -121,8 +121,8 @@ class Dialog:
 
     def action(self, extra):
         self.text = self._area.value
-        self.hide()
-        self.act(self, extra) if self.act else None
+        # self.hide()
+        self.act(self, lambda *_: self.hide() or extra()) if self.act else None
 
 
 class EmpacotadorDeImagem:
@@ -182,9 +182,6 @@ class _GUI:
         return img
 
     def textarea(self, text, style=EDTST):
-        _ = {'position': 'relative', 'padding': 10, 'margin': "2%",
-             'width': '96%', 'height': '100%', 'resize': 'none', 'borderColor': 'darkslategrey',
-             'color': 'navajowhite', 'border': 1, 'background': 'rgba(200, 54, 54, 0.5)'}
         divat = {'position': 'absolute', 'top': 64, 'left': 0,
                  'width': '800px', 'height': '536px', 'background': 'rgba(10, 10, 10, 0.85)'}
         # divat = {'position': 'absolute', 'top': dpx(y), 'left': dpx(x),
@@ -215,7 +212,7 @@ class GUI(_GUI):
     def __init__(self, width=CANVASW, height=CANVASH, code="", codename="", **kwargs):
         _GUI.__init__(self, width=width, height=height, **kwargs)
         self.code, self.codename = code, codename
-        self.extra = None
+        self.extra = self.dialoger = None
 
     def _first_response(self, dialog, action, extra):
         class ConsoleOutput:
@@ -237,23 +234,28 @@ class GUI(_GUI):
         # TODO action += self.challenge[1]
         # logger('first response code %s' % action)
         try:
-            self.code = self.dialogue.get_text()
-            print("self.code", self.code, extra, dialog)
+            dialog = self.dialoger if self.dialoger else dialog
+            self.code = dialog.get_text()
+            # self.dialoger = None
             action()
-            extra()
+
+            console = str(self.value.value)
+            if console:
+                self.dialoger = self.dialog(self.code, act=self.executa_acao)
+                self.dialoger.set_csl(console)
+            else:
+                self.dialoger = None
+                extra()
         except Exception as err:
             # except Exception as err:
             traceback.print_exc(file=sys.stderr)
             sys.stdout = sys_out
             sys.stderr = sys_err
-            self.code = self.dialogue.get_text()
-            print("except Exception self.code", self.code, extra, dialog)
-            dialog = self.dialog(self.code)  # +str(self.value.value))
-            dialog.set_err(str(self.value.value))
+            self.code = dialog.get_text()
+            self.dialoger = self.dialog(self.code)  # +str(self.value.value))
+            self.dialoger.set_err(str(self.value.value))
+            self.dialoger = None
             return False
-        # self.code = dialog.get_text()
-        # extra()
-        pass
         sys.stdout = sys_out
         sys.stderr = sys_err
         return True

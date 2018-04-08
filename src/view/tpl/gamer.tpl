@@ -102,7 +102,7 @@
                         <div class="content">
                             <div class="card-inner-wrapper">
                                 <!-- about text -->
-                                  <div id="pydiv" class="card is-8by8">
+                                  <div id="pydiv" class="card is-8by8" style="min-height:600px;">
                                     <figure>
                                       <img src="/image/{{image}}" width="1000px" alt="Image">
                                     </figure>

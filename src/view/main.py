@@ -52,13 +52,11 @@ class Main:
         ...
 
     def _run(self):
-        print("_run(self):", self.dialog.get_text())
-        self.dialog.action(lambda *_: self.start())
+        dialog = self.gui.dialoger if self.gui.dialoger else self.dialog
+        dialog.action(lambda *_: self.start())
         # self.gui.executa_acao(self.dialog, lambda *_: self.start())
 
     def start(self, navigate=MENU):
-        print("start(self, navigate=MENU", navigate)
-        # self.dialog.action() if self.dialog else None
         ht = self.ht
 
         def do_menu(menu):
