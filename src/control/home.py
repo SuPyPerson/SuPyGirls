@@ -16,12 +16,12 @@ _ = application
 application.mount("/<:re:.*>/stlib", static_controller.appbottle)
 application.mount("/<:re:.*>/image", static_controller.appbottle)
 application.mount("/<:re:.*>/css", static_controller.appbottle)
+application.mount("/<:re:.*>/site", static_controller.appbottle)
 
 
-@get('/')
-@view("index")
+@get('/supygirls')
+@view("supygirls")
 def index():
-    print(os.path.abspath(os.path.join(os.path.dirname(__file__), '../view/tpl')))
     return dict(mod='a0')
 
 
