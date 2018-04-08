@@ -67,7 +67,7 @@ def ajs(filepath):
 
 
 # Static Routes
-@get("/stlib/<filepath:re:.*\.(js|css)>")
+@get("/js/<filepath:re:.*\.(js|css)>")
 def ajs(filepath):
     return static_file(filepath, root=js_dir)
 

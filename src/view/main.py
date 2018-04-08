@@ -22,12 +22,51 @@
 .. moduleauthor:: Carlo Oliveira <carlo@nce.ufrj.br>
 
 """
+from view.kwarwp.supygirls_factory import GUI
 CENAS = ["{}".format(chr(a)) for a in range(ord('a'), ord('z') + 1) if chr(a) not in 'aeiouy']
+RMENU = "Edit,_edit:Save,_save:Open,_open"
+MENU = [m.split(",") for m in RMENU.split(":")]
+EMENU = [["Run", "_run"]]
 
 
 class Main:
     def __init__(self, br):
         self.doc, self.ht, self.alert, self.storage = br.document, br.html, br.alert, br.storage
+        codename = '{}.main.py'.format(br.codename)
+        self.gui = GUI(code='#{}'.format(codename), codename=codename, br=br)
+        self.dialog = None
+        self.menu = dict(_edit=lambda *_: self._edit(),
+                         _save=lambda *_: self._save(),
+                         _open=lambda *_: self._open(),
+                         _run=lambda *_: self._run(),
+                         )
+
+    def _edit(self):
+        self.start(EMENU)
+        self.dialog = self.gui.edit()
+
+    def _save(self):
+        ...
+
+    def _open(self):
+        ...
+
+    def _run(self):
+        dialog = self.gui.dialoger if self.gui.dialoger else self.dialog
+        dialog.action(lambda *_: self.start())
+        # self.gui.executa_acao(self.dialog, lambda *_: self.start())
+
+    def start(self, navigate=MENU):
+        ht = self.ht
+
+        def do_menu(menu):
+            menu.html = ""
+            menus = [(ht.A(name, Class="nav-item is-tab"), ev) for name, ev in navigate]
+            [menu <= item for item, ev in menus]
+            [item.bind("click", self.menu[ev]) for item, ev in menus]
+            menu <= ht.A('Home', Class="nav-item is-tab", href='/')
+        do_menu(self.doc['right_menu'])
+        do_menu(self.doc['burg_menu'])
 
     def _paint_scenes(self):
         """
