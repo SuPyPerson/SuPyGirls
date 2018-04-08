@@ -20,9 +20,8 @@
 """Controller handles routes starting with /code.
 .. moduleauthor:: Carlo Oliveira <carlo@nce.ufrj.br>
 """
-from bottle import Bottle, view, HTTPError, static_file
-from model import database as cs
-from control import py_dir
+from bottle import Bottle, get, static_file
+from . import py_dir
 # from lib.bottle import Bottle, view, request, response, HTTPError
 # from ..models import code_store as cs
 __author__ = 'carlo'
@@ -36,15 +35,29 @@ except:
     document["pydiv"] <= html.IMG(src="/images/site_em_construcao_.jpg")
 """
 
-bottle = Bottle()  # create another WSGI application for this controller and resource.
+appbottle = Bottle()  # create another WSGI application for this controller and resource.
 # debug(True) #  uncomment for verbose error logging. Do not use in production
 
 
 # Static Routes
-@bottle.get("/_spy/_core/<filepath:re:.*\.py>")
+@get("/<:re:.*>/_spg/<:re:.*>/__init__.py")
+def init_py():
+    print("init_py():", py_dir)
+    return ""
+
+
+# Static Routes
+@get("/<:re:.*>/_spg/_core/<filepath:re:.*\.py>")
 def py(filepath):
     print("py(filepath):", filepath, py_dir)
     return static_file(filepath, root=py_dir)
+
+
+# Static Routes
+@get("/<:re:.*>/_spg/view/kwarwp/<filepath:re:.*\.py>")
+def py(filepath):
+    print("py(filepath):", filepath, py_dir)
+    return static_file(filepath, root=py_dir+"/kwarwp")
 
 
 '''
