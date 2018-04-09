@@ -20,7 +20,7 @@
 """Controller handles routes starting with /code.
 .. moduleauthor:: Carlo Oliveira <carlo@nce.ufrj.br>
 """
-from bottle import Bottle, get, view
+from bottle import Bottle, get, view, post, request
 from model.datasource import DS
 from base64 import decodebytes as dcd
 __author__ = 'carlo'
@@ -41,6 +41,18 @@ appbottle = Bottle()  # create another WSGI application for this controller and 
 # debug(True) #  uncomment for verbose error logging. Do not use in production
 
 
+@post('/game/save')
+def gamer_save():
+    codename, code = request.query['codename'], request.query['code']
+    project, moduler, *_ = codename.split('.')
+    try:
+        code_status = DS.update_file(project, moduler, code)
+    except Exception as err:
+        code_status = "# " + ".".join([codename, "main.py"])
+
+    return code_status
+
+
 @get('/game/<mod>/<name>')
 @view("gamer")
 def gamer(mod, name):
@@ -53,7 +65,7 @@ def gamer(mod, name):
 
     return dict(
         pagetitle="SuPyGirls - {} - {}".format(mod.capitalize(), name.capitalize()), title=name,
-        image="supygirls_logo.png", mod=mod, code=code,
+        image="supygirls_logo.png", mod=mod.replace(',', '_').lower(), code=code,
         brython_css=CSS, brython_js=JS,
         menu=[m.split(",") for m in MENU.split(":")])
 

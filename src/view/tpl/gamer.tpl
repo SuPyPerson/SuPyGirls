@@ -15,6 +15,7 @@
 
     <script type="text/python">
             from browser import *
+            from browser import ajax
             from browser.local_storage import storage
             from _core.main import Main
             class MockBrython:
@@ -22,6 +23,7 @@
                 window = window
                 html = html
                 alert = alert
+                ajax = ajax
                 storage = storage
                 codename = "{{ pagetitle.replace(" - ", ".").lower() }}"
                 code = """{{code}}"""
@@ -59,8 +61,7 @@
     -->
 </head>
 <body onLoad="brython({debug:1, cache:'browser', static_stdlib_import:true,
- pythonpath :['_spg','_spy/{{mod.replace("
-", "_").lower()}}']})">
+ pythonpath :['_spg','_spy/{{mod}}']})">
 <!-- navigation -->
 <div class="navigation">
     <nav class="nav has-shadow">
@@ -69,6 +70,12 @@
             <div class="nav-left">
                 <a class="nav-item">
                     <h3 class="title is-3" style="color: white;">{{pagetitle}}</h3>
+                </a>
+            </div>
+            <div class="nav-middle">
+                <a class="nav-item">
+                    <h6 id="nav_saver" class="title is-6"
+                        style="color: white; animation-name: fade; animation-duration: 3s;"></h6>
                 </a>
             </div>
             <!-- end of site title -->

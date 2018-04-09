@@ -84,6 +84,7 @@ class DataSource:
         comment = comment if comment else "Automatic save at {}".format(timestamp)
         file = self.get_file_contents(project, packager)
         self.repo.update_file("{}/{}".format(packager, moduler), comment, decoded_content, file.sha)
+        return comment
 
     def get_branches(self, project):
         self.repo = self.user.get_repo(project)

@@ -23,6 +23,7 @@
 
 """
 from view.kwarwp.supygirls_factory import GUI
+
 CENAS = ["{}".format(chr(a)) for a in range(ord('a'), ord('z') + 1) if chr(a) not in 'aeiouy']
 RMENU = "Edit,_edit:Open,_open"
 MENU = [m.split(",") for m in RMENU.split(":")]
@@ -32,7 +33,8 @@ EMENU = [["Run", "_run"], ["Save", "_save"]]
 class Main:
     def __init__(self, br):
         self.doc, self.ht, self.alert, self.storage = br.document, br.html, br.alert, br.storage
-        codename = '{}.main.py'.format(br.codename)
+        self.ajax = br.ajax
+        self.codename = codename = '{}.main.py'.format(br.codename)
 
         self.gui = GUI(code=br.code, codename=codename, br=br)
         self.dialog = None
@@ -47,7 +49,19 @@ class Main:
         self.dialog = self.gui.edit()
 
     def _save(self):
-        ...
+        def on_complete(request):
+            if request.status == 200 or request.status == 0:
+                self.doc["nav_saver"].html = request.text
+            else:
+                self.doc["nav_saver"].html = "error " + request.text
+        self.doc["nav_saver"].html = "Saving.. "
+        req = self.ajax.ajax()
+        req.bind('complete', on_complete)
+        # send a POST request to the url
+        req.open('POST', "/game/save", True)
+        req.set_header('content-type', 'application/x-www-form-urlencoded')
+        # send data as a dictionary
+        # req.send({'codename': self.codename, 'code': self.gui.dialoger.get_text()})
 
     def _open(self):
         ...
@@ -66,6 +80,7 @@ class Main:
             [menu <= item for item, ev in menus]
             [item.bind("click", self.menu[ev]) for item, ev in menus]
             menu <= ht.A('Home', Class="nav-item is-tab", href='/')
+
         do_menu(self.doc['right_menu'])
         do_menu(self.doc['burg_menu'])
 
