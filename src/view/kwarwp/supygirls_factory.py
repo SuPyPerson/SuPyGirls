@@ -238,7 +238,10 @@ class GUI(_GUI):
             self.code = dialog.get_text()
             # self.dialoger = None
             action()
-
+            '''
+            extra()
+            self.dialoger = None
+            '''
             console = str(self.value.value)
             if console:
                 self.dialoger = self.dialog(self.code, act=self.executa_acao)
@@ -251,10 +254,11 @@ class GUI(_GUI):
             traceback.print_exc(file=sys.stderr)
             sys.stdout = sys_out
             sys.stderr = sys_err
-            self.code = dialog.get_text()
-            self.dialoger = self.dialog(self.code)  # +str(self.value.value))
+            self.dialoger = self.dialog(self.code, act=self.executa_acao)  # +str(self.value.value))
             self.dialoger.set_err(str(self.value.value))
-            self.dialoger = None
+            # print(err)
+            # print(self.code)
+            # self.dialoger = None
             return False
         sys.stdout = sys_out
         sys.stderr = sys_err
@@ -267,4 +271,4 @@ class GUI(_GUI):
         self.extra = action if action else lambda *_: None
         self.code = dialog.get_text()
         self.storage[self.codename] = self.code
-        return self._first_response(dialog, self._executa_acao, self.extra)
+        return self._first_response(dialog, lambda: self._executa_acao(), self.extra)

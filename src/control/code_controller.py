@@ -22,6 +22,9 @@
 """
 from bottle import Bottle, get, static_file
 from . import py_dir
+from . import model_dir
+from base64 import decodebytes as dcd
+from model.datasource import DS
 # from lib.bottle import Bottle, view, request, response, HTTPError
 # from ..models import code_store as cs
 __author__ = 'carlo'
@@ -40,24 +43,49 @@ appbottle = Bottle()  # create another WSGI application for this controller and 
 
 
 # Static Routes
+@get("/<:re:.*>/_spy/<:re:.*>/__init__.py")
+def init_py():
+    return ""
+
+
+# Static Routes
 @get("/<:re:.*>/_spg/<:re:.*>/__init__.py")
 def init_py():
-    print("init_py():", py_dir)
     return ""
 
 
 # Static Routes
 @get("/<:re:.*>/_spg/_core/<filepath:re:.*\.py>")
 def py(filepath):
-    print("py(filepath):", filepath, py_dir)
     return static_file(filepath, root=py_dir)
 
 
 # Static Routes
 @get("/<:re:.*>/_spg/view/kwarwp/<filepath:re:.*\.py>")
 def py(filepath):
-    print("py(filepath):", filepath, py_dir)
     return static_file(filepath, root=py_dir+"/kwarwp")
+
+
+# Static Routes
+@get("/<:re:.*>/_spg/model/<filepath:re:.*\.py>")
+def mpy(filepath):
+    return static_file(filepath, root=model_dir)
+
+
+# Static Routes
+@get("/<:re:.*>/_spg/<project_name>/<module_name>/<filepath:re:.*\.py>")
+def spy(project_name, module_name, filepath):
+    code_file = DS.get_file_contents(project_name, module_name, filepath)
+    code_str = dcd(str.encode(code_file.content)).decode("utf-8")
+    return code_str
+
+
+# Static Routes
+@get("/<:re:.*>/_spy/<project_name>/<module_name>/<filepath:re:.*\.py>")
+def py(project_name, module_name, filepath):
+    code_file = DS.get_file_branched(project_name, module_name, filepath)
+    code_str = dcd(str.encode(code_file.content)).decode("utf-8")
+    return code_str
 
 
 '''

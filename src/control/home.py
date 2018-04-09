@@ -6,6 +6,7 @@ from . import py_dir
 from . import static_controller
 from . import game_controller
 from . import code_controller
+from model import datasource as ds
 CENAS = ["{}".format(chr(a)) for a in range(ord('a'), ord('z') + 1) if chr(a) not in 'aeiouy']
 GIRLS = ['Roxanne', 'Stacy-Marie', 'Libby', 'Sara', 'Kellee', 'Courtney', 'Angie', 'Parisa', 'Natalia', 'Kathryn',
          'Callie', 'Lisa', 'Ruzwana', 'Naomi', 'Tracy', 'Morgan', 'Rachel', 'Soraya', 'Amanda', 'Alexa', 'Julia',
@@ -33,6 +34,7 @@ application.mount("/<:re:.*>/site", static_controller.appbottle)
 application.mount("/<:re:.*>/edit", game_controller.appbottle)
 application.mount("/<:re:.*>/game", game_controller.appbottle)
 application.mount("/<:re:.*>/_spg", code_controller.appbottle)
+application.mount("/<:re:.*>/_spy", code_controller.appbottle)
 
 
 @get('/supygirls')

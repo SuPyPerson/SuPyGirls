@@ -30,11 +30,15 @@ import datetime
 import os.path
 import os as op
 from github import Github
+from base64 import decodebytes as dcd
 
 LOCAL_FOLDER = os.path.abspath(os.path.join(os.path.dirname(__file__), '../model/git/spg'))
 REMOTE_URL = "https://github.com/SuPyPackage/SuPyGirls.git"
-USERNAME = "carlotolla"
-PASSWORD = op.environ["ISME"]
+USERNAME = "kwarwp"
+PASSWORD = dcd(str.encode(op.environ["IKW"])).decode("utf-8")  # 'K004r00p## :=G1th00b'
+# str(dcd(str.encode(op.environ["IKW"])))
+# USERNAME = "carlotolla"
+# PASSWORD = op.environ["ISME"]
 
 
 def spike():
@@ -65,11 +69,15 @@ class DataSource:
         self.user = g.get_user()
         self.repo = None
 
-    def get_file_contents(self, project, packager, moduler="main.py"):
+    def get_file_branched(self, project, packager, moduler="main.py"):
         self.repo = self.user.get_repo(project)
         self.repo.get_branches()
-        ref = self.repo.get_branch(packager)
-        return self.repo.get_file_contents("{}/{}".format(packager, moduler), ref.commit.sha)
+        ref = self.repo.get_branch(packager).commit.sha
+        return self.repo.get_file_contents("{}/{}".format(packager, moduler), ref)
+
+    def get_file_contents(self, project, packager, moduler="main.py"):
+        self.repo = self.user.get_repo(project)
+        return self.repo.get_file_contents("{}/{}".format(packager, moduler))
 
     def update_file(self, project, packager, decoded_content, moduler="main.py", comment=None):
         timestamp = 'Timestamp: {:%Y-%m-%d %H:%M:%S}'.format(datetime.datetime.now())

@@ -7,7 +7,8 @@
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet">
+      <link rel="shortcut icon" href="image/favicon.ico" type="image/x-icon"/>
   </head>
   <body>
     <!-- navigation -->
@@ -55,7 +56,7 @@
 	  <div class="container">
 	    <div class="has-text-centered">
 	      <!-- header && subheader -->
-	      <h1 class="title is-1 is-spaced">{{title}}</h1>
+	      <h1 class="title is-1 is-spaced">{{title.capitalize()}}</h1>
 	      <h4 class="subtitle is-4">roll your own game with python</h4>
 	      <!-- end of header && subheader -->
 	      
@@ -78,7 +79,7 @@
               <!-- image for post -->
               <div class="card is-2by2" style="height:114px; overflow:hidden;">
                 <figure>
-                    <a href="/{{action+scene}}">
+                    <a href="/{{action.lower()+scene.lower()}}">
                   <img src="/image/{{image}}" width="1000px" alt="Image"
                        style="position:relative; min-width:1200px;
                         top:{{'{}px'.format(-200 * (count // 6))}};
@@ -89,7 +90,7 @@
 
               <!-- post header -->
               <div class="card-content-header">
-            <h6 class="title is-6"><a href="/{{action+scene}}">{{scene}}</a></h6>
+            <h6 class="title is-6"><a href="/{{action.lower()+scene.lower()}}">{{scene}}</a></h6>
               </div>
             </div>
           </div>
