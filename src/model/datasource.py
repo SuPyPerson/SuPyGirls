@@ -79,6 +79,13 @@ class DataSource:
         self.repo = self.user.get_repo(project)
         return self.repo.get_file_contents("{}/{}".format(packager, moduler))
 
+    def save_file(self, project, filename, decoded_content, comment=None):
+        timestamp = 'Timestamp: {:%Y-%m-%d %H:%M:%S}'.format(datetime.datetime.now())
+        comment = comment if comment else "Saved {} at {}".format(filename, timestamp)
+        self.repo = self.user.get_repo(project)
+        self.repo.update_file(filename, comment, decoded_content)
+        return comment
+
     def update_file(self, project, packager, decoded_content, moduler="main.py", comment=None):
         timestamp = 'Timestamp: {:%Y-%m-%d %H:%M:%S}'.format(datetime.datetime.now())
         comment = comment if comment else "Automatic save at {}".format(timestamp)

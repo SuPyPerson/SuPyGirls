@@ -48,20 +48,49 @@ class Main:
         self.start(EMENU)
         self.dialog = self.gui.edit()
 
-    def _save(self):
+    def __save(self):
         def on_complete(request):
             if request.status == 200 or request.status == 0:
                 self.doc["nav_saver"].html = request.text
             else:
                 self.doc["nav_saver"].html = "error " + request.text
-        self.doc["nav_saver"].html = "Saving.. "
+        codename = self.codename.split(".")
+        codename = "/".join(codename[1:-1])+".{}".format(codename[-1])
+        self.doc["nav_saver"].html = "Saving.. "+codename
         req = self.ajax.ajax()
         req.bind('complete', on_complete)
         # send a POST request to the url
         req.open('POST', "/game/save", True)
         req.set_header('content-type', 'application/x-www-form-urlencoded')
         # send data as a dictionary
-        # req.send({'codename': self.codename, 'code': self.gui.dialoger.get_text()})
+        req.send({'codename': codename, 'code': self.gui.code})
+
+    def _save(self):
+        def on_complete(request):
+            if request.status == 200 or request.status == 0:
+                self.doc["nav_saver"].html = request.text
+            else:
+                self.doc["nav_saver"].html = "error " + request.text
+        codename = self.codename.split(".")
+        codename = "/".join(codename[1:-1])+".{}".format(codename[-1])
+        self.doc["nav_saver"].html = "Saving.. "+codename
+        req = self.ajax.ajax()
+        req.bind('complete', on_complete)
+        # send a POST request to the url
+        req.open('POST', "/game/save", True)
+        req.set_header('content-type', 'application/x-www-form-urlencoded')
+        # send data as a dictionary
+        req.send({'codename': codename, 'code': self.gui.code})
+
+        jsrc = json.dumps({"person": self.project, "name": self.name, "text": src})
+        # print(SAVE, jsrc)
+
+        req = self.ajax.ajax()
+        req.bind('complete', on_complete)
+        req.set_timeout('20000', lambda _=0: self._console.display_saved("NOT SAVED: TIMEOUT"))
+        req.open('POST', SAVE, async=False)
+        req.set_header('content-type', 'application/json')  # x-www-form-urlencoded')
+        req.send(jsrc)
 
     def _open(self):
         ...

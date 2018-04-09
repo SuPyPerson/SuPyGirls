@@ -44,12 +44,12 @@ appbottle = Bottle()  # create another WSGI application for this controller and 
 @post('/game/save')
 def gamer_save():
     codename, code = request.query['codename'], request.query['code']
-    project, moduler, *_ = codename.split('.')
+    project, *moduler = codename.split('/')
+    filename = "/".join(moduler)
     try:
-        code_status = DS.update_file(project, moduler, code)
+        code_status = DS.save_file(project, filename, code)
     except Exception as err:
-        code_status = "# " + ".".join([codename, "main.py"])
-
+        code_status = "Fail saving {}: {}".format(filename, err)
     return code_status
 
 
