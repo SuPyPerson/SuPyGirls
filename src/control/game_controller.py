@@ -41,7 +41,7 @@ appbottle = Bottle()  # create another WSGI application for this controller and 
 # debug(True) #  uncomment for verbose error logging. Do not use in production
 
 
-@post('/game/save')
+@post('/game/__save')
 def gamer_save():
     codename, code = request.json['codename'], request.json['code']
     # codename, code = request.query['codename'], request.query['code']

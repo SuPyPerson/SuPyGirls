@@ -71,10 +71,10 @@ class Main:
 
     def _save(self):
         def display(msg):
-            self.doc["nav_saver"].style.transition = "opacity 4s"
+            # self.doc["nav_saver"].style.transition = "opacity 4s"
             self.doc["nav_saver"].style.opacity = 1
             self.doc["nav_saver"].html = msg
-            self.doc["nav_saver"].style.opacity = 0
+            # self.doc["nav_saver"].style.opacity = 0
 
         def on_complete(request):
             if request.status == 200 or request.status == 0:
@@ -94,15 +94,16 @@ class Main:
         req.send({'codename': codename, 'code': self.gui.code})
         """
         # from html import unescape
-        from html.parser import HTMLParser
+        # from html.parser import HTMLParser
 
-        code = ecd(bytearray(HTMLParser().unescape(self.gui.code).encode("UTF8"))).decode("utf-8")
+        code = ecd(bytearray(self.gui.code.encode("UTF8"))).decode("utf-8")
+        # code = ecd(bytearray(HTMLParser().unescape(self.gui.code).encode("UTF8"))).decode("utf-8")
         jsrc = json.dumps({'codename': codename, 'code': code})
         # print(SAVE, jsrc)
         req = self.ajax.ajax()
         req.bind('complete', on_complete)
         req.set_timeout('20000', lambda *_: display("NOT SAVED: TIMEOUT"))
-        req.open('POST', "/game/save", True)
+        req.open('POST', "/game/__save", True)
         req.set_header('content-type', 'application/json')  # x-www-form-urlencoded')
         req.send(jsrc)
 

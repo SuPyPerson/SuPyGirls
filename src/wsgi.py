@@ -1,15 +1,18 @@
 from control.home import application
 import bottle
 import os
-project_server = os.path.dirname(os.path.abspath(__file__))
-tpl_dir = os.path.join(project_server, 'view/tpl')
+import sys
+project_home = os.path.dirname(os.path.abspath(__file__))
+
+# add your project directory to the sys.path
+# project_home = u'/home/supygirls/dev/SuPyGirls/src'
+if project_home not in sys.path:
+    sys.path = [project_home] + sys.path
+
+from control.home import application
+# from bottle_app import application
 
 _ = application
-
-
-@bottle.route('/')
-def index():
-    return bottle.static_file('index.html', root=tpl_dir)
 
 
 if __name__ == "__main__":
