@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <title>{{pagetitle}}</title>
-    <link rel="shortcut icon" href="image/favicon.ico" type="image/x-icon"/>
+    <link rel="shortcut icon" href="/image/favicon.ico" type="image/x-icon"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- stylesheets -->
     % for css in brython_css:
@@ -68,7 +68,7 @@
     -->
 </head>
 <body onLoad="brython({debug:1, cache:'browser', static_stdlib_import:true,
- pythonpath :['_spg','_spy/{{mod}}']})">
+ pythonpath :['__code','_spy/{{mod}}']})">
 <!-- navigation -->
 <div class="navigation">
     <nav class="nav has-shadow">
