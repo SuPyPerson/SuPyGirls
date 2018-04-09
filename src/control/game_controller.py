@@ -20,7 +20,7 @@
 """Controller handles routes starting with /code.
 .. moduleauthor:: Carlo Oliveira <carlo@nce.ufrj.br>
 """
-from bottle import Bottle, get, view
+from bottle import Bottle, get, view, post, request
 from model.datasource import DS
 from base64 import decodebytes as dcd
 __author__ = 'carlo'
@@ -41,19 +41,35 @@ appbottle = Bottle()  # create another WSGI application for this controller and 
 # debug(True) #  uncomment for verbose error logging. Do not use in production
 
 
+@post('/game/save')
+def gamer_save():
+    codename, code = request.json['codename'], request.json['code']
+    # codename, code = request.query['codename'], request.query['code']
+
+    project, *moduler = codename.split('/')
+    filename = "/".join(moduler)
+    code = dcd(str.encode(code)).decode("utf-8")
+    try:
+        code_status = DS.save_file(project, filename, code)
+    except Exception as err:
+        code_status = "Fail saving {}: {}".format(filename, err)
+    return code_status
+
+
 @get('/game/<mod>/<name>')
 @view("gamer")
 def gamer(mod, name):
     modl, namel = mod.lower(), name.lower()
     try:
         code_file = DS.get_file_contents(modl, namel)
-        code = dcd(str.encode(code_file.content)).decode("utf-8")
+        code = code_file.content
+        # code = dcd(str.encode(code_file.content)).decode("utf-8")
     except Exception as err:
         code = "# " + ".".join([modl, namel, "main.py"])
 
     return dict(
         pagetitle="SuPyGirls - {} - {}".format(mod.capitalize(), name.capitalize()), title=name,
-        image="supygirls_logo.png", mod=mod, code=code,
+        image="supygirls_logo.png", mod=mod.replace(',', '_').lower(), code=code,
         brython_css=CSS, brython_js=JS,
         menu=[m.split(",") for m in MENU.split(":")])
 

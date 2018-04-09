@@ -22,7 +22,11 @@
 .. moduleauthor:: Carlo Oliveira <carlo@nce.ufrj.br>
 
 """
+import json
+from base64 import encodebytes as ecd
+
 from view.kwarwp.supygirls_factory import GUI
+
 CENAS = ["{}".format(chr(a)) for a in range(ord('a'), ord('z') + 1) if chr(a) not in 'aeiouy']
 RMENU = "Edit,_edit:Open,_open"
 MENU = [m.split(",") for m in RMENU.split(":")]
@@ -32,7 +36,8 @@ EMENU = [["Run", "_run"], ["Save", "_save"]]
 class Main:
     def __init__(self, br):
         self.doc, self.ht, self.alert, self.storage = br.document, br.html, br.alert, br.storage
-        codename = '{}.main.py'.format(br.codename)
+        self.ajax = br.ajax
+        self.codename = codename = '{}.main.py'.format(br.codename)
 
         self.gui = GUI(code=br.code, codename=codename, br=br)
         self.dialog = None
@@ -46,8 +51,60 @@ class Main:
         self.start(EMENU)
         self.dialog = self.gui.edit()
 
+    def __save(self):
+        def on_complete(request):
+            if request.status == 200 or request.status == 0:
+                self.doc["nav_saver"].html = request.text
+            else:
+                self.doc["nav_saver"].html = "error " + request.text
+        codename = self.codename.split(".")
+        codename = "/".join(codename[1:-1])+".{}".format(codename[-1])
+        self.doc["nav_saver"].html = "Saving.. "+codename
+        req = self.ajax.ajax()
+        req.bind('complete', on_complete)
+        # send a POST request to the url
+        req.open('POST', "/game/save", True)
+        req.set_header('content-type', 'application/x-www-form-urlencoded')
+        # send data as a dictionary
+        code = ecd(bytearray(self.gui.code.encode("UTF8"))).decode("utf-8")
+        req.send({'codename': codename, 'code': code})
+
     def _save(self):
-        ...
+        def display(msg):
+            self.doc["nav_saver"].style.transition = "opacity 4s"
+            self.doc["nav_saver"].style.opacity = 1
+            self.doc["nav_saver"].html = msg
+            self.doc["nav_saver"].style.opacity = 0
+
+        def on_complete(request):
+            if request.status == 200 or request.status == 0:
+                display(request.text)
+            else:
+                display("error " + request.text)
+        codename = self.codename.split(".")
+        codename = "/".join(codename[1:-1])+".{}".format(codename[-1])
+        display("Saving.. "+codename)
+        """
+        req = self.ajax.ajax()
+        req.bind('complete', on_complete)
+        # send a POST request to the url
+        req.open('POST', "/game/save", True)
+        req.set_header('content-type', 'application/x-www-form-urlencoded')
+        # send data as a dictionary
+        req.send({'codename': codename, 'code': self.gui.code})
+        """
+        # from html import unescape
+        from html.parser import HTMLParser
+
+        code = ecd(bytearray(HTMLParser().unescape(self.gui.code).encode("UTF8"))).decode("utf-8")
+        jsrc = json.dumps({'codename': codename, 'code': code})
+        # print(SAVE, jsrc)
+        req = self.ajax.ajax()
+        req.bind('complete', on_complete)
+        req.set_timeout('20000', lambda *_: display("NOT SAVED: TIMEOUT"))
+        req.open('POST', "/game/save", True)
+        req.set_header('content-type', 'application/json')  # x-www-form-urlencoded')
+        req.send(jsrc)
 
     def _open(self):
         ...
@@ -66,6 +123,7 @@ class Main:
             [menu <= item for item, ev in menus]
             [item.bind("click", self.menu[ev]) for item, ev in menus]
             menu <= ht.A('Home', Class="nav-item is-tab", href='/')
+
         do_menu(self.doc['right_menu'])
         do_menu(self.doc['burg_menu'])
 

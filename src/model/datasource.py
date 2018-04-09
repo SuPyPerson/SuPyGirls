@@ -79,11 +79,20 @@ class DataSource:
         self.repo = self.user.get_repo(project)
         return self.repo.get_file_contents("{}/{}".format(packager, moduler))
 
+    def save_file(self, project, filename, decoded_content, comment=None):
+        timestamp = 'Timestamp: {:%Y-%m-%d %H:%M:%S}'.format(datetime.datetime.now())
+        comment = comment if comment else "Saved {} at {}".format(filename, timestamp)
+        self.repo = self.user.get_repo(project)
+        file = self.repo.get_file_contents(filename)
+        self.repo.update_file("/{}".format(filename), comment, decoded_content, file.sha)
+        return comment
+
     def update_file(self, project, packager, decoded_content, moduler="main.py", comment=None):
         timestamp = 'Timestamp: {:%Y-%m-%d %H:%M:%S}'.format(datetime.datetime.now())
         comment = comment if comment else "Automatic save at {}".format(timestamp)
         file = self.get_file_contents(project, packager)
         self.repo.update_file("{}/{}".format(packager, moduler), comment, decoded_content, file.sha)
+        return comment
 
     def get_branches(self, project):
         self.repo = self.user.get_repo(project)

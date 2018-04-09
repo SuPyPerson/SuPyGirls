@@ -25,6 +25,7 @@
 import sys
 import traceback
 from random import random
+from base64 import decodebytes as dcd
 
 random()
 IMAGEREPO = 'server_root/image/'
@@ -82,6 +83,7 @@ class Dialog:
         self._div.style.visibility = 'visible'
 
     def _update_text(self):
+        # self.text = self._area.val()
         self.text = self._doc.getValue()  # self._area.value
         return self.text
 
@@ -211,7 +213,7 @@ class GUI(_GUI):
 
     def __init__(self, width=CANVASW, height=CANVASH, code="", codename="", **kwargs):
         _GUI.__init__(self, width=width, height=height, **kwargs)
-        self.code, self.codename = code, codename
+        self.code, self.codename = dcd(str.encode(code)).decode("utf-8"), codename
         self.extra = self.dialoger = None
 
     def _first_response(self, dialog, action, extra):
