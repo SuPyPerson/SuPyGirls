@@ -53,7 +53,6 @@ def gamer_save():
         code_status = DS.save_file(project, filename, code)
     except Exception as err:
         code_status = "Fail saving {}: {}".format(filename, err)
-    print("gamer_save()", code, code_status)
     return code_status
 
 

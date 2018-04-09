@@ -98,7 +98,6 @@ class Main:
 
         code = ecd(bytearray(HTMLParser().unescape(self.gui.code).encode("UTF8"))).decode("utf-8")
         jsrc = json.dumps({'codename': codename, 'code': code})
-        print("code = ecd(bytearray", HTMLParser().unescape(self.gui.code), code, jsrc)
         # print(SAVE, jsrc)
         req = self.ajax.ajax()
         req.bind('complete', on_complete)

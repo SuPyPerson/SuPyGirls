@@ -83,8 +83,8 @@ class Dialog:
         self._div.style.visibility = 'visible'
 
     def _update_text(self):
-        self.text = self._area.val()
-        # self.text = self._doc.getValue()  # self._area.value
+        # self.text = self._area.val()
+        self.text = self._doc.getValue()  # self._area.value
         return self.text
 
     def get_text(self):
