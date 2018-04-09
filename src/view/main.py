@@ -24,16 +24,17 @@
 """
 from view.kwarwp.supygirls_factory import GUI
 CENAS = ["{}".format(chr(a)) for a in range(ord('a'), ord('z') + 1) if chr(a) not in 'aeiouy']
-RMENU = "Edit,_edit:Save,_save:Open,_open"
+RMENU = "Edit,_edit:Open,_open"
 MENU = [m.split(",") for m in RMENU.split(":")]
-EMENU = [["Run", "_run"]]
+EMENU = [["Run", "_run"], ["Save", "_save"]]
 
 
 class Main:
     def __init__(self, br):
         self.doc, self.ht, self.alert, self.storage = br.document, br.html, br.alert, br.storage
         codename = '{}.main.py'.format(br.codename)
-        self.gui = GUI(code='#{}'.format(codename), codename=codename, br=br)
+
+        self.gui = GUI(code=br.code, codename=codename, br=br)
         self.dialog = None
         self.menu = dict(_edit=lambda *_: self._edit(),
                          _save=lambda *_: self._save(),
@@ -67,54 +68,6 @@ class Main:
             menu <= ht.A('Home', Class="nav-item is-tab", href='/')
         do_menu(self.doc['right_menu'])
         do_menu(self.doc['burg_menu'])
-
-    def _paint_scenes(self):
-        """
-
-        :return: 
-        """
-        ht = self.ht
-        pyd = self.doc["pydiv"]
-        pyd.html = ''
-        sky = ht.DIV(style={'position': 'absolute', 'top': 0, 'left': 0})
-        sky <= ht.IMG(src="image/sky.gif")
-        sun = ht.DIV(
-            id='the_sun', style={'position': 'absolute', 'top': 0, 'left': 0,
-                                 'animation-name': 'daylight', 'animation-duration': '300s'})
-        sun <= ht.IMG(src="image/sun.gif")
-        pyd <= sky
-        svg = ht.SVG(id="svgdiv", width="800", height="66")
-        svg.setAttribute('height', "66")
-        pyd <= svg
-        pyd <= ht.DIV(id='selector', style={
-            'position': 'relative', 'margin-top': '4px', 'display': 'flex',
-            'max-width': '800px', 'flex-wrap': 'wrap', 'padding': '10px'})
-        pyd <= sun
-
-    def select_scene(self, scene):
-        self.alert('foi' + scene)
-
-    def paint_scenes(self):
-        ht = self.ht
-        self._paint_scenes()
-        for count, scene in enumerate(CENAS):
-            icon = ht.DIV(onclick=lambda *_: self.select_scene(scene))
-            icon.setAttribute("style", 'flex:1;min-width: 160px; flex-wrap: wrap; margin: 10px;' +
-                              'background-color: navajowhite; border-radius: 60px; padding:4px;')
-            img = ht.IMG(src="image/garden.gif", width=60, title=scene,
-                         style=dict(display='block', margin="0 auto"))
-            style = {'width': '60px', 'height': '60px', 'padding': '20px', 'overflow': 'hidden',
-                     'background': 'url(image/garden.jpg) no-repeat 0 0',
-                     'background-position-x': '{}px'.format(-100 * (count % 5)),
-                     'background-position-y': '{}px'.format(-100 * (count // 5))}
-
-            # icon.onclick = lambda ev: self.select_scene(scene)
-            img.onclick = lambda ev: self.select_scene(ev.target.title)
-            div, span, legend = ht.DIV(style=style), ht.H6(scene, style={'text-align': 'center'}), ht.LEGEND(scene)
-            # div <= img
-            icon <= span
-            icon <= div
-            self.doc['selector'] <= icon
 
 
 def main(**kwargs):

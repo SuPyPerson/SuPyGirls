@@ -61,7 +61,7 @@ def ajs(filepath):
 
 
 # Static Routes
-@get("/css/<filepath:re:.*\.(js|css)>")
+@get("/css/<filepath:re:.*\.(js|css|map)>")
 def ajs(filepath):
     return static_file(filepath, root=css_dir)
 

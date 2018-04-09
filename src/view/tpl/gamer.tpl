@@ -2,17 +2,18 @@
 <html lang="en">
 <head>
     <title>{{pagetitle}}</title>
+    <link rel="shortcut icon" href="image/favicon.ico" type="image/x-icon"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-        <!-- stylesheets -->
-        % for css in brython_css:
-        <link rel="stylesheet" href="/css/{{ css }}.css" type="text/css" />
-        % end
-        <!-- scripts -->
-        % for scp in brython_js:
-        <script type="text/javascript" src="/js/{{ scp  }}.js"></script>
-        % end
+    <!-- stylesheets -->
+    % for css in brython_css:
+    <link rel="stylesheet" href="/css/{{ css }}.css" type="text/css"/>
+    % end
+    <!-- scripts -->
+    % for scp in brython_js:
+    <script type="text/javascript" src="/js/{{ scp  }}.js"></script>
+    % end
 
-        <script type="text/python">
+    <script type="text/python">
             from browser import *
             from browser.local_storage import storage
             from _core.main import Main
@@ -23,39 +24,43 @@
                 alert = alert
                 storage = storage
                 codename = "{{ pagetitle.replace(" - ", ".").lower() }}"
+                code = """{{code}}"""
             main = Main(br=MockBrython)
             main.start()
-       </script>
 
-        <!--
-        #! /usr/bin/env python
-        # -*- coding: UTF8 -*-
-        # Este arquivo é parte do programa Kwarwp
-        # Copyright 2010-2018 Carlo Oliveira <carlo@nce.ufrj.br>,
-        # `Labase <http://labase.selfip.org/>`__; `GPL <http://j.mp/GNU_GPL3>`__.
-        #
-        # Kwarwp é um software livre; você pode redistribuí-lo e/ou
-        # modificá-lo dentro dos termos da Licença Pública Geral GNU como
-        # publicada pela Fundação do Software Livre (FSF); na versão 2 da
-        # Licença.
-        #
-        # Este programa é distribuído na esperança de que possa ser útil,
-        # mas SEM NENHUMA GARANTIA; sem uma garantia implícita de ADEQUAÇÃO
-        # a qualquer MERCADO ou APLICAÇÃO EM PARTICULAR. Veja a
-        # Licença Pública Geral GNU para maiores detalhes.
-        #
-        # Você deve ter recebido uma cópia da Licença Pública Geral GNU
-        # junto com este programa, se não, veja em <http://www.gnu.org/licenses/>
+    </script>
 
-        """Brython front end client.
+    <!--
+    #! /usr/bin/env python
+    # -*- coding: UTF8 -*-
+    # Este arquivo é parte do programa Kwarwp
+    # Copyright 2010-2018 Carlo Oliveira <carlo@nce.ufrj.br>,
+    # `Labase <http://labase.selfip.org/>`__; `GPL <http://j.mp/GNU_GPL3>`__.
+    #
+    # Kwarwp é um software livre; você pode redistribuí-lo e/ou
+    # modificá-lo dentro dos termos da Licença Pública Geral GNU como
+    # publicada pela Fundação do Software Livre (FSF); na versão 2 da
+    # Licença.
+    #
+    # Este programa é distribuído na esperança de que possa ser útil,
+    # mas SEM NENHUMA GARANTIA; sem uma garantia implícita de ADEQUAÇÃO
+    # a qualquer MERCADO ou APLICAÇÃO EM PARTICULAR. Veja a
+    # Licença Pública Geral GNU para maiores detalhes.
+    #
+    # Você deve ter recebido uma cópia da Licença Pública Geral GNU
+    # junto com este programa, se não, veja em <http://www.gnu.org/licenses/>
 
-        .. moduleauthor:: Carlo Oliveira <carlo@nce.ufrj.br>
+    """Brython front end client.
 
-        """
+    .. moduleauthor:: Carlo Oliveira <carlo@nce.ufrj.br>
 
-        -->
+    """
+
+    -->
 </head>
-<body onLoad="brython({debug:1, cache:'browser', static_stdlib_import:true, pythonpath :['_spg','_spy/{{mod}}']})">
+<body onLoad="brython({debug:1, cache:'browser', static_stdlib_import:true,
+ pythonpath :['_spg','_spy/{{mod.replace("
+", "_").lower()}}']})">
 <!-- navigation -->
 <div class="navigation">
     <nav class="nav has-shadow">
@@ -102,11 +107,11 @@
                         <div class="content">
                             <div class="card-inner-wrapper">
                                 <!-- about text -->
-                                  <div id="pydiv" class="card is-8by8" style="min-height:600px;">
+                                <div id="pydiv" class="card is-8by8" style="min-height:600px;">
                                     <figure>
-                                      <img src="/image/{{image}}" width="1000px" alt="Image">
+                                        <img src="/image/{{image}}" width="1000px" alt="Image">
                                     </figure>
-                                  </div>
+                                </div>
                                 <!-- end of about text -->
 
                             </div>

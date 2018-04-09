@@ -21,6 +21,8 @@
 .. moduleauthor:: Carlo Oliveira <carlo@nce.ufrj.br>
 """
 from bottle import Bottle, get, view
+from model.datasource import DS
+from base64 import decodebytes as dcd
 __author__ = 'carlo'
 DEFAULT_CODE = """# default
 try:
@@ -42,9 +44,16 @@ appbottle = Bottle()  # create another WSGI application for this controller and 
 @get('/game/<mod>/<name>')
 @view("gamer")
 def gamer(mod, name):
+    modl, namel = mod.lower(), name.lower()
+    try:
+        code_file = DS.get_file_contents(modl, namel)
+        code = dcd(str.encode(code_file.content)).decode("utf-8")
+    except Exception as err:
+        code = "# " + ".".join([modl, namel, "main.py"])
+
     return dict(
-        pagetitle="SuPyGirls - {} - {}".format(mod, name), title=name,
-        image="supygirls_logo.png", mod=mod,
+        pagetitle="SuPyGirls - {} - {}".format(mod.capitalize(), name.capitalize()), title=name,
+        image="supygirls_logo.png", mod=mod, code=code,
         brython_css=CSS, brython_js=JS,
         menu=[m.split(",") for m in MENU.split(":")])
 
