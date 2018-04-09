@@ -12,6 +12,13 @@
     % for scp in brython_js:
     <script type="text/javascript" src="/js/{{ scp  }}.js"></script>
     % end
+        <style>
+            @keyframes fade {
+                from {opacity: 1.0;}
+                to {opacity: 0.0;}
+            }
+            .arena {  transform: translate(-50%, -50%);}
+        </style>
 
     <script type="text/python">
             from browser import *

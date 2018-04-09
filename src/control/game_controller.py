@@ -43,13 +43,17 @@ appbottle = Bottle()  # create another WSGI application for this controller and 
 
 @post('/game/save')
 def gamer_save():
-    codename, code = request.query['codename'], request.query['code']
+    codename, code = request.json['codename'], request.json['code']
+    # codename, code = request.query['codename'], request.query['code']
+
     project, *moduler = codename.split('/')
     filename = "/".join(moduler)
+    code = dcd(str.encode(code)).decode("utf-8")
     try:
         code_status = DS.save_file(project, filename, code)
     except Exception as err:
         code_status = "Fail saving {}: {}".format(filename, err)
+    print("gamer_save()", code, code_status)
     return code_status
 
 
@@ -59,7 +63,8 @@ def gamer(mod, name):
     modl, namel = mod.lower(), name.lower()
     try:
         code_file = DS.get_file_contents(modl, namel)
-        code = dcd(str.encode(code_file.content)).decode("utf-8")
+        code = code_file.content
+        # code = dcd(str.encode(code_file.content)).decode("utf-8")
     except Exception as err:
         code = "# " + ".".join([modl, namel, "main.py"])
 

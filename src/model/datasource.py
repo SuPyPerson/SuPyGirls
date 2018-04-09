@@ -83,7 +83,8 @@ class DataSource:
         timestamp = 'Timestamp: {:%Y-%m-%d %H:%M:%S}'.format(datetime.datetime.now())
         comment = comment if comment else "Saved {} at {}".format(filename, timestamp)
         self.repo = self.user.get_repo(project)
-        self.repo.update_file(filename, comment, decoded_content)
+        file = self.repo.get_file_contents(filename)
+        self.repo.update_file("/{}".format(filename), comment, decoded_content, file.sha)
         return comment
 
     def update_file(self, project, packager, decoded_content, moduler="main.py", comment=None):
