@@ -20,13 +20,12 @@
 """Controller handles routes starting with /code.
 .. moduleauthor:: Carlo Oliveira <carlo@nce.ufrj.br>
 """
-from bottle import Bottle, get, static_file
+from bottle import static_file, HTTPError, Bottle, get
 from . import py_dir
 from . import model_dir
 from base64 import decodebytes as dcd
 from model.datasource import DS
 from github.GithubException import UnknownObjectException
-
 __author__ = 'carlo'
 DEFAULT_CODE = """# default
 try:
@@ -51,7 +50,7 @@ def init_py():
 # Static Routes
 @get("/<:path>/__code/_core/<filepath:re:.*\.py>")
 def core_py(filepath):
-    return static_file(filepath, root=py_dir)
+    return static_file(filepath, root=py_dir+"/_core")
 
 
 # Static Routes
@@ -69,22 +68,25 @@ def model_py(filepath):
 # Static Routes
 @get("/<:path>/__code/_spy/<module_name>/<filepath:re:.*\.py>")
 def spy(module_name, filepath):
-    print("spy", module_name, filepath)
+    # print("spy", module_name, filepath)
     try:
         code_file = DS.get_file_contents("_spy", module_name, filepath)
         code_str = dcd(str.encode(code_file.content)).decode("utf-8")
     except UnknownObjectException as _:
-        code_str = "# File not found"
+        # code_str = "# File not found"
+        raise HTTPError(404)
+
     return code_str
 
 
 # Static Routes
 @get("/<:path>/<project_name>/__code/<module_name:re:[a-z].*>/<filepath:re:.*\.py>")
 def local_spy(project_name, module_name, filepath):
-    print("local_spyspy", project_name, module_name, filepath)
+    # print("local_spyspy", project_name, module_name, filepath)
     try:
         code_file = DS.get_file_contents(project_name, module_name, filepath)
         code_str = dcd(str.encode(code_file.content)).decode("utf-8")
     except UnknownObjectException as _:
-        code_str = "# File not found"
+        # code_str = "# File not found"
+        raise HTTPError(404)
     return code_str

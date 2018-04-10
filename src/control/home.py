@@ -47,9 +47,8 @@ def moduler(name):
 
 
 # Static Routes
-@get("/<:path>/__code/_core/<filepath:re:.*\.py>")
+# @get("/<:path>/__code/_core/<filepath:re:.*\.py>")
 def py(filepath):
-    print("py(filepath):", filepath, py_dir+"/_core")
     return static_file(filepath, root=py_dir+"/_core")
 
 
