@@ -25,7 +25,7 @@
 import json
 from base64 import encodebytes as ecd
 
-from view.kwarwp.supygirls_factory import GUI
+from .supygirls_factory import GUI
 
 CENAS = ["{}".format(chr(a)) for a in range(ord('a'), ord('z') + 1) if chr(a) not in 'aeiouy']
 RMENU = "Edit,_edit:Open,_open"
