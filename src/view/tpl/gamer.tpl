@@ -22,7 +22,7 @@
 
     <script type="text/python">
             from browser import *
-            from browser import ajax
+            from browser import ajax, timer
             from browser.local_storage import storage
             from _core.main import Main
             class MockBrython:
@@ -31,6 +31,7 @@
                 html = html
                 alert = alert
                 ajax = ajax
+                timer = timer
                 storage = storage
                 codename = "{{ pagetitle.replace(" - ", ".").lower() }}"
                 code = """{{code}}"""
@@ -82,7 +83,7 @@
             <div class="nav-middle">
                 <a class="nav-item">
                     <h6 id="nav_saver" class="title is-6"
-                        style="color: white; animation-name: fade; animation-duration: 3s;"></h6>
+                        style="color: white; animation-name: fade; animation-duration: 4s;"></h6>
                 </a>
             </div>
             <!-- end of site title -->
