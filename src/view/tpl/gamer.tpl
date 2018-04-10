@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <title>{{pagetitle}}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" href="/image/favicon.ico" type="image/x-icon"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- stylesheets -->
@@ -115,14 +116,14 @@
         <!-- start of about -->
         <div class="columns is-multiline is-centered">
             <!-- start of about -->
-            <div class="column is-8">
+            <div class="column is-10">
                 <div class="card">
                     <!-- about content -->
                     <div class="card-content">
                         <div class="content">
                             <div class="card-inner-wrapper">
                                 <!-- about text -->
-                                <div id="pydiv" class="card is-8by8" style="min-height:600px;">
+                                <div id="pydiv" class="card is-10by8" style="min-height:600px;">
                                     <figure>
                                         <img src="/image/{{image}}" width="1000px" alt="Image">
                                     </figure>
