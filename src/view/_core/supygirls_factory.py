@@ -267,7 +267,9 @@ class GUI(_GUI):
         return True
 
     def _executa_acao(self):
-        exec(self.code, globals())
+        glob = dict(globals())
+        glob.update(__name__="__main__")
+        exec(self.code, glob)  # dict(__name__="__main__"))
 
     def executa_acao(self, dialog, action=None):
         self.extra = action if action else lambda *_: None

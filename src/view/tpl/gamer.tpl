@@ -68,7 +68,7 @@
     -->
 </head>
 <body onLoad="brython({debug:1, cache:'browser', static_stdlib_import:true,
- pythonpath :['__code','_spy/{{mod}}']})">
+ pythonpath :['__code','__code/{{mod}}']})">
 <!-- navigation -->
 <div class="navigation">
     <nav class="nav has-shadow">

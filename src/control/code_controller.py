@@ -25,6 +25,7 @@ from . import py_dir
 from . import model_dir
 from base64 import decodebytes as dcd
 from model.datasource import DS
+from github.GithubException import UnknownObjectException
 
 __author__ = 'carlo'
 DEFAULT_CODE = """# default
@@ -66,8 +67,24 @@ def model_py(filepath):
 
 
 # Static Routes
-@get("/<:path>/__code/<project_name>/<module_name>/<filepath:re:.*\.py>")
-def spy(project_name, module_name, filepath):
-    code_file = DS.get_file_contents(project_name, module_name, filepath)
-    code_str = dcd(str.encode(code_file.content)).decode("utf-8")
+@get("/<:path>/__code/_spy/<module_name>/<filepath:re:.*\.py>")
+def spy(module_name, filepath):
+    print("spy", module_name, filepath)
+    try:
+        code_file = DS.get_file_contents("_spy", module_name, filepath)
+        code_str = dcd(str.encode(code_file.content)).decode("utf-8")
+    except UnknownObjectException as _:
+        code_str = "# File not found"
+    return code_str
+
+
+# Static Routes
+@get("/<:path>/<project_name>/__code/<module_name:re:[a-z].*>/<filepath:re:.*\.py>")
+def local_spy(project_name, module_name, filepath):
+    print("local_spyspy", project_name, module_name, filepath)
+    try:
+        code_file = DS.get_file_contents(project_name, module_name, filepath)
+        code_str = dcd(str.encode(code_file.content)).decode("utf-8")
+    except UnknownObjectException as _:
+        code_str = "# File not found"
     return code_str
