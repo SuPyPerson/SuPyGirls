@@ -125,6 +125,147 @@ Também é o momento de se pensar nas falas de cada personagem em cada cena!
 
 .. image:: _static/giphy7.gif
 
+Para nosso exemplo, nós escolemos o seginte Texto para a Barbie no Castelo:
+
+"Vim para o castelo para me abrigar de um ataque de dragões."
+
+Não esqueça de anotar em algum lugar, no bloco de notas, no código (da mesma maneira dos links) ou no próprio papel.
+
+Pronto! Agora que temos o primeiro quadro planejado e preparado, podemos começar a implementar em código.
+
+Implementação do Primeiro Quadro
+================================
+
+Agora precisamos pedir ao computador duas coisas para o nosso Jogo começar a andar. Primeiro, precisamos pedir pra ele anotar como construir a nossa história, e depois que contarmos pra ele, devemos pedir pra que ele realize a contrução da nossa história.
+
+
+.. image:: _static/captela8.png
+
+CALMA
+
+.. image:: _static/giphy8.gif
+
+Para contar para o computador como fazer algo nós usamos a palavra-chave def. Ela significa definir, ou seja, você está definindo algo novo para o computador, algo que ele não sabia. Mas para usar essa palavra, se deve usar dessa maneira:
+
+def NomeDaquiloQueVoceVaiEnsiarSemEspacosNemAcento():
+
+Logo após essa instrução, nós escrevemos todas as instruções daquilo que estamos ensinando ao computador de maneira indentada. A indentação é um tipo de espaço especial que diz para o computador que as instruções indentadas em sequência fazem parte daquilo que você quer ensinar a ele.
+
+.. image:: _static/captela9.png
+
+mais uma vez, agora com mais calma.
+
+Agora precisamos dizer para o computador, como construir a Historia. Primeiro vamos precisar de uma Cena.
+
+Nossa primeira Cena é o Castelo, mas não é porque nós salvamos o link no código que o computador sabe que essa é a nossa intenção. Nós precisamos dizer de maneira clara pra ele. Então a primeira instrução de como construir nossa história vai ser:
+
+nomeCena = Cena(img = "link")
+
+No caso do nosso exemplo:
+
+.. image:: _static/captela10.png
+
+Não se esqueçam de fechar as aspas e os parenteses! Agora falta muito pouco pra podermos fazer o nosso primeiro teste. Uma vez que já contamos que existe uma cena na nossa história, temos que falar pra cena "rodar", fazemos isso através da função .vai() da própria cena. Nós escrevemos:
+
+nomeCena.vai()
+
+No caso do nosso exemplo:
+
+.. image:: _static/captela11.png
+
+Agora vamos para o nosso primeiro teste! Procure o botão no canto direito superior escrito "Run" e reze para tudo dar certo!
+
+.. image:: _static/captela12.png
+
+RUFEM OS TAMBORES
+.
+.
+.
+.
+
+.. image:: _static/captela13.png
+
+ERROR
+
+
+.. image:: _static/giphy9.gif
+
+Tivemos um erro, nosso teste falhou. Alguma coisa em algum lugar deu errado. Algo de errado não está certo. Programar é uma constante batalha com os erros que assombram o mais astuto de todos os programadores. O computador não pensa por nós, então qualquer erro, por menor que seja, tem o potencial de fazer nosso programa parar de funcionar.
+
+"Mas o que eu faço?!", vocês podem perguntar.
+
+Chequem tudo. Cheque se você usou as letras maiúsculas certas, se fechou todos os parênteses, se escreveu tudo certinho, se não fecou umas aspas, ou não usou aspas, qualquer coisa pode ter acontecido. A mensagem em vermelho te dá uma dica do que pode ter acontecido no seu código. Muitas vezes ela diz precisamente onde o seu erro aconteceu, mas muitas vezes ela mais atrapalha que ajuda. Nessas horas é bom pedir ajuda pro colega ao lado ou na Internet para te ajudar a buscar o seu erro. Sabe quando a gente tá procurando lguma coisa em casa e vem alguém e smplesmente acha? Na programação também acontece. Às vezes.
+
+É Vitollino, não Vittolino!
+===========================
+
+Achei o meu erro!!
+
+Eu vinha escrevendo Vitollino errado desde o começo, inclusive aqui nesse tutorial. Eu estava escrevendo com dois t's ao invés de dois l's. Erros pequenos como esses podem custar horas, se não dias de dor de cabeça, por isso, preste mais atenção que eu ao programar! Vamos consertar o código e ver se agora funciona.
+
+.. image:: _static/captela14.png
+
+.. image:: _static/giphy10.gif
+
+AGORA VAI!
+
+.. image:: _static/captela15.png
+
+.. image:: _static/giphy11.gif
+
+FOOOOOOOOOOOOO951OOOOOOOIIIII!!!!!1!!!!!!!111
+Existe uma sensação de alívio única de achar um erro que estava travando o seu código. Nossa Cena ainda não faz nada além de simplesmente aparecer, mas pra quem não tinha nem isso, acho digno de uma comemoração.
+
+A próxima coisa que precisamos fazer é introduzir o personagem, faremos isso de maneira semelhante do que foi feito com a cena.
+
+nomePersonagem = Elemento(img = "link", tit = "Titulo", style = dict (top = v1, left = v2, height = v3, width = v4))
+
+Para introduzir a Cena, nós apenas precisávamos passar a imagem da Cena. O Elemento precisa de um pouco mais que isso, precisamos dizer qual é o título daquele elemento (opcional) e um tal de style. Style é a maneira do Vitollino descrever a altura, a largura, e a posição do Elemento em Cena. Substituímos cada um daqueles valores por algum que se adeque a nossa história.
+
+No nosso exemplo, como tinhamos o link da Barbir numa variável, podemos dar o nome da variável ao invés do link entre aspas. O nosso exemplo  fica assim:
+
+.. image:: _static/captela16.png
+
+Não se preocupem! Nós podemos pular linha no meio da decaração de uma função() se isso ajudar a leitura.
+
+Vamos testar mais uma vez para ver se está tudo em ordem.
+
+.. image:: _static/captela17.png
+
+ERRO DE NOVO!
+
+.. image:: _static/fun3.png
+
+Erro de Novo!! O que será que deu errado dessa vez?!
+
+Ah, já achei... Será que você consegue achar o meu erro sem ler qual é? (Duvido, rs)
+
+
+
+
+
+
+
+
+
+Praqueles que não acaharam, eu escrevi linkDaBaribie quando eu guardei o meu link, e na hora de escrever na construção do Elemento, eu escrevi linkDaBarbie certo. Uma letra fora aqui e ali e nada funciona mais. Vamos testar mais uma vez. Também vou aproveitar para trocar o link do Castelo por uma varável, para arrumar melhor o meu código.
+
+.. image:: _static/captela18.png
+.. image:: _static/captela19.png
+
+Sem erros!
+
+Não obtivemos nenhuma mensagem de erro dessa vez, mas a Barbie ainda não apareceu. Isso é porque assim como tinhamos mandar a cena "rodar", temos que mandar o nosso personagem "entrar em cena". Nós fazemos isso através da função .entrar() do Elemento. Difetente da função .vai(), nós precisamos passar a Cena na qual o Elemento vai entrar na função .entrar().
+
+nomePersonagem.entrar(nomeCena)
+
+O nosso exemplo  fica assim:
+
+.. image:: _static/captela20.png
+
+
+
+
 
 
 
