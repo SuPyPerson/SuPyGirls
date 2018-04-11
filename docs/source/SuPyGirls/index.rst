@@ -19,6 +19,48 @@ A plataforma SuperPython é um ambiente de desenvolvimento online de Jogos em py
 
 .. image:: _static/giphy2.gif
 
+Primeiro devemos acessar o endereço da plataforma SupyGirls do SuperPython, que é esse aqui ó:
+
+http://supygirls.pythonanywhere.com/supygirls
+
+O que deve te levar direto pra cá:
+
+.. image:: _static/captela1.png
+
+Cada quadrado nomeado nesse portal é uma sala para uma turma de desenvolvimento de jogos. Você deve entrar na sala da sua turma que seu professor ou professora indicar (se ele tiver enrolando, pede pra ele dizer logo qual é, nós queremos programar!). Mas o que será que todos esses nomes tem em comum?
+
+.. image:: _static/fun1.png
+(pausa reflexiva)
+
+Na sala da sua turma, existem mais quadrados nomeados. Cada quadrado nomeado é um editor de jogos, ou seja, se você clicar em qualquer um deles você vai ser levado para um ambiente onde já vai poder começar a contruir todas as doideiras que sem passam dentro da sua cabeça perturbada!
+
+.. image:: _static/captela2.png
+
+Mais nomes... suspeito...
+
+.. image:: _static/giphy3.gif
+
+Enfim, de volta ao que importa, JOGOS!
+
+.. image:: _static/giphy4.gif
+
+Vittolino - Conte Estórias
+==========================
+
+Pronto, finalmente chegamos ao editor. Essa é a tela de início. Nela você pode observar no canto superior esquerdo o nome do projeto, o nome da Sala da sua turma e o nome do editor que você escolheu. Para continuarmos, precisaremos escolher a opção Edit.
+
+.. image:: _static/captela3.png
+
+Agora chegamos ao editor do código Python. Esse código é como você vai descrever tudo o que o computador precisa fazer para ele construir o jogo que você imaginar. No momento ele só tem uma linha. Essa linha começa com o caracter '#', o que significa que ela não será lida pelo computador, ela é um cometário feito para seres humanos lerem. Eles servem para facilitar a leitura do código pelo programador.
+
+Especificamente, essa linha é apenas uma marcação do título do documento de texto que nós vamos editar. Mas se você ficou confuso, não se preocupe, porque nós vamos apagá-la!
+
+
+.. image:: _static/captela4.png
+
+
+
+
 Sumário
 =======
 
