@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>{{pagetitle}}</title>
+    <title>SuperPython Project</title>
     <!-- stylesheets -->
     <meta http-equiv="content-type" content="application/xml;charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -35,9 +35,6 @@
 
             <!-- this "nav-menu" is hidden on mobile -->
             <div class="nav-right nav-menu">
-                <a class="nav-item is-tab" href="/site/help.html">
-                    Help
-                </a>
                 <a class="nav-item is-tab" href="/site/about.html">
                     About
                 </a>
@@ -58,8 +55,8 @@
             <div class="container">
                 <div class="has-text-centered">
                     <!-- header && subheader -->
-                    <h1 class="title is-1 is-spaced">{{title.capitalize()}}</h1>
-                    <h4 class="subtitle is-4">roll your own game with python</h4>
+                    <h1 class="title is-1 is-spaced">SUPER PYTHON</h1>
+                    <h4 class="subtitle is-4">learn python with games</h4>
                     <!-- end of header && subheader -->
 
                 </div>
@@ -72,36 +69,81 @@
 <!-- page content -->
 <div class="main-content">
     <div class="container">
-        <!-- start of posts -->
-        <div class="columns is-multiline is-centered has-text-centered">
-            % for count, scene in enumerate(cenas):
-            <!-- start of post -->
-            <div class="column is-2">
+        <!-- start of about -->
+        <div class="columns is-multiline is-centered">
+            <!-- start of about -->
+            <div class="column is-8">
                 <div class="card">
-                    <!-- image for post -->
-                    <div class="card is-2by2" style="height:114px; overflow:hidden;">
-                        <figure>
-                            <a href="/{{action.lower()+scene.lower()}}">
-                                <img src="/image/{{image}}" width="1000px" alt="Image"
-                                     style="position:relative; min-width:1200px;
-                        top:{{'{}px'.format(-200 * (count // 6))}};
-                       left:{{'{}px'.format(-200 * (count % 6))}};"></a>
-                        </figure>
+                    <!-- about header-->
+                    <div class="card-content-header has-text-centered">
+                        <h4 class="title is-4">SuperPython Project</h4>
                     </div>
-                    <!-- end of image for post -->
+                    <!-- end of about header -->
 
-                    <!-- post header -->
-                    <div class="card-content-header">
-                        <h6 class="title is-6"><a href="/{{action.lower()+scene.lower()}}">{{scene}}</a></h6>
+                    <!-- about content -->
+                    <div class="card-content">
+                        <div class="content">
+                            <div class="card-inner-wrapper">
+                                <!-- about text -->
+                                <div class="card-content-text">
+                                    <p>
+
+                                        O Programa SuperPython (<a
+                                            href="http://www.superpython.net">www.superpython.net</a>)
+                                        é um projeto de diversas disciplinas de desenvolvimento
+                                        de Games na linguagem Python para crianças e jovens. Ele foi criado para
+                                        aproveitar o talento e a criatividade de crianças e jovens na produção de
+                                        histórias interativas e games. Criando games, estes jovens podem sentir a
+                                        satisfação de concretizar o seu mundo lúdico, ao mesmo tempo que produzem um
+                                        material instigante que pode ser apreciado e usufruído por seus pares.</p>
+                                    <p>
+                                        A linguagem de programação usada é de fácil aprendizagem e produz programas de
+                                        qualidade profissional, equivalente ao que se encontra no mundo real. Motivar os
+                                        jovens a se empenhar na tarefa de programação é um desafio, pois eles buscam um
+                                        resultado imediato de alta qualidade que na verdade requer um longo período de
+                                        aprendizagem. </p>
+                                    <p>
+                                        É preciso que se ofereça resultados palpáveis com muita presteza
+                                        para que permaneçam motivados e persistam na aquisição de habilidades de
+                                        programação crescentemente complexas. Nesta proposta, a cada aula eles já dispõe
+                                        de um jogo completo que pode ser jogado pelo autor e qualquer outra pessoa que
+                                        se interesse. O empoderamento crescente de sua capacidade de programar leva o
+                                        joven a construir jogos cadavez mais complexos e a se encantar ao dominar a
+                                        arcana arte da programação.</p>
+                                </div>
+                                <!-- end of about text -->
+
+                                <!-- about footer -->
+                                <div class="card-content-footer-small">
+                                    <div class="nav-center">
+                                        <a class="nav-item" href="">
+			  <span class="icon">
+			    <i class="fa fa-twitter"></i>
+			  </span>
+                                        </a>
+                                        <a class="nav-item" href="">
+			  <span class="icon">
+			    <i class="fa fa-facebook"></i>
+			  </span>
+                                        </a>
+                                        <a class="nav-item" href="">
+			  <span class="icon">
+			    <i class="fa fa-google-plus"></i>
+			  </span>
+                                        </a>
+                                    </div>
+                                </div>
+                                <!-- end of about footer -->
+
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-            <!-- end of post -->
-            % end
+            <!-- end of about column -->
         </div>
-        <!-- end of posts -->
+        <!-- end of about columns -->
     </div>
-
 </div>
 <!-- end of page content -->
 

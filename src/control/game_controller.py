@@ -23,6 +23,7 @@
 from bottle import Bottle, get, view, post, request
 from model.datasource import DS
 from base64 import decodebytes as dcd
+from base64 import encodebytes as ecd
 __author__ = 'carlo'
 DEFAULT_CODE = """# default
 try:
@@ -33,7 +34,7 @@ except:
     document["pydiv"].html = ""
     document["pydiv"] <= html.IMG(src="/images/site_em_construcao_.jpg")
 """
-MENU = "Edit,/edit/edit:Save,/edit/save:Open,/edit/open:Home,/"
+MENU = "Home,/"
 CSS = "solarized codemirror bulma style roboto".split()
 JS = "brython brython_stdlib codemirror show-hint python-hint active-line matchbrackets python".split()
 
@@ -41,7 +42,7 @@ appbottle = Bottle()  # create another WSGI application for this controller and 
 # debug(True) #  uncomment for verbose error logging. Do not use in production
 
 
-@post('/game/save')
+@post('/game/__save')
 def gamer_save():
     codename, code = request.json['codename'], request.json['code']
     # codename, code = request.query['codename'], request.query['code']
@@ -66,20 +67,10 @@ def gamer(mod, name):
         # code = dcd(str.encode(code_file.content)).decode("utf-8")
     except Exception as err:
         code = "# " + ".".join([modl, namel, "main.py"])
+        code = ecd(bytearray(code.encode("UTF8"))).decode("utf-8")
 
     return dict(
         pagetitle="SuPyGirls - {} - {}".format(mod.capitalize(), name.capitalize()), title=name,
         image="supygirls_logo.png", mod=mod.replace(',', '_').lower(), code=code,
         brython_css=CSS, brython_js=JS,
         menu=[m.split(",") for m in MENU.split(":")])
-
-"""
-        <script type="text/javascript" src="stlib/brython.js"></script>
-        <script type="text/javascript" src="stlib/brython_stdlib.js"></script>
-        <script src="stlib/codemirror.js" type="text/javascript"></script>
-        <script src="stlib/show-hint.js" type="text/javascript"></script>
-        <script src="stlib/python-hint.js" type="text/javascript"></script>
-        <script src="stlib/active-line.js" type="text/javascript"></script>
-        <script src="stlib/matchbrackets.js" type="text/javascript"></script>
-        <script src="stlib/python.js" type="text/javascript"></script>
-"""
