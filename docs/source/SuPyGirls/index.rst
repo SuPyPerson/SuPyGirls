@@ -263,6 +263,44 @@ O nosso exemplo  fica assim:
 
 .. image:: _static/captela20.png
 
+.. image:: _static/captela21.png
+
+Sucesso!
+
+Agora só falta inserirmos o Texto para nossa primeira página ficar completa! E assim como antes, nós iremos introduzi-lo de maneira semelhante ao Elemento e ao Personagem:
+
+nomeTexto = Texto(nomeCena, "texto")
+
+Assim como com Elemento e Cena, não pasta apenas contar para o computador que o Texto existe, temos que associa-lo a algum Elemento dentro da Cena que ele se encontra. Fazemos isso associando a função .vai() do Texto com a função .vai() do elemento que se deseja associar. Para se associar função, nós não escrevemos os parênteses:
+
+nomeElemento.vai = nomeTexto.vai
+
+No nosso exemplo, fica assim:
+
+.. image:: _static/captela22.png
+
+E agora o último teste da nossa primeira página!
+
+.. image:: _static/captela23.png
+
+Sem texto, mais um erro!
+
+.. image:: _static/giphy12.gif
+
+O erro que cometi agora foi a ordem da operação txtBarbie.vai = barbie.vai. Escrito dessa maneira, eu estou dizendo ao computador para fazer ação do texto da barbie ser igual a ação da barbie, que é nula. O que eu quero na verdade é juutamento o oposto, que a barbie copie a ação do texto, logo deve ser, barbie.vai = txtBarbie.vai.
+
+.. image:: _static/captela24.png
+
+E agora sim, o último teste da nossa primeira página!
+
+.. image:: _static/captela25.png
+
+AEAEAEAEAEAEAEAEAEAEAE
+
+.. image:: _static/giphy13.gif
+
+
+
 
 
 
