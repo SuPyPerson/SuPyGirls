@@ -10,7 +10,7 @@
 CONTA PROJETO PYCHARM
 ---------------------
 
-Início de projeto:
+Início de projeto::
 file:
 settings
 project
