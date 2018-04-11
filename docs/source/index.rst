@@ -10,13 +10,9 @@ Welcome to Tutorial de Introdução à Computação's documentation!
     :maxdepth: 2
     :caption: Contents:
 
-    **Tutorial de Introdução à Computação**
-
     intro_comp/tutorial.rst
-
-    **Tutorial Circus de Introdução à Programação**
-
     circus/index.rst
+    superpython/index.rst
 
 
 
