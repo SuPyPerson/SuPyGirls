@@ -9,7 +9,7 @@
 
 
 INSTALAR ORACLE VM VIRTUALBOX
------------------------------
+------------------------------
 
 O VirtualBox é um sistema que possibilita criar e gerenciar maquinas virtuais no seu computador. O que isso significa? Significa que é possível rodar outro sistema operacinoal no seu computador sem desinstalar o atual. Pode-se rodar o Linux dentro do Windows, o Windows dentro do Mac e o Mac dentro do Windows, etc.
 

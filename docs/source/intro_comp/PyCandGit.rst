@@ -7,7 +7,7 @@
 ================================
 
 SINCRONIZANDO  GITHUB E PYCHARM
--------------------------------
+--------------------------------
 
 Abra o IDE Pycharm e prima > Check out from Version Control <
 
