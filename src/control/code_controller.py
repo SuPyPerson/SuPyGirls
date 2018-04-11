@@ -44,6 +44,7 @@ appbottle = Bottle()  # create another WSGI application for this controller and 
 # Static Routes
 @get("/<:path>/__init__.py")
 def init_py():
+    print("initview_py/<:path>/__init__.py")
     return ""
 
 
@@ -54,8 +55,9 @@ def core_py(filepath):
 
 
 # Static Routes
-@get("/<:path>/__code/view/kwarwp/<filepath:path>")
+@get("/__code/kwarwp/<filepath:path>")
 def view_py(filepath):
+    print("view_py", filepath)
     return static_file(filepath, root=py_dir+"/kwarwp")
 
 
@@ -82,7 +84,7 @@ def spy(module_name, filepath):
 # Static Routes
 @get("/<:path>/<project_name>/__code/<module_name:re:[a-z].*>/<filepath:re:.*\.py>")
 def local_spy(project_name, module_name, filepath):
-    # print("local_spyspy", project_name, module_name, filepath)
+    print("local_spyspy", project_name, module_name, filepath)
     try:
         code_file = DS.get_file_contents(project_name, module_name, filepath)
         code_str = dcd(str.encode(code_file.content)).decode("utf-8")

@@ -1,4 +1,3 @@
-from control.home import application
 import bottle
 import os
 import sys
