@@ -4,7 +4,7 @@
    contain the root `toctree` directive.
 
 Bem Vindo à Documentação da Plataforma SuPyGirls!
-===============================================================
+=================================================
 
 .. toctree::
     :maxdepth: 2
