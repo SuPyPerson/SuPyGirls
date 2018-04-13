@@ -3,10 +3,8 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to SuperPython's documentation!
-=======================================
-
-Contents:
+**Bem vindo à documentação SuperPython**
+===========================================
 
 .. toctree::
    :maxdepth: 2
@@ -15,13 +13,4 @@ Contents:
    release2_0_0.rst
    modules.rst
    tests.rst
-
-
-
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
 
