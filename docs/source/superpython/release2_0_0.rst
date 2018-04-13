@@ -24,7 +24,7 @@ mudança estrutural a vesão foi atualizada de 1.x.x para 2.0.0
 Destaques dos Aspectos
 **********************
 
-A integração das plataformas anteriores, adição de tutoriais e documentção e o novo design responsivo
+A integração das plataformas anteriores, adição de tutoriais e documentação e o novo design responsivo
 são os maiores destaques deste lançamento.
 
 Aspecto #1
@@ -40,7 +40,7 @@ Importar o caminho para outros módulos de programação.
 Melhoramento #1
 ***************
 
-Experimentar a importação relativa da fonte Brython
+Experimentar a importação relativa da fonte Brython.
 
 
 Melhoramento #2
@@ -81,6 +81,8 @@ Criar novo módulo no Github.
 Aspecto #2
 **********
 
+Adição de tutoriais e documentação.
+
 Melhoramentos
 =============
 
@@ -89,7 +91,7 @@ Inclusão de tutoriais sobre cada plataforma.
 Melhoramento #1
 ***************
 
-Acréscimo do Tutorial SuPyGirls Connection
+Acréscimo do Tutorial SuPyGirls Connection.
 
 Melhoramento #2
 ***************
@@ -99,12 +101,12 @@ Adicionar documentação SuperPyhton.
 Melhoramento #3
 ***************
 
-Adição do tutorial Vitollino.
+Adição do Tutorial Vitollino.
 
 Melhoramento #4
 ***************
 
-Adicionar tutorial Introdução à Computação.
+Adicionar Tutorial Introdução à Computação.
 
 
 Melhoramento #5
