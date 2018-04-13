@@ -12,8 +12,6 @@ Vamos usar a IDE PyCharm.
 
 .. image:: https://twitter.com/pycharm/status/968103951781580800
 
-Sumário
-=======
 
 .. toctree::
     :maxdepth: 2
@@ -24,11 +22,4 @@ Sumário
     modelagem_agil.rst
     pre_requisitos.rst
 
-
-Indices e Tabelas
-=================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
 
