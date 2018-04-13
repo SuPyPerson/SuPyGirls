@@ -42,6 +42,21 @@ appbottle = Bottle()  # create another WSGI application for this controller and 
 # debug(True) #  uncomment for verbose error logging. Do not use in production
 
 
+@post('/game/__create')
+def gamer_create():
+    codename, code = request.json['codename'], request.json['code']
+    # codename, code = request.query['codename'], request.query['code']
+
+    project, *moduler = codename.split('/')
+    filename = "/".join(moduler)
+    code = dcd(str.encode(code)).decode("utf-8")
+    try:
+        code_status = DS.create_file(project, filename, code)
+    except Exception as err:
+        code_status = "Fail creating {}: {}".format(filename, err)
+    return code_status
+
+
 @post('/game/__save')
 def gamer_save():
     codename, code = request.json['codename'], request.json['code']

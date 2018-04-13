@@ -32,6 +32,11 @@ def index():
     return static_file('index.html', root=tpl_dir)
 
 
+@route('/kwarwp')
+def kwarwp():
+    return static_file('kwarwp.html', root=tpl_dir)
+
+
 @get('/supygirls')
 @view("supygirls")
 def project():
@@ -65,6 +70,7 @@ application.mount("/<:re:.*>/site", static_controller.appbottle)
 application.mount("/<:re:.*>/edit", game_controller.appbottle)
 application.mount("/<:re:.*>/game", game_controller.appbottle)
 application.mount("/<:path>/game/<:re:.*>/__code", code_controller.appbottle)
+application.mount("/<:path>/__code", code_controller.appbottle)
 
 if __name__ == "__main__":
     run(host='localhost', port=8080)

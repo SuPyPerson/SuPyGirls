@@ -35,7 +35,8 @@ from base64 import decodebytes as dcd
 LOCAL_FOLDER = os.path.abspath(os.path.join(os.path.dirname(__file__), '../model/git/spg'))
 REMOTE_URL = "https://github.com/SuPyPackage/SuPyGirls.git"
 USERNAME = "kwarwp"
-PASSWORD = dcd(str.encode(op.environ["IKW"])).decode("utf-8")  # 'K004r00p## :=G1th00b'
+PASSWORD = dcd(str.encode(op.environ["IKW"])).decode("utf-8")
+TOKEN = dcd(str.encode(op.environ["IKT"])).decode("utf-8")
 # str(dcd(str.encode(op.environ["IKW"])))
 # USERNAME = "carlotolla"
 # PASSWORD = op.environ["ISME"]
@@ -43,7 +44,7 @@ PASSWORD = dcd(str.encode(op.environ["IKW"])).decode("utf-8")  # 'K004r00p## :=G
 
 def spike():
 
-    g = Github(USERNAME, PASSWORD)
+    g = Github(TOKEN)
     u = g.get_user()
     r = None
     for repo in u.get_repos():
@@ -65,8 +66,10 @@ def spike():
 
 class DataSource:
     def __init__(self):
-        g = Github(USERNAME, PASSWORD)
-        self.user = g.get_user()
+        # g = Github(USERNAME, PASSWORD)
+        g = Github(TOKEN)
+        g.get_user("kwarwp")
+        self.user = g.get_user("kwarwp")
         self.repo = None
 
     def get_file_branched(self, project, packager, moduler="main.py"):
@@ -78,6 +81,21 @@ class DataSource:
     def get_file_contents(self, project, packager, moduler="main.py"):
         self.repo = self.user.get_repo(project)
         return self.repo.get_file_contents("{}/{}".format(packager, moduler))
+
+    def create_file(self, project, filename, decoded_content, comment=None):
+        timestamp = 'Timestamp: {:%Y-%m-%d %H:%M:%S}'.format(datetime.datetime.now())
+        comment = comment if comment else "Created {} at {}".format(filename, timestamp)
+        self.repo = self.user.get_repo(project)
+        self.repo.create_file("/{}".format(filename), comment, decoded_content)
+        return comment
+    """
+    def create_project(self, project):
+        curl -i -H 'Authorization: token TOKEN' -d '{"name":"grete"}' https://api.github.com/user/repos
+        timestamp = 'Timestamp: {:%Y-%m-%d %H:%M:%S}'.format(datetime.datetime.now())
+        comment = "Created {} at {}".format(project, timestamp)
+        self.user.create_repo("/{}".format(project), comment)
+        return comment
+    """
 
     def save_file(self, project, filename, decoded_content, comment=None):
         timestamp = 'Timestamp: {:%Y-%m-%d %H:%M:%S}'.format(datetime.datetime.now())

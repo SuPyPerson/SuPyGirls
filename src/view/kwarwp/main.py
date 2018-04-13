@@ -323,7 +323,7 @@ class Main:
         pyd = self.doc["pydiv"]
         # pyd.html = ''
         splash = ht.DIV(id='the_splash', style={'position': 'absolute', 'top': 66, 'left': 0})
-        self.splash = splashimg = ht.IMG(src="server_root/image/abertura_kwarwpp.jpg", width=800)
+        self.splash = splashimg = ht.IMG(src="/image/abertura_kwarwpp.jpg", width=800)
         splash <= splashimg
         pyd <= splash
         splash.onclick = lambda *_: self._paint_scenes()
@@ -337,12 +337,12 @@ class Main:
         pyd = self.doc["pydiv"]
         pyd.html = ''
         sky = ht.DIV(id='the_sky', style={'position': 'absolute', 'top': 0, 'left': 0})
-        self.sky = skyimg = ht.IMG(src="server_root/image/sky.gif")
+        self.sky = skyimg = ht.IMG(src="/image/sky.gif")
         sky <= skyimg
         sun = ht.DIV(
             id='the_sun', style={'position': 'absolute', 'top': 0, 'left': 0,
                                  'animation-name': 'daylight', 'animation-duration': '300s'})
-        sun <= ht.IMG(src="server_root/image/sun.gif")
+        sun <= ht.IMG(src="/image/sun.gif")
         pyd <= sky
         svg = ht.SVG(id="svgdiv", width="800", height="66")
         svg.setAttribute('height', "66")
@@ -363,7 +363,7 @@ class Main:
             icon = ht.DIV(onclick=lambda *_: self.select_scene(scene))
             icon.setAttribute("style", 'flex:1;min-width: 160px; flex-wrap: wrap; margin: 10px;' +
                               'background-color: navajowhite; border-radius: 60px; padding:4px;')
-            img = ht.IMG(src="server_root/image/saida.gif", width=60, title=scene,
+            img = ht.IMG(src="/image/saida.gif", width=60, title=scene,
                          style=dict(display='block',  margin="0 auto"))
             # icon.onclick = lambda ev: self.select_scene(scene)
             img.onclick = lambda ev: self.select_scene(ev.target.title)
