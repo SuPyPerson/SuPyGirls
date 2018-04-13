@@ -51,19 +51,52 @@ class Main:
         self.start(EMENU)
         self.dialog = self.gui.edit()
 
+    def _create(self):
+        def change_color():
+            self.doc["nav_saver"].style.transition = "opacity 0s"
+            self.doc["nav_saver"].style.opacity = 1
+            self.doc["nav_saver"].html = ""
+
+        def display(msg):
+            self.timer.set_timeout(change_color, 15000)
+            self.doc["nav_saver"].style.transition = "opacity 15s"
+            # self.doc["nav_saver"].style.opacity = 1
+            self.doc["nav_saver"].html = msg
+            self.doc["nav_saver"].style.opacity = 0
+
+        def on_complete(request):
+            if request.status == 200 or request.status == 0:
+                display(request.text)
+            else:
+                display("error " + request.text)
+        codename = self.codename.split(".")
+        codename = "/".join(codename[1:-1])+".{}".format(codename[-1])
+        display("Creating.. "+codename)
+        code = ecd(bytearray(self.gui.code.encode("UTF8"))).decode("utf-8")
+        # code = ecd(bytearray(HTMLParser().unescape(self.gui.code).encode("UTF8"))).decode("utf-8")
+        jsrc = json.dumps({'codename': codename, 'code': code})
+        # print(SAVE, jsrc)
+        req = self.ajax.ajax()
+        req.bind('complete', on_complete)
+        req.set_timeout('20000', lambda *_: display("NOT SAVED: TIMEOUT"))
+        req.open('POST', "/game/__create", True)
+        req.set_header('content-type', 'application/json')  # x-www-form-urlencoded')
+        req.send(jsrc)
+
     def __save(self):
         def on_complete(request):
             if request.status == 200 or request.status == 0:
                 self.doc["nav_saver"].html = request.text
             else:
                 self.doc["nav_saver"].html = "error " + request.text
+
         codename = self.codename.split(".")
         codename = "/".join(codename[1:-1])+".{}".format(codename[-1])
         self.doc["nav_saver"].html = "Saving.. "+codename
         req = self.ajax.ajax()
         req.bind('complete', on_complete)
         # send a POST request to the url
-        req.open('POST', "/game/save", True)
+        req.open('POST', "/game/__save", True)
         req.set_header('content-type', 'application/x-www-form-urlencoded')
         # send data as a dictionary
         code = ecd(bytearray(self.gui.code.encode("UTF8"))).decode("utf-8")
@@ -76,17 +109,22 @@ class Main:
             self.doc["nav_saver"].html = ""
 
         def display(msg):
-            self.timer.set_timeout(change_color, 4000)
-            self.doc["nav_saver"].style.transition = "opacity 8s"
+            self.timer.set_timeout(change_color, 15000)
+            self.doc["nav_saver"].style.transition = "opacity 15s"
             # self.doc["nav_saver"].style.opacity = 1
             self.doc["nav_saver"].html = msg
             self.doc["nav_saver"].style.opacity = 0
 
-        def on_complete(request):
+        def on_complete(request, slf=self):
             if request.status == 200 or request.status == 0:
-                display(request.text)
+                if "404" in request.text:
+                    self.timer.set_timeout(slf._create, 1000)
+                    display("Attempting to create..")
+                else:
+                    display(request.text)
             else:
                 display("error " + request.text)
+
         codename = self.codename.split(".")
         codename = "/".join(codename[1:-1])+".{}".format(codename[-1])
         display("Saving.. "+codename)

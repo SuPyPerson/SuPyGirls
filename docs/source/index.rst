@@ -10,13 +10,16 @@
     :maxdepth: 2
     :caption: Contents:
 
+
     **Tutorial de Introdução à Computação**
 
     intro_comp/index.rst
 
     **Tutorial Circus de Introdução à Programação**
 
+
     circus/index.rst
+    superpython/index.rst
 
     **Tutorial SuPyGirls Games**
 

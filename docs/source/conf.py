@@ -19,8 +19,11 @@
 #
 import os
 import sys
+os.environ['IKW'] = 'eW91ciB0ZXh0'
+os.environ['ISME'] = 'eW91ciB0ZXh0'
 sys.path.insert(0, os.path.abspath('.'))
 sys.path.insert(0, os.path.abspath('../../src'))
+sys.path.insert(0, os.path.abspath('../../test'))
 
 
 # -- General configuration ------------------------------------------------

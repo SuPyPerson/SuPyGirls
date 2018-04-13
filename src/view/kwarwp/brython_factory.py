@@ -31,7 +31,7 @@ from .kuarup import Kuarup
 
 # seed(27356)
 random()
-IMAGEREPO = 'server_root/image/'
+IMAGEREPO = '/image/'
 CANVASW, CANVASH = 800, 600
 NODICT = {}
 EDIT = "{}/{}".format(IMAGEREPO, "sun.gif")
