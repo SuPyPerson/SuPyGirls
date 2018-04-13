@@ -1,3 +1,5 @@
+.. _vittolino_conte_estorias:
+
 Vittolino - Conte Estórias
 ==========================
 

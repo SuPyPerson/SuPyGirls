@@ -1,3 +1,5 @@
+.. _pre_requisitos:
+
 PRÉ-REQUISITOS PARA INTRODUÇÃO À COMPUTAÇÃO
 ===========================================
 

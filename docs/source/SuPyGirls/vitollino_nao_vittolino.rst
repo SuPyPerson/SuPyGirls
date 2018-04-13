@@ -1,3 +1,5 @@
+.. _vitollino_nao_vittolino:
+
 É Vitollino, não Vittolino!
 ===========================
 

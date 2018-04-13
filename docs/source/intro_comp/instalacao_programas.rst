@@ -1,3 +1,5 @@
+.. _instalacao_programas:
+
 **INSTALAÇÃO DE PROGRAMAS**
 ===========================
 
