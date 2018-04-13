@@ -3,7 +3,7 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to Tutorial de Introdução à Computação's documentation!
+Bem Vindo à documentação da Plataforma SuPyGirls!
 ===============================================================
 
 .. toctree::
@@ -12,7 +12,7 @@ Welcome to Tutorial de Introdução à Computação's documentation!
 
     **Tutorial de Introdução à Computação**
 
-    intro_comp/tutorial.rst
+    intro_comp/index.rst
 
     **Tutorial Circus de Introdução à Programação**
 
