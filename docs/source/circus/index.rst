@@ -12,8 +12,6 @@ Na verdade vamos usar o Brython que é o Python que funciona dentro de um navega
 
 .. image:: http://s19.postimg.org/ufgi8eztf/PPFC.jpg
 
-Sumário
-=======
 
 .. toctree::
     :maxdepth: 2
@@ -35,10 +33,4 @@ Sumário
     jogo_h.rst
     jogo_i.rst
 
-Indices e Tabelas
-=================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
 

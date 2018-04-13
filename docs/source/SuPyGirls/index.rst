@@ -45,8 +45,6 @@ Enfim, de volta ao que importa, JOGOS!
 .. image:: _static/giphy4.gif
 
 
-Sumário
-=======
 
 .. toctree::
     :maxdepth: 2
@@ -56,10 +54,5 @@ Sumário
     implementacao_primeiro_quadro.rst
     vitollino_nao_vittolino.rst
 
-Indices e Tabelas
-=================
 
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
 
