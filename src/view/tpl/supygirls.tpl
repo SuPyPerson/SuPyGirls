@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- fonts -->
     <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet">
-    <link rel="shortcut icon" href="image/favicon.ico" type="image/x-icon"/>
+    <link rel="shortcut icon" href="/image/favicon.ico" type="/image/x-icon"/>
 </head>
 <body>
 <!-- navigation -->
@@ -117,7 +117,7 @@
                     <div class="card-image">
                         <figure class="image is-4by1">
                             <a href="https://ufrj.br/">
-                                <img src="image/ufrj-logo-8.png"  alt="UFRJ">
+                                <img src="/image/ufrj-logo-8.png"  alt="UFRJ">
                             </a>
                         </figure>
                     </div>
@@ -132,7 +132,7 @@
                     <div class="card-image">
                         <figure class="image is-4by1">
                             <a href="http://www.nce.ufrj.br/">
-                                <img src="image/nce-logo-8.png" height="30px" alt="NCE">
+                                <img src="/image/nce-logo-8.png" height="30px" alt="NCE">
                             </a>
                         </figure>
                     </div>
@@ -147,7 +147,7 @@
                     <div class="card-image">
                         <figure class="image is-4by1">
                             <a href="http://labase.superpython.net/">
-                                <img src="image/labase-logo-8.png" height="30px" alt="LABASE">
+                                <img src="/image/labase-logo-8.png" height="30px" alt="LABASE">
                             </a>
                         </figure>
                     </div>
@@ -162,7 +162,7 @@
                     <div class="card-image">
                         <figure class="image is-3by1">
                             <a href="http://www.sbc.org.br/2-uncategorised/1939-programa-superpython">
-                                <img src="image/sbc-logo-8.png" alt="SBC">
+                                <img src="/image/sbc-logo-8.png" alt="SBC">
                             </a>
                         </figure>
                     </div>

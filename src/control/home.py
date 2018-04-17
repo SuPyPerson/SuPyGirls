@@ -52,6 +52,13 @@ def moduler(name):
 
 
 # Static Routes
+# @get("/game/<:re:.*>/__code/<:path>/__init__.py")
+def init_py():
+    print("initview_py/<:path>/__init__.py")
+    return ""
+
+
+# Static Routes
 # @get("/<:path>/__code/_core/<filepath:re:.*\.py>")
 def py(filepath):
     return static_file(filepath, root=py_dir+"/_core")
@@ -68,9 +75,9 @@ application.mount("/<:re:.*>/image", static_controller.appbottle)
 application.mount("/<:re:.*>/css", static_controller.appbottle)
 application.mount("/<:re:.*>/site", static_controller.appbottle)
 application.mount("/<:re:.*>/edit", game_controller.appbottle)
-application.mount("/<:re:.*>/game", game_controller.appbottle)
-application.mount("/<:path>/game/<:re:.*>/__code", code_controller.appbottle)
-application.mount("/<:path>/__code", code_controller.appbottle)
+application.mount("/<:re:.*>/game/", game_controller.appbottle)
+application.mount("/<:re:.*>/game/<:re:.*>/__code/", code_controller.appbottle)
+# application.mount("/<:path>/__code/", code_controller.appbottle)
 
 if __name__ == "__main__":
     run(host='localhost', port=8080)
