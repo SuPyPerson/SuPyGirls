@@ -79,7 +79,7 @@
             <!-- nav site title -->
             <div class="nav-left">
                 <a class="nav-item">
-                    <h3 class="title is-3" style="color: white;">{{pagetitle}}</h3>
+                    <h3 class="title is-5" style="color: white;">{{pagetitle}}</h3>
                 </a>
             </div>
             <div class="nav-middle">
@@ -92,6 +92,7 @@
 
             <!-- this "nav-toggle" hamburger menu is only visible on mobile -->
             <span id="burg_menu" class="nav-toggle">
+	                <span><a class="nav-item is-tab" href="#">|&nbsp;|</a></span>
                 % for item, name in menu:
 	                <span><a class="nav-item is-tab" href="{{item}}">{{name}}</a></span>
                 %end
@@ -117,22 +118,13 @@
         <!-- start of about -->
         <div class="columns is-multiline is-centered">
             <!-- start of about -->
-            <div class="column is-10">
+            <div class="column is-12">
                 <div class="card">
                     <!-- about content -->
-                    <div class="card-content">
-                        <div class="content">
-                            <div class="card-inner-wrapper">
-                                <!-- about text -->
-                                <div id="pydiv" class="card is-10by8" style="min-height:600px;">
-                                    <figure>
-                                        <img src="/image/{{image}}" width="1000px" alt="Image">
-                                    </figure>
-                                </div>
-                                <!-- end of about text -->
-
-                            </div>
-                        </div>
+                    <div id="pydiv" class="card is-12by8" style="min-height:600px;">
+                        <figure>
+                            <img src="/image/{{image}}" width="1000px" alt="Image">
+                        </figure>
                     </div>
                 </div>
             </div>
