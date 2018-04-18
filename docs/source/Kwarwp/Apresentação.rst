@@ -1,7 +1,9 @@
-.. _vittolino_conte_estorias:
+.. _Kwarwp_Apresentação:
 
-Vittolino - Conte Estórias
+Kwarwp - Apresentação
 ==========================
+
+Bem vindo ao Kwarwp: O Game que ensina a linguagem de programação Python!
 
 Pronto, finalmente chegamos ao editor. Essa é a tela de início. Nela você pode observar no canto superior esquerdo o nome do projeto, o nome da Sala da sua turma e o nome do editor que você escolheu. Para continuarmos, precisaremos escolher a opção Edit.
 
