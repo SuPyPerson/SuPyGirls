@@ -43,6 +43,7 @@
     **Tutorial SuPyGirls Games**
 
     SuPyGirls/index.rst
+    Kwarwp/index.rst
 
 
 
