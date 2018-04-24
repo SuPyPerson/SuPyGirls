@@ -37,6 +37,7 @@ except:
 MENU = "Home,/"
 CSS = "solarized codemirror bulma style roboto".split()
 JS = "brython brython_stdlib codemirror show-hint python-hint active-line matchbrackets python".split()
+# JS = "brython brython_stdlib codemirror show-hint python-hint active-line matchbrackets python".split()
 
 appbottle = Bottle()  # create another WSGI application for this controller and resource.
 # debug(True) #  uncomment for verbose error logging. Do not use in production

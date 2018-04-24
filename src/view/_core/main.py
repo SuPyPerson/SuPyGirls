@@ -152,12 +152,12 @@ class Main:
 
         def do_menu(menu):
             menu.html = ""
-            menus = [(ht.A(name, Class="nav-item is-tab"), ev) for name, ev in navigate]
+            menus = [(ht.A(name, Class="navbar-item is-tab"), ev) for name, ev in navigate]
             [menu <= item for item, ev in menus]
             [item.bind("click", self.menu[ev]) for item, ev in menus]
-            menu <= ht.A('Help', Class="nav-item is-tab", href='/site/help.html')
-            menu <= ht.A('About', Class="nav-item is-tab", href='/site/about.html')
-            menu <= ht.A('Home', Class="nav-item is-tab", href='/')
+            menu <= ht.A('Help', Class="navbar-item is-tab", href='/site/help.html')
+            menu <= ht.A('About', Class="navbar-item is-tab", href='/site/about.html')
+            menu <= ht.A('Home', Class="navbar-item is-tab", href='/')
 
         do_menu(self.doc['right_menu'])
         do_menu(self.doc['burg_menu'])
