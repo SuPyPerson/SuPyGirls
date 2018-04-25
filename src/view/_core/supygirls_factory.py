@@ -219,9 +219,9 @@ class GUI(_GUI):
     def __init__(self, width=CANVASW, height=CANVASH, code="", codename="", **kwargs):
         _GUI.__init__(self, width=width, height=height, **kwargs)
         self.code, self.codename = dcd(str.encode(code)).decode("utf-8"), codename
-        self.extra = self.dialoger = None
+        self.error = self.extra = self.dialoger = None
 
-    def _first_response(self, dialog, action, extra):
+    def _first_response(self, dialog, action, extra, error):
         class ConsoleOutput:
 
             def __init__(self):
@@ -261,9 +261,10 @@ class GUI(_GUI):
             traceback.print_exc(file=sys.stderr)
             sys.stdout = sys_out
             sys.stderr = sys_err
+            err_trace = self.value.value
+            error(str(err_trace))
             self.dialoger = self.dialog(self.code, act=self.executa_acao)  # +str(self.value.value))
-            self.dialoger.set_err(str(self.value.value))
-            # print(err)
+            self.dialoger.set_err(str(err_trace))
             # print(self.code)
             # self.dialoger = None
             return False
@@ -278,6 +279,8 @@ class GUI(_GUI):
 
     def executa_acao(self, dialog, action=None):
         self.extra = action if action else lambda *_: None
+        self.error = self.error  if self.error else lambda *_: print("NO NO", self.error)
+        self.error("XXXX - executa_acao if error else lambda self.error - XXXX")
         self.code = dialog.get_text()
         self.storage[self.codename] = self.code
-        return self._first_response(dialog, lambda: self._executa_acao(), self.extra)
+        return self._first_response(dialog, lambda: self._executa_acao(), self.extra, self.error)

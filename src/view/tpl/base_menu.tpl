@@ -1,34 +1,42 @@
-<div class="navbar">
-   <nav class="nav has-shadow" role="navigation" aria-label="dropdown navigation">
-        <div class="container">
-            <!-- nav site title -->
-            <div class="navbar-start">
-                <a class="navbar-item">
-                    <h3 class="title is-5" style="color: white;">{{pagetitle}}</h3>
+<nav class="navbar is-transparent">
+  <div class="navbar-brand">
+    <a class="navbar-item" href="http://www.superpython.net">
+      <img src="/image/camisasuperpython.png" alt="Superpython" width="60" height="28">
+    </a>
+    <div id="burg_menu" class="navbar-burger burger" data-target="navbarExampleTransparentExample">
+      <span class="navbar-burger burger">
+                <a class="nav-item is-tab" href="/site/help.html">
+                    Help
                 </a>
-            </div>
-            <!-- end of site title -->
+      </span>
+      <span class="navbar-burger burger">
+                <a class="nav-item is-tab" href="/site/about.html">
+                    About
+                </a>
+      </span>
+      <span class="navbar-burger burger">      <a  href="https://bulma.io/">
+        Home2
+      </a>
+      </span>
+    </div>
+  </div>
 
-            <!-- this "nav-toggle" hamburger menu is only visible on mobile -->
-            <span id="burg_menu" class="navbar-burger">
-	                <span><a class="navbar-item is-tab" href="#">|&nbsp;|</a></span>
-                % for item, name in menu:
-	                <span><a class="navbar-item is-tab" href="{{item}}">{{name}}</a></span>
-                %end
-            </span>
-            <!-- end of toggle -->
+  <div id="navbarExampleTransparentExample" class="navbar-menu">
+    <div class="navbar-start">
+      <a class="navbar-item" href="/">
+        {{pagetitle}}
+      </a>
+    </div>
 
             <!-- this "nav-menu" is hidden on mobile -->
             <div id="right_menu" class="navbar-end">
-                % for name, item in menu:
-                <a class="navbar-item is-tab" href="{{item}}">
-                    {{name}}
+                <a class="navbar-item is-tab" href="/site/help.html">
+                    Help
                 </a>
-                % end
-
+                <a class="navbar-item is-tab" href="/site/about.html">
+                    About
+                </a>
             </div>
             <!-- end of nav -->
-        </div>
-    </nav>
-</div>
-
+  </div>
+</nav>

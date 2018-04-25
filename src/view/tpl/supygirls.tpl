@@ -14,47 +14,7 @@
 </head>
 <body>
 <!-- navigation -->
-<div class="navigation">
-    <nav class="nav has-shadow">
-        <div class="container">
-            <!-- nav site title -->
-            <div class="nav-left">
-                <a class="nav-item">
-                    <h3 class="title is-5" style="color: white;">SuperPython</h3>
-                </a>
-            </div>
-            <!-- end of site title -->
-            <div class="nav-middle">
-                <a class="nav-item">
-                    <h6 id="nav_saver" class="title is-6"
-                        style="color: white; animation-name: fade; animation-duration: 4s;"></h6>
-                </a>
-            </div>
-
-            <!-- this "nav-toggle" hamburger menu is only visible on mobile -->
-            <span class="nav-toggle">
-                <span><a class="nav-item is-tab" href="/site/help.html">Help</a></span>
-                <span><a class="nav-item is-tab" href="/site/about.html">About</a></span>
-                <span><a class="nav-item is-tab" href="/">Home</a></span>
-	        </span>
-            <!-- end of toggle -->
-
-            <!-- this "nav-menu" is hidden on mobile -->
-            <div class="nav-right nav-menu">
-                <a class="nav-item is-tab" href="/site/help.html">
-                    Help
-                </a>
-                <a class="nav-item is-tab" href="/site/about.html">
-                    About
-                </a>
-                <a class="nav-item is-tab is-active" href="/">
-                    Home
-                </a>
-            </div>
-            <!-- end of nav -->
-        </div>
-    </nav>
-</div>
+    % include('base_menu.tpl')
 <!-- end navigation -->
 
 <!-- page header (title, etc) -->

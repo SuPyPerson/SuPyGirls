@@ -73,6 +73,21 @@ def gamer_save():
     return code_status
 
 
+@post('/game/__append_log')
+def gamer_append_log():
+    codename, code = request.json['codename'], request.json['code']
+    # codename, code = request.query['codename'], request.query['code']
+
+    project, *moduler = codename.split('/')
+    filename = "/".join(moduler)
+    code = dcd(str.encode(code)).decode("utf-8")
+    try:
+        code_status = DS.append_file(project, filename, code)
+    except Exception as err:
+        code_status = "Fail saving {}: {}".format(filename, err)
+    return code_status
+
+
 @get('/game/<mod>/<name>')
 @view("gamer")
 def gamer(mod, name):
@@ -86,7 +101,9 @@ def gamer(mod, name):
         code = ecd(bytearray(code.encode("UTF8"))).decode("utf-8")
 
     return dict(
-        pagetitle="SuPyGirls - {} - {}".format(mod.capitalize(), name.capitalize()), title=name,
+        pagetitle='SuPyGirls - {} - {}'.format(mod.capitalize() ,mod.capitalize(), name.capitalize()), title=name,
+        modText=mod.capitalize(),
+        nameText=name.capitalize(),
         image="supygirls_logo.png", mod=mod.replace(',', '_').lower(), code=code,
         brython_css=CSS, brython_js=JS,
         menu=[m.split(",") for m in MENU.split(":")])
