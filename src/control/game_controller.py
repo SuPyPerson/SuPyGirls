@@ -34,7 +34,7 @@ except:
     document["pydiv"].html = ""
     document["pydiv"] <= html.IMG(src="/images/site_em_construcao_.jpg")
 """
-MENU = "Home,/"
+MENU = "Help,/site/help.html:About,/site/about.html:Home,/"
 CSS = "solarized codemirror bulma style roboto".split()
 JS = "brython brython_stdlib codemirror show-hint python-hint active-line matchbrackets python".split()
 # JS = "brython brython_stdlib codemirror show-hint python-hint active-line matchbrackets python".split()
@@ -101,7 +101,7 @@ def gamer(mod, name):
         code = ecd(bytearray(code.encode("UTF8"))).decode("utf-8")
 
     return dict(
-        pagetitle='SuPyGirls - {} - {}'.format(mod.capitalize() ,mod.capitalize(), name.capitalize()), title=name,
+        pagetitle='SuPyGirls - {} - {}'.format(mod.capitalize(), name.capitalize()), title=name,
         modText=mod.capitalize(),
         nameText=name.capitalize(),
         image="supygirls_logo.png", mod=mod.replace(',', '_').lower(), code=code,

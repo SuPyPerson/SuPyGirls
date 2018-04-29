@@ -37,7 +37,7 @@ EMENU = [["Run", "_run"], ["Save", "_save"]]
 class Main:
     def __init__(self, br):
         self.doc, self.ht, self.alert, self.storage = br.document, br.html, br.alert, br.storage
-        self.ajax, self.timer = br.ajax, br.timer
+        self.ajax, self.timer, self.window = br.ajax, br.timer, br.window
         self.codename = codename = '{}.main.py'.format(br.codename)
         self.gui = GUI(code=br.code, codename=codename, br=br)
         self.dialog = None
@@ -51,7 +51,7 @@ class Main:
         self.start(EMENU)
         self.dialog = self.gui.edit()
 
-    def _create(self):
+    def __create(self):
         def change_color():
             self.doc["nav_saver"].style.transition = "opacity 0s"
             self.doc["nav_saver"].style.opacity = 1
@@ -83,124 +83,62 @@ class Main:
         req.set_header('content-type', 'application/json')  # x-www-form-urlencoded')
         req.send(jsrc)
 
-    def _create_log(self, error, log ="__log__.py"):
-        def change_color():
-            self.doc["nav_saver"].style.transition = "opacity 0s"
-            self.doc["nav_saver"].style.opacity = 1
-            self.doc["nav_saver"].html = ""
+    def _create(self):
+        codename = self.codename.split(".")
+        codename = "/".join(codename[1:-1])+".{}".format(codename[-1])
+        self.__save(codename, '', request_path='__create', action_name='Creating')
 
-        def display(msg):
-            self.timer.set_timeout(change_color, 15000)
-            self.doc["nav_saver"].style.transition = "opacity 15s"
-            # self.doc["nav_saver"].style.opacity = 1
-            self.doc["nav_saver"].html = msg
-            self.doc["nav_saver"].style.opacity = 0
-
-        def on_complete(request):
-            if request.status == 200 or request.status == 0:
-                display(request.text)
-            else:
-                display("error " + request.text)
+    def _create_log(self, log="__log__.py"):
         codename = self.codename.split(".")
         codename = "/".join(codename[1:-2] + [log])
-        code = ecd(bytearray(error.encode("UTF8"))).decode("utf-8")
-        # code = ecd(bytearray(HTMLParser().unescape(self.gui.code).encode("UTF8"))).decode("utf-8")
-        jsrc = json.dumps({'codename': codename, 'code': code})
-        # print(SAVE, jsrc)
-        req = self.ajax.ajax()
-        req.bind('complete', on_complete)
-        req.set_timeout('20000', lambda *_: display("NOT SAVED: TIMEOUT"))
-        req.open('POST', "/game/__create", True)
-        req.set_header('content-type', 'application/json')  # x-www-form-urlencoded')
-        req.send(jsrc)
+        self.__save(codename, '', request_path='__create', action_name='Creating Log')
 
-    def __append_log(self, error, log ="__log__.py"):
-        def on_complete(request):
-            if request.status == 200 or request.status == 0:
-                self.doc["nav_saver"].html = request.text
-            else:
-                self.doc["nav_saver"].html = "error " + request.text
-
+    def __append_log(self, error, log="__log__.py"):
         codename = self.codename.split(".")
         codename = "/".join(codename[1:-2]+[log])
-        code = ecd(bytearray(error.encode("UTF8"))).decode("utf-8")
-        # code = ecd(bytearray(HTMLParser().unescape(self.gui.code).encode("UTF8"))).decode("utf-8")
-        jsrc = json.dumps({'codename': codename, 'code': code})
-        # print(SAVE, jsrc)
-        req = self.ajax.ajax()
-        req.bind('complete', on_complete)
-        req.open('POST', "/game/__append_log", True)
-        req.set_header('content-type', 'application/json')  # x-www-form-urlencoded')
-        req.send(jsrc)
+        self.__save(codename, error, self._create_log,
+                    request_path="__append_log", action_name="Logging")
 
-
-        """
-        self.doc["nav_saver"].html = "Saving.. "+codename
-        req = self.ajax.ajax()
-        req.bind('complete', on_complete)
-        # send a POST request to the url
-        req.open('POST', "/game/__append", True)
-        req.set_header('content-type', 'application/x-www-form-urlencoded')
-        # send data as a dictionary
-        code = ecd(bytearray(error.encode("UTF8"))).decode("utf-8")
-        req.send({'codename': codename, 'code': code})
-        """
-
-    def __save(self):
-        def on_complete(request):
-            if request.status == 200 or request.status == 0:
-                self.doc["nav_saver"].html = request.text
-            else:
-                self.doc["nav_saver"].html = "error " + request.text
-
-        codename = self.codename.split(".")
-        codename = "/".join(codename[1:-1]) + ".{}".format(codename[-1])
-        self.doc["nav_saver"].html = "Saving.. "+codename
-        req = self.ajax.ajax()
-        req.bind('complete', on_complete)
-        # send a POST request to the url
-        req.open('POST', "/game/__save", True)
-        req.set_header('content-type', 'application/x-www-form-urlencoded')
-        # send data as a dictionary
-        code = ecd(bytearray(self.gui.code.encode("UTF8"))).decode("utf-8")
-        req.send({'codename': codename, 'code': code})
-
-    def _save(self):
+    def __save(self, codename, contents, creator=lambda *_: None, request_path="__save",
+               action_name="Saving"):
         def change_color():
             self.doc["nav_saver"].style.transition = "opacity 0s"
             self.doc["nav_saver"].style.opacity = 1
             self.doc["nav_saver"].html = ""
 
         def display(msg):
-            self.timer.set_timeout(change_color, 15000)
-            self.doc["nav_saver"].style.transition = "opacity 15s"
+            self.timer.set_timeout(change_color, 55000)
+            self.doc["nav_saver"].style.transition = "opacity 55s"
             # self.doc["nav_saver"].style.opacity = 1
             self.doc["nav_saver"].html = msg
             self.doc["nav_saver"].style.opacity = 0
 
-        def on_complete(request, slf=self):
+        def on_complete(request):
             if request.status == 200 or request.status == 0:
                 if "404" in request.text:
-                    self.timer.set_timeout(slf._create, 1000)
+                    self.timer.set_timeout(creator, 1000)
                     display("Attempting to create..")
                 else:
                     display(request.text)
             else:
                 display("error " + request.text)
 
-        codename = self.codename.split(".")
-        codename = "/".join(codename[1:-1])+".{}".format(codename[-1])
-        display("Saving.. "+codename)
-        code = ecd(bytearray(self.gui.code.encode("UTF8"))).decode("utf-8")
+        display("{}.. {}".format(action_name, codename))
+        code = ecd(bytearray(contents.encode("UTF8"))).decode("utf-8")
         # code = ecd(bytearray(HTMLParser().unescape(self.gui.code).encode("UTF8"))).decode("utf-8")
         jsrc = json.dumps({'codename': codename, 'code': code})
         # print(SAVE, jsrc)
         req = self.ajax.ajax()
         req.bind('complete', on_complete)
         req.set_timeout('20000', lambda *_: display("NOT SAVED: TIMEOUT"))
-        req.open('POST', "/game/__save", True)
+        req.open('POST', "/game/{}".format(request_path), True)
         req.set_header('content-type', 'application/json')  # x-www-form-urlencoded')
         req.send(jsrc)
+
+    def _save(self):
+        codename = self.codename.split(".")
+        codename = "/".join(codename[1:-1])+".{}".format(codename[-1])
+        self.__save(codename, self.gui.code, self._create)
 
     def _open(self):
         ...
@@ -213,7 +151,11 @@ class Main:
         # self.gui.executa_acao(self.dialog, lambda *_: self.start())
 
     def error(self, error):
-        self.__append_log(error)
+        date = self.window.Date().replace(
+            ' GMT', '.{} GMt'.format(self.window.Date.new().getMilliseconds()))
+        self.__append_log(
+            "\n{{'date': '{} -X- SuPyGirls -X-',\n'error': '''{}'''}},".format(
+                date, error))
 
     def start(self, navigate=MENU):
         ht = self.ht
@@ -230,6 +172,7 @@ class Main:
 
         def do_menu(menu):
             menu.html = ""
+            menu <= ht.A('', Class="navbar-item is-tab", href='#')
             menus = [(ht.A(name, Class="navbar-item is-tab"), ev) for name, ev in navigate]
             [menu <= item for item, ev in menus]
             [item.bind("click", self.menu[ev]) for item, ev in menus]
