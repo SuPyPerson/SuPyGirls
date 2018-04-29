@@ -46,42 +46,11 @@ class Main:
                          _open=lambda *_: self._open(),
                          _run=lambda *_: self._run(),
                          )
+        self.window.__SUPERPYTHON__ = self
 
     def _edit(self):
         self.start(EMENU)
         self.dialog = self.gui.edit()
-
-    def __create(self):
-        def change_color():
-            self.doc["nav_saver"].style.transition = "opacity 0s"
-            self.doc["nav_saver"].style.opacity = 1
-            self.doc["nav_saver"].html = ""
-
-        def display(msg):
-            self.timer.set_timeout(change_color, 15000)
-            self.doc["nav_saver"].style.transition = "opacity 15s"
-            # self.doc["nav_saver"].style.opacity = 1
-            self.doc["nav_saver"].html = msg
-            self.doc["nav_saver"].style.opacity = 0
-
-        def on_complete(request):
-            if request.status == 200 or request.status == 0:
-                display(request.text)
-            else:
-                display("error " + request.text)
-        codename = self.codename.split(".")
-        codename = "/".join(codename[1:-1])+".{}".format(codename[-1])
-        display("Creating.. "+codename)
-        code = ecd(bytearray(self.gui.code.encode("UTF8"))).decode("utf-8")
-        # code = ecd(bytearray(HTMLParser().unescape(self.gui.code).encode("UTF8"))).decode("utf-8")
-        jsrc = json.dumps({'codename': codename, 'code': code})
-        # print(SAVE, jsrc)
-        req = self.ajax.ajax()
-        req.bind('complete', on_complete)
-        req.set_timeout('20000', lambda *_: display("NOT SAVED: TIMEOUT"))
-        req.open('POST', "/game/__create", True)
-        req.set_header('content-type', 'application/json')  # x-www-form-urlencoded')
-        req.send(jsrc)
 
     def _create(self):
         codename = self.codename.split(".")

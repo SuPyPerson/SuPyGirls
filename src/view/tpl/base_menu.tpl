@@ -21,7 +21,7 @@
 
   <div id="navbarExampleTransparentExample" class="navbar-menu">
     <div class="navbar-start">
-      <a class="navbar-item" href="/">
+      <a class="navbar-item" href="/supygirls">
         {{pagetitle}}
       </a>
     </div>
@@ -33,6 +33,9 @@
         </a>
         <a class="navbar-item is-tab" href="/site/about.html">
             About
+        </a>
+        <a class="navbar-item is-tab" href="/">
+            Home
         </a>
     </div>
     <!-- end of nav -->
