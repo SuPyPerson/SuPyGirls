@@ -57,16 +57,22 @@ class Main:
         codename = "/".join(codename[1:-1])+".{}".format(codename[-1])
         self.__save(codename, '', request_path='__create', action_name='Creating')
 
-    def _create_log(self, log="__log__.py"):
+    def _create_log(self, log="__log__.py", action_name='Creating Log'):
         codename = self.codename.split(".")
         codename = "/".join(codename[1:-2] + [log])
-        self.__save(codename, '', request_path='__create', action_name='Creating Log')
+        self.__save(codename, '', request_path='__create', action_name=action_name)
 
     def __append_log(self, error, log="__log__.py"):
         codename = self.codename.split(".")
         codename = "/".join(codename[1:-2]+[log])
         self.__save(codename, error, self._create_log,
                     request_path="__append_log", action_name="Logging")
+
+    def scorer(self, score, log="__score__.py"):
+        codename = self.codename.split(".")
+        codename = "/".join(codename[1:-2]+[log])
+        self.__save(codename, "{}".format(score), lambda: self._create_log(log="__score__.py",action_name=''),
+                    request_path="__append_log", action_name="")
 
     def __save(self, codename, contents, creator=lambda *_: None, request_path="__save",
                action_name="Saving"):
@@ -76,6 +82,7 @@ class Main:
             self.doc["nav_saver"].html = ""
 
         def display(msg):
+            #return if not action_name else None
             self.timer.set_timeout(change_color, 55000)
             self.doc["nav_saver"].style.transition = "opacity 55s"
             # self.doc["nav_saver"].style.opacity = 1
@@ -86,13 +93,13 @@ class Main:
             if request.status == 200 or request.status == 0:
                 if "404" in request.text:
                     self.timer.set_timeout(creator, 1000)
-                    display("Attempting to create..")
+                    display("Attempting to create..") if action_name else None
                 else:
-                    display(request.text)
+                    display(request.text) if action_name else None
             else:
                 display("error " + request.text)
 
-        display("{}.. {}".format(action_name, codename))
+        display("{}.. {}".format(action_name, codename)) if action_name else None
         code = ecd(bytearray(contents.encode("UTF8"))).decode("utf-8")
         # code = ecd(bytearray(HTMLParser().unescape(self.gui.code).encode("UTF8"))).decode("utf-8")
         jsrc = json.dumps({'codename': codename, 'code': code})
