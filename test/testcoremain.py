@@ -72,7 +72,11 @@ class SpyDBTest(unittest.TestCase):
         timer = MagicMock(name="timer")
         storage = MagicMock(name="storage")
         codename = "ada.ada"
-        code = """ZGF0YSB0byBiZSBlbmNvZGVk"""
+        code = "aMOhIHVtYSBtYcOnw6MgcXVlIMOpIGFxdWUgdm9jw6ogdsOq"  # """ZGF0YSB0byBiZSBlbmNvZGVk"""
+        ajaxer = ajax.ajax = MagicMock(name="ajax_ajax")
+        rq = ajax.ajax.return_value = MagicMock(name="ajax_ajax_ret")
+        opener = rq.open = MagicMock(name="ajax_ajax_open")
+        sender = rq.send = MagicMock(name="ajax_ajax_send")
 
 
     def setUp(self):
@@ -81,6 +85,10 @@ class SpyDBTest(unittest.TestCase):
         self.ds = Main._Main__save.display = MagicMock(name="display")
         self.mn = Main(SpyDBTest.MockBrython)
 
+    def tearDown(self):
+        self.mb.opener.reset_mock()
+        self.mb.sender.reset_mock()
+
     def test_default_page(self):
         """project and module must exist and module in session"""
         assert self.mn
@@ -88,20 +96,25 @@ class SpyDBTest(unittest.TestCase):
 
     def test_score(self):
         """should send score to github"""
-        self.mb.ajax.ajax = MagicMock(name="ajax_ajax")
-        self.mb.ajax.ajax.return_value = self.rq = MagicMock(name="ajax_ajax_ret")
-        self.rq.open = MagicMock(name="ajax_ajax_open")
-        self.rq.send = MagicMock(name="ajax_ajax_send")
         self.mn.scorer(dict(a=1, b=2))
         # self.ds.assert_any_call()
-        self.mb.ajax.ajax.assert_any_call()
-        self.rq.open.assert_called_once_with('POST', '/game/__append_log', True)
-        jsdata = '{"codename": "ada/__score__.py", "code": "eydiJzogMiwgJ2EnOiAxfQ==\\n"}'
-        self.rq.send.assert_any_call(ANY)
-        send, _ = self.rq.send.call_args_list[0]
+        self.mb.ajaxer.assert_any_call()
+        self.mb.opener.assert_called_once_with('POST', '/game/__append_log', True)
+        self.mb.sender.assert_any_call(ANY)
+        send, _ = self.mb.sender.call_args_list[0]
+        c1, c2 = "eydiJzogMiwgJ2EnOiAxfQ", "eydhJzogMSwgJ2InOiAyfQ"
         assert '"codename": "ada/__score__.py"' in send[0], "not in %s" % str(send[0])
-        assert '"code": "eydiJzogMiwgJ2EnOiAxfQ==\\n"' in send[0], "not in %s" % str(send[0])
-        pass
+        assert (c1 in send[0] or c2 in send[0]), "not in %s" % str(send[0])
+
+    def test_save(self):
+        """should send the dialog text value to github"""
+        code = "aMOhIHVtYSBtYcOnw6MgcXVlIMOpIGFxdWUgdm9jw6ogdsOq"
+        self.mn._save()
+        self.mb.opener.assert_called_once_with('POST', '/game/__save', True)
+        self.mb.sender.assert_any_call(ANY)
+        send, _ = self.mb.sender.call_args_list[0]
+        assert '"codename": "ada/main.py"' in send[0], "not in %s" % str(send[0])
+        assert '"code": "{}'.format(code) in send[0], "not in %s" % str(send[0])
 
 
 if __name__ == '__main__':
