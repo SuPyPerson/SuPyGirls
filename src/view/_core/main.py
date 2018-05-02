@@ -156,7 +156,7 @@ class Main:
             menu <= ht.A('About', Class="navbar-item is-tab", href='/site/about.html')
             menu <= ht.A('Home', Class="navbar-item is-tab", href='/')
             # menu <= do_ddmenu()
-
+        self.doc['nav_waiter'].html = ""
         do_menu(self.doc['right_menu'])
         do_menu(self.doc['burg_menu'])
 

@@ -80,7 +80,9 @@ class DataSource:
 
     def get_file_contents(self, project, packager, moduler="main.py"):
         self.repo = self.user.get_repo(project)
-        return self.repo.get_file_contents("{}/{}".format(packager, moduler))
+        path = "{}/{}" if packager else "{}{}"
+        print("get_file_contents ", project, path.format(packager, moduler))
+        return self.repo.get_file_contents(path.format(packager, moduler))
 
     def create_file(self, project, filename, decoded_content, comment=None):
         timestamp = 'Timestamp: {:%Y-%m-%d %H:%M:%S}'.format(datetime.datetime.now())

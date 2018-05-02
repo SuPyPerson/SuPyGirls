@@ -34,6 +34,11 @@
         <!--main.py-->
       </a>
       <a id="nav_saver"></a>
+      <div id="nav_waiter" class="spinner">
+          <div class="bounce1"></div>
+          <div class="bounce2"></div>
+          <div class="bounce3"></div>
+      </div>
     </div>
 
     <!-- this "nav-menu" is hidden on mobile -->
@@ -48,3 +53,4 @@
     <!-- end of nav -->
   </div>
 </nav>
+

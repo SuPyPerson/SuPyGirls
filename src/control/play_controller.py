@@ -17,7 +17,7 @@
 # Você deve ter recebido uma cópia da Licença Pública Geral GNU
 # junto com este programa, se não, veja em <http://www.gnu.org/licenses/>
 
-"""Controller handles routes starting with /code.
+"""Controller handles routes starting with /play.
 .. moduleauthor:: Carlo Oliveira <carlo@nce.ufrj.br>
 """
 from bottle import Bottle, get, view, post, request
@@ -25,15 +25,6 @@ from model.datasource import DS
 from base64 import decodebytes as dcd
 from base64 import encodebytes as ecd
 __author__ = 'carlo'
-DEFAULT_CODE = """# default
-try:
-    import superpython.%s.main as main
-    main.main()
-except:
-    from browser import document, html
-    document["pydiv"].html = ""
-    document["pydiv"] <= html.IMG(src="/images/site_em_construcao_.jpg")
-"""
 MENU = "Help,/site/help.html:About,/site/about.html:Home,/"
 CSS = "solarized codemirror bulma style roboto".split()
 JS = "brython brython_stdlib codemirror show-hint python-hint active-line matchbrackets python".split()
@@ -43,7 +34,7 @@ appbottle = Bottle()  # create another WSGI application for this controller and 
 # debug(True) #  uncomment for verbose error logging. Do not use in production
 
 
-@post('/game/__create')
+@post('/play/__create')
 def gamer_create():
     codename, code = request.json['codename'], request.json['code']
     # codename, code = request.query['codename'], request.query['code']
@@ -58,7 +49,7 @@ def gamer_create():
     return code_status
 
 
-@post('/game/__save')
+@post('/play/__save')
 def gamer_save():
     codename, code = request.json['codename'], request.json['code']
     # codename, code = request.query['codename'], request.query['code']
@@ -72,41 +63,8 @@ def gamer_save():
         code_status = "Fail saving {}: {}".format(filename, err)
     return code_status
 
-def _gamer_claim(project, module=""):
-    form_values = "author_nick author_name author_email author_org author_site author_public".split()
-    code = {key: request.params[key] for key in form_values}
-    #code = request.POST.getall()
 
-    #filename = "/".join([project,'__author__.py'])
-    spy = str({project: code}).replace("'",'"') + ",\n"
-    coded = str(code).replace("'",'"')
-    author_index = project if module else '_spy'
-    # coded = dcd(str.encode(str(code))).decode("utf-8")
-    return
-    try:
-        filename = '__author__.py'
-        code_status = DS.append_file(author_index, filename, spy)
-        filename = '{}/__author__.py'.format(module) if module else '__author__.py'
-        code_status = DS.create_file(project, filename, code)
-        print(code, filename)
-    except Exception as err:
-        code_status = "Fail creating {}: {}".format(filename, err)
-    return dict(
-        pagetitle="SuPyGirls - {}".format(name), title=name, action="game/{}/".format(name),
-        image="garden.jpg", cenas=GIRLS)
-
-@post('/game/__claim/<project>/')
-@view("supygirls")
-def gamer_claim(project):
-    _gamer_claim(project)
-
-@post('/game/__claim/<project>/<module>')
-@view("supygirls")
-def gamer_claim(project, module):
-    _gamer_claim(project, module)
-
-
-@post('/game/__append_log')
+@post('/play/__append_log')
 def gamer_append_log():
     codename, code = request.json['codename'], request.json['code']
     # codename, code = request.query['codename'], request.query['code']
@@ -121,7 +79,7 @@ def gamer_append_log():
     return code_status
 
 
-@get('/game/<mod>/<name>')
+@get('/play/<mod>/<name>')
 @view("gamer")
 def gamer(mod, name):
     modl, namel = mod.lower(), name.lower()

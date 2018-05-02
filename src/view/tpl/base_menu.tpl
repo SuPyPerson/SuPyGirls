@@ -21,7 +21,7 @@
 
   <div id="navbarExampleTransparentExample" class="navbar-menu">
     <div class="navbar-start">
-      <a class="navbar-item" href="/supygirls">
+      <a class="navbar-item" href="/supygirls/project">
         {{pagetitle}}
       </a>
     </div>
