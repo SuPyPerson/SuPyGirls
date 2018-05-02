@@ -75,7 +75,7 @@
         <div class="field">
           <div class="control">
             <label class="radio label">
-              <input type="radio" name="author_public">
+              <input type="radio" name="author_public" checked>
               Pública
               </input>
             </label>

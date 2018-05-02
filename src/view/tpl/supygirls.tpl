@@ -19,7 +19,7 @@
             var currentClass = MODAL.className;
             if (currentClass == "modal") { // Check the current class name
                 MODAL.className = "modal is-active";   // Set other class name
-                FORM.action = "/game/__claim/" + project + "/"
+                FORM.action = "/supygirls/__claim/{{claim}}" + project + "/"
             } else {
                 MODAL.className = "modal";  // Otherwise, use `second_name`
             }
@@ -75,7 +75,7 @@
                     <div class="card-content-header">
                         <!--h6 class="title is-6"><a href="/{{action.lower()+scene.lower()}}">{{scene}}</a></h6-->
                         <h5 class="title is-5"><a onclick="claim_project('{{scene.lower()}}');" >{{scene}}</a></h5>
-                        <a href="{{action.lower()+scene.lower()}}">{{author}}</a>
+                        <a class="subtitle is-6" href="{{action.lower()+scene.lower()}}">{{author}}</a>
                     </div>
                 </div>
             </div>

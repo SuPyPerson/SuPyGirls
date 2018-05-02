@@ -18,14 +18,19 @@
 # junto com este programa, se não, veja em <http://www.gnu.org/licenses/>
 
 """Controller handles routes starting with /supygirls.
-.. moduleauthor:: Carlo Oliveira <carlo@nce.ufrj.br>
+.. modulerauthor:: Carlo Oliveira <carlo@nce.ufrj.br>
 """
-from bottle import Bottle, get, view, post, request, default_app
+from bottle import get, view, post, request, default_app
 from model.datasource import DS
 import json
+from base64 import encodebytes as ecd
+from base64 import decodebytes as dcd
 
 __author__ = 'carlo'
 
+MENU = "Help,/site/help.html:About,/site/about.html:Home,/"
+CSS = "solarized codemirror bulma style roboto".split()
+JS = "brython brython_stdlib codemirror show-hint python-hint active-line matchbrackets python".split()
 
 GIRLS = ['Roxanne', 'Stacy', 'Libby', 'Sara', 'Kellee', 'Courtney', 'Angie', 'Parisa', 'Natalia', 'Kathryn',
          'Callie', 'Lisa', 'Ruzwana', 'Naomi', 'Tracy', 'Morgan', 'Rachel', 'Soraya', 'Amanda', 'Alexa', 'Julia',
@@ -38,44 +43,42 @@ CGIRLS = ['Ada', 'Henrietta', 'Grete', 'Gertrude', 'Betty', 'Hedy', 'Kathleen', 
           'Mary Coombs', 'Ellen', 'Jeri', 'Lucy', 'Audrey', 'Maria', 'Melanie', 'Joanna', 'Megan', 'Sarah', 'Kesha']
 
 
-
 @get('/supygirls/project')
 @view("supygirls")
 def project():
     modl, namel = "_spy", "__author__.py"
     try:
-        code_file = DS.get_file_contents(modl,'', namel)
-        print('/supygirls/project ', code_file.content+"}")
-        code = json.loads(code_file.content+"}")
-        cenas = [(girl, code[girl]['author_nick'] if girl in code else 'livre') for girl in CGIRLS]
-        # code = dcd(str.encode(code_file.content)).decode("utf-8")
+        code_file = DS.get_file_contents(modl, '', namel)
+        code = "{" + dcd(str.encode(code_file.content)).decode("utf-8")[1:-2]+"}"
+        print('/supygirls/project ', code)
+        code = json.loads(code)
+        cenas = [(girl, code[girl.lower()]['author_nick'] if girl.lower() in code else 'livre') for girl in CGIRLS]
     except Exception as err:
         cenas = [(girl, 'livre') for girl in CGIRLS]
         print('/supygirls/project ', err)
-    return dict(pagetitle="SuPyGirls", action="/supygirls/module/", title="SUPYGIRLS", image="miro.jpg", cenas=cenas)
+    return dict(pagetitle="SuPyGirls", action="/supygirls/moduler/", claim="",
+                title="SUPYGIRLS", image="miro.jpg", cenas=cenas)
 
 
-@get('/supygirls/module/<name>')
+@get('/supygirls/moduler/<name>')
 @view("supygirls")
-def moduler(name):
-    cenas = [(girl, 'livre') for girl in GIRLS]
-    return dict(
-        pagetitle="SuPyGirls - {}".format(name), title=name, action="game/{}/".format(name),
-        image="garden.jpg", cenas=cenas)
+def modulerr(name):
+    modl, namel = name, "__author__.py"
     try:
-        code_file = DS.get_file_contents(modl,'', namel)
-        print('/supygirls/project ', code_file.content+"}")
-        code = json.loads(code_file.content+"}")
-        cenas = [(girl, code[girl]['author_nick'] if girl in code else 'livre') for girl in CGIRLS]
-        # code = dcd(str.encode(code_file.content)).decode("utf-8")
+        code_file = DS.get_file_contents(modl, '', namel)
+        code = "{" + dcd(str.encode(code_file.content)).decode("utf-8")[1:-2]+"}"
+        print('/supygirls/moduler ', name, code)
+        code = json.loads(code)
+        cenas = [(girl, code[girl.lower()]['author_nick'] if girl.lower() in code else 'livre') for girl in GIRLS]
     except Exception as err:
-        cenas = [(girl, 'livre') for girl in CGIRLS]
-        print('/supygirls/project ', err)
-    return dict(pagetitle="SuPyGirls", action="/supygirls/module/", title="SUPYGIRLS", image="miro.jpg", cenas=cenas)
+        cenas = [(girl, 'livre') for girl in GIRLS]
+        print('/supygirls/moduler ', err)
+    return dict(
+        pagetitle="SuPyGirls - {}".format(name), title=name, action="/supygirls/gamer/{}/".format(name),
+        claim="{}/".format(name), image="garden.jpg", cenas=cenas)
 
 
-
-@get('/supygirls/module/game/<mod>/<name>')
+@get('/supygirls/gamer/<mod>/<name>')
 @view("gamer")
 def gamer(mod, name):
     modl, namel = mod.lower(), name.lower()
@@ -83,7 +86,7 @@ def gamer(mod, name):
         code_file = DS.get_file_contents(modl, namel)
         code = code_file.content
         # code = dcd(str.encode(code_file.content)).decode("utf-8")
-    except Exception as err:
+    except Exception:
         code = "# " + ".".join([modl, namel, "main.py"])
         code = ecd(bytearray(code.encode("UTF8"))).decode("utf-8")
 
@@ -95,7 +98,47 @@ def gamer(mod, name):
         brython_css=CSS, brython_js=JS,
         menu=[m.split(",") for m in MENU.split(":")])
 
+
+def _gamer_claim(projecter, moduler=""):
+    modl, namel = projecter if moduler else '_spy', "__author__.py"
+    form_values = "author_nick author_name author_email author_org author_site author_public".split()
+    code = {key: request.params[key] for key in form_values}
+    key = moduler if moduler else projecter
+    spy = str({key: code}).replace("'", '"')[1:-1] + ",\n"
+    # coded = str(code).replace("'", '"')
+    author_index = projecter if moduler else '_spy'
+    action = "/supygirls/gamer/{}/".format(projecter)
+    claim = "{}/".format(projecter) if moduler else ""
+    filename = '__author__.py'
+    try:
+        print(author_index, projecter, filename, spy)
+        code_status = DS.append_file(author_index, filename, spy)
+        filename = '{}/__author__.py'.format(moduler) if moduler else '__author__.py'
+        code_status += DS.create_file(projecter, filename, "{\n"+spy)
+        print(code, filename)
+        code_file = DS.get_file_contents(modl, '', namel)
+        code = "{" + dcd(str.encode(code_file.content)).decode("utf-8")[1:-2]+"}"
+        code = json.loads(code)
+        cenas = [(girl, code[girl.lower()]['author_nick'] if girl.lower() in code else 'livre') for girl in GIRLS]
+    except Exception as err:
+        code_status = "Fail creating {}: {}".format(filename, err)
+        cenas = [(girl, 'livre') for girl in GIRLS]
+    return dict(
+        pagetitle="SuPyGirls - {}".format(projecter), title=projecter, action=action, claim=claim,
+        image="garden.jpg", cenas=cenas, status=code_status)
+
+
+@post('/supygirls/__claim/<projecter>/')
+@view("supygirls")
+def gamer_claim(projecter):
+    return _gamer_claim(projecter)
+
+
+@post('/supygirls/__claim/<projecter>/<moduler>/')
+@view("supygirls")
+def gamer_moduler_claim(projecter, moduler):
+    return _gamer_claim(projecter, moduler)
+
+
 appbottle = default_app()
 _ = appbottle
-
-

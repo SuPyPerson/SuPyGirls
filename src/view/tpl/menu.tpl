@@ -21,13 +21,13 @@
 
   <div id="navbarExampleTransparentExample" class="navbar-menu">
     <div class="navbar-start">
-      <a class="navbar-item" href="/supygirls">
+      <a class="navbar-item" href="/supygirls/project">
         SuPyGirls
       </a>
-      <a class="navbar-item" href="/supyg/{{mod}}">
+      <a class="navbar-item" href="/supygirls/moduler/{{mod}}">
         {{modText}}
       </a>
-      <a class="navbar-item" href="/game/{{mod}}/{{nameText.lower()}}">
+      <a class="navbar-item" href="/supygirls/gamer/{{mod}}/{{nameText.lower()}}">
         {{nameText}}
       </a>
       <a class="navbar-item" href="/">

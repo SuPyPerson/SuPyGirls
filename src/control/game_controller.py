@@ -82,6 +82,9 @@ def _gamer_claim(project, module=""):
     coded = str(code).replace("'",'"')
     author_index = project if module else '_spy'
     # coded = dcd(str.encode(str(code))).decode("utf-8")
+    return dict(
+        pagetitle="SuPyGirls - {}".format(name), title=name, action="game/{}/".format(name),
+        image="garden.jpg", cenas=GIRLS)
     return
     try:
         filename = '__author__.py'
@@ -91,19 +94,16 @@ def _gamer_claim(project, module=""):
         print(code, filename)
     except Exception as err:
         code_status = "Fail creating {}: {}".format(filename, err)
-    return dict(
-        pagetitle="SuPyGirls - {}".format(name), title=name, action="game/{}/".format(name),
-        image="garden.jpg", cenas=GIRLS)
 
 @post('/game/__claim/<project>/')
 @view("supygirls")
 def gamer_claim(project):
-    _gamer_claim(project)
+    return _gamer_claim(project)
 
 @post('/game/__claim/<project>/<module>')
 @view("supygirls")
-def gamer_claim(project, module):
-    _gamer_claim(project, module)
+def gamer_module_claim(project, module):
+    return _gamer_claim(project, module)
 
 
 @post('/game/__append_log')
