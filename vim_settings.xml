@@ -3,16 +3,28 @@
     <state version="4" enabled="true" />
     <globalmarks />
     <filemarks>
+      <file name="$USER_HOME$/PycharmProjects/SuPyGirls/docs/source/Kwarwp/Apresentação.rst" timestamp="1525655598852">
+        <mark key="[" line="27" column="0" />
+        <mark key="]" line="27" column="0" />
+        <mark key="." line="27" column="0" />
+      </file>
       <file name="/Dummy.txt" timestamp="1525635223351">
         <mark key="[" line="0" column="0" />
       </file>
-      <file name="$USER_HOME$/PycharmProjects/SuPyGirls/docs/source/Kwarwp/index.rst" timestamp="1525653719641" />
+      <file name="$USER_HOME$/PycharmProjects/SuPyGirls/docs/source/Kwarwp/index.rst" timestamp="1525655470835" />
       <file name="/Python Console" timestamp="1525653771682">
         <mark key="[" line="0" column="0" />
       </file>
     </filemarks>
     <jumps />
-    <registers />
+    <registers>
+      <register name="&quot;" type="4">
+        <text>o</text>
+      </register>
+      <register name="-" type="4">
+        <text>o</text>
+      </register>
+    </registers>
     <search>
       <last-dir>0</last-dir>
       <show-last>false</show-last>
