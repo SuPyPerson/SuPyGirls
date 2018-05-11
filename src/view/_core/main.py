@@ -38,15 +38,15 @@ class Main:
     def __init__(self, br):
         self.doc, self.ht, self.alert, self.storage = br.document, br.html, br.alert, br.storage
         self.ajax, self.timer, self.window = br.ajax, br.timer, br.window
-        self.codename = codename = '{}.main.py'.format(br.codename)
-        self.gui = GUI(code=br.code, codename=codename, br=br)
-        self.dialog = None
+        self.codename = '{}.main.py'.format(br.codename)
+        self.code, self.br = br.code, br
         self.menu = dict(_edit=lambda *_: self._edit(),
                          _save=lambda *_: self._save(),
                          _open=lambda *_: self._open(),
                          _run=lambda *_: self._run(),
                          )
         self.window.__SUPERPYTHON__ = self
+        self.dialog = self.gui = None
 
     def _edit(self):
         self.start(EMENU)
@@ -71,7 +71,7 @@ class Main:
     def scorer(self, score, log="__score__.py"):
         codename = self.codename.split(".")
         codename = "/".join(codename[1:-2]+[log])
-        self.__save(codename, "{}".format(score), lambda: self._create_log(log="__score__.py",action_name=''),
+        self.__save(codename, "{},\n".format(score), lambda: self._create_log(log="__score__.py",action_name=''),
                     request_path="__append_log", action_name="")
 
     def __save(self, codename, contents, creator=lambda *_: None, request_path="__save",
@@ -82,7 +82,6 @@ class Main:
             self.doc["nav_saver"].html = ""
 
         def display(msg):
-            #return if not action_name else None
             self.timer.set_timeout(change_color, 55000)
             self.doc["nav_saver"].style.transition = "opacity 55s"
             # self.doc["nav_saver"].style.opacity = 1
@@ -126,15 +125,22 @@ class Main:
                       )
         # self.gui.executa_acao(self.dialog, lambda *_: self.start())
 
+    def play(self):
+        glob = dict(globals())
+        glob.update(__name__="__main__")
+        exec(self.code, glob)
+
     def error(self, error):
         date = self.window.Date().replace(
             ' GMT', '.{} GMt'.format(self.window.Date.new().getMilliseconds()))
         self.__append_log(
             "\n{{'date': '{} -X- SuPyGirls -X-',\n'error': '''{}'''}},".format(
                 date, error))
+        return error
 
     def start(self, navigate=MENU):
         ht = self.ht
+        self.gui = GUI(code=self.code, codename=self.codename, br=self.br)
 
         def do_ddmenu():
             ddmenu = ht.DIV(Class="navbar-item has-dropdown is-hoverable")

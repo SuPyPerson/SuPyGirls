@@ -262,9 +262,9 @@ class GUI(_GUI):
             sys.stdout = sys_out
             sys.stderr = sys_err
             err_trace = self.value.value
-            error(str(err_trace))
+            annotated_error = error(str(err_trace))
             self.dialoger = self.dialog(self.code, act=self.executa_acao)  # +str(self.value.value))
-            self.dialoger.set_err(str(err_trace))
+            self.dialoger.set_err(annotated_error)
             # print(self.code)
             # self.dialoger = None
             return False

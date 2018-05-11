@@ -92,7 +92,7 @@ def gamer(mod, name):
         code = ecd(bytearray(code.encode("UTF8"))).decode("utf-8")
 
     return dict(
-        pagetitle='SuPyGirls - {} - {}'.format(mod.capitalize(), name.capitalize()), title=name,
+        pagetitle='PLAY - SuPyGirls - {} - {}'.format(mod.capitalize(), name.capitalize()), title=name,
         modText=mod.capitalize(),
         nameText=name.capitalize(),
         image="supygirls_logo.png", mod=mod.replace(',', '_').lower(), code=code,

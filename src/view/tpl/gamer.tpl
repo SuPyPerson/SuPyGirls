@@ -38,7 +38,7 @@
                 codename = "{{ pagetitle.replace(" - ", ".").lower() }}"
                 code = """{{code}}"""
             main = Main(br=MockBrython)
-            main.start()
+            main.{{"play()" if pagetitle.startswith("PLAY - ") else "start()"}}
 
     </script>
 
