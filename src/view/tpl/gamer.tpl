@@ -73,7 +73,7 @@
 <body onLoad="brython({debug:1, cache:'browser', static_stdlib_import:true,
  pythonpath :['__code','__code/{{mod}}']})">
 <!-- navigation -->
-    % include('menu.tpl')
+    % '' if pagetitle.startswith("PLAY - ") else include('menu.tpl')
 <!-- end navigation -->
 <!-- page content -->
 <div class="main-content">

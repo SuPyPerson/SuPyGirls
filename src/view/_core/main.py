@@ -26,6 +26,7 @@ import json
 from base64 import encodebytes as ecd
 
 from .supygirls_factory import GUI
+from base64 import decodebytes as dcd
 
 CENAS = ["{}".format(chr(a)) for a in range(ord('a'), ord('z') + 1) if chr(a) not in 'aeiouy']
 RMENU = "Edit,_edit"
@@ -71,7 +72,9 @@ class Main:
     def scorer(self, score, log="__score__.py"):
         codename = self.codename.split(".")
         codename = "/".join(codename[1:-2]+[log])
-        self.__save(codename, "{},\n".format(score), lambda: self._create_log(log="__score__.py",action_name=''),
+        tabs = "  " * score["_level"] if "_level" else ""
+        self.__save(codename, "{}{},\n".format(tabs, score),
+                    lambda: self._create_log(log="__score__.py", action_name=''),
                     request_path="__append_log", action_name="")
 
     def __save(self, codename, contents, creator=lambda *_: None, request_path="__save",
@@ -128,7 +131,8 @@ class Main:
     def play(self):
         glob = dict(globals())
         glob.update(__name__="__main__")
-        exec(self.code, glob)
+        code = dcd(str.encode(self.code)).decode("utf-8")
+        exec(code, glob)
 
     def error(self, error):
         date = self.window.Date().replace(
