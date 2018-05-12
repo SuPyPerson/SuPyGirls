@@ -201,11 +201,12 @@ class _GUI:
 
     def dialog(self, text=None, act=lambda *_: False):
         text = text if text else self.code
+        # print("    def dialog(self, text=None, act=lambda *_: False):\n", u"{}".format(text))
         if self.dialogue:
             self.dialogue.remove()
         self.dialogue = Dialog(self, text=text, act=act)
-        self.dialogue.set_text(text)
-        self.dialogue.show()
+        # self.dialogue.set_text(text)
+        # self.dialogue.show()
         return self.dialogue
 
     def continua(self):
@@ -218,7 +219,15 @@ class GUI(_GUI):
 
     def __init__(self, width=CANVASW, height=CANVASH, code="", codename="", **kwargs):
         _GUI.__init__(self, width=width, height=height, **kwargs)
-        self.code, self.codename = dcd(str.encode(code)).decode("utf-8"), codename
+        self.code, self.codename = dcd(str.encode(code)), codename
+        # -XXX-  gambiarra para corrigir o brython
+        codelist = list(self.code)
+        codeclean = bytes(
+            c for b, c, d in zip(codelist+[0, 0], [0]+codelist+[0], [0, 0]+codelist)
+            if (c, d) != (194, 131) != (b, c))
+        self.code = codeclean[1:-1].decode('utf-8')
+        # -XXX- fim da gambiarra
+        # self.code, self.codename = dcd(str.encode(code)).decode("utf-8"), codename
         self.error = self.extra = self.dialoger = None
 
     def _first_response(self, dialog, action, extra, error):

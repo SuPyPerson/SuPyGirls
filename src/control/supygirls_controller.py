@@ -50,12 +50,12 @@ def project():
     try:
         code_file = DS.get_file_contents(modl, '', namel)
         code = "{" + dcd(str.encode(code_file.content)).decode("utf-8")[1:-2]+"}"
-        print('/supygirls/project ', code)
+        # print('/supygirls/project ', code)
         code = json.loads(code)
         cenas = [(girl, code[girl.lower()]['author_nick'] if girl.lower() in code else 'livre') for girl in CGIRLS]
     except Exception as err:
         cenas = [(girl, 'livre') for girl in CGIRLS]
-        print('/supygirls/project ', err)
+        # print('/supygirls/project ', err)
     return dict(pagetitle="SuPyGirls", action="/supygirls/moduler/", claim="",
                 title="SUPYGIRLS", image="miro.jpg", cenas=cenas)
 
@@ -67,12 +67,10 @@ def modulerr(name):
     try:
         code_file = DS.get_file_contents(modl, '', namel)
         code = "{" + dcd(str.encode(code_file.content)).decode("utf-8")[1:-2]+"}"
-        print('/supygirls/moduler ', name, code)
         code = json.loads(code)
         cenas = [(girl, code[girl.lower()]['author_nick'] if girl.lower() in code else 'livre') for girl in GIRLS]
     except Exception as err:
         cenas = [(girl, 'livre') for girl in GIRLS]
-        print('/supygirls/moduler ', err)
     return dict(
         pagetitle="SuPyGirls - {}".format(name), title=name, action="/supygirls/gamer/{}/".format(name),
         claim="{}/".format(name), image="garden.jpg", cenas=cenas)

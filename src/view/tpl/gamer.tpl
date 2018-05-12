@@ -4,6 +4,7 @@
     <title>{{pagetitle}}</title>
     <meta http-equiv="content-type" content="application/xml;charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
     <link rel="shortcut icon" href="/image/favicon.ico" type="image/x-icon"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- stylesheets -->

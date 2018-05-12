@@ -131,7 +131,14 @@ class Main:
     def play(self):
         glob = dict(globals())
         glob.update(__name__="__main__")
-        code = dcd(str.encode(self.code)).decode("utf-8")
+        code = dcd(str.encode(self.code))
+        # -XXX-  gambiarra para corrigir o brython
+        codelist = list(code)
+        codeclean = bytes(
+            c for b, c, d in zip(codelist+[0, 0], [0]+codelist+[0], [0, 0]+codelist)
+            if (c, d) != (194, 131) != (b, c))
+        code = codeclean[1:-1].decode('utf-8')
+        # -XXX- fim da gambiarra
         exec(code, glob)
 
     def error(self, error):
