@@ -41,19 +41,29 @@ class Main:
         self.ajax, self.timer, self.window = br.ajax, br.timer, br.window
         self.codename = '{}.main.py'.format(br.codename)
         self.code, self.br = br.code, br
-        self.menu = dict(_edit=lambda *_: self._edit(),
-                         _save=lambda *_: self._save(),
-                         _open=lambda *_: self._open(),
-                         _run=lambda *_: self._run(),
+        # self.menu = dict(_edit=lambda *_: self._edit(),
+        #                  _save=lambda *_: self._save(),
+        #                  _open=lambda *_: self._open(),
+        #                  _run=lambda *_: self._run(),
+        #                  )
+        self.menu = dict(_edit=self._edit,
+                         _save=self._save,
+                         _open=self._open,
+                         _run=self._run,
                          )
         self.window.__SUPERPYTHON__ = self
         self.dialog = self.gui = None
+        self.doc["nav_saver"].style.opacity = 1
+        self.doc["nav_saver"].style.margin = "15px"
+        self.doc["nav_saver"].style.transition = "opacity 55s"
 
-    def _edit(self):
-        self.start(EMENU)
+    def _edit(self, *_):
+        self.doc['nav_waiter'].style.visibility = "visible"
         self.dialog = self.gui.edit()
+        self.dialog.show()
+        self.start(EMENU)
 
-    def _create(self):
+    def _create(self, *_):
         codename = self.codename.split(".")
         codename = "/".join(codename[1:-1])+".{}".format(codename[-1])
         self.__save(codename, '', request_path='__create', action_name='Creating')
@@ -80,16 +90,18 @@ class Main:
     def __save(self, codename, contents, creator=lambda *_: None, request_path="__save",
                action_name="Saving"):
         def change_color():
-            self.doc["nav_saver"].style.transition = "opacity 0s"
+            self.doc['nav_waiter'].style.visibility = "hidden"
+            self.doc["nav_saver"].style.transition = "opacity 45s"
             self.doc["nav_saver"].style.opacity = 1
             self.doc["nav_saver"].html = ""
 
-        def display(msg):
-            self.timer.set_timeout(change_color, 55000)
-            self.doc["nav_saver"].style.transition = "opacity 55s"
+        def display(msg, waiter="visible"):
+            self.doc['nav_waiter'].style.visibility = waiter
             # self.doc["nav_saver"].style.opacity = 1
-            self.doc["nav_saver"].html = msg
+            self.doc["nav_saver"].style.transition = "opacity 45s"
             self.doc["nav_saver"].style.opacity = 0
+            self.doc["nav_saver"].html = msg
+            self.timer.set_timeout(change_color, 25000)
 
         def on_complete(request):
             if request.status == 200 or request.status == 0:
@@ -97,7 +109,7 @@ class Main:
                     self.timer.set_timeout(creator, 1000)
                     display("Attempting to create..") if action_name else None
                 else:
-                    display(request.text) if action_name else None
+                    display(request.text,  waiter="hidden") if action_name else None
             else:
                 display("error " + request.text)
 
@@ -113,16 +125,17 @@ class Main:
         req.set_header('content-type', 'application/json')  # x-www-form-urlencoded')
         req.send(jsrc)
 
-    def _save(self):
+    def _save(self, *_):
         codename = self.codename.split(".")
         codename = "/".join(codename[1:-1])+".{}".format(codename[-1])
-        self.__save(codename, self.gui.code, self._create)
+        print(" self.gui.dialogue:", codename, self.gui.dialogue)
+        self.__save(codename, self.gui.get_code(), self._create)
 
-    def _open(self):
+    def _open(self, *_):
         ...
 
-    def _run(self):
-        dialog = self.gui.dialoger if self.gui.dialoger else self.dialog
+    def _run(self, *_):
+        dialog = self.gui.dialogue if self.gui.dialogue else self.dialog
         self.gui.error = self.error
         dialog.action(lambda *_: self.start()
                       )
@@ -173,7 +186,7 @@ class Main:
             menu <= ht.A('About', Class="navbar-item is-tab", href='/site/about.html')
             menu <= ht.A('Home', Class="navbar-item is-tab", href='/')
             # menu <= do_ddmenu()
-        self.doc['nav_waiter'].html = ""
+        self.doc['nav_waiter'].style.visibility = "hidden"
         do_menu(self.doc['right_menu'])
         do_menu(self.doc['burg_menu'])
 
