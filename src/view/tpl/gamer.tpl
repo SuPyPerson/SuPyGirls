@@ -79,7 +79,7 @@
             <!-- nav site title -->
             <div class="nav-left">
                 <a class="nav-item">
-                    <h3 class="title is-3" style="color: white;">{{pagetitle}}</h3>
+                    <h3 class="title is-5" style="color: white;">{{pagetitle}}</h3>
                 </a>
             </div>
             <div class="nav-middle">
@@ -92,6 +92,7 @@
 
             <!-- this "nav-toggle" hamburger menu is only visible on mobile -->
             <span id="burg_menu" class="nav-toggle">
+	                <span><a class="nav-item is-tab" href="#">|&nbsp;|</a></span>
                 % for item, name in menu:
 	                <span><a class="nav-item is-tab" href="{{item}}">{{name}}</a></span>
                 %end
@@ -117,22 +118,13 @@
         <!-- start of about -->
         <div class="columns is-multiline is-centered">
             <!-- start of about -->
-            <div class="column is-10">
+            <div class="column is-12">
                 <div class="card">
                     <!-- about content -->
-                    <div class="card-content">
-                        <div class="content">
-                            <div class="card-inner-wrapper">
-                                <!-- about text -->
-                                <div id="pydiv" class="card is-10by8" style="min-height:600px;">
-                                    <figure>
-                                        <img src="/image/{{image}}" width="1000px" alt="Image">
-                                    </figure>
-                                </div>
-                                <!-- end of about text -->
-
-                            </div>
-                        </div>
+                    <div id="pydiv" class="card is-12by8" style="min-height:600px;">
+                        <figure>
+                            <img src="/image/{{image}}" width="1000px" alt="Image">
+                        </figure>
                     </div>
                 </div>
             </div>
@@ -155,7 +147,7 @@
                     <div class="card-image">
                         <figure class="image is-4by1">
                             <a href="https://ufrj.br/">
-                                <img src="image/ufrj-logo-8.png"  alt="UFRJ">
+                                <img src="/image/ufrj-logo-8.png"  alt="UFRJ">
                             </a>
                         </figure>
                     </div>
@@ -170,7 +162,7 @@
                     <div class="card-image">
                         <figure class="image is-4by1">
                             <a href="http://www.nce.ufrj.br/">
-                                <img src="image/nce-logo-8.png" height="30px" alt="NCE">
+                                <img src="/image/nce-logo-8.png" height="30px" alt="NCE">
                             </a>
                         </figure>
                     </div>
@@ -185,7 +177,7 @@
                     <div class="card-image">
                         <figure class="image is-4by1">
                             <a href="http://labase.superpython.net/">
-                                <img src="image/labase-logo-8.png" height="30px" alt="LABASE">
+                                <img src="/image/labase-logo-8.png" height="30px" alt="LABASE">
                             </a>
                         </figure>
                     </div>
@@ -200,7 +192,7 @@
                     <div class="card-image">
                         <figure class="image is-3by1">
                             <a href="http://www.sbc.org.br/2-uncategorised/1939-programa-superpython">
-                                <img src="image/sbc-logo-8.png" alt="SBC">
+                                <img src="/image/sbc-logo-8.png" alt="SBC">
                             </a>
                         </figure>
                     </div>

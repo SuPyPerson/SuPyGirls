@@ -20,7 +20,7 @@
 """Controller handles routes starting with /code.
 .. moduleauthor:: Carlo Oliveira <carlo@nce.ufrj.br>
 """
-from bottle import static_file, HTTPError, Bottle, get
+from bottle import static_file, HTTPError, Bottle, get, debug
 from . import py_dir
 from . import model_dir
 from base64 import decodebytes as dcd
@@ -37,12 +37,9 @@ except:
     document["pydiv"] <= html.IMG(src="/images/site_em_construcao_.jpg")
 """
 
-appbottle = Bottle()  # create another WSGI application for this controller and resource.
-# debug(True) #  uncomment for verbose error logging. Do not use in production
-
 
 # Static Routes
-@get("/<:path>/__init__.py")
+@get("<:path>/__init__.py")
 def init_py():
     print("initview_py/<:path>/__init__.py")
     return ""
@@ -51,6 +48,7 @@ def init_py():
 # Static Routes
 @get("/<:path>/__code/_core/<filepath:re:.*\.py>")
 def core_py(filepath):
+    print("core_py", filepath)
     return static_file(filepath, root=py_dir+"/_core")
 
 
@@ -92,3 +90,7 @@ def local_spy(project_name, module_name, filepath):
         # code_str = "# File not found"
         raise HTTPError(404)
     return code_str
+
+
+appbottle = Bottle()  # create another WSGI application for this controller and resource.
+debug(True) #  uncomment for verbose error logging. Do not use in production

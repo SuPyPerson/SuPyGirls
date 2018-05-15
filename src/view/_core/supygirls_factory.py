@@ -64,9 +64,14 @@ class Dialog:
         self.act = act
 
     def _set_code(self, *_):
+        def set_hint(cm):
+            self.gui.window.CodeMirror.simpleHint(cm, self.gui.window.CodeMirror.pythonHint)
         self._div <= self._area
         self.__area = self.gui.window.CodeMirror.fromTextArea(
-            self._area, dict(mode="python", theme="solarized", lineNumbers=True))
+            self._area, dict(
+                mode="python", theme="solarized", lineNumbers=True, indentUnit=4,
+                tabSize=4, smartIndent=False))
+        self.gui.window.CodeMirror.commands.autocomplete = set_hint
         self._doc = self.__area.getDoc()
 
     def textarea(self, text, style=EDTST):
