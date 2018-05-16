@@ -1,9 +1,9 @@
-.. _vittolino_conte_estorias:
+.. _kwarwp_tutoria_funcional
 
-Vittolino - Conte Estórias
-==========================
+Kwarwp - Tutorial Funcional
+===========================
 
-Pronto, finalmente chegamos ao editor. Essa é a tela de início. Nela você pode observar no canto superior esquerdo o nome do projeto, o nome da Sala da sua turma e o nome do editor que você escolheu. Para continuarmos, precisaremos escolher a opção Edit.
+Chegamos ao tutorial funcional. estou fazendo algumas alterações, mas todos podem alterar. Nela você pode observar no canto superior esquerdo o nome do projeto, o nome da Sala da sua turma e o nome do editor que você escolheu. Para continuarmos, precisaremos escolher a opção Edit.
 
 .. image:: _static/captela3.png
 

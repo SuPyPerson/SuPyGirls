@@ -1,9 +1,9 @@
-.. _vittolino_conte_estorias:
+.. _kwarwp_cria_mapas:
 
-Vittolino - Conte Estórias
+Kwarwp - Criando Mapas
 ==========================
 
-Pronto, finalmente chegamos ao editor. Essa é a tela de início. Nela você pode observar no canto superior esquerdo o nome do projeto, o nome da Sala da sua turma e o nome do editor que você escolheu. Para continuarmos, precisaremos escolher a opção Edit.
+Caso você queira contribuir com desafios, você pode criar novos desafios
 
 .. image:: _static/captela3.png
 
