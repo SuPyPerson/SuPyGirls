@@ -21,5 +21,6 @@ Vamos usar a IDE PyCharm.
     acoes_entre_pycharm_github.rst
     modelagem_agil.rst
     pre_requisitos.rst
+    tutorial.rst
 
 
