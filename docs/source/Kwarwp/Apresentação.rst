@@ -1,28 +1,90 @@
 .. _Kwarwp_Apresentação:
 
-  Kwarwp - Apresentação
-==========================
-
-Bem vindo ao Kwarwp: O Game que ensina a linguagem de programação Python!
 
 
-
-Pronto, finalmente chegamos ao editor. Essa é a tela de início. Nela você pode observar no canto superior esquerdo o nome do projeto, o nome da Sala da sua turma e o nome do editor que você escolheu. Para continuarmos, precisaremos escolher a opção Edit.
-
-.. image:: _static/captela3.png
-
-Agora chegamos ao editor do código Python. Esse código é como você vai descrever tudo o que o computador precisa fazer para ele construir o jogo que você imaginar. No momento ele só tem uma linha. Essa linha começa com o caracter '#', o que significa que ela não será lida pelo computador, ela é um cometário feito para seres humanos lerem. Eles servem para facilitar a leitura do código pelo programador.
-
-Especificamente, essa linha é apenas uma marcação do título do documento de texto que nós vamos editar. Mas se você ficou confuso, não se preocupe, porque nós vamos apagá-la!
+.. image:: _static/Gif-Kwarwp.gif
 
 
-.. image:: _static/captela4.png
 
-Agora na primeira linha nós vamos escrever o seguinte código:
+Kwarwp - Apresentação
+======================
 
-from _spy.vittolino.main import Cena, Elemento, Texto
 
-.. image:: _static/captela5.png
+Kwarwp é um Game que nos ensina a linguagem de programação Python enquanto ajudamos o pequeno Índio Tchuk a vencer vários desafios que o levarão ao seu objetivo.
 
-Que doido, o editor coloriu automaticamente algumas palavras para nós, o que isso deve significar:
-from _spy.vittolino.main import Cena, Elemento, Texto
+
+
+
+
+
+
+.. image:: _static/Tchuk.jpg
+
+
+
+
+
+
+
+.. image:: _static/Tela1.jpg
+
+
+
+
+
+
+
+
+
+Tchuk é um sobrevivente de sua Aldeia que foi incendiada. Segundo a tradição, ele precisa celebrar o Kuarup de seus entes queridos, que sigifica a última homenagem aos que se foram.
+
+Para alcançar seu objetivo, Tchuk sai em busca do Pajé da Aldeia vizinha, pois ele é o único que pode prepará-lo para esta missão.
+
+
+
+
+
+.. image:: _static/Tela2.jpg
+
+
+
+
+
+
+De cenário em cenário, Tchuk procura pelo Pajé através da sua ajuda: Cada frase organizada na programação em Python pode guiá-lo na direção certa!
+
+
+
+
+
+.. image:: _static/Tela3.jpg
+
+
+
+
+
+
+
+
+
+.. image:: _static/GIFdesafio1.gif
+
+
+
+
+
+
+Mas cuidado! Se Tchuk, apenas, passar por cada cenário, sem se preocupar em eliminar os perigos existentes, o Pajé pode se ferir e tudo estará perdido!
+
+
+
+
+.. image:: _static/GIFpaje.gif
+
+
+
+
+
+
+
+
