@@ -17,7 +17,6 @@ Kwarwp é um Game que nos ensina a linguagem de programação Python enquanto aj
 
 
 
-
 .. image:: _static/Tchuk.jpg
 
 
