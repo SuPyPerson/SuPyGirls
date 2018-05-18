@@ -34,6 +34,26 @@ appbottle = Bottle()  # create another WSGI application for this controller and 
 # debug(True) #  uncomment for verbose error logging. Do not use in production
 
 
+@post('/play/__claim/<projecter>/<moduler>/')
+@view("supygirls")
+def _gamer_claim(projecter, moduler=""):
+    form_values = "author_nick author_name author_email author_org author_site author_public".split()
+    code = {key: request.params[key] for key in form_values}
+    key = moduler if moduler else projecter
+    spy = str({key: code}).replace("'", '"')[1:-1] + ",\n"
+    # coded = str(code).replace("'", '"')
+    author_index = projecter if moduler else '_spy'
+    filename = "{}/__score__.py".format(moduler) if moduler else "__score__.py"
+    try:
+        print(author_index, projecter, filename, spy)
+        code_status = DS.append_file(author_index, filename, spy)
+        filename = '{}/__author__.py'.format(moduler) if moduler else '__author__.py'
+        code_status += DS.create_file(projecter, filename, "{\n"+spy)
+    except Exception as err:
+        code_status = "Fail creating {}: {}".format(filename, err)
+    return code_status
+
+
 @post('/play/__create')
 def gamer_create():
     codename, code = request.json['codename'], request.json['code']

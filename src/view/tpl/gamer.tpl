@@ -76,6 +76,9 @@
 <!-- navigation -->
     % '' if pagetitle.startswith("PLAY - ") else include('menu.tpl')
 <!-- end navigation -->
+<!-- identification -->
+    % include('form.tpl') if pagetitle.startswith("PLAY - ") else ''
+<!-- end identification -->
 <!-- page content -->
 <div class="main-content">
     <div class="container">
