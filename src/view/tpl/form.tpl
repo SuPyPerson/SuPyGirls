@@ -2,8 +2,7 @@
   <div class="modal-background"></div>
   <div class="modal-content">
     <!-- Any other Bulma elements you want -->
-    <form id="ident-form" action="{{"" if "PLAY - " in pagetitle else "game"}}{{title}}/__claim/"
-            method="POST">
+    <form id="ident-form">
         <div class="field">
           <label class="label">Nome completo</label>
           <div class="control">
@@ -99,7 +98,7 @@
         </div>
         <div class="field is-grouped">
           <div class="control">
-            <button class="button is-link">Submit</button>
+            <button id="form-submit" class="button is-link">Submit</button>
           </div>
           <div class="control">
             <button class="button is-text">Cancel</button>

@@ -72,7 +72,7 @@ class Main:
     def _create_log(self, log="__log__.py", action_name='Creating Log'):
         codename = self.codename.split(".")
         codename = "/".join(codename[1:-2] + [log])
-        self.__save(codename, content, request_path='__create', action_name=action_name)
+        self.__save(codename, '', request_path='__create', action_name=action_name)
 
     def __append_log(self, error, log="__log__.py"):
         codename = self.codename.split(".")
@@ -89,7 +89,7 @@ class Main:
                     request_path="__append_log", action_name="")
 
     def __save(self, codename, contents, creator=lambda *_: None, request_path="__save",
-               action_name="Saving"):
+               action_name="Saving", address=None):
         def change_color():
             self.doc['nav_waiter'].style.visibility = "hidden"
             self.doc["nav_saver"].style.transition = "opacity 45s"
@@ -122,7 +122,8 @@ class Main:
         req = self.ajax.ajax()
         req.bind('complete', on_complete)
         req.set_timeout('20000', lambda *_: display("NOT SAVED: TIMEOUT"))
-        req.open('POST', "/game/{}".format(request_path), True)
+        address = address if address else "/game/{}".format(request_path)
+        req.open('POST', address, True)
         req.set_header('content-type', 'application/json')  # x-www-form-urlencoded')
         req.send(jsrc)
 
@@ -131,6 +132,17 @@ class Main:
         codename = "/".join(codename[1:-1])+".{}".format(codename[-1])
         print(" self.gui.dialogue:", codename, self.gui.dialogue)
         self.__save(codename, self.gui.get_code(), self._create)
+
+    def post_id(self, form_id="ident-form", address='_claim/', *_):
+        contents = self.doc[form_id].serialize()
+        codename = self.codename.split(".")
+        address = "/{}/{}/_claim/".format(codename[-2], codename[-1]) #, address)
+        req = self.ajax.ajax()
+        print("address", address)
+        req.open('POST', address, True)
+        req.bind('complete', lambda _:None)
+        req.set_header('content-type', 'application/x-www-form-urlencoded')  # x-www-form-urlencoded')
+        req.send(contents)
 
     def _open(self, *_):
         ...
@@ -143,6 +155,7 @@ class Main:
         # self.gui.executa_acao(self.dialog, lambda *_: self.start())
 
     def play(self):
+        self.doc["form-submit"].bind('click', self.post_id)
         glob = dict(globals())
         glob.update(__name__="__main__")
         code = dcd(str.encode(self.code))
