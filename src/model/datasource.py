@@ -80,7 +80,9 @@ class DataSource:
 
     def get_file_contents(self, project, packager, moduler="main.py"):
         self.repo = self.user.get_repo(project)
-        return self.repo.get_file_contents("{}/{}".format(packager, moduler))
+        path = "{}/{}" if packager else "{}{}"
+        print("get_file_contents ", project, path.format(packager, moduler))
+        return self.repo.get_file_contents(path.format(packager, moduler))
 
     def create_file(self, project, filename, decoded_content, comment=None):
         timestamp = 'Timestamp: {:%Y-%m-%d %H:%M:%S}'.format(datetime.datetime.now())
@@ -103,6 +105,15 @@ class DataSource:
         self.repo = self.user.get_repo(project)
         file = self.repo.get_file_contents(filename)
         self.repo.update_file("/{}".format(filename), comment, decoded_content, file.sha)
+        return comment
+
+    def append_file(self, project, filename, decoded_content, comment=None):
+        timestamp = 'Timestamp: {:%Y-%m-%d %H:%M:%S}'.format(datetime.datetime.now())
+        comment = comment if comment else "Saved {} at {}".format(filename, timestamp)
+        self.repo = self.user.get_repo(project)
+        file = self.repo.get_file_contents(filename)
+        file_content = dcd(str.encode(file.content)).decode("utf-8") + decoded_content
+        self.repo.update_file("/{}".format(filename), comment, file_content, file.sha)
         return comment
 
     def update_file(self, project, packager, decoded_content, moduler="main.py", comment=None):

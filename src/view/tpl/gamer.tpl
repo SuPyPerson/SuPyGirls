@@ -4,6 +4,7 @@
     <title>{{pagetitle}}</title>
     <meta http-equiv="content-type" content="application/xml;charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
     <link rel="shortcut icon" href="/image/favicon.ico" type="image/x-icon"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- stylesheets -->
@@ -38,7 +39,7 @@
                 codename = "{{ pagetitle.replace(" - ", ".").lower() }}"
                 code = """{{code}}"""
             main = Main(br=MockBrython)
-            main.start()
+            main.{{"play()" if pagetitle.startswith("PLAY - ") else "start()"}}
 
     </script>
 
@@ -73,45 +74,11 @@
 <body onLoad="brython({debug:1, cache:'browser', static_stdlib_import:true,
  pythonpath :['__code','__code/{{mod}}']})">
 <!-- navigation -->
-<div class="navigation">
-    <nav class="nav has-shadow">
-        <div class="container">
-            <!-- nav site title -->
-            <div class="nav-left">
-                <a class="nav-item">
-                    <h3 class="title is-5" style="color: white;">{{pagetitle}}</h3>
-                </a>
-            </div>
-            <div class="nav-middle">
-                <a class="nav-item">
-                    <h6 id="nav_saver" class="title is-6"
-                        style="color: white; animation-name: fade; animation-duration: 4s;"></h6>
-                </a>
-            </div>
-            <!-- end of site title -->
-
-            <!-- this "nav-toggle" hamburger menu is only visible on mobile -->
-            <span id="burg_menu" class="nav-toggle">
-	                <span><a class="nav-item is-tab" href="#">|&nbsp;|</a></span>
-                % for item, name in menu:
-	                <span><a class="nav-item is-tab" href="{{item}}">{{name}}</a></span>
-                %end
-            </span>
-            <!-- end of toggle -->
-
-            <!-- this "nav-menu" is hidden on mobile -->
-            <div id="right_menu" class="nav-right nav-menu">
-                % for name, item in menu:
-                <a class="nav-item is-tab" href="{{item}}">
-                    {{name}}
-                </a>
-                % end
-            </div>
-            <!-- end of nav -->
-        </div>
-    </nav>
-</div>
+    % '' if pagetitle.startswith("PLAY - ") else include('menu.tpl')
 <!-- end navigation -->
+<!-- identification -->
+    % include('form.tpl') if pagetitle.startswith("PLAY - ") else ''
+<!-- end identification -->
 <!-- page content -->
 <div class="main-content">
     <div class="container">

@@ -7,56 +7,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="/css/bulma.css">
     <link rel="stylesheet" href="/css/style.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
     <!-- fonts -->
     <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet">
     <link rel="shortcut icon" href="/image/favicon.ico" type="/image/x-icon"/>
+    <script type="text/javascript">
+        function claim_project(project){
+            var MODAL = document.getElementById("ident-modal");
+            var FORM = document.getElementById("ident-form");
+            
+            var currentClass = MODAL.className;
+            if (currentClass == "modal") { // Check the current class name
+                MODAL.className = "modal is-active";   // Set other class name
+                FORM.action = "/supygirls/__claim/{{claim}}" + project + "/"
+            } else {
+                MODAL.className = "modal";  // Otherwise, use `second_name`
+            }
+        }   
+    </script>
 </head>
 <body>
 <!-- navigation -->
-<div class="navigation">
-    <nav class="nav has-shadow">
-        <div class="container">
-            <!-- nav site title -->
-            <div class="nav-left">
-                <a class="nav-item">
-                    <h3 class="title is-5" style="color: white;">SuperPython</h3>
-                </a>
-            </div>
-            <!-- end of site title -->
-            <div class="nav-middle">
-                <a class="nav-item">
-                    <h6 id="nav_saver" class="title is-6"
-                        style="color: white; animation-name: fade; animation-duration: 4s;"></h6>
-                </a>
-            </div>
-
-            <!-- this "nav-toggle" hamburger menu is only visible on mobile -->
-            <span class="nav-toggle">
-                <span><a class="nav-item is-tab" href="/site/help.html">Help</a></span>
-                <span><a class="nav-item is-tab" href="/site/about.html">About</a></span>
-                <span><a class="nav-item is-tab" href="/">Home</a></span>
-	        </span>
-            <!-- end of toggle -->
-
-            <!-- this "nav-menu" is hidden on mobile -->
-            <div class="nav-right nav-menu">
-                <a class="nav-item is-tab" href="/site/help.html">
-                    Help
-                </a>
-                <a class="nav-item is-tab" href="/site/about.html">
-                    About
-                </a>
-                <a class="nav-item is-tab is-active" href="/">
-                    Home
-                </a>
-            </div>
-            <!-- end of nav -->
-        </div>
-    </nav>
-</div>
+    % include('base_menu.tpl')
 <!-- end navigation -->
-
+<!-- modal for user identification -->
+    % include('form.tpl')
 <!-- page header (title, etc) -->
 <div class="main-header">
     <section class="hero">
@@ -80,14 +55,14 @@
     <div class="container">
         <!-- start of posts -->
         <div class="columns is-multiline is-centered has-text-centered">
-            % for count, scene in enumerate(cenas):
+            % for count, (scene, author) in enumerate(cenas):
             <!-- start of post -->
             <div class="column is-2">
                 <div class="card">
                     <!-- image for post -->
                     <div class="card is-2by2" style="height:114px; overflow:hidden;">
                         <figure>
-                            <a href="/{{action.lower()+scene.lower().replace(' ','_')}}">
+                            <a href="{{action.lower()+scene.lower().replace(' ','_')}}">
                                 <img src="/image/{{image}}" width="1000px" alt="Image"
                                      style="position:relative; min-width:1200px;
                         top:{{'{}px'.format(-200 * (count // 6))}};
@@ -98,7 +73,9 @@
 
                     <!-- post header -->
                     <div class="card-content-header">
-                        <h6 class="title is-6"><a href="/{{action.lower()+scene.lower()}}">{{scene}}</a></h6>
+                        <!--h6 class="title is-6"><a href="/{{action.lower()+scene.lower()}}">{{scene}}</a></h6-->
+                        <h5 class="title is-5"><a onclick="claim_project('{{scene.lower()}}');" >{{scene}}</a></h5>
+                        <a class="subtitle is-6" href="{{action.lower()+scene.lower()}}">{{author}}</a>
                     </div>
                 </div>
             </div>
