@@ -53,9 +53,10 @@ class Main:
                          )
         self.window.__SUPERPYTHON__ = self
         self.dialog = self.gui = None
-        self.doc["nav_saver"].style.opacity = 1
-        self.doc["nav_saver"].style.margin = "15px"
-        self.doc["nav_saver"].style.transition = "opacity 55s"
+        if "nav_saver" in self.doc:
+            self.doc["nav_saver"].style.opacity = 1
+            self.doc["nav_saver"].style.margin = "15px"
+            self.doc["nav_saver"].style.transition = "opacity 55s"
 
     def _edit(self, *_):
         self.doc['nav_waiter'].style.visibility = "visible"
@@ -63,15 +64,15 @@ class Main:
         self.dialog.show()
         self.start(EMENU)
 
-    def _create(self, *_):
+    def _create(self, content='', *_):
         codename = self.codename.split(".")
         codename = "/".join(codename[1:-1])+".{}".format(codename[-1])
-        self.__save(codename, '', request_path='__create', action_name='Creating')
+        self.__save(codename, content, request_path='__create', action_name='Creating')
 
     def _create_log(self, log="__log__.py", action_name='Creating Log'):
         codename = self.codename.split(".")
         codename = "/".join(codename[1:-2] + [log])
-        self.__save(codename, '', request_path='__create', action_name=action_name)
+        self.__save(codename, content, request_path='__create', action_name=action_name)
 
     def __append_log(self, error, log="__log__.py"):
         codename = self.codename.split(".")
@@ -106,7 +107,7 @@ class Main:
         def on_complete(request):
             if request.status == 200 or request.status == 0:
                 if "404" in request.text:
-                    self.timer.set_timeout(creator, 1000)
+                    self.timer.set_timeout(lambda: creator(contents), 1000)
                     display("Attempting to create..") if action_name else None
                 else:
                     display(request.text,  waiter="hidden") if action_name else None

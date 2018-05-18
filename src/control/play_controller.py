@@ -20,6 +20,8 @@
 """Controller handles routes starting with /play.
 .. moduleauthor:: Carlo Oliveira <carlo@nce.ufrj.br>
 """
+import uuid
+
 from bottle import Bottle, get, view, post, request
 from model.datasource import DS
 from base64 import decodebytes as dcd
@@ -34,23 +36,29 @@ appbottle = Bottle()  # create another WSGI application for this controller and 
 # debug(True) #  uncomment for verbose error logging. Do not use in production
 
 
-@post('/play/__claim/<projecter>/<moduler>/')
+@post('/play/<projecter>/<moduler>/__claim/')
 @view("supygirls")
 def _gamer_claim(projecter, moduler=""):
     form_values = "author_nick author_name author_email author_org author_site author_public".split()
     code = {key: request.params[key] for key in form_values}
-    key = moduler if moduler else projecter
-    spy = str({key: code}).replace("'", '"')[1:-1] + ",\n"
+    key = str(uuid.uuid4())[:8]
+    spy = str({key: code}).replace("'", '"')[1:-1] + ",[\n"
     # coded = str(code).replace("'", '"')
     author_index = projecter if moduler else '_spy'
     filename = "{}/__score__.py".format(moduler) if moduler else "__score__.py"
+    code_status = ''
     try:
-        print(author_index, projecter, filename, spy)
-        code_status = DS.append_file(author_index, filename, spy)
-        filename = '{}/__author__.py'.format(moduler) if moduler else '__author__.py'
-        code_status += DS.create_file(projecter, filename, "{\n"+spy)
+        print("_gamer_claimtry", author_index, projecter, filename, spy)
+        code_status = DS.append_file(author_index, filename, "]\n"+spy)
     except Exception as err:
-        code_status = "Fail creating {}: {}".format(filename, err)
+        print("_gamer_claimexcept", code_status, err)
+        if "404" in str(err):
+            try:
+                print("_gamer_claimif 404 ", author_index, projecter, filename, spy)
+                code_status += DS.create_file(author_index, filename, "{\n"+spy)
+            except Exception as err:
+                pass
+        code_status = "Fail creating {}: {}, {}".format(filename, str(err), code_status)
     return code_status
 
 

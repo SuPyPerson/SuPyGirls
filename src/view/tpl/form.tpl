@@ -1,8 +1,9 @@
-<div id="ident-modal" class="modal">
+<div id="ident-modal" class="modal{{" is-active" if "PLAY - " in pagetitle else ""}}">
   <div class="modal-background"></div>
   <div class="modal-content">
     <!-- Any other Bulma elements you want -->
-    <form id="ident-form" action="game/__claim/[[project]]" method="POST">
+    <form id="ident-form" action="{{"" if "PLAY - " in pagetitle else "game"}}{{title}}/__claim/"
+            method="POST">
         <div class="field">
           <label class="label">Nome completo</label>
           <div class="control">

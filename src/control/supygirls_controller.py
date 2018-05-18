@@ -107,7 +107,7 @@ def _gamer_claim(projecter, moduler=""):
     author_index = projecter if moduler else '_spy'
     action = "/supygirls/gamer/{}/".format(projecter)
     claim = "{}/".format(projecter) if moduler else ""
-    filename = '__author__.py'
+    filename = "{}/__author__.py".format(moduler) if moduler else "__author__.py"
     try:
         print(author_index, projecter, filename, spy)
         code_status = DS.append_file(author_index, filename, spy)
