@@ -49,7 +49,7 @@ def _gamer_claim(projecter, moduler=""):
     code_status = ''
     try:
         print("_gamer_claimtry", author_index, projecter, filename, spy)
-        code_status = DS.append_file(author_index, filename, "]\n"+spy)
+        code_status = DS.append_file(author_index, filename, "],\n"+spy)
     except Exception as err:
         print("_gamer_claimexcept", code_status, err)
         if "404" in str(err):

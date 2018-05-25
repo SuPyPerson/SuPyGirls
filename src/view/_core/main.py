@@ -133,14 +133,17 @@ class Main:
         print(" self.gui.dialogue:", codename, self.gui.dialogue)
         self.__save(codename, self.gui.get_code(), self._create)
 
-    def post_id(self, form_id="ident-form", address='_claim/', *_):
-        contents = self.doc[form_id].serialize()
+    def post_id(self, ev, form_id="ident-form", address='_claim/', *_):
+        ev.preventDefault()
+        self.doc["ident-modal"].className = "modal"
+        contents = {el.name: el.value for el in self.doc[form_id].elements if "author" in el.name}
+        # contents = str({el.name: el.value for el in self.doc[form_id].elements if "author" in name}).replace("'", '"')
         codename = self.codename.split(".")
-        address = "/{}/{}/_claim/".format(codename[-2], codename[-1]) #, address)
+        address = "/play/{}/{}/__claim/".format(codename[-4], codename[-3]) #, address)
         req = self.ajax.ajax()
-        print("address", address)
+        print("address", address, contents)
         req.open('POST', address, True)
-        req.bind('complete', lambda _:None)
+        req.bind('complete', lambda *_: None)
         req.set_header('content-type', 'application/x-www-form-urlencoded')  # x-www-form-urlencoded')
         req.send(contents)
 
@@ -155,7 +158,7 @@ class Main:
         # self.gui.executa_acao(self.dialog, lambda *_: self.start())
 
     def play(self):
-        self.doc["form-submit"].bind('click', self.post_id)
+        self.doc["ident-form"].bind('submit', self.post_id)
         glob = dict(globals())
         glob.update(__name__="__main__")
         code = dcd(str.encode(self.code))
