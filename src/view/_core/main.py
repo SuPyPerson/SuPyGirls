@@ -61,6 +61,7 @@ class Main:
     def _edit(self, *_):
         self.doc['nav_waiter'].style.visibility = "visible"
         self.dialog = self.gui.edit()
+        self.dialog.del_err()
         self.dialog.show()
         self.start(EMENU)
 

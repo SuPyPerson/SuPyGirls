@@ -2,15 +2,15 @@
 # -*- coding: UTF8 -*-
 # Este arquivo é parte do programa Kwarwp
 # Copyright 2010-2018 Carlo Oliveira <carlo@nce.ufrj.br>,
-# `Labase <http://labase.selfip.org/>`__; `GPL <http://j.mp/GNU_GPL3>`__.
+# `Labase <http://labase.selfip.org/>`__, `GPL <http://j.mp/GNU_GPL3>`__.
 #
-# Kwarwp é um software livre; você pode redistribuí-lo e/ou
+# Kwarwp é um software livre, você pode redistribuí-lo e/ou
 # modificá-lo dentro dos termos da Licença Pública Geral GNU como
-# publicada pela Fundação do Software Livre (FSF); na versão 2 da
+# publicada pela Fundação do Software Livre (FSF), na versão 2 da
 # Licença.
 #
 # Este programa é distribuído na esperança de que possa ser útil,
-# mas SEM NENHUMA GARANTIA; sem uma garantia implícita de ADEQUAÇÃO
+# mas SEM NENHUMA GARANTIA, sem uma garantia implícita de ADEQUAÇÃO
 # a qualquer MERCADO ou APLICAÇÃO EM PARTICULAR. Veja a
 # Licença Pública Geral GNU para maiores detalhes.
 #
@@ -24,23 +24,66 @@
 """
 import sys
 import traceback
-from random import random
 from base64 import decodebytes as dcd
+from random import random
 
 random()
 IMAGEREPO = 'server_root/image/'
 CANVASW, CANVASH = 800, 600
 NODICT = {}
 EDIT = "{}/{}".format(IMAGEREPO, "sun.gif")
-EDTST = {'position': 'relative', 'padding': 10, 'margin': '0', 'flex': '3 1 auto',
-         'width': '99%', 'resize': 'none', 'borderColor': 'darkslategrey',
-         'color': 'navajowhite', 'border': 1, 'background': 'rgba(10, 10, 10, 0.5)'}
+OVERLY = {
+    'position': 'absolute',
+    'top': '0',
+    'display': 'inline-block',
+    'bottom': '0',
+    'left': '0',
+    'right': '0',
+    'z-index': '1',
+}
+CLOSE = {'position': 'absolute',
+         'top': '0px',
+         'right': '10px',
+         'transition': 'all 200ms',
+         'font-size': '30px',
+         'font-weight': 'bold',
+         'text-decoration': 'none',
+         'z-index': '1',
+         'color': '#333'}
+POPUP = {'position': 'relative',
+         'display': 'inline-block',
+         'cursor': 'pointer'}
+POPTX = {'border-radius': '6px',
+         'padding': '8px 0',
+         'position': 'absolute',
+         'z-index': '1',
+         'bottom': '20%',
+         'left': '10%',
+         'margin-left': '-80px'}
+EDTST = {'position': 'relative', 'padding': '10px', 'margin': '0px',
+         'width': '100%', 'resize': 'none', 'borderColor': 'darkslategrey',
+         'color': 'navajowhite', 'border': 0, 'background': 'transparent'}
 ERRST = {'position': 'relative', 'padding': 10, 'margin': '0', 'visibility': 'visible', 'flex': '1',
          'width': '99%', 'min-height': '30%', 'resize': 'none', 'borderColor': 'darkslategrey',
          'color': 'navajowhite', 'border': 1, 'background': 'rgba(200, 54, 54, 0.5)'}
 CSLST = {'position': 'relative', 'padding': 10, 'margin': '0', 'visibility': 'visible', 'flex': '1',
          'width': '99%', 'min-height': '30%', 'resize': 'none', 'borderColor': 'darkslategrey',
          'color': 'navajowhite', 'border': 1, 'background': 'rgba(74, 200, 74, 0.5)'}
+ERRSP = {'position': 'relative', 'padding': 10, 'margin': '0', 'visibility': 'visible', 'flex': '1',
+         'width': '99%', 'min-height': '30%', 'resize': 'none', 'borderColor': 'darkslategrey',
+         'color': 'navajowhite', 'border': 1, 'background': 'rgba(200, 54, 54, 0.5)'}
+ERRSP.update(POPTX)
+CSLDV = {'position': 'relative', 'padding': 10, 'margin': '15px', 'visibility': 'visible', 'flex': '1',
+         'width': '99%', 'min-height': '30%', 'borderColor': 'darkslategrey', 'border-radius': '6px',
+         'color': 'navajowhite', 'border': 1, 'background': 'rgba(74, 200, 74, 0.5)', 'top': '30%'}
+CSLSP = {'position': 'absolute', 'padding': "10px 10px", 'margin': '10px', 'visibility': 'visible',
+         'width': '95%', 'min-height': '90%', 'resize': 'none', 'left': '2px', 'top': '2px',
+         'color': 'navajowhite', 'border': '0px', 'background': 'transparent'}
+# CSLSP = {'position': 'absolute', 'padding': "10px 10px", 'margin': '0px 0px -4.5% -90px',
+#  'visibility': 'visible', 'flex': '1',
+#          'width': '99%', 'min-height': '90%', 'resize': 'none', 'left': '9%', 'top': '2px',
+#          'color': 'navajowhite', 'border': '0px', 'background': 'transparent'}
+CSLSP.update(POPTX)
 
 
 #############################################################################
@@ -54,18 +97,21 @@ class Dialog:
                  'width': '100%', 'height': '100%', 'background': 'rgba(10, 10, 10, 0.85)'}
         self.text = text
         self.gui = gui
-        self.html, self.dom = gui.html, gui.dom
+        self.html, self.dom, self.ppr = gui.html, gui.dom, gui.doc["pycard"]
         self._div = self._err = self._area = self.__area = None
         self._div = self._div if self._div else self.html.DIV(style=divat)
         self.dom <= self._div
         text = text if text else self.text
         self._area = self.textarea(text, style=EDTST)
+        self._pop = self.html.DIV(style=OVERLY)
+        self.ppr <= self._pop
         self._set_code(text)
         self.act = act
 
     def _set_code(self, *_):
         def set_hint(cm):
             self.gui.window.CodeMirror.simpleHint(cm, self.gui.window.CodeMirror.pythonHint)
+
         self._div <= self._area
         self.__area = self.gui.window.CodeMirror.fromTextArea(
             self._area, dict(
@@ -101,16 +147,23 @@ class Dialog:
         # return self._doc.getValue()  # self.text if self.text else self._update_text()
         return self._update_text()
 
-    def set_csl(self, text):
+    def set_csl(self, text, pop=True):
         self._err.remove() if self._err else None
-        self._err = self.textarea(text, style=CSLST)
-        self._div <= self._err
+        self._err = self.html.DIV(style=CSLDV)
+        _div = self.textarea(text, style=CSLSP if pop else CSLST)
+        container = self._pop if pop else self._div
+        container <= self._err
+        a = self.html.A("&times;", style=CLOSE, href="#")
+        a.onclick = self.del_err
+        self._err <= _div
+        self._err <= a
         self.text = ''
 
-    def set_err(self, text):
+    def set_err(self, text, pop=False):
         self._err.remove() if self._err else None
-        self._err = self.textarea(text, style=ERRST)
-        self._div <= self._err
+        self._err = self.textarea(text, style=ERRSP if pop else ERRST)
+        container = self._pop if pop else self._div
+        container <= self._err
         self.text = ''
         error = text
         lines = error.split(' line ')
@@ -122,7 +175,7 @@ class Dialog:
             except Exception as x:
                 print("Exception", x)
 
-    def del_err(self):
+    def del_err(self, *_):
         self._err.remove() if self._err else None
         self._err = None
 
@@ -227,7 +280,7 @@ class GUI(_GUI):
         # -XXX-  gambiarra para corrigir o brython
         codelist = list(self.code)
         codeclean = bytes(
-            c for b, c, d in zip(codelist+[0, 0], [0]+codelist+[0], [0, 0]+codelist)
+            c for b, c, d in zip(codelist + [0, 0], [0] + codelist + [0], [0, 0] + codelist)
             if (c, d) != (194, 131) != (b, c))
         self.code = codeclean[1:-1].decode('utf-8')
         # -XXX- fim da gambiarra
@@ -270,6 +323,7 @@ class GUI(_GUI):
             if console:
                 # self.dialogue = self.dialog(self.code, act=self.executa_acao)
                 self.dialogue.set_csl(console)
+                extra()
             else:
                 # self.dialoger = None
                 extra()
