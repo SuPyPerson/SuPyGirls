@@ -69,15 +69,17 @@ class Main:
         codename = "/".join(codename[1:-1])+".{}".format(codename[-1])
         self.__save(codename, content, request_path='__create', action_name='Creating')
 
-    def _create_log(self, log="__log__.py", action_name='Creating Log'):
+    def _create_log(self, error='', log="__log__.py", action_name='Creating Log'):
         codename = self.codename.split(".")
+        # print("_create_log", codename, "/".join(codename[1:-2]+[log]))
         codename = "/".join(codename[1:-2] + [log])
-        self.__save(codename, '', request_path='__create', action_name=action_name)
+        self.__save(codename, error, request_path='__create', action_name=action_name)
 
     def __append_log(self, error, log="__log__.py"):
         codename = self.codename.split(".")
-        codename = "/".join(codename[-4:-2]+[log])
-        self.__save(codename, error, self._create_log,
+        # print("__append_log", codename, "/".join(codename[1:-2]+[log]))
+        codename = "/".join(codename[1:-2]+[log])
+        self.__save(codename, error, lambda *_: self._create_log(error),
                     request_path="__append_log", action_name="Logging")
 
     def scorer(self, score, log="__score__.py"):
