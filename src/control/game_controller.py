@@ -24,6 +24,7 @@ from bottle import Bottle, get, view, post, request
 from model.datasource import DS
 from base64 import decodebytes as dcd
 from base64 import encodebytes as ecd
+
 __author__ = 'carlo'
 DEFAULT_CODE = """# default
 try:
@@ -40,6 +41,8 @@ JS = "brython brython_stdlib codemirror show-hint python-hint active-line matchb
 # JS = "brython brython_stdlib codemirror show-hint python-hint active-line matchbrackets python".split()
 
 appbottle = Bottle()  # create another WSGI application for this controller and resource.
+
+
 # debug(True) #  uncomment for verbose error logging. Do not use in production
 
 
@@ -72,39 +75,6 @@ def gamer_save():
         code_status = "Fail saving {}: {}".format(filename, err)
     return code_status
 
-def _gamer_claim(project, module=""):
-    form_values = "author_nick author_name author_email author_org author_site author_public".split()
-    code = {key: request.params[key] for key in form_values}
-    #code = request.POST.getall()
-
-    #filename = "/".join([project,'__author__.py'])
-    spy = str({project: code}).replace("'",'"') + ",\n"
-    coded = str(code).replace("'",'"')
-    author_index = project if module else '_spy'
-    # coded = dcd(str.encode(str(code))).decode("utf-8")
-    return dict(
-        pagetitle="SuPyGirls - {}".format(name), title=name, action="game/{}/".format(name),
-        image="garden.jpg", cenas=GIRLS)
-    return
-    try:
-        filename = '__author__.py'
-        code_status = DS.append_file(author_index, filename, spy)
-        filename = '{}/__author__.py'.format(module) if module else '__author__.py'
-        code_status = DS.create_file(project, filename, code)
-        print(code, filename)
-    except Exception as err:
-        code_status = "Fail creating {}: {}".format(filename, err)
-
-@post('/game/__claim/<project>/')
-@view("supygirls")
-def gamer_claim(project):
-    return _gamer_claim(project)
-
-@post('/game/__claim/<project>/<module>')
-@view("supygirls")
-def gamer_module_claim(project, module):
-    return _gamer_claim(project, module)
-
 
 @post('/game/__append_log')
 def gamer_append_log():
@@ -117,7 +87,8 @@ def gamer_append_log():
     try:
         code_status = DS.append_file(project, filename, code)
     except Exception as err:
-        code_status = "Fail saving {}: {}".format(filename, err)
+        code_status = "Fail saving {} {}: {}".format(project, filename, err)
+        print("gamer_append_logException", code_status)
     return code_status
 
 
@@ -132,6 +103,7 @@ def gamer(mod, name):
     except Exception as err:
         code = "# " + ".".join([modl, namel, "main.py"])
         code = ecd(bytearray(code.encode("UTF8"))).decode("utf-8")
+        print("gamerException", code)
 
     return dict(
         pagetitle='SuPyGirls - {} - {}'.format(mod.capitalize(), name.capitalize()), title=name,

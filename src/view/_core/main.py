@@ -22,7 +22,7 @@
 .. moduleauthor:: Carlo Oliveira <carlo@nce.ufrj.br>
 
 """
-import json
+import json, os
 from base64 import encodebytes as ecd
 
 from .supygirls_factory import GUI
@@ -76,16 +76,17 @@ class Main:
 
     def __append_log(self, error, log="__log__.py"):
         codename = self.codename.split(".")
-        codename = "/".join(codename[1:-2]+[log])
+        codename = "/".join(codename[-4:-2]+[log])
         self.__save(codename, error, self._create_log,
                     request_path="__append_log", action_name="Logging")
 
     def scorer(self, score, log="__score__.py"):
         codename = self.codename.split(".")
-        codename = "/".join(codename[1:-2]+[log])
-        tabs = "  " * score["_level"] if "_level" else ""
+        codename = "/".join(codename[-4:-2]+[log])
+        tabs = "  " * score.setdefault("_level", 0)
+        print("scorer", codename, "{}{},\n".format(tabs, score))
         self.__save(codename, "{}{},\n".format(tabs, score),
-                    lambda: self._create_log(log="__score__.py", action_name=''),
+                    lambda *_: self._create_log(log="__score__.py", action_name=''),
                     request_path="__append_log", action_name="")
 
     def __save(self, codename, contents, creator=lambda *_: None, request_path="__save",
@@ -107,7 +108,7 @@ class Main:
         def on_complete(request):
             if request.status == 200 or request.status == 0:
                 if "404" in request.text:
-                    self.timer.set_timeout(lambda: creator(contents), 1000)
+                    self.timer.set_timeout(lambda *_: creator(contents), 1000)
                     display("Attempting to create..") if action_name else None
                 else:
                     display(request.text,  waiter="hidden") if action_name else None
@@ -141,7 +142,7 @@ class Main:
         codename = self.codename.split(".")
         address = "/play/{}/{}/__claim/".format(codename[-4], codename[-3]) #, address)
         req = self.ajax.ajax()
-        print("address", address, contents)
+        print("post_id address", address, contents, codename)
         req.open('POST', address, True)
         req.bind('complete', lambda *_: None)
         req.set_header('content-type', 'application/x-www-form-urlencoded')  # x-www-form-urlencoded')
@@ -159,6 +160,11 @@ class Main:
 
     def play(self):
         self.doc["ident-form"].bind('submit', self.post_id)
+        print("play codename:", self.codename)
+        self.codename = ".".join(self.codename.split(".")[-4:])
+        self.__play() if "_TEST_" in os.environ else self.timer.set_timeout(self.__play, 45000)
+
+    def __play(self, *_):
         glob = dict(globals())
         glob.update(__name__="__main__")
         code = dcd(str.encode(self.code))

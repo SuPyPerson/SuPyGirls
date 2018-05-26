@@ -84,6 +84,8 @@ class SpyDBTest(unittest.TestCase):
         self.mb = SpyDBTest.MockBrython
         self.ds = Main._Main__save.display = MagicMock(name="display")
         self.mn = Main(SpyDBTest.MockBrython)
+        self.mn.gui = MagicMock(name="gui")
+        self.mn.gui.dialogue = MagicMock(name="dialogue")
 
     def tearDown(self):
         self.mb.opener.reset_mock()
@@ -102,13 +104,20 @@ class SpyDBTest(unittest.TestCase):
         self.mb.opener.assert_called_once_with('POST', '/game/__append_log', True)
         self.mb.sender.assert_any_call(ANY)
         send, _ = self.mb.sender.call_args_list[0]
-        c1, c2 = "eydiJzogMiwgJ2EnOiAxfQ", "eydhJzogMSwgJ2InOiAyfQ"
+        c1, c2 = "eydhJzogMSwgJ2InOiAyLCA", "eydhJzogMSwgJ2InOiAyLCA"
         assert '"codename": "ada/__score__.py"' in send[0], "not in %s" % str(send[0])
         assert (c1 in send[0] or c2 in send[0]), "not in %s" % str(send[0])
 
+    def test_play(self):
+        """play should send score to github"""
+        assert self.mn.codename == "ada.ada.main.py", "instead codename: {}".format(self.mn.codename)
+        self.mn.play()
+        # self.ds.assert_any_call()
+
     def test_save(self):
         """should send the dialog text value to github"""
-        code = "aMOhIHVtYSBtYcOnw6MgcXVlIMOpIGFxdWUgdm9jw6ogdsOq"
+        # code = "aMOhIHVtYSBtYcOnw6MgcXVlIMOpIGFxdWUgdm9jw6ogdsOq"
+        code = "AA=="
         self.mn._save()
         self.mb.opener.assert_called_once_with('POST', '/game/__save', True)
         self.mb.sender.assert_any_call(ANY)

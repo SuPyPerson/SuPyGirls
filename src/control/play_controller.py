@@ -57,8 +57,9 @@ def _gamer_claim(projecter, moduler=""):
                 print("_gamer_claimif 404 ", author_index, projecter, filename, spy)
                 code_status += DS.create_file(author_index, filename, "{\n"+spy)
             except Exception as err:
-                pass
-        code_status = "Fail creating {}: {}, {}".format(filename, str(err), code_status)
+                code_status = "Fail creating {}: {}, {}".format(filename, str(err), code_status)
+                print("Play _gamer_claim Exception", code_status, err)
+
     return code_status
 
 
@@ -74,6 +75,7 @@ def gamer_create():
         code_status = DS.create_file(project, filename, code)
     except Exception as err:
         code_status = "Fail creating {}: {}".format(filename, err)
+        print("Play gamer_create Exception", code_status)
     return code_status
 
 
@@ -89,6 +91,7 @@ def gamer_save():
         code_status = DS.save_file(project, filename, code)
     except Exception as err:
         code_status = "Fail saving {}: {}".format(filename, err)
+        print("Play gamer_save Exception", code_status)
     return code_status
 
 
@@ -103,7 +106,8 @@ def gamer_append_log():
     try:
         code_status = DS.append_file(project, filename, code)
     except Exception as err:
-        code_status = "Fail saving {}: {}".format(filename, err)
+        code_status = "Fail saving {} {}: {}".format(project, filename, err)
+        print("Play gamer_append_log Exception", code_status)
     return code_status
 
 
@@ -118,6 +122,7 @@ def gamer(mod, name):
     except Exception as err:
         code = "# " + ".".join([modl, namel, "main.py"])
         code = ecd(bytearray(code.encode("UTF8"))).decode("utf-8")
+        print("Play gamer Exception", code, err)
 
     return dict(
         pagetitle='PLAY - SuPyGirls - {} - {}'.format(mod.capitalize(), name.capitalize()), title=name,
