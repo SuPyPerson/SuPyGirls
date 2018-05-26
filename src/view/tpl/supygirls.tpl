@@ -12,7 +12,8 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet">
     <link rel="shortcut icon" href="/image/favicon.ico" type="/image/x-icon"/>
     <script type="text/javascript">
-        function claim_project(project){
+        function claim_project(project, autor){
+            if (autor != 'livre') { return true;}
             var MODAL = document.getElementById("ident-modal");
             var FORM = document.getElementById("ident-form");
             
@@ -56,6 +57,11 @@
         <!-- start of posts -->
         <div class="columns is-multiline is-centered has-text-centered">
             % for count, (scene, author) in enumerate(cenas):
+                <%
+                    is_livre = 'onclick="claim_project('+"'{}'".format(scene.lower()+');"')
+                    not_is_livre = 'href={}{}'.format(action.lower(),scene.lower())
+                %>
+
             <!-- start of post -->
             <div class="column is-2">
                 <div class="card">
@@ -75,7 +81,7 @@
                     <div class="card-content-header">
                         <!--h6 class="title is-6"><a href="/{{action.lower()+scene.lower()}}">{{scene}}</a></h6-->
                         <h5 class="title is-5"><a  href="{{action.lower()+scene.lower()}}">{{scene}}</a></h5>
-                        <a class="subtitle is-6" onclick="claim_project('{{scene.lower()}}');">{{author}}</a>
+                        <a class="subtitle is-6" onclick="claim_project('{{scene.lower()}}', '{{author}}');">{{author}}</a>
                     </div>
                 </div>
             </div>
