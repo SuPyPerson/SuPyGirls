@@ -55,7 +55,7 @@ class Dialog:
         self.text = text
         self.gui = gui
         self.html, self.dom = gui.html, gui.dom
-        self._div = self._err = self._area = None
+        self._div = self._err = self._area = self.__area = None
         self._div = self._div if self._div else self.html.DIV(style=divat)
         self.dom <= self._div
         text = text if text else self.text
@@ -70,9 +70,10 @@ class Dialog:
         self.__area = self.gui.window.CodeMirror.fromTextArea(
             self._area, dict(
                 mode="python", theme="solarized", lineNumbers=True, indentUnit=4,
-                tabSize=4, smartIndent=False))
+                tabSize=4, smartIndent=False, matchBracket=True, indentWithTabs=False))
         self.gui.window.CodeMirror.commands.autocomplete = set_hint
         self._doc = self.__area.getDoc()
+        # self.__area.on("change", lambda *_: print(self._doc.getValue()))
 
     def textarea(self, text, style=EDTST):
         t = self.html.TEXTAREA(text, style=style)
@@ -95,7 +96,7 @@ class Dialog:
 
     def get_text(self):
         self.__area.save()
-        # self.text = ''
+        self.text = ''
         # return self._doc.getValue()  # self.text if self.text else self._update_text()
         return self._update_text()
 
@@ -183,7 +184,7 @@ class _GUI:
         return False
 
     def _edit(self, *_):
-        return self.dialog("", act=self.executa_acao)
+        return self.dialogue
 
     def image(self, glyph, x, y, dx, dy):
         img = EmpacotadorDeImagem(self, glyph, x, y, dx, dy)
@@ -232,10 +233,11 @@ class GUI(_GUI):
         # self.code, self.codename = dcd(str.encode(code)).decode("utf-8"), codename
         self.error = self.extra = self.dialogue = None
 
-        self.dialogue = self.dialog(self.code, act=self.executa_acao)
+        self.dialogue = Dialog(self, text=self.code, act=self.executa_acao)
+        # self.dialogue = self.dialog(self.code, act=self.executa_acao)
         self.dialogue.hide()
 
-    def _first_response(self, dialog, action, extra, error):
+    def _first_response(self, action, extra, error):
         class ConsoleOutput:
 
             def __init__(self):
@@ -300,4 +302,4 @@ class GUI(_GUI):
         self.error = self.error if self.error else lambda *_: print("NO NO", self.error)
         self.code = self.get_code()
         self.storage[self.codename] = self.code
-        return self._first_response(dialog, lambda: self._executa_acao(), self.extra, self.error)
+        return self._first_response(lambda: self._executa_acao(), self.extra, self.error)

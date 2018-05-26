@@ -84,7 +84,7 @@ class Main:
         codename = self.codename.split(".")
         codename = "/".join(codename[-4:-2]+[log])
         tabs = "  " * score.setdefault("_level", 0)
-        print("scorer", codename, "{}{},\n".format(tabs, score))
+        # print("scorer", codename, "{}{},\n".format(tabs, score))
         self.__save(codename, "{}{},\n".format(tabs, score),
                     lambda *_: self._create_log(log="__score__.py", action_name=''),
                     request_path="__append_log", action_name="")
@@ -131,7 +131,7 @@ class Main:
     def _save(self, *_):
         codename = self.codename.split(".")
         codename = "/".join(codename[1:-1])+".{}".format(codename[-1])
-        print(" self.gui.dialogue:", codename, self.gui.dialogue)
+        # print(" self.gui.dialogue:", codename, self.gui.get_code())
         self.__save(codename, self.gui.get_code(), self._create)
 
     def post_id(self, ev, form_id="ident-form", address='_claim/', *_):
@@ -142,7 +142,7 @@ class Main:
         codename = self.codename.split(".")
         address = "/play/{}/{}/__claim/".format(codename[-4], codename[-3]) #, address)
         req = self.ajax.ajax()
-        print("post_id address", address, contents, codename)
+        # print("post_id address", address, contents, codename)
         req.open('POST', address, True)
         req.bind('complete', lambda *_: None)
         req.set_header('content-type', 'application/x-www-form-urlencoded')  # x-www-form-urlencoded')
@@ -160,7 +160,7 @@ class Main:
 
     def play(self):
         self.doc["ident-form"].bind('submit', self.post_id)
-        print("play codename:", self.codename)
+        # print("play codename:", self.codename)
         self.codename = ".".join(self.codename.split(".")[-4:])
         self.__play() if "_TEST_" in os.environ else self.timer.set_timeout(self.__play, 45000)
 
@@ -187,7 +187,8 @@ class Main:
 
     def start(self, navigate=MENU):
         ht = self.ht
-        self.gui = GUI(code=self.code, codename=self.codename, br=self.br)
+        self.gui = self.gui if self.gui else GUI(code=self.code, codename=self.codename, br=self.br)
+        self.dialog = self.gui.dialogue
 
         def do_ddmenu():
             ddmenu = ht.DIV(Class="navbar-item has-dropdown is-hoverable")
