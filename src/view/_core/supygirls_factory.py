@@ -82,7 +82,8 @@ class Dialog:
         self._div.remove()
 
     def hide(self):
-        self.remove()
+        self._div.style.visibility = 'hidden'
+        # self.remove()
 
     def show(self):
         self._div.style.visibility = 'visible'
@@ -94,7 +95,7 @@ class Dialog:
 
     def get_text(self):
         self.__area.save()
-        self.text = ''
+        # self.text = ''
         # return self._doc.getValue()  # self.text if self.text else self._update_text()
         return self._update_text()
 
@@ -201,11 +202,13 @@ class _GUI:
 
     def dialog(self, text=None, act=lambda *_: False):
         text = text if text else self.code
+        # print("    def dialog(self, text=None, act=lambda *_: False):\n", u"{}".format(text))
         if self.dialogue:
-            self.dialogue.remove()
-        self.dialogue = Dialog(self, text=text, act=act)
-        self.dialogue.set_text(text)
-        self.dialogue.show()
+            self.dialogue.set_text(text)
+        else:
+            self.dialogue = Dialog(self, text=text, act=act)
+        # self.dialogue.set_text(text)
+        # self.dialogue.show()
         return self.dialogue
 
     def continua(self):
@@ -218,10 +221,21 @@ class GUI(_GUI):
 
     def __init__(self, width=CANVASW, height=CANVASH, code="", codename="", **kwargs):
         _GUI.__init__(self, width=width, height=height, **kwargs)
-        self.code, self.codename = dcd(str.encode(code)).decode("utf-8"), codename
-        self.extra = self.dialoger = None
+        self.code, self.codename = dcd(str.encode(code)), codename
+        # -XXX-  gambiarra para corrigir o brython
+        codelist = list(self.code)
+        codeclean = bytes(
+            c for b, c, d in zip(codelist+[0, 0], [0]+codelist+[0], [0, 0]+codelist)
+            if (c, d) != (194, 131) != (b, c))
+        self.code = codeclean[1:-1].decode('utf-8')
+        # -XXX- fim da gambiarra
+        # self.code, self.codename = dcd(str.encode(code)).decode("utf-8"), codename
+        self.error = self.extra = self.dialogue = None
 
-    def _first_response(self, dialog, action, extra):
+        self.dialogue = self.dialog(self.code, act=self.executa_acao)
+        self.dialogue.hide()
+
+    def _first_response(self, dialog, action, extra, error):
         class ConsoleOutput:
 
             def __init__(self):
@@ -241,7 +255,7 @@ class GUI(_GUI):
         # TODO action += self.challenge[1]
         # logger('first response code %s' % action)
         try:
-            dialog = self.dialoger if self.dialoger else dialog
+            dialog = self.dialogue  # if self.dialogue else dialog
             self.code = dialog.get_text()
             # self.dialoger = None
             action()
@@ -251,19 +265,20 @@ class GUI(_GUI):
             '''
             console = str(self.value.value)
             if console:
-                self.dialoger = self.dialog(self.code, act=self.executa_acao)
-                self.dialoger.set_csl(console)
+                # self.dialogue = self.dialog(self.code, act=self.executa_acao)
+                self.dialogue.set_csl(console)
             else:
-                self.dialoger = None
+                # self.dialoger = None
                 extra()
         except Exception as err:
             # except Exception as err:
             traceback.print_exc(file=sys.stderr)
             sys.stdout = sys_out
             sys.stderr = sys_err
-            self.dialoger = self.dialog(self.code, act=self.executa_acao)  # +str(self.value.value))
-            self.dialoger.set_err(str(self.value.value))
-            # print(err)
+            err_trace = self.value.value
+            annotated_error = error(str(err_trace))
+            # self.dialogue = self.dialog(self.code, act=self.executa_acao)  # +str(self.value.value))
+            self.dialogue.set_err(annotated_error)
             # print(self.code)
             # self.dialoger = None
             return False
@@ -276,8 +291,13 @@ class GUI(_GUI):
         glob.update(__name__="__main__")
         exec(self.code, glob)  # dict(__name__="__main__"))
 
+    def get_code(self):
+        self.code = self.dialogue.get_text()
+        return self.code
+
     def executa_acao(self, dialog, action=None):
         self.extra = action if action else lambda *_: None
-        self.code = dialog.get_text()
+        self.error = self.error if self.error else lambda *_: print("NO NO", self.error)
+        self.code = self.get_code()
         self.storage[self.codename] = self.code
-        return self._first_response(dialog, lambda: self._executa_acao(), self.extra)
+        return self._first_response(dialog, lambda: self._executa_acao(), self.extra, self.error)

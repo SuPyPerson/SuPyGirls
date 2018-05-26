@@ -22,13 +22,15 @@
 .. moduleauthor:: Carlo Oliveira <carlo@nce.ufrj.br>
 
 """
-import json
+import json, os
 from base64 import encodebytes as ecd
 
 from .supygirls_factory import GUI
+from base64 import decodebytes as dcd
 
 CENAS = ["{}".format(chr(a)) for a in range(ord('a'), ord('z') + 1) if chr(a) not in 'aeiouy']
-RMENU = "Edit,_edit:Open,_open"
+RMENU = "Edit,_edit"
+# RMENU = "Edit,_edit:Open,_open"
 MENU = [m.split(",") for m in RMENU.split(":")]
 EMENU = [["Run", "_run"], ["Save", "_save"]]
 
@@ -36,129 +38,178 @@ EMENU = [["Run", "_run"], ["Save", "_save"]]
 class Main:
     def __init__(self, br):
         self.doc, self.ht, self.alert, self.storage = br.document, br.html, br.alert, br.storage
-        self.ajax, self.timer = br.ajax, br.timer
-        self.codename = codename = '{}.main.py'.format(br.codename)
-
-        self.gui = GUI(code=br.code, codename=codename, br=br)
-        self.dialog = None
-        self.menu = dict(_edit=lambda *_: self._edit(),
-                         _save=lambda *_: self._save(),
-                         _open=lambda *_: self._open(),
-                         _run=lambda *_: self._run(),
+        self.ajax, self.timer, self.window = br.ajax, br.timer, br.window
+        self.codename = '{}.main.py'.format(br.codename)
+        self.code, self.br = br.code, br
+        # self.menu = dict(_edit=lambda *_: self._edit(),
+        #                  _save=lambda *_: self._save(),
+        #                  _open=lambda *_: self._open(),
+        #                  _run=lambda *_: self._run(),
+        #                  )
+        self.menu = dict(_edit=self._edit,
+                         _save=self._save,
+                         _open=self._open,
+                         _run=self._run,
                          )
+        self.window.__SUPERPYTHON__ = self
+        self.dialog = self.gui = None
+        if "nav_saver" in self.doc:
+            self.doc["nav_saver"].style.opacity = 1
+            self.doc["nav_saver"].style.margin = "15px"
+            self.doc["nav_saver"].style.transition = "opacity 55s"
 
-    def _edit(self):
-        self.start(EMENU)
+    def _edit(self, *_):
+        self.doc['nav_waiter'].style.visibility = "visible"
         self.dialog = self.gui.edit()
+        self.dialog.show()
+        self.start(EMENU)
 
-    def _create(self):
+    def _create(self, content='', *_):
+        codename = self.codename.split(".")
+        codename = "/".join(codename[1:-1])+".{}".format(codename[-1])
+        self.__save(codename, content, request_path='__create', action_name='Creating')
+
+    def _create_log(self, log="__log__.py", action_name='Creating Log'):
+        codename = self.codename.split(".")
+        codename = "/".join(codename[1:-2] + [log])
+        self.__save(codename, '', request_path='__create', action_name=action_name)
+
+    def __append_log(self, error, log="__log__.py"):
+        codename = self.codename.split(".")
+        codename = "/".join(codename[-4:-2]+[log])
+        self.__save(codename, error, self._create_log,
+                    request_path="__append_log", action_name="Logging")
+
+    def scorer(self, score, log="__score__.py"):
+        codename = self.codename.split(".")
+        codename = "/".join(codename[-4:-2]+[log])
+        tabs = "  " * score.setdefault("_level", 0)
+        print("scorer", codename, "{}{},\n".format(tabs, score))
+        self.__save(codename, "{}{},\n".format(tabs, score),
+                    lambda *_: self._create_log(log="__score__.py", action_name=''),
+                    request_path="__append_log", action_name="")
+
+    def __save(self, codename, contents, creator=lambda *_: None, request_path="__save",
+               action_name="Saving", address=None):
         def change_color():
-            self.doc["nav_saver"].style.transition = "opacity 0s"
+            self.doc['nav_waiter'].style.visibility = "hidden"
+            self.doc["nav_saver"].style.transition = "opacity 45s"
             self.doc["nav_saver"].style.opacity = 1
             self.doc["nav_saver"].html = ""
 
-        def display(msg):
-            self.timer.set_timeout(change_color, 15000)
-            self.doc["nav_saver"].style.transition = "opacity 15s"
+        def display(msg, waiter="visible"):
+            self.doc['nav_waiter'].style.visibility = waiter
             # self.doc["nav_saver"].style.opacity = 1
-            self.doc["nav_saver"].html = msg
+            self.doc["nav_saver"].style.transition = "opacity 45s"
             self.doc["nav_saver"].style.opacity = 0
+            self.doc["nav_saver"].html = msg
+            self.timer.set_timeout(change_color, 25000)
 
         def on_complete(request):
-            if request.status == 200 or request.status == 0:
-                display(request.text)
-            else:
-                display("error " + request.text)
-        codename = self.codename.split(".")
-        codename = "/".join(codename[1:-1])+".{}".format(codename[-1])
-        display("Creating.. "+codename)
-        code = ecd(bytearray(self.gui.code.encode("UTF8"))).decode("utf-8")
-        # code = ecd(bytearray(HTMLParser().unescape(self.gui.code).encode("UTF8"))).decode("utf-8")
-        jsrc = json.dumps({'codename': codename, 'code': code})
-        # print(SAVE, jsrc)
-        req = self.ajax.ajax()
-        req.bind('complete', on_complete)
-        req.set_timeout('20000', lambda *_: display("NOT SAVED: TIMEOUT"))
-        req.open('POST', "/game/__create", True)
-        req.set_header('content-type', 'application/json')  # x-www-form-urlencoded')
-        req.send(jsrc)
-
-    def __save(self):
-        def on_complete(request):
-            if request.status == 200 or request.status == 0:
-                self.doc["nav_saver"].html = request.text
-            else:
-                self.doc["nav_saver"].html = "error " + request.text
-
-        codename = self.codename.split(".")
-        codename = "/".join(codename[1:-1])+".{}".format(codename[-1])
-        self.doc["nav_saver"].html = "Saving.. "+codename
-        req = self.ajax.ajax()
-        req.bind('complete', on_complete)
-        # send a POST request to the url
-        req.open('POST', "/game/__save", True)
-        req.set_header('content-type', 'application/x-www-form-urlencoded')
-        # send data as a dictionary
-        code = ecd(bytearray(self.gui.code.encode("UTF8"))).decode("utf-8")
-        req.send({'codename': codename, 'code': code})
-
-    def _save(self):
-        def change_color():
-            self.doc["nav_saver"].style.transition = "opacity 0s"
-            self.doc["nav_saver"].style.opacity = 1
-            self.doc["nav_saver"].html = ""
-
-        def display(msg):
-            self.timer.set_timeout(change_color, 15000)
-            self.doc["nav_saver"].style.transition = "opacity 15s"
-            # self.doc["nav_saver"].style.opacity = 1
-            self.doc["nav_saver"].html = msg
-            self.doc["nav_saver"].style.opacity = 0
-
-        def on_complete(request, slf=self):
             if request.status == 200 or request.status == 0:
                 if "404" in request.text:
-                    self.timer.set_timeout(slf._create, 1000)
-                    display("Attempting to create..")
+                    self.timer.set_timeout(lambda *_: creator(contents), 1000)
+                    display("Attempting to create..") if action_name else None
                 else:
-                    display(request.text)
+                    display(request.text,  waiter="hidden") if action_name else None
             else:
                 display("error " + request.text)
 
-        codename = self.codename.split(".")
-        codename = "/".join(codename[1:-1])+".{}".format(codename[-1])
-        display("Saving.. "+codename)
-        code = ecd(bytearray(self.gui.code.encode("UTF8"))).decode("utf-8")
+        display("{}.. {}".format(action_name, codename)) if action_name else None
+        code = ecd(bytearray(contents.encode("UTF8"))).decode("utf-8")
         # code = ecd(bytearray(HTMLParser().unescape(self.gui.code).encode("UTF8"))).decode("utf-8")
         jsrc = json.dumps({'codename': codename, 'code': code})
         # print(SAVE, jsrc)
         req = self.ajax.ajax()
         req.bind('complete', on_complete)
         req.set_timeout('20000', lambda *_: display("NOT SAVED: TIMEOUT"))
-        req.open('POST', "/game/__save", True)
+        address = address if address else "/game/{}".format(request_path)
+        req.open('POST', address, True)
         req.set_header('content-type', 'application/json')  # x-www-form-urlencoded')
         req.send(jsrc)
 
-    def _open(self):
+    def _save(self, *_):
+        codename = self.codename.split(".")
+        codename = "/".join(codename[1:-1])+".{}".format(codename[-1])
+        print(" self.gui.dialogue:", codename, self.gui.dialogue)
+        self.__save(codename, self.gui.get_code(), self._create)
+
+    def post_id(self, ev, form_id="ident-form", address='_claim/', *_):
+        ev.preventDefault()
+        self.doc["ident-modal"].className = "modal"
+        contents = {el.name: el.value for el in self.doc[form_id].elements if "author" in el.name}
+        # contents = str({el.name: el.value for el in self.doc[form_id].elements if "author" in name}).replace("'", '"')
+        codename = self.codename.split(".")
+        address = "/play/{}/{}/__claim/".format(codename[-4], codename[-3]) #, address)
+        req = self.ajax.ajax()
+        print("post_id address", address, contents, codename)
+        req.open('POST', address, True)
+        req.bind('complete', lambda *_: None)
+        req.set_header('content-type', 'application/x-www-form-urlencoded')  # x-www-form-urlencoded')
+        req.send(contents)
+
+    def _open(self, *_):
         ...
 
-    def _run(self):
-        dialog = self.gui.dialoger if self.gui.dialoger else self.dialog
-        dialog.action(lambda *_: self.start())
+    def _run(self, *_):
+        dialog = self.gui.dialogue if self.gui.dialogue else self.dialog
+        self.gui.error = self.error
+        dialog.action(lambda *_: self.start()
+                      )
         # self.gui.executa_acao(self.dialog, lambda *_: self.start())
+
+    def play(self):
+        self.doc["ident-form"].bind('submit', self.post_id)
+        print("play codename:", self.codename)
+        self.codename = ".".join(self.codename.split(".")[-4:])
+        self.__play() if "_TEST_" in os.environ else self.timer.set_timeout(self.__play, 45000)
+
+    def __play(self, *_):
+        glob = dict(globals())
+        glob.update(__name__="__main__")
+        code = dcd(str.encode(self.code))
+        # -XXX-  gambiarra para corrigir o brython
+        codelist = list(code)
+        codeclean = bytes(
+            c for b, c, d in zip(codelist+[0, 0], [0]+codelist+[0], [0, 0]+codelist)
+            if (c, d) != (194, 131) != (b, c))
+        code = codeclean[1:-1].decode('utf-8')
+        # -XXX- fim da gambiarra
+        exec(code, glob)
+
+    def error(self, error):
+        date = self.window.Date().replace(
+            ' GMT', '.{} GMt'.format(self.window.Date.new().getMilliseconds()))
+        self.__append_log(
+            "\n{{'date': '{} -X- SuPyGirls -X-',\n'error': '''{}'''}},".format(
+                date, error))
+        return error
 
     def start(self, navigate=MENU):
         ht = self.ht
+        self.gui = GUI(code=self.code, codename=self.codename, br=self.br)
+
+        def do_ddmenu():
+            ddmenu = ht.DIV(Class="navbar-item has-dropdown is-hoverable")
+            ddmenu_ancora = ht.A("Open", Class="navbar-link")
+            ddmenu <= ddmenu_ancora
+            ddmenu_box = ht.DIV(Class="navbar-dropdown is-boxed")
+            ddmenu <= ddmenu_box
+            dmenus = [(ht.A(name, Class="navbar-item is-tab"), ev) for name, ev in [("main-0", " main_0")]]
+            [ddmenu_box <= item for item, ev in dmenus]
+            return ddmenu
 
         def do_menu(menu):
             menu.html = ""
-            menus = [(ht.A(name, Class="nav-item is-tab"), ev) for name, ev in navigate]
+            menu <= ht.A('', Class="navbar-item is-tab", href='#')
+            menus = [(ht.A(name, Class="navbar-item is-tab"), ev) for name, ev in navigate]
             [menu <= item for item, ev in menus]
             [item.bind("click", self.menu[ev]) for item, ev in menus]
-            menu <= ht.A('Help', Class="nav-item is-tab", href='/site/help.html')
-            menu <= ht.A('About', Class="nav-item is-tab", href='/site/about.html')
-            menu <= ht.A('Home', Class="nav-item is-tab", href='/')
-
+            menu <= ht.A('Help', Class="navbar-item is-tab", href='/site/help.html')
+            menu <= ht.A('About', Class="navbar-item is-tab", href='/site/about.html')
+            menu <= ht.A('Home', Class="navbar-item is-tab", href='/')
+            # menu <= do_ddmenu()
+        self.doc['nav_waiter'].style.visibility = "hidden"
         do_menu(self.doc['right_menu'])
         do_menu(self.doc['burg_menu'])
 

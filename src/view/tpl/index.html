@@ -13,43 +13,46 @@
 </head>
 <body>
 <!-- navigation -->
-<div class="navigation">
-    <nav class="nav has-shadow">
-        <div class="container">
-            <!-- nav site title -->
-            <div class="nav-left">
-                <a class="nav-item">
-                    <h3 class="title is-5" style="color: white;">SuperPython</h3>
-                </a>
-            </div>
-            <!-- end of site title -->
-            <div class="nav-middle">
-                <a class="nav-item">
-                    <h6 id="nav_saver" class="title is-6"
-                        style="color: white; animation-name: fade; animation-duration: 4s;"></h6>
-                </a>
-            </div>
+<nav class="navbar is-transparent">
+  <div class="navbar-brand">
+    <a class="navbar-item" href="http://www.superpython.net">
+      <img src="/image/camisasuperpython.png" alt="Superpython" width="60" height="28">
+    </a>
+    <div id="burg_menu" class="navbar-burger burger" data-target="navbarExampleTransparentExample">
+            <a class="navbar-item is-tab" href="#">
 
-            <!-- this "nav-toggle" hamburger menu is only visible on mobile -->
-            <span class="nav-toggle">
-                <span><a class="nav-item is-tab" href="/site/help.html">Help</a></span>
-                <span><a class="nav-item is-tab" href="/site/about.html">About</a></span>
-	        </span>
-            <!-- end of toggle -->
+            </a>
+            <a class="navbar-item is-tab" href="/site/help.html">
+                Help
+            </a>
+            <a class="navbar-item is-tab" href="/site/about.html">
+                About
+            </a>
+            <a class="navbar-item is-tab" href="/">
+                Home
+            </a>
+    </div>
+  </div>
 
-            <!-- this "nav-menu" is hidden on mobile -->
-            <div class="nav-right nav-menu">
-                <a class="nav-item is-tab" href="/site/help.html">
-                    Help
-                </a>
-                <a class="nav-item is-tab" href="/site/about.html">
-                    About
-                </a>
-            </div>
-            <!-- end of nav -->
-        </div>
-    </nav>
-</div>
+  <div id="navbarExampleTransparentExample" class="navbar-menu">
+    <div class="navbar-start">
+      <a class="navbar-item" href="/">
+        SuperPython
+      </a>
+    </div>
+
+    <!-- this "nav-menu" is hidden on mobile -->
+    <div id="right_menu" class="navbar-end">
+        <a class="navbar-item is-tab" href="/site/help.html">
+            Help
+        </a>
+        <a class="navbar-item is-tab" href="/site/about.html">
+            About
+        </a>
+    </div>
+    <!-- end of nav -->
+  </div>
+</nav>
 <!-- end navigation -->
 
 <!-- page header (title, etc) -->
@@ -81,7 +84,7 @@
                     <!-- image for post -->
                     <div class="card-image">
                         <figure class="image is-4by3">
-                            <a href="/supygirls">
+                            <a href="/supygirls/project">
                                 <img src="image/camisasuperpython.png" alt="Image">
                             </a>
                         </figure>
@@ -90,7 +93,7 @@
 
                     <!-- post header -->
                     <div class="card-content-header">
-                        <h4 class="title is-4"><a href="/supygirls">SuperPython</a></h4>
+                        <h4 class="title is-4"><a href="/supygirls/project">SuperPython</a></h4>
                     </div>
                     <!-- end of post header -->
                     Gather your team to develop your own game
@@ -115,7 +118,7 @@
 
                     <!-- post header -->
                     <div class="card-content-header">
-                        <h4 class="title is-4"><a href="/supygirls">Kwarwp</a></h4>
+                        <h4 class="title is-4"><a href="/kwarwp">Kwarwp</a></h4>
                     </div>
                     <!-- end of post header -->
                     Follow the adventures of a brave warrior
@@ -130,7 +133,7 @@
                     <!-- image for post -->
                     <div class="card-image">
                         <figure class="image is-4by3">
-                            <a href="/supygirls">
+                            <a href="/supygirls/project">
                                 <img src="image/supygirls_logo.png" alt="Image">
                             </a>
                         </figure>
@@ -139,7 +142,7 @@
 
                     <!-- post header -->
                     <div class="card-content-header">
-                        <h4 class="title is-4"><a href="/supygirls">SuPyGirls</a></h4>
+                        <h4 class="title is-4"><a href="/supygirls/project">SuPyGirls</a></h4>
                     </div>
                     <!-- end of post header -->
                     Roll your own game with python
