@@ -86,8 +86,9 @@
         <div class="columns is-multiline is-centered">
             <!-- start of about -->
             <div class="column is-12">
-                <div id="pycard" class="card">
+                <div class="card">
                     <!-- about content -->
+                    <div id="pycard"></div>
                     <div id="pydiv" class="card is-12by8" style="min-height:600px;">
                         <figure>
                             <img src="/image/{{image}}" width="1000px" alt="Image">
