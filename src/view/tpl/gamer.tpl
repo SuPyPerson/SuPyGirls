@@ -12,6 +12,8 @@
     <link rel="stylesheet" href="/css/{{ css }}.css" type="text/css"/>
     % end
     <!-- scripts -->
+    <script type="text/javascript" src="http://www.glowscript.org/lib/jquery/1.1/jquery.min.js"></script>
+    <script type="text/javascript" src="http://www.glowscript.org/lib/jquery/1.1/jquery-ui.custom.min.js"></script>
     % for scp in brython_js:
     <script type="text/javascript" src="/js/{{ scp  }}.js"></script>
     % end
