@@ -12,6 +12,11 @@
     <link rel="stylesheet" href="/css/{{ css }}.css" type="text/css"/>
     % end
     <!-- scripts -->
+    <script type="text/javascript" src="http://www.glowscript.org/lib/jquery/1.1/jquery.min.js"></script>
+    <script type="text/javascript" src="http://www.glowscript.org/lib/jquery/1.1/jquery-ui.custom.min.js"></script>
+    <link rel="stylesheet" href="/css/atom-one-light.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
     % for scp in brython_js:
     <script type="text/javascript" src="/js/{{ scp  }}.js"></script>
     % end
