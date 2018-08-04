@@ -14,12 +14,12 @@ Bem vindos ao SuPyGirls, hoje nós vamos começar a nos aventurar pelo incrível
 
 .. image:: _static/giphy1.gif
 
-A plataforma SuperPython é um ambiente de desenvolvimento online de Jogos em python que você pode acessar de qualquer lugar através da Internet. Nela você vai encontrar algumas ferramentas pensadas para te ajudar a aprender a programar enquanto constrói jogos. Esse tutorial vai focar no uso da ferramenta Vittolino para a contrução de histórias em quadrinhos.
+A plataforma SuperPython é um ambiente de desenvolvimento online de Jogos em python que você pode acessar de qualquer lugar através da Internet. Nela você vai encontrar algumas ferramentas pensadas para te ajudar a aprender a programar enquanto constrói jogos. Esse tutorial vai focar no uso da ferramenta Vittolino para a construção de histórias em quadrinhos.
 
 
 .. image:: _static/giphy2.gif
 
-Primeiro devemos acessar o endereço da plataforma SupyGirls do SuperPython, que é esse aqui ó:
+Primeiro, devemos acessar o endereço da plataforma SupyGirls do SuperPython, que é esse aqui ó:
 
 http://supygirls.pythonanywhere.com/supygirls
 
@@ -32,7 +32,7 @@ Cada quadrado nomeado nesse portal é uma sala para uma turma de desenvolvimento
 .. image:: _static/fun1.png
 (pausa reflexiva)
 
-Na sala da sua turma, existem mais quadrados nomeados. Cada quadrado nomeado é um editor de jogos, ou seja, se você clicar em qualquer um deles você vai ser levado para um ambiente onde já vai poder começar a contruir todas as doideiras que sem passam dentro da sua cabeça perturbada!
+Na sala da sua turma, existem mais quadrados nomeados. Cada quadrado nomeado é um editor de jogos, ou seja, se você clicar em qualquer um deles você vai ser levado para um ambiente onde já vai poder começar a contruir com todas as doideiras que se passam dentro da sua cabeça perturbada!
 
 .. image:: _static/captela2.png
 
@@ -51,14 +51,14 @@ Pronto, finalmente chegamos ao editor. Essa é a tela de início. Nela você pod
 
 .. image:: _static/captela3.png
 
-Agora chegamos ao editor do código Python. Esse código é como você vai descrever tudo o que o computador precisa fazer para ele construir o jogo que você imaginar. No momento ele só tem uma linha. Essa linha começa com o caracter '#', o que significa que ela não será lida pelo computador, ela é um cometário feito para seres humanos lerem. Eles servem para facilitar a leitura do código pelo programador.
+Agora chegamos ao editor do código Python. Esse código é como você vai descrever tudo o que o computador precisa fazer para ele construir o jogo que você imaginar. No momento, ele só tem uma linha. Essa linha começa com o caracter '#', o que significa que ela não será lida pelo computador, ela é um comentário feito para os seres humanos lerem. Eles servem para facilitar a leitura do código pelo programador.
 
 Especificamente, essa linha é apenas uma marcação do título do documento de texto que nós vamos editar. Mas se você ficou confuso, não se preocupe, porque nós vamos apagá-la!
 
 
 .. image:: _static/captela4.png
 
-Agora na primeira linha nós vamos escrever o seguinte código:
+Agora, na primeira linha, nós vamos escrever o seguinte código:
 
 from _spy.vittolino.main import Cena, Elemento, Texto
 
@@ -87,7 +87,7 @@ A história em quadrinhos que vamos construir com o Vittolino é estrturada da s
 
 .. image:: _static/fun2.jpg
 
-Cada quadro é uma Cena, que possui Elementos que, por sua vez, possuem um Texto. Sabendo disso, o que deve ser que nossa primeira linha de código pede para o computador fazer?
+Cada quadro é uma Cena, que possui Elementos que, por sua vez, possuem um Texto. Sabendo disso, o que a nossa primeira linha de código deve pedir para o computador fazer?
 
 .. image:: _static/giphy5.gif
 
@@ -109,7 +109,7 @@ Elemento (Imagem de uma Barbie)
 
 http://www.scrapsdinamicos.com.br/imagens/imagens-imagens-da-barbie-20.png
 
-Para copiar o link de uma imagem, se clica com o botão direito nela e escolha a opção "Copiar Endereço da Imagem", mas atenção! Existe a possibilidade de uma imagem que você queira pegar esteja com seu endereço protegido, por isso é sempre bom testar os links que vocês selecionarem. Perceba que se você clicar em alguns dos links acima, você é redirecionado para uma página que possui apenas a imagem e nada mais.
+Para copiar o link de uma imagem, clique com o botão direito nela e escolha a opção "Copiar Endereço da Imagem", mas atenção! Existe a possibilidade de uma imagem que você queira pegar esteja com seu endereço protegido, por isso é sempre bom testar os links que vocês selecionarem. Perceba que se você clicar em alguns dos links acima, você é redirecionado para uma página que possui apenas a imagem e nada mais.
 
 Nós podemos ir salvando os links no próprio código ou no bloco de notas. Se você escolher salvar no pŕoprio código, você tem duas opções:
 
@@ -119,13 +119,13 @@ Salvar numa variável. Escolha um nome sem espaços e único e escreva nome = "l
 
 .. image:: _static/captela7.png
 
-Se você tem uma alma mais desenhista e quer criar os personagens e os cenários, também pode! Desenhe no computador ou tire fotos de algum desenho à mão e faça o upload do arquivo para um site de hosting de imagens, existem vários na Internet. Depois é só salvar os links onde suas imagens forem guardadas.
+Se você tem uma alma mais desenhista e quer criar os personagens e os cenários, também pode! Desenhe no computador ou tire fotos de algum desenho à mão e faça o upload do arquivo para um site de hosting de imagens, existem vários na Internet. Depois é só salvar os links onde suas imagens foram guardadas.
 
 Também é o momento de se pensar nas falas de cada personagem em cada cena!
 
 .. image:: _static/giphy7.gif
 
-Para nosso exemplo, nós escolemos o seginte Texto para a Barbie no Castelo:
+Para nosso exemplo, nós escolhemos o seginte Texto para a Barbie no Castelo:
 
 "Vim para o castelo para me abrigar de um ataque de dragões."
 
@@ -136,7 +136,7 @@ Pronto! Agora que temos o primeiro quadro planejado e preparado, podemos começa
 Implementação do Primeiro Quadro
 ================================
 
-Agora precisamos pedir ao computador duas coisas para o nosso Jogo começar a andar. Primeiro, precisamos pedir pra ele anotar como construir a nossa história, e depois que contarmos pra ele, devemos pedir pra que ele realize a contrução da nossa história.
+Agora precisamos pedir ao computador duas coisas para o nosso Jogo começar a andar. Primeiro, precisamos pedir pra ele anotar como construir a nossa história, e depois que contarmos pra ele, devemos pedir pra que ele realize a construção da nossa história.
 
 
 .. image:: _static/captela8.png
@@ -145,7 +145,7 @@ CALMA
 
 .. image:: _static/giphy8.gif
 
-Para contar para o computador como fazer algo nós usamos a palavra-chave def. Ela significa definir, ou seja, você está definindo algo novo para o computador, algo que ele não sabia. Mas para usar essa palavra, se deve usar dessa maneira:
+Para contar para o computador como fazer algo, nós usamos a palavra-chave def. Ela significa definir, ou seja, você está definindo algo novo para o computador, algo que ele não sabia. Mas para usar essa palavra da seguinte maneira:
 
 def NomeDaquiloQueVoceVaiEnsiarSemEspacosNemAcento():
 
@@ -194,7 +194,7 @@ Tivemos um erro, nosso teste falhou. Alguma coisa em algum lugar deu errado. Alg
 
 "Mas o que eu faço?!", vocês podem perguntar.
 
-Chequem tudo. Cheque se você usou as letras maiúsculas certas, se fechou todos os parênteses, se escreveu tudo certinho, se não fecou umas aspas, ou não usou aspas, qualquer coisa pode ter acontecido. A mensagem em vermelho te dá uma dica do que pode ter acontecido no seu código. Muitas vezes ela diz precisamente onde o seu erro aconteceu, mas muitas vezes ela mais atrapalha que ajuda. Nessas horas é bom pedir ajuda pro colega ao lado ou na Internet para te ajudar a buscar o seu erro. Sabe quando a gente tá procurando lguma coisa em casa e vem alguém e smplesmente acha? Na programação também acontece. Às vezes.
+Chequem tudo. Cheque se você usou as letras maiúsculas certas, se fechou todos os parênteses, se escreveu tudo certinho, se esqueceu ou não usou aspas, qualquer coisa pode ter acontecido. A mensagem em vermelho te dá uma dica do que pode ter acontecido no seu código. Muitas vezes ela diz precisamente onde o seu erro aconteceu, mas muitas vezes ela mais atrapalha do que ajuda. Nessas horas é bom pedir ajuda pro colega ao lado ou na Internet para tentar descobrir qual o seu erro. Sabe quando a gente tá procurando alguma coisa em casa e vem alguém e simplesmente acha? Na programação, também acontece. Às vezes.
 
 É Vitollino, não Vittolino!
 ===========================
@@ -226,7 +226,7 @@ No nosso exemplo, como tinhamos o link da Barbir numa variável, podemos dar o n
 
 .. image:: _static/captela16.png
 
-Não se preocupem! Nós podemos pular linha no meio da decaração de uma função() se isso ajudar a leitura.
+Não se preocupem! Nós podemos pular linha no meio da declaração de uma função() se isso ajudar a leitura.
 
 Vamos testar mais uma vez para ver se está tudo em ordem.
 
@@ -255,7 +255,7 @@ Praqueles que não acaharam, eu escrevi linkDaBaribie quando eu guardei o meu li
 
 Sem erros!
 
-Não obtivemos nenhuma mensagem de erro dessa vez, mas a Barbie ainda não apareceu. Isso é porque assim como tinhamos mandar a cena "rodar", temos que mandar o nosso personagem "entrar em cena". Nós fazemos isso através da função .entrar() do Elemento. Difetente da função .vai(), nós precisamos passar a Cena na qual o Elemento vai entrar na função .entrar().
+Não obtivemos nenhuma mensagem de erro dessa vez, mas a Barbie ainda não apareceu. Isso é porque assim como tinhamos que mandar a cena "rodar", temos que mandar o nosso personagem "entrar em cena". Nós fazemos isso através da função .entrar() do Elemento. Diferente da função .vai(), nós precisamos passar a Cena na qual o Elemento vai entrar na função .entrar().
 
 nomePersonagem.entrar(nomeCena)
 
@@ -271,7 +271,7 @@ Agora só falta inserirmos o Texto para nossa primeira página ficar completa! E
 
 nomeTexto = Texto(nomeCena, "texto")
 
-Assim como com Elemento e Cena, não pasta apenas contar para o computador que o Texto existe, temos que associa-lo a algum Elemento dentro da Cena que ele se encontra. Fazemos isso associando a função .vai() do Texto com a função .vai() do elemento que se deseja associar. Para se associar função, nós não escrevemos os parênteses:
+Assim como o Elemento e Cena, não basta apenas contar para o computador que o Texto existe, temos que associa-lo a algum Elemento dentro da Cena que ele se encontra. Fazemos isso associando a função .vai() do Texto com a função .vai() do elemento que se deseja associar. Para se associar função, nós não escrevemos os parênteses:
 
 nomeElemento.vai = nomeTexto.vai
 
@@ -287,7 +287,7 @@ Sem texto, mais um erro!
 
 .. image:: _static/giphy12.gif
 
-O erro que cometi agora foi a ordem da operação txtBarbie.vai = barbie.vai. Escrito dessa maneira, eu estou dizendo ao computador para fazer ação do texto da barbie ser igual a ação da barbie, que é nula. O que eu quero na verdade é juutamento o oposto, que a barbie copie a ação do texto, logo deve ser, barbie.vai = txtBarbie.vai.
+O erro que cometi agora foi a ordem da operação txtBarbie.vai = barbie.vai. Escrito dessa maneira, eu estou dizendo ao computador para fazer ação do texto da barbie ser igual a ação da barbie, que é nula. O que eu quero na verdade é justamente o oposto, que a barbie copie a ação do texto, logo deve ser, barbie.vai = txtBarbie.vai.
 
 .. image:: _static/captela24.png
 
