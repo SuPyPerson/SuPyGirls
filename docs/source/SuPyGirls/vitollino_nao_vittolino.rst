@@ -30,7 +30,7 @@ No nosso exemplo, como tinhamos o link da Barbir numa variável, podemos dar o n
 
 .. image:: _static/captela16.png
 
-Não se preocupem! Nós podemos pular linha no meio da decaração de uma função() se isso ajudar a leitura.
+Não se preocupem! Nós podemos pular linha no meio da declaração de uma função() se isso ajudar a leitura.
 
 Vamos testar mais uma vez para ver se está tudo em ordem.
 
@@ -59,7 +59,7 @@ Praqueles que não acaharam, eu escrevi linkDaBaribie quando eu guardei o meu li
 
 Sem erros!
 
-Não obtivemos nenhuma mensagem de erro dessa vez, mas a Barbie ainda não apareceu. Isso é porque assim como tinhamos mandar a cena "rodar", temos que mandar o nosso personagem "entrar em cena". Nós fazemos isso através da função .entrar() do Elemento. Difetente da função .vai(), nós precisamos passar a Cena na qual o Elemento vai entrar na função .entrar().
+Não obtivemos nenhuma mensagem de erro dessa vez, mas a Barbie ainda não apareceu. Isso é porque assim como tinhamos que mandar a cena "rodar", temos que mandar o nosso personagem "entrar em cena". Nós fazemos isso através da função .entrar() do Elemento. Diferente da função .vai(), nós precisamos passar a Cena na qual o Elemento vai entrar na função .entrar().
 
 nomePersonagem.entrar(nomeCena)
 
@@ -75,7 +75,7 @@ Agora só falta inserirmos o Texto para nossa primeira página ficar completa! E
 
 nomeTexto = Texto(nomeCena, "texto")
 
-Assim como com Elemento e Cena, não pasta apenas contar para o computador que o Texto existe, temos que associa-lo a algum Elemento dentro da Cena que ele se encontra. Fazemos isso associando a função .vai() do Texto com a função .vai() do elemento que se deseja associar. Para se associar função, nós não escrevemos os parênteses:
+Assim como o Elemento e Cena, não basta apenas contar para o computador que o Texto existe, temos que associa-lo a algum Elemento dentro da Cena que ele se encontra. Fazemos isso associando a função .vai() do Texto com a função .vai() do elemento que se deseja associar. Para se associar função, nós não escrevemos os parênteses:
 
 nomeElemento.vai = nomeTexto.vai
 
@@ -91,7 +91,7 @@ Sem texto, mais um erro!
 
 .. image:: _static/giphy12.gif
 
-O erro que cometi agora foi a ordem da operação txtBarbie.vai = barbie.vai. Escrito dessa maneira, eu estou dizendo ao computador para fazer ação do texto da barbie ser igual a ação da barbie, que é nula. O que eu quero na verdade é juutamento o oposto, que a barbie copie a ação do texto, logo deve ser, barbie.vai = txtBarbie.vai.
+O erro que cometi agora foi a ordem da operação txtBarbie.vai = barbie.vai. Escrito dessa maneira, eu estou dizendo ao computador para fazer ação do texto da barbie ser igual a ação da barbie, que é nula. O que eu quero na verdade é justamente o oposto, que a barbie copie a ação do texto, logo deve ser, barbie.vai = txtBarbie.vai.
 
 .. image:: _static/captela24.png
 
