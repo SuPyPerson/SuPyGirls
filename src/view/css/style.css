@@ -48,6 +48,12 @@ input:focus, textarea:focus, input[type]:focus {
     background-color: #0c0f0f;
 }
 
+/* navigation */
+.navbar-menu {
+    background-color: #161c1c;
+    float: right;
+}
+
 .navbar a {
     color: whitesmoke;
 }

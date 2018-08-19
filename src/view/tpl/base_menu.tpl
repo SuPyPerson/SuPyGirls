@@ -3,7 +3,7 @@
     <a class="navbar-item" href="http://www.superpython.net">
       <img src="/image/camisasuperpython.png" alt="Superpython" width="60" height="28">
     </a>
-    <span class="navbar-burger" data-target="right-menu">
+    <span class="navbar-burger" data-target="navbar-menu">
         <span></span>
         <span></span>
         <span></span>
@@ -11,7 +11,7 @@
     </span>
   </div>
 
-  <div id="navbarExampleTransparentExample" class="navbar-menu">
+  <div id="navbar-menu" class="navbar-menu">
     <div class="navbar-start">
       <a class="navbar-item" href="/supygirls/project">
         {{pagetitle}}
