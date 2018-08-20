@@ -46,6 +46,7 @@ input:focus, textarea:focus, input[type]:focus {
 /* navigation */
 .navbar {
     background-color: #0c0f0f;
+    color: whitesmoke;
 }
 
 /* navigation */
@@ -95,8 +96,9 @@ a.navbar-item.is-tab:hover {
 }
 
 /* main-header */
-.main-header .title .label {
+.main-header {/* .title .label { */
     color: whitesmoke;
+    background-color: #161c1c;
 }
 
 .label {
@@ -112,6 +114,12 @@ a.navbar-item.is-tab:hover {
 }
 
 .main-header .hero {
+    color: whitesmoke;
+    background-color: #161c1c;
+}
+
+.main-header .hero  .title {
+    color: whitesmoke;
     background-color: #161c1c;
 }
 

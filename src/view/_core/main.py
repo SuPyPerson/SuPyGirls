@@ -205,7 +205,6 @@ class Main:
 
         def do_menu(menu):
             menu.html = ""
-            menu <= ht.A('', Class="navbar-item is-tab", href='#')
             menus = [(ht.A(name, Class="navbar-item is-tab"), ev) for name, ev in navigate]
             [menu <= item for item, ev in menus]
             [item.bind("click", self.menu[ev]) for item, ev in menus]

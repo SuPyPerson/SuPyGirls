@@ -3,8 +3,12 @@
     <a class="navbar-item" href="http://www.superpython.net">
       <img src="/image/camisasuperpython.png" alt="Superpython" width="60" height="28">
     </a>
+    <div class="navbar-start">
+      <a class="navbar-item" href="/supygirls/project">
+        {{pagetitle}}
+      </a>
+    </div>
     <span class="navbar-burger" data-target="navbar-menu">
-        <span></span>
         <span></span>
         <span></span>
         <span></span>
@@ -12,11 +16,6 @@
   </div>
 
   <div id="navbar-menu" class="navbar-menu">
-    <div class="navbar-start">
-      <a class="navbar-item" href="/supygirls/project">
-        {{pagetitle}}
-      </a>
-    </div>
 
     <!-- this "nav-menu" is hidden on mobile -->
     <div id="right-menu" class="navbar-end">
