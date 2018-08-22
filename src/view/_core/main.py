@@ -214,7 +214,7 @@ class Main:
             # menu <= do_ddmenu()
         self.doc['nav_waiter'].style.visibility = "hidden"
         do_menu(self.doc['right_menu'])
-        do_menu(self.doc['burg_menu'])
+        #do_menu(self.doc['burg_menu'])
 
 
 def main(**kwargs):
