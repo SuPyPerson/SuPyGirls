@@ -32,6 +32,8 @@ import os as op
 from github import Github
 from base64 import decodebytes as dcd
 
+TIMESTAMP = '@{:%Y-%m-%d %H:%M}'
+
 LOCAL_FOLDER = os.path.abspath(os.path.join(os.path.dirname(__file__), '../model/git/spg'))
 REMOTE_URL = "https://github.com/SuPyPackage/SuPyGirls.git"
 USERNAME = "kwarwp"
@@ -85,31 +87,31 @@ class DataSource:
         return self.repo.get_file_contents(path.format(packager, moduler))
 
     def create_file(self, project, filename, decoded_content, comment=None):
-        timestamp = 'Timestamp: {:%Y-%m-%d %H:%M:%S}'.format(datetime.datetime.now())
-        comment = comment if comment else "Created {} at {}".format(filename, timestamp)
+        timestamp = TIMESTAMP.format(datetime.datetime.now())
+        comment = comment if comment else "Created {} {}".format(filename, timestamp)
         self.repo = self.user.get_repo(project)
         self.repo.create_file("/{}".format(filename), comment, decoded_content)
         return comment
     """
     def create_project(self, project):
         curl -i -H 'Authorization: token TOKEN' -d '{"name":"grete"}' https://api.github.com/user/repos
-        timestamp = 'Timestamp: {:%Y-%m-%d %H:%M:%S}'.format(datetime.datetime.now())
+        timestamp = TIMESTAMP.format(datetime.datetime.now())
         comment = "Created {} at {}".format(project, timestamp)
         self.user.create_repo("/{}".format(project), comment)
         return comment
     """
 
     def save_file(self, project, filename, decoded_content, comment=None):
-        timestamp = 'Timestamp: {:%Y-%m-%d %H:%M:%S}'.format(datetime.datetime.now())
-        comment = comment if comment else "Saved {} at {}".format(filename, timestamp)
+        timestamp = TIMESTAMP.format(datetime.datetime.now())
+        comment = comment if comment else "Saved {} {}".format(filename, timestamp)
         self.repo = self.user.get_repo(project)
         file = self.repo.get_file_contents(filename)
         self.repo.update_file("/{}".format(filename), comment, decoded_content, file.sha)
         return comment
 
     def append_file(self, project, filename, decoded_content, comment=None):
-        timestamp = 'Timestamp: {:%Y-%m-%d %H:%M:%S}'.format(datetime.datetime.now())
-        comment = comment if comment else "Saved {} at {}".format(filename, timestamp)
+        timestamp = TIMESTAMP.format(datetime.datetime.now())
+        comment = comment if comment else "Saved {} {}".format(filename, timestamp)
         self.repo = self.user.get_repo(project)
         file = self.repo.get_file_contents(filename)
         file_content = dcd(str.encode(file.content)).decode("utf-8") + decoded_content
@@ -117,8 +119,8 @@ class DataSource:
         return comment
 
     def update_file(self, project, packager, decoded_content, moduler="main.py", comment=None):
-        timestamp = 'Timestamp: {:%Y-%m-%d %H:%M:%S}'.format(datetime.datetime.now())
-        comment = comment if comment else "Automatic save at {}".format(timestamp)
+        timestamp = TIMESTAMP.format(datetime.datetime.now())
+        comment = comment if comment else "Automatic save {}".format(timestamp)
         file = self.get_file_contents(project, packager)
         self.repo.update_file("{}/{}".format(packager, moduler), comment, decoded_content, file.sha)
         return comment

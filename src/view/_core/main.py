@@ -96,17 +96,17 @@ class Main:
                action_name="Saving", address=None):
         def change_color():
             self.doc['nav_waiter'].style.visibility = "hidden"
-            self.doc["nav_saver"].style.transition = "opacity 45s"
+            self.doc["nav_saver"].style.transition = "opacity 15s"
             self.doc["nav_saver"].style.opacity = 1
             self.doc["nav_saver"].html = ""
 
         def display(msg, waiter="visible"):
             self.doc['nav_waiter'].style.visibility = waiter
             # self.doc["nav_saver"].style.opacity = 1
-            self.doc["nav_saver"].style.transition = "opacity 45s"
+            self.doc["nav_saver"].style.transition = "opacity 15s"
             self.doc["nav_saver"].style.opacity = 0
             self.doc["nav_saver"].html = msg
-            self.timer.set_timeout(change_color, 25000)
+            self.timer.set_timeout(change_color, 5000)
 
         def on_complete(request):
             if request.status == 200 or request.status == 0:
