@@ -17,42 +17,44 @@ musicalmice 🐁 - Interface remota do instrutor
 Aspectos do Lançamento
 ======================
 
-Este lançamento inaugura a interface remota do instrutor
+Este lançamento corrige Burger Menu, adiciona  e  divide as abas de tutoriais,comporta as funcionalidades 3D  e inclui tutorial Sphinx.
 
 Destaques dos Aspectos
 **********************
 
-EM CONSTRUÇÂO.
+Adaptação para melhor visualizar a plataforma a partir do celular.
 
 Aspecto #1
 **********
 
-EM CONSTRUÇÂO.
+Inclusão da função 3D.
+
+
+Melhoramentos
+=============
+
+Adiciona função glowscript.
+
+Melhoramento #1
+***************
+
+Enviando biblioteca 3d para o cliente.
+
+Melhoramento #2
+***************
+
+Mini tutorial 3D, com text, extrusion e ellipsoid.
 
 Aspecto #2
 **********
 
 EM CONSTRUÇÂO.
 
-Melhoramentos
-=============
-
-EM CONSTRUÇÂO.
-
-Melhoramento #1
-***************
-
-EM CONSTRUÇÂO.
-
-Melhoramento #2
-***************
-
-EM CONSTRUÇÂO.
 
 Consertos
 =========
 
-EM CONSTRUÇÂO.
+Do Burger Menu
 
 Conserto #01
 ************
