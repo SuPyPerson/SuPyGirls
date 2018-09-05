@@ -20,7 +20,7 @@ A história em quadrinhos que vamos construir com o Vittolino é estrturada da s
 
 .. image:: _static/fun2.jpg
 
-Cada quadro é uma Cena, que possui Elementos que, por sua vez, possuem um Texto. Sabendo disso, o que deve ser que nossa primeira linha de código pede para o computador fazer?
+Cada quadro é uma Cena, que possui Elementos que, por sua vez, possuem um Texto. Sabendo disso, o que a nossa primeira linha de código deve pedir para o computador fazer?
 
 .. image:: _static/giphy5.gif
 
@@ -42,7 +42,7 @@ Elemento (Imagem de uma Barbie)
 
 http://www.scrapsdinamicos.com.br/imagens/imagens-imagens-da-barbie-20.png
 
-Para copiar o link de uma imagem, se clica com o botão direito nela e escolha a opção "Copiar Endereço da Imagem", mas atenção! Existe a possibilidade de uma imagem que você queira pegar esteja com seu endereço protegido, por isso é sempre bom testar os links que vocês selecionarem. Perceba que se você clicar em alguns dos links acima, você é redirecionado para uma página que possui apenas a imagem e nada mais.
+Para copiar o link de uma imagem, clique com o botão direito nela e escolha a opção "Copiar Endereço da Imagem", mas atenção! Existe a possibilidade de uma imagem que você queira pegar esteja com seu endereço protegido, por isso é sempre bom testar os links que vocês selecionarem. Perceba que se você clicar em alguns dos links acima, você é redirecionado para uma página que possui apenas a imagem e nada mais.
 
 Nós podemos ir salvando os links no próprio código ou no bloco de notas. Se você escolher salvar no pŕoprio código, você tem duas opções:
 
@@ -52,13 +52,13 @@ Salvar numa variável. Escolha um nome sem espaços e único e escreva nome = "l
 
 .. image:: _static/captela7.png
 
-Se você tem uma alma mais desenhista e quer criar os personagens e os cenários, também pode! Desenhe no computador ou tire fotos de algum desenho à mão e faça o upload do arquivo para um site de hosting de imagens, existem vários na Internet. Depois é só salvar os links onde suas imagens forem guardadas.
+Se você tem uma alma mais desenhista e quer criar os personagens e os cenários, também pode! Desenhe no computador ou tire fotos de algum desenho à mão e faça o upload do arquivo para um site de hosting de imagens, existem vários na Internet. Depois é só salvar os links onde suas imagens foram guardadas.
 
 Também é o momento de se pensar nas falas de cada personagem em cada cena!
 
 .. image:: _static/giphy7.gif
 
-Para nosso exemplo, nós escolemos o seginte Texto para a Barbie no Castelo:
+Para nosso exemplo, nós escolhemos o seginte Texto para a Barbie no Castelo:
 
 "Vim para o castelo para me abrigar de um ataque de dragões."
 

@@ -165,7 +165,7 @@ class Main:
         self.doc["ident-form"].bind('submit', self.post_id)
         # print("play codename:", self.codename)
         self.codename = ".".join(self.codename.split(".")[-4:])
-        self.__play() if "_TEST_" in os.environ else self.timer.set_timeout(self.__play, 45000)
+        self.__play() if "_TEST_" in os.environ else self.timer.set_timeout(self.__play, 15000)
 
     def __play(self, *_):
         glob = dict(globals())

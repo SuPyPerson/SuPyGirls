@@ -14,12 +14,12 @@ Bem vindos ao SuPyGirls, hoje nós vamos começar a nos aventurar pelo incrível
 
 .. image:: _static/giphy1.gif
 
-A plataforma SuperPython é um ambiente de desenvolvimento online de Jogos em python que você pode acessar de qualquer lugar através da Internet. Nela você vai encontrar algumas ferramentas pensadas para te ajudar a aprender a programar enquanto constrói jogos. Esse tutorial vai focar no uso da ferramenta Vittolino para a contrução de histórias em quadrinhos.
+A plataforma SuperPython é um ambiente de desenvolvimento online de Jogos em python que você pode acessar de qualquer lugar através da Internet. Nela você vai encontrar algumas ferramentas pensadas para te ajudar a aprender a programar enquanto constrói jogos. Esse tutorial vai focar no uso da ferramenta Vittolino para a construção de histórias em quadrinhos.
 
 
 .. image:: _static/giphy2.gif
 
-Primeiro devemos acessar o endereço da plataforma SupyGirls do SuperPython, que é esse aqui ó:
+Primeiro, devemos acessar o endereço da plataforma SupyGirls do SuperPython, que é esse aqui ó:
 
 http://supygirls.pythonanywhere.com/supygirls
 
@@ -32,7 +32,7 @@ Cada quadrado nomeado nesse portal é uma sala para uma turma de desenvolvimento
 .. image:: _static/fun1.png
 (pausa reflexiva)
 
-Na sala da sua turma, existem mais quadrados nomeados. Cada quadrado nomeado é um editor de jogos, ou seja, se você clicar em qualquer um deles você vai ser levado para um ambiente onde já vai poder começar a contruir todas as doideiras que sem passam dentro da sua cabeça perturbada!
+Na sala da sua turma, existem mais quadrados nomeados. Cada quadrado nomeado é um editor de jogos, ou seja, se você clicar em qualquer um deles você vai ser levado para um ambiente onde já vai poder começar a contruir com todas as doideiras que se passam dentro da sua cabeça perturbada!
 
 .. image:: _static/captela2.png
 
@@ -43,8 +43,6 @@ Mais nomes... suspeito...
 Enfim, de volta ao que importa, JOGOS!
 
 .. image:: _static/giphy4.gif
-
-
 
 .. toctree::
     :maxdepth: 2

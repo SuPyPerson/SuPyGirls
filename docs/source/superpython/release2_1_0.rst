@@ -17,78 +17,110 @@ musicalmice 🐁 - Interface remota do instrutor
 Aspectos do Lançamento
 ======================
 
-Este lançamento inaugura a interface remota do instrutor
+Este lançamento adiciona  e  divide as abas de tutoriais, comporta as funcionalidades 3D , inclui tutorial Sphynx e corrige "Burger Menu"e concertar a recuperaço de códigos do banco de dados.
 
 Destaques dos Aspectos
 **********************
 
-EM CONSTRUÇÂO.
+Adaptação para melhor visualizar a plataforma a partir do celular.
 
 Aspecto #1
 **********
-
-EM CONSTRUÇÂO.
-
-Aspecto #2
-**********
-
-EM CONSTRUÇÂO.
+Adição e divisão de abas nos tutoriais.
 
 Melhoramentos
 =============
 
-EM CONSTRUÇÂO.
-
-Melhoramento #1
+Melhoramentos#1
 ***************
+Melhor separação da área de tutoriais.
 
-EM CONSTRUÇÂO.
+Melhoramento #2
+***************
+Adiçãodo tutorial : Vitollino
+
+Melhoramento #3
+***************
+Adição do tutorial: SuPyGirls Connection.
+
+Melhoramento #4
+***************
+Quebra de turorial em vários rsts.
+
+Melhoramento #5
+***************
+Adição do tutorial: Super Python.
+
+Melhoramento #6
+***************
+Dividir os tutoriais.
+
+Melhoramento #7
+***************
+Adição de abas nos tutoriais.
+
+Aspecto #2
+**********
+
+Inclusão da função 3D.
+
+
+Melhoramentos
+=============
+
+Melhoramentos #1
+****************
+
+Adiciona biblioteca glowscript.
 
 Melhoramento #2
 ***************
 
-EM CONSTRUÇÂO.
+Criação de módulo VPython no Vitollino.
+
+Melhoramento #3
+***************
+
+Inclusão das funções extrusion e ellipsoid.
+
+Aspecto #2
+**********
+Inclusão de tutorial Sphynx.
+
+Melhoramentos
+=============
+
+Melhoramentos #1 
+****************
+Revisão e correção do tutorial 
+
+Melhoramento #2
+***************
+Envio de nova versão do tutorial.
+
 
 Consertos
 =========
 
-EM CONSTRUÇÂO.
-
 Conserto #01
 ************
+Correção Burger menu.
 
-EM CONSTRUÇÂO.
-
-Conserto #01
-************
-
-EM CONSTRUÇÂO.
 
 Conserto #02
 ************
-
-EM CONSTRUÇÂO.
-
-Conserto #03
-************
-
-EM CONSTRUÇÂO.
-
-Conserto #04
-************
-
-EM CONSTRUÇÂO.
+Correção do code controller.
 
 
 Questões e Problemas Conhecidos
 ===============================
 
-EM CONSTRUÇÂO.
+Funcionalidade remota não foi implementada devido a avanços em outra áreas do projeto.
 
 Lançamentos Anteriores e Posteriores
 ====================================
 
-Lançamento Anterior: Abril 2018 :ref:`Lançamento 2.0.0 <release2_0_0>`
+Lançamento Anterior: Junho 2018 :ref:`Lançamento 2.0.0 <release2_0_0>`
 
 
 ######################

@@ -1,10 +1,9 @@
 .. _implementacao_primeiro_quadro:
 
-
 Implementação do Primeiro Quadro
 ================================
 
-Agora precisamos pedir ao computador duas coisas para o nosso Jogo começar a andar. Primeiro, precisamos pedir pra ele anotar como construir a nossa história, e depois que contarmos pra ele, devemos pedir pra que ele realize a contrução da nossa história.
+Agora precisamos pedir ao computador duas coisas para o nosso Jogo começar a andar. Primeiro, precisamos pedir pra ele anotar como construir a nossa história, e depois que contarmos pra ele, devemos pedir pra que ele realize a construção da nossa história.
 
 
 .. image:: _static/captela8.png
@@ -13,7 +12,7 @@ CALMA
 
 .. image:: _static/giphy8.gif
 
-Para contar para o computador como fazer algo nós usamos a palavra-chave def. Ela significa definir, ou seja, você está definindo algo novo para o computador, algo que ele não sabia. Mas para usar essa palavra, se deve usar dessa maneira:
+Para contar para o computador como fazer algo, nós usamos a palavra-chave def. Ela significa definir, ou seja, você está definindo algo novo para o computador, algo que ele não sabia. Mas para usar essa palavra da seguinte maneira:
 
 def NomeDaquiloQueVoceVaiEnsiarSemEspacosNemAcento():
 
@@ -62,4 +61,4 @@ Tivemos um erro, nosso teste falhou. Alguma coisa em algum lugar deu errado. Alg
 
 "Mas o que eu faço?!", vocês podem perguntar.
 
-Chequem tudo. Cheque se você usou as letras maiúsculas certas, se fechou todos os parênteses, se escreveu tudo certinho, se não fecou umas aspas, ou não usou aspas, qualquer coisa pode ter acontecido. A mensagem em vermelho te dá uma dica do que pode ter acontecido no seu código. Muitas vezes ela diz precisamente onde o seu erro aconteceu, mas muitas vezes ela mais atrapalha que ajuda. Nessas horas é bom pedir ajuda pro colega ao lado ou na Internet para te ajudar a buscar o seu erro. Sabe quando a gente tá procurando lguma coisa em casa e vem alguém e smplesmente acha? Na programação também acontece. Às vezes.
+Chequem tudo. Cheque se você usou as letras maiúsculas certas, se fechou todos os parênteses, se escreveu tudo certinho, se esqueceu ou não usou aspas, qualquer coisa pode ter acontecido. A mensagem em vermelho te dá uma dica do que pode ter acontecido no seu código. Muitas vezes ela diz precisamente onde o seu erro aconteceu, mas muitas vezes ela mais atrapalha do que ajuda. Nessas horas é bom pedir ajuda pro colega ao lado ou na Internet para tentar descobrir qual o seu erro. Sabe quando a gente tá procurando alguma coisa em casa e vem alguém e simplesmente acha? Na programação, também acontece. Às vezes.
