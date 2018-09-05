@@ -28,20 +28,28 @@ Aspecto #1
 **********
 Adição e divisão de abas nos tutoriais.
 
-Melhoramentos
-=============
+Aspecto #2
+**********
+Adição de elementos em 3D para a construção de games.
 
-Melhoramentos#1
-***************
+Aspecto #3
+**********
+Inclusão do tutorial do Jogo do Tesouro.
+
+Melhoramentos nos Tutoriais
+===========================
+
+Melhoramentos #1
+****************
 Melhor separação da área de tutoriais.
 
 Melhoramento #2
 ***************
-Adiçãodo tutorial : Vitollino
+Adição do tutorial : Vitollino. Tutorial que ensina a fazer um jogo enquanto se jogo o próprio jogo que está sendo feito.
 
 Melhoramento #3
 ***************
-Adição do tutorial: SuPyGirls Connection.
+Adição do tutorial: SuPyGirls Connection. Tutorial Sphinx que ensina a criar elementos básicos de um jogo.
 
 Melhoramento #4
 ***************
@@ -65,13 +73,13 @@ Aspecto #2
 Inclusão da função 3D.
 
 
-Melhoramentos
-=============
+Melhoramentos no Jogo em 3D
+===============================
 
 Melhoramentos #1
 ****************
 
-Adiciona biblioteca glowscript.
+Adiciona biblioteca glowscript. Biblioteca em javascript que suporta WEBGL
 
 Melhoramento #2
 ***************
@@ -83,20 +91,20 @@ Melhoramento #3
 
 Inclusão das funções extrusion e ellipsoid.
 
-Aspecto #2
-**********
-Inclusão de tutorial Sphynx.
-
-Melhoramentos
-=============
+Melhoramentos no Jogo do Tesouro
+================================
 
 Melhoramentos #1 
 ****************
-Revisão e correção do tutorial 
+Desenvolvimento do código que virtualiza o jogo do Tesouro .
 
 Melhoramento #2
 ***************
-Envio de nova versão do tutorial.
+Inclusão do jogo como recurso da plataforma SuPyGirls.
+
+Melhoramento #3
+***************
+Desafio de aprendizado em Inteligência Artificial na construção dos jogadores robóticos do jogo do Tesouro.
 
 
 Consertos
