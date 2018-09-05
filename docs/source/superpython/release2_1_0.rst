@@ -67,14 +67,9 @@ Melhoramento #7
 ***************
 Adição de abas nos tutoriais.
 
-Aspecto #2
-**********
-
-Inclusão da função 3D.
-
 
 Melhoramentos no Jogo em 3D
-===============================
+===========================
 
 Melhoramentos #1
 ****************
