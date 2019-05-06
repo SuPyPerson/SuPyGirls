@@ -10,8 +10,6 @@
 Aqui vamos ter uma introdução básica dos preparativos e primeiros passos para programar jogos para Web usando Python.
 Vamos usar a IDE PyCharm.
 
-.. image:: https://twitter.com/pycharm/status/968103951781580800
-
 
 .. toctree::
     :maxdepth: 2
@@ -22,5 +20,6 @@ Vamos usar a IDE PyCharm.
     modelagem_agil.rst
     pre_requisitos.rst
     tutorial.rst
+    PythonOO.rst
 
 
