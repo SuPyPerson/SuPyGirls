@@ -9,6 +9,7 @@
    :height: 100pt
 
 .. |introcmp| image:: _static/introcomp.png
+   :target:
    :width: 100pt
    :height: 100pt
 
