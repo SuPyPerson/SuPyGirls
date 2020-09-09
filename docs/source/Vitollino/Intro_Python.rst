@@ -96,12 +96,8 @@ Diferente da programação procedural, a estrutura de um código orientado a obj
 Exemplo do código anterior seguindo o paradigma OO:
 
 .. code:: python
-    """ Gera uma classe que permite operações numéricas
-    
-        :param val: Lista de números
-        
-    """
-    class Numeros(): # Inicia a criação da classe
+
+    class Numeros(): 
         """Gera uma classe que permite operações numéricas
     
            :param val: Lista de números. -> int, float, complex  
