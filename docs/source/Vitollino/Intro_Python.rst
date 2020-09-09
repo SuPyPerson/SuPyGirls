@@ -19,7 +19,7 @@ Uma linguagem de programação de alto nível arquitetada para ser, simultâneam
 
 Criado por `Guido van Rossum`_ e lançado em 1991, a estura de controle (sintaxe) requerida pelo interpretador e a abordagem orientada a objeto auxiliam o programador a desenvolver códigos organizados e claros, sejam eles extensos ou breves.
 
-Você pode ler mais sobre no Python.org_
+Você pode ler mais sobre no `Python.org`_
 
 .. _Python.org ::https://www.python.org/doc/
 
