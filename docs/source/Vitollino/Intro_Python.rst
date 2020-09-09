@@ -18,11 +18,11 @@ Espero que tão logo este documento seja parco frente à sua fome pythônica e v
 
 SUMÁRIO DESTE DOCUMENTO
 ------------------------
-#.  `O que é Python?`_
-#.  `PROCEDURAL vs ORIENTADA A OBJETO`_
-#.  `Python: Sintaxe Básica`_  
- *
-#.  `Referências`_ 
+*  `O que é Python?`_
+*  `PROCEDURAL vs ORIENTADA A OBJETO`_
+*  `Python: Sintaxe Básica`_  
+ * `Variáveis`_
+*  `Referências`_ 
 
 
 O que é Python?
@@ -141,7 +141,8 @@ As informações abaixo e outras mais aprofundadas podem ser encontradas na `Doc
 Variáveis
 ----------
 
-Typos
+Type
+-----
     
 
 
