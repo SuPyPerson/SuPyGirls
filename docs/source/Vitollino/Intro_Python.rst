@@ -36,6 +36,6 @@ PROCEDURAL vs ORIENTADA A OBJETO
 ==================================
 
 .. seealso::
-   Você pode ler mais sobre Orientação a Objeto :doc:`../intro_comp/PythonOO.rst`  
+   Você pode ler mais sobre Orientação a Objeto :doc: `source/intro_comp/PythonOO.rst`_  
 
 
