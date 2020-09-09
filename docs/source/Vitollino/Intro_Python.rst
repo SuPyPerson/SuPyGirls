@@ -124,9 +124,15 @@ Exemplo do código anterior seguindo o paradigma OO:
                print("Eu preciso de números para trabalhar! Me adianta aí!")
 
     Numeros.opera_soma([1,4,5,6])
-    Números.opera_soma([1.3,1.5.1.6])
+    Numeros.opera_soma([1.3,1.5.1.6])
     
 
 
 Referências Bibliográficas
 ----------------------------
+https://pt.wikipedia.org/wiki/Paradigma_de_programa%C3%A7%C3%A3o
+https://pt.wikipedia.org/wiki/Programa%C3%A7%C3%A3o_estruturada
+https://pt.wikipedia.org/wiki/Orienta%C3%A7%C3%A3o_a_objetos
+https://pt.wikipedia.org/wiki/Programa%C3%A7%C3%A3o_procedural
+https://www.treinaweb.com.br/blog/linguagens-e-paradigmas-de-programacao/
+https://www.python-course.eu/python3_magic_methods.php
