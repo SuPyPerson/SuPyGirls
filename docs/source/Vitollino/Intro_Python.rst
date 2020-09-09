@@ -3,6 +3,9 @@
 Introdução ao Python
 ==========================
 
+.. image:: _static/Python_Logo.png
+
+
 .. Note:: 
    Este arquivo compreende uma fugaz introdução ao python.
 
