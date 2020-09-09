@@ -42,7 +42,7 @@ O Paradigma da Programação
 -----------------------------
 
 O Paradigma é um conglomerado de classificações que são atribuídos às estruturas de código (sintaxe) que o programador utiliza.
-Para ser mais claro, existem diversas linguagens de programação e também diversas formas de externaliza suas soluções através delas; estas soluções resultam em uma estrutura que pode ser classificada com um determinado paradigma.
+Para ser mais claro, existem diversas linguagens de programação e também diversas formas de externalizar suas soluções através delas; estas soluções resultam em uma estrutura que pode ser classificada como um determinado paradigma.
 
 Ahhhhhhh! Mas pra quê isso?
 
@@ -59,23 +59,78 @@ Daí surgem as linguagens de **alto nível**! As de terceira geração seguiam o
 .. Note::
    Exemplo de linguagem alto nível (Terceira Geração): COBOL,FORTRAN...
 
-Observando, o nível da linguagem é dado de acordo com o grau de proximidade entre a estrura de programação e a estrutura da nossa língua!
+Observando, o nível da linguagem é dado de acordo com o grau de proximidade entre a estrura de programação e a estrutura da nossa língua! Nesse grupo estão as linguagens C, C++, JAVA, [...] e nosso amadinho PYTHON! 
 
-Voltando aos paradigmas, 
+Voltemos aos paradigmas...
 
-
-
-
-
-
-
-
+Como dito, existem diversos paradigmas! Mas neste documento focaremos e dois: Programação Procedural e a Programação Orientada a Objeto.
    
 Programação Procedural
 -----------------------
 
 Bem como o nome diz, se trata de uma programação centrada em procedimentos.
-Este paradigma de programação comumente especifica 
+Este paradigma de programação apresenta-se comumente em blocos únicos, centrados na sequência, decisão e iteração (loops, condicionais...).
+
+Flui bem em projetos breves. Já em projetos extensos a chance de uma única alteração descarrilhar toodo o programa é relevante!
+
+Exemplo de código seguindo o paradigma procedural:
+
+.. code :: python
+   
+    x,y = 3,4 # Determina variáveis
+    w,h= 5,7  # Determina variáveis
+    z = x+y   # Determina variável que representa a operação
+    r = w+h   # Determina variável que representa a operação
+    print("Esse é o valor de z:", z, "e esse é o valor de r:",r) # Retorno
+
+
+Programação Orientada a Objeto (OO)
+-------------------------------
+
+Bem como o nome diz, se trata de uma programação centrada nos objetos.
+O objeto na OO é tudo aquilo que possui, conjuntamente, propriedades e operações.
+
+Este paradigma de programação apresenta-se comumente em diversos blocos com comportamentos singulares e blocos de funcionamento conjunto. 
+Diferente da programação procedural, a estrutura de um código orientado a objeto permite a solução de problemas pontuais e a adição ou subtração de novos comportamentos a qualquer momento, sem que a porção funcional do código sofra.  
+
+Exemplo do código anterior seguindo o paradigma OO:
+
+.. code :: python
+    """ Gera uma classe que permite operações numéricas
+    
+        :param val: Lista de números
+        
+    """
+    class Numeros(): # Inicia a criação da classe
+        """Gera uma classe que permite operações numéricas
+    
+           :param val: Lista de números. -> int, float, complex  
+        """
+        def __init__(self, val):
+            """ O __init__ é um método mágico do python que funciona como um consrutor.
+                Toda vez que o Numeros() é chamado, o python cria um objeto e o passa como
+                o primeiro parâmetro.
+            """
+            self.val = val 
+            """Diz que o parâmetro self.val e análogo ao argumento que será atribuido na chamada da classe."""
+
+        def opera_soma(val):
+            """Método da classe Numeros() que se reserva da somas dos argumentos dados
+            
+               :param val: Lista de números. -> int, float, complex 
+            """
+            if isinstance(val,list):
+            """A função isinstance() verifica se o valor dado é compatível com o Tipo de objeto requerido."""
+               print(sum(val))
+               """Se a verificação retorna 'True' segue para a operação."""
+            else:
+               """ Se a verificação retorna 'False' uma mensagem educada alertará o usuário."""
+               print("Eu preciso de números para trabalhar! Me adianta aí!")
+
+    Numeros.opera_soma([1,4,5,6])
+    Números.opera_soma([1.3,1.5.1.6])
+    
+
 
 Referências Bibliográficas
 ----------------------------
