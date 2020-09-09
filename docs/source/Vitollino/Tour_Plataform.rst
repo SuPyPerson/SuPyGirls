@@ -7,6 +7,7 @@ Olá! Seja muito bem-vindo ao Tour da plataforma SuperPython.
 
 Contextualizando, a plataforma Superpython é um ambiente de desenvolvimento (IDE), orgulhosamente open source, planejado para possibilitar a programação na linguagem Python.
 Esta plataforma é um braço direto do  `Programa Superpython`_ que se consagra como um projeto interdisciplinar de criação e desenvolvimentos de Games por crianças, jovens e adultos.
+
 A plataforma se mantém de pé graças ao `prof.Carlo`_ que foi o idealizador e segue atualizando a plataforma sempre!! *Ode eterno aos santos!*
 
 .. _prof.Carlo: https://github.com/cetoli
