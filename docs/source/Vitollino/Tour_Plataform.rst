@@ -91,7 +91,7 @@ Agora você está vendo os módulos do pacote que você selecionou! Yuhaa!
 
 .. Note::
 
- ** Cuidado para não acessar as salas pessoais de outro projeto!**
+ **Cuidado para não acessar as salas pessoais de outro projeto!**
 
 .. image:: _static/7_plataf_modules.png
 
