@@ -4,6 +4,9 @@ Introdução ao Python
 ==========================
 
 .. image:: _static/Python_Logo.png
+   :height: 60px
+   :width: 60 px
+   :scale: 50 %
 
 
 .. Note:: 
