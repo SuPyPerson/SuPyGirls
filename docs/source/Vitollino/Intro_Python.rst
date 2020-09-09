@@ -38,6 +38,8 @@ PROCEDURAL vs ORIENTADA A OBJETO
 .. seealso::
    Você pode ver outra explicação sobre OO :doc:`Aqui <../intro_comp/PythonOO.rst>` 
    
+   
+   
  ----------------------------  
  O Paradigma da Programação
 -----------------------------
