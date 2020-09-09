@@ -32,9 +32,9 @@ Retornando para a página principal
 
 Sempre que **estiver** na plataforma pode voltar à página principal clicando no botão ressaltado na lupa.
 
-.. Note :: 
+.. note ::
 
-Em alguns momentos ele prega peças. Cuidado!
+ Em alguns momentos ele prega peças. Cuidado!
 
 
 .. image:: _static/2_plataf_zoom_RETURN.png
@@ -64,12 +64,17 @@ Acessando a Sala de programação
 ---------------------------------
 Bem-vindo ao salão principal!
 Seu clique foi bem sucedido e agora você pode escolher o *pacote* correspondente ao projeto da qual você participa!
+É chamado pacote pois cada um dos 'quadrados' comporta, no mínimo, 40 sub-salas prontas para você codar!
 
-Observe que abaixo 
+**Clique na sala com nome respectivo ao seu projeto** e 'Be Happy!'
 
 .. Note :: 
 
-Você reconhece os grandes nomes que batizam as salas da Plataforma? Fica a dica! ;)
+Esqueceu o nome da sua sala?
+Observe que abaixo dos nomes em negrito aparecem nomes de outras pessoas ou nomes característicos de um projeto. 
+Tente procurar pelo nome do seu professor ou projeto!! Se ainda tiver problemas contate o seu tutor ou `prof.Carlo`_ 
+
+P.S: Você reconhece os grandes nomes que batizam as salas da Plataforma? Fica a dica! ;)
 
 
 
