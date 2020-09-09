@@ -141,6 +141,7 @@ Referências
 #. ``_
 #. ``_
 #. ``_
+
 .. _Paradigma da Progrmação: https://pt.wikipedia.org/wiki/Paradigma_de_programa%C3%A7%C3%A3o
 .. _Programação Estruturada: https://pt.wikipedia.org/wiki/Programa%C3%A7%C3%A3o_estruturada
 .. _Programação Orientada a Objeto: https://pt.wikipedia.org/wiki/Orienta%C3%A7%C3%A3o_a_objetos
