@@ -25,6 +25,8 @@ Para acessar esta página principal basta acessar este link: `Plataforma SuperPy
 .. _Plataforma SuperPython: http://supygirls.pythonanywhere.com/
 
 .. image:: _static/1_plataforma_Vitollino.png
+   :width: 100pt
+   :height: 100pt
 
 
 Retornando para a página principal
