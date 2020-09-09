@@ -111,7 +111,7 @@ Exemplo do código anterior seguindo o paradigma OO:
                :param val: Lista de números. -> int, float, complex 
             """
             if isinstance(val,list):
-            """A função isinstance() verifica se o valor dado é compatível com o Tipo de objeto requerido."""
+                """A função isinstance() verifica se o valor dado é compatível com o Tipo de objeto requerido."""
                print(sum(val))
                """Se a verificação retorna 'True' segue para a operação."""
             else:
@@ -131,11 +131,7 @@ Referências
 #. `Programação Orientada a Objeto`_
 #. `Linguagens de programação`_
 #. `Métodos Mágicos`_
-#. ``_
-#. ``_
-#. ``_
-#. ``_
-#. ``_
+
 
 .. _Paradigma da Programação: https://pt.wikipedia.org/wiki/Paradigma_de_programa%C3%A7%C3%A3o
 .. _Programação Orientada a Objeto: https://pt.wikipedia.org/wiki/Orienta%C3%A7%C3%A3o_a_objetos
