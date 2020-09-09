@@ -19,7 +19,9 @@ Espero que tão logo este documento seja parco frente à sua fome pythônica e v
 SUMÁRIO DESTE DOCUMENTO
 ------------------------
 #.  `O que é Python?`_
-  *.  `PROCEDURAL vs ORIENTADA A OBJETO`_
+#.  `PROCEDURAL vs ORIENTADA A OBJETO`_
+#.  `Python: Sintaxe Básica`_  
+ *
 #.  `Referências`_ 
 
 
@@ -128,13 +130,23 @@ Exemplo do código anterior seguindo o paradigma OO:
     """Chama o método opera_soma() da classe Numeros() para operar a lista"""
     Numeros.opera_soma([1,4,5,6]) #Lista de inteiros
     Numeros.opera_soma([1.3,1.5.1.6]) #Lista de floats
-    
+ 
+Python: Sintaxe Básica 
+========================
 
+As informações abaixo e outras mais aprofundadas podem ser encontradas na `Documentação Python`_ 
+
+.. _Documentação Python: https://docs.python.org/3/tutorial/index.html
+
+Variáveis
+----------
+
+Typos
     
 
 
 Referências 
--------------
+------------
 #. `Paradigma da Programação`_
 #. `Programação Procedural`_
 #. `Programação Orientada a Objeto`_
