@@ -21,9 +21,9 @@ Criado por `Guido van Rossum`_ e lançado em 1991, a estura de controle (sintaxe
 
 Você pode ler mais sobre no `Python.org`_
 
-.. _Python.org ::https://www.python.org/doc/
+.. _Python.org: https://www.python.org/doc/
 
-.. _Guido van Rossum:: https://en.wikipedia.org/wiki/Guido_van_Rossum
+.. _Guido van Rossum: https://en.wikipedia.org/wiki/Guido_van_Rossum
 
 
 PROCEDURAL vs ORIENTADA A OBJETO
