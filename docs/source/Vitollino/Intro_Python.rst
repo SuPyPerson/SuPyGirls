@@ -16,6 +16,13 @@ Este documento pretende tornar familiar, à primeira vista, contextualizações 
 
 Espero que tão logo este documento seja parco frente à sua fome pythônica e você precise enfrentar o árduo plano das documentações :D
 
+SUMÁRIO DESTE DOCUMENTO
+------------------------
+#. `O que é Python?`_
+#. `PROCEDURAL vs ORIENTADA A OBJETO`_
+#. `Referências `_
+
+
 O que é Python?
 ----------------
 
@@ -121,6 +128,8 @@ Exemplo do código anterior seguindo o paradigma OO:
     """Chama o método opera_soma() da classe Numeros() para operar a lista"""
     Numeros.opera_soma([1,4,5,6]) #Lista de inteiros
     Numeros.opera_soma([1.3,1.5.1.6]) #Lista de floats
+    
+
     
 
 
