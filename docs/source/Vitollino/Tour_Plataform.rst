@@ -98,7 +98,7 @@ E ao clicar em qualquer uma das salas você será redirecionado para sua IDE pro
 
 .. image:: _static/8__plata_sala_edit.png
 
-Observe a URL: supygirls.pythonanywhere.com/supygirls/game/**grace/amanda**
+Observe a URL: supygirls.pythonanywhere.com/supygirls/game/**GRACE/AMANDA**
 Esta url te indica, respectivamente, qual o pacote e módulo que você está trabalhando no momento.
 
 
