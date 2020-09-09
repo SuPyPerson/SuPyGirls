@@ -27,11 +27,6 @@ Criado por `Guido van Rossum`_ e lançado em 1991, a estura de controle (sintaxe
 
 Você pode ler mais sobre no `Python.org`_
 
-.. _Python.org: https://www.python.org/doc/
-
-.. _Guido van Rossum: https://en.wikipedia.org/wiki/Guido_van_Rossum
-
-
 PROCEDURAL vs ORIENTADA A OBJETO
 ==================================
 
@@ -48,7 +43,7 @@ Ahhhhhhh! Mas pra quê isso?
 
 Bem, *isso* é resultado de um longo período de aprimoramento das linguagens de programação! Inicialmente a programação era difícil, requeria um graaande conhecimento, sobre a linguagem e computadores, e atenção do programador pois a escrita era de **baixo nível**, ou seja, eram compilados de instruções diretas para o computador ( Brinca um pouquinho aqui: `Código Binário`_ ). Tudo muito complexo, específico, engessado.
 
-.. _Código Binário: https://www.invertexto.com/codigo-binario
+
 .. Note::
    Exemplo de linguagem baixo nível: Código Binário, Assembly
 
@@ -122,9 +117,9 @@ Exemplo do código anterior seguindo o paradigma OO:
             else:
                """ Se a verificação retorna 'False' uma mensagem educada alertará o usuário."""
                print("Eu preciso de números para trabalhar! Me adianta aí!")
-
-    Numeros.opera_soma([1,4,5,6])
-    Numeros.opera_soma([1.3,1.5.1.6])
+    """Chama o método opera_soma() da classe Numeros() para operar a lista"""
+    Numeros.opera_soma([1,4,5,6]) #Lista de inteiros
+    Numeros.opera_soma([1.3,1.5.1.6]) #Lista de floats
     
 
 
@@ -148,3 +143,7 @@ Referências
 .. _Programação Procedural: https://pt.wikipedia.org/wiki/Programa%C3%A7%C3%A3o_procedural
 .. _Linguagens de programação: https://www.treinaweb.com.br/blog/linguagens-e-paradigmas-de-programacao/
 .. _Métodos Mágicos: https://www.python-course.eu/python3_magic_methods.php
+
+.. _Python.org: https://www.python.org/doc/
+.. _Guido van Rossum: https://en.wikipedia.org/wiki/Guido_van_Rossum
+.. _Código Binário: https://www.invertexto.com/codigo-binario
