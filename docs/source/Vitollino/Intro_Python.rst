@@ -37,8 +37,7 @@ PROCEDURAL vs ORIENTADA A OBJETO
 
 .. seealso::
    Você pode ver outra explicação sobre OO :doc:`Aqui <../intro_comp/PythonOO.rst>` 
-   
-     
+    
 O Paradigma da Programação
 -----------------------------
 
@@ -51,16 +50,22 @@ Bem, *isso* é resultado de um longo período de aprimoramento das linguagens de
 
 .. _Código Binário: https://www.invertexto.com/codigo-binario
 .. Note::
-   Exemplos de linguagem baixo nível: 
+   Exemplo de linguagem baixo nível: Código Binário, Assembly
 
 Com a caminhar da tecnologia as demandas passaram a ser outras! Muito trabalho para pouco programador e muita criatividade para linguagens que não conseguiam acompanhar!!
 
-Daí surgem as linguagem de **alto nível**
+Daí surgem as linguagens de **alto nível**! As de terceira geração seguiam o paradigma procedural, e descreviam especificamente quais procedimentos utilizar para resolver o problema em específico. E mais uma vez tudo dependia do conhecimento profundo do desenvolvedor  e a programação ainda não era nada intuitiva.
+
+.. Note::
+   Exemplo de linguagem alto nível (Terceira Geração): COBOL,FORTRAN...
+
+Observando, o nível da linguagem é dado de acordo com o grau de proximidade entre a estrura de programação e a estrutura da nossa língua!
+
+Voltando aos paradigmas, 
 
 
 
-Referências Bibliográficas
-----------------------------
+
 
 
 
@@ -72,4 +77,5 @@ Programação Procedural
 Bem como o nome diz, se trata de uma programação centrada em procedimentos.
 Este paradigma de programação comumente especifica 
 
-
+Referências Bibliográficas
+----------------------------
