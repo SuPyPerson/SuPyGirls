@@ -95,7 +95,7 @@ Diferente da programação procedural, a estrutura de um código orientado a obj
 
 Exemplo do código anterior seguindo o paradigma OO:
 
-.. code :: python
+.. code:: python
     """ Gera uma classe que permite operações numéricas
     
         :param val: Lista de números
