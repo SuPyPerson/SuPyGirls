@@ -4,9 +4,9 @@ Introdução ao Python
 ==========================
 
 .. image:: _static/Python_Logo.png
-   :height: 60px
-   :width: 60 px
-   :scale: 50 %
+    :height: 300px
+    :width: 300px
+    :align: center
 
 
 .. Note:: 
@@ -34,5 +34,8 @@ Você pode ler mais sobre no `Python.org`_
 
 PROCEDURAL vs ORIENTADA A OBJETO
 ==================================
+
+.. seealso::
+   Você pode ler mais sobre Orientação a Objeto :ref:`intro_comp/PythonOO.rst`  
 
 
