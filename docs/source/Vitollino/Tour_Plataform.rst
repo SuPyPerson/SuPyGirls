@@ -6,7 +6,7 @@ Plataforma Vitollino
 Olá! Seja muito bem-vindo ao Tour da plataforma SuperPython.
 
 Contextualizando, a plataforma Superpython é um ambiente de desenvolvimento (IDE), orgulhosamente open source, planejado para possibilitar a programação na linguagem Python.
-Esta plataforma é um braço direto do `Programa SuperPython`_ que se consagra como um projeto interdisciplinar de criação e desenvolvimentos de Games por crianças, jovens e adultos.
+Esta plataforma é um braço direto do  `Programa Superpython`_ que se consagra como um projeto interdisciplinar de criação e desenvolvimentos de Games por crianças, jovens e adultos.
 .. _Programa Superpython: http://www.superpython.net
 
 O presente tutorial é **unicamente** um guia de acessos da plataforma. 
@@ -28,7 +28,7 @@ Retornando para a página principal
 
 Sempre que **estiver** na plataforma pode voltar à página principal clicando no botão ressaltado na lupa.
 
-..Note:: 
+..Note :: 
 
 Em alguns momentos ele prega peças. Cuidado!
 
@@ -61,7 +61,7 @@ Acessando a Sala de programação
 Bem-vindo ao salão principal!
 Seu clique foi bem sucedido e agora você pode escolher o *pacote* correspondente ao projeto da qual você participa!
 
-..Note:: 
+..Note :: 
 
 Você reconhece os grandes nomes que batizam as salas da Plataforma? 
 
