@@ -128,11 +128,22 @@ Exemplo do código anterior seguindo o paradigma OO:
     
 
 
-Referências Bibliográficas
-----------------------------
-https://pt.wikipedia.org/wiki/Paradigma_de_programa%C3%A7%C3%A3o
-https://pt.wikipedia.org/wiki/Programa%C3%A7%C3%A3o_estruturada
-https://pt.wikipedia.org/wiki/Orienta%C3%A7%C3%A3o_a_objetos
-https://pt.wikipedia.org/wiki/Programa%C3%A7%C3%A3o_procedural
-https://www.treinaweb.com.br/blog/linguagens-e-paradigmas-de-programacao/
-https://www.python-course.eu/python3_magic_methods.php
+Referências 
+-------------
+#. `Paradigma da Progrmação`_
+#. `Programação Estruturada`_ 
+#. `Programação Orientada a Objeto`_
+#. `Programação Procedural`_
+#. `Linguagens de programação`_
+#. `Métodos Mágicos`_
+#. ``_
+#. ``_
+#. ``_
+#. ``_
+#. ``_
+.. _Paradigma da Progrmação: https://pt.wikipedia.org/wiki/Paradigma_de_programa%C3%A7%C3%A3o
+.. _Programação Estruturada: https://pt.wikipedia.org/wiki/Programa%C3%A7%C3%A3o_estruturada
+.. _Programação Orientada a Objeto: https://pt.wikipedia.org/wiki/Orienta%C3%A7%C3%A3o_a_objetos
+.. _Programação Procedural: https://pt.wikipedia.org/wiki/Programa%C3%A7%C3%A3o_procedural
+.. _Linguagens de programação: https://www.treinaweb.com.br/blog/linguagens-e-paradigmas-de-programacao/
+.. _Métodos Mágicos: https://www.python-course.eu/python3_magic_methods.php
