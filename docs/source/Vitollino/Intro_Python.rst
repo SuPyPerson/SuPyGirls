@@ -38,10 +38,8 @@ PROCEDURAL vs ORIENTADA A OBJETO
 .. seealso::
    Você pode ver outra explicação sobre OO :doc:`Aqui <../intro_comp/PythonOO.rst>` 
    
-   
-   
- ----------------------------  
- O Paradigma da Programação
+     
+O Paradigma da Programação
 -----------------------------
 
 O Paradigma é um conglomerado de classificações que são atribuídos às estruturas de código (sintaxe) que o programador utiliza.
