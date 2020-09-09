@@ -29,9 +29,6 @@ Você pode ler mais sobre no `Python.org`_
 
 PROCEDURAL vs ORIENTADA A OBJETO
 ==================================
-
-.. seealso::
-   Você pode ver outra explicação sobre OO :doc:`Aqui <../intro_comp/PythonOO.rst>` 
     
 O Paradigma da Programação
 -----------------------------
@@ -80,7 +77,10 @@ Exemplo de código seguindo o paradigma procedural:
 
 
 Programação Orientada a Objeto (OO)
--------------------------------
+------------------------------------
+
+.. seealso::
+   Você pode ver outra explicação sobre OO aqui: :doc:`../intro_comp/PythonOO.rst` 
 
 Bem como o nome diz, se trata de uma programação centrada nos objetos.
 O objeto na OO é tudo aquilo que possui, conjuntamente, propriedades e operações.
@@ -117,6 +117,7 @@ Exemplo do código anterior seguindo o paradigma OO:
             else:
                """ Se a verificação retorna 'False' uma mensagem educada alertará o usuário."""
                print("Eu preciso de números para trabalhar! Me adianta aí!")
+               
     """Chama o método opera_soma() da classe Numeros() para operar a lista"""
     Numeros.opera_soma([1,4,5,6]) #Lista de inteiros
     Numeros.opera_soma([1.3,1.5.1.6]) #Lista de floats
@@ -125,10 +126,9 @@ Exemplo do código anterior seguindo o paradigma OO:
 
 Referências 
 -------------
-#. `Paradigma da Progrmação`_
-#. `Programação Estruturada`_ 
-#. `Programação Orientada a Objeto`_
+#. `Paradigma da Programação`_
 #. `Programação Procedural`_
+#. `Programação Orientada a Objeto`_
 #. `Linguagens de programação`_
 #. `Métodos Mágicos`_
 #. ``_
@@ -137,8 +137,7 @@ Referências
 #. ``_
 #. ``_
 
-.. _Paradigma da Progrmação: https://pt.wikipedia.org/wiki/Paradigma_de_programa%C3%A7%C3%A3o
-.. _Programação Estruturada: https://pt.wikipedia.org/wiki/Programa%C3%A7%C3%A3o_estruturada
+.. _Paradigma da Programação: https://pt.wikipedia.org/wiki/Paradigma_de_programa%C3%A7%C3%A3o
 .. _Programação Orientada a Objeto: https://pt.wikipedia.org/wiki/Orienta%C3%A7%C3%A3o_a_objetos
 .. _Programação Procedural: https://pt.wikipedia.org/wiki/Programa%C3%A7%C3%A3o_procedural
 .. _Linguagens de programação: https://www.treinaweb.com.br/blog/linguagens-e-paradigmas-de-programacao/
