@@ -36,7 +36,7 @@ Sempre que **estiver** na plataforma pode voltar à página principal clicando n
 
 .. note::
 
-   Em alguns momentos ele prega peças. Cuidado!
+  Em alguns momentos ele prega peças. Cuidado!
 
 
 .. image:: _static/2_plataf_zoom_RETURN.png
@@ -75,9 +75,9 @@ Seu clique foi bem sucedido e agora você pode escolher o *pacote* correspondent
 
 .. Note:: 
 
-   Esqueceu o nome da sua sala?
-   Observe que abaixo dos nomes em negrito aparecem nomes de outras pessoas ou nomes característicos de um projeto. 
-   Tente procurar pelo nome do seu professor ou projeto!! Se ainda tiver problemas contate o seu tutor ou `prof.Carlo`_. Com certeza te salvarão!
+  Esqueceu o nome da sua sala?
+  Observe que abaixo dos nomes em negrito aparecem nomes de outras pessoas ou nomes característicos de um projeto. 
+  Tente procurar pelo nome do seu professor ou projeto!! Se ainda tiver problemas contate o seu tutor ou `prof.Carlo`_. Com certeza te salvarão!
 
 P.S: Você reconhece os grandes nomes que batizam as salas da Plataforma? Fica a dica! ;)
 
@@ -92,7 +92,7 @@ Agora você está vendo os módulos do pacote que você selecionou! Yuhaa!
 
 .. Note::
 
-   ** Cuidado para não acessar as salas pessoais de outro projeto!**
+ ** Cuidado para não acessar as salas pessoais de outro projeto!**
 
 .. image:: _static/7_plataf_modules.png
 
@@ -138,18 +138,21 @@ Para ver sua obra-prima por completo basta clicar em run:
 
 .. Note::
 
-           Caso o interpretador não responda, ou apresente respostas antigas, não se desespere:
- 
-           **F5** NELEEE!!!!
+  Caso o interpretador não responda, ou apresente respostas antigas, não se desespere:
+  **F5** NELEEE!!!!
         
 .. Warning::
        
-           NEVER. MAI. NONCH NIE. Ποτέ. 決して. 
+ NEVER. MAI. NONCH NIE. Ποτέ. 決して. 
            
-           NUNCA Saia da sala sem salvar o seu trabalho!
+ NUNCA Saia da sala sem salvar o seu trabalho!
            
 
 .. image:: _static/11.1_plata_sala_SAVE.png
+
+
+
+
 
 
 
