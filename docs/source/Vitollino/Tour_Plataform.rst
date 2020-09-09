@@ -136,14 +136,14 @@ Para ver sua obra-prima por completo basta clicar em run:
 
 .. Note::
 
-    Caso o interpretador não responda, ou apresente respostas antigas, não se desespere:
+           Caso o interpretador não responda, ou apresente respostas antigas, não se desespere:
  
            **F5** NELEEE!!!!
         
 .. Warning::
        
-    NEVER. MAI. NONCH NIE. Ποτέ. 決して. 
-    NUNCA Saia da sala sem salvar o seu trabalho!
+           NEVER. MAI. NONCH NIE. Ποτέ. 決して. 
+           NUNCA Saia da sala sem salvar o seu trabalho!
   
 
 
