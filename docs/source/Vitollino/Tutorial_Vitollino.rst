@@ -39,11 +39,11 @@ SUMÁRIO
 IMPORTANDO O VITOLLINO
 -----------------------
 
-Para utilizar os recursos do vitollino é necessário, primeiramente, importá-lo para o módulo em que está trabalhando.
+Para utilizar os recursos do vitollino é necessário importá-lo para o módulo em que está trabalhando.
 
 .. seealso::
 
-  Para saber mais sobre como os módulos e pacotes funcionam na plataforma veja: :ref:`Acessando o Salão Principal `
+  Para saber mais sobre como os módulos e pacotes funcionam na plataforma veja: :ref: `Acessando o Salão Principal`
 
 .. code:: python
 
@@ -53,7 +53,7 @@ Outra forma de também importar é:
 
 .. code:: python
 
-    """A abreviação do nome da classe pode auxiliar na organização e clareza do código posteriormente ;)"""
+    """Abreviações podem auxiliar na organização e clareza do código."""
     from _spy.vitollino.main import  Classe_Desejada as abreviação_qualquer
     
 IMPORTANDO MÓDULOS (SALAS)
@@ -61,15 +61,25 @@ IMPORTANDO MÓDULOS (SALAS)
 
 .. code:: python
 
-    """ Exemplo from cenas.imix import Inicial"""
+    """ Exemplo:
+         from  cenas.imix   import  Inicial
+              pacote.módulo         classe
+    """
     from  nome_do_principal.nome_do_módulo import Classe_Desejada, Classe_Desejada2
     .
     .
     .
     .
     .
+    """Esta linha diferencia o main do módulo e o main do vitollino"""
     if __name__ == "__main__":
         Classe_do_Módulo_atual()
+
+.. seealso::
+
+   Justificativa extensa da linha  `if __name__ == "__main__":`_ 
+ 
+.. _if __name__ == "__main__": : http://moodle.escolapiloto.peq.coppe.ufrj.br/mod/assign/view.php?id=299
 
 STYLE 
 -------
