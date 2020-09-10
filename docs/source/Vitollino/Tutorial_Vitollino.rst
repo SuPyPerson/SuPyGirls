@@ -7,7 +7,7 @@ TUTORIAL VITOLLINO
  |docs| |python| |github| |licencing|
 
 
-:Author:  Carlo E. T. Oliveira
+:Code Author:  Carlo E. T. Oliveira
 :Affiliation: Universidade Federal do Rio de Janeiro
 :Homepage: `Programa Superpython`_
 
