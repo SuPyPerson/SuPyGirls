@@ -14,10 +14,8 @@ TUTORIAL VITOLLINO
 
 Importando o Vitollino
 -----------------------
-
-Em qualquer IDE que você estaja programando é necessário que os módulos sejam importados para sua área de trabalho!
-Atualmente, e possivelmente eternamente, o vito **ll** ino "mora" dentro de diretórios, que moram dentro de diretórios, que moram dentro de diretórios e para que chamemos o arquivo python certo é necessário indicar o caminho a ser percorrido pelas pastas para encontrá-lo.
-
+Para usar os recursos do Vitollino, faz-se necessário importá-lo na sua IDE.
+Arquivos são guardados dentro de outros arquivos recursivamente. Logo, para resgatar o arquivo certo precisamos descrever o caminho a ser percorrido (from) e a funcionalidade a ser resgatada (import).
 
 .. code:: python
   """É análogo ao caminho _spy/vitollino.main"""
