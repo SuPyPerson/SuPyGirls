@@ -16,13 +16,38 @@ Este documento pretende tornar familiar, à primeira vista, contextualizações 
 
 Espero que tão logo este documento seja parco frente à sua fome pythônica e você precise enfrentar o árduo plano das documentações :D
 
-SUMÁRIO DESTE DOCUMENTO
-------------------------
+ÍNDICE
+---------
+
 *  `O que é Python?`_
 *  `PROCEDURAL vs ORIENTADA A OBJETO`_
 *  `Python: Sintaxe Básica`_  
+
  * `Variáveis`_
-*  `Referências`_ 
+ * `Dados: Type e Id`_
+   * `Booleans`_
+   * `Integer e Float`_
+   * `String`_
+ * `Estrutura de Dados`_
+   * `Lista`_
+   * `Dicionário`_
+   * `Tuplas`_
+   * `String`_
+   * `Set`_
+ * `Operators`_
+   * `Operadores aritméticos`_
+   * `Operadores de atribuição`_
+   * `Operadores de atribuição`_
+   * `Operadores lógicos`_
+   * `Operadores de identidade`_
+   * `Operadores de associaçãos`_
+ * `Funções`_
+ * `Iterações: Loops`_
+   * `If and Else `_
+   * `While `_
+   * `For`_
+ * `Classe`_
+ *  `Referências`_
 
 
 O que é Python?
@@ -137,53 +162,77 @@ Python: Sintaxe Básica
 Esta seção do documento busca seguir, evolutivamente, o paradigma de programação Orientado a Objeto.
 
 .. Note::
-  As informações abaixo e outras mais aprofundadas podem ser encontradas na `Documentação Python`_ 
+  Os Tópicos abaixo, e outros mais aprofundados, podem ser encontradas na `Documentação Python`_ 
 
 Variáveis
 ----------
-
 .. code:: python
 
-Type e Id
-----------
+Dados: Type e Id
+------------------
+* Boolean
+.. code:: python
 
-Operadores 
+* Integer e Float
+.. code:: python
+
+*String
+.. code:: python
+
+Estrutura de Dados
+--------------------
+* Lista
+.. code:: python
+
+* Dicionário
+.. code:: python
+
+* Tupla
+.. code:: python
+
+* String
+.. code:: python
+
+* Set
+.. code:: python
+
+Operators
 -----------
-
 * Operadores aritméticos
-* Operadores de atribuição
-* Operadores de comparação
-* Operadores lógicos
-* Operadores de identidade
-* Operadores de associação
+.. code:: python
 
+* Operadores de atribuição
+.. code:: python
+
+* Operadores de comparação
+.. code:: python
+
+* Operadores lógicos
+.. code:: python
+
+* Operadores de identidade
+.. code:: python
+
+* Operadores de associação
+.. code:: python
 
 Funções
 --------
+.. code:: python
 
 Iterações: Loops
 ----------------
-* If and Else Loops
-* While Loops
-* For Loops
+* If and Else 
+.. code:: python
+* While 
+.. code:: python
+* For 
+.. code:: python
 
-Iterações: Condicionais
-------------------------
+Classe
+--------
+.. code:: python
 
-Estruturas de dados
----------------------
-
-Lista
-------
-
-Dicionário
------------
-
-Tupla
-------
-
-String
-------
 
 
 
