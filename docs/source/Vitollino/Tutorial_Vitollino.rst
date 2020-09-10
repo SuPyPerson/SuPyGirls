@@ -9,7 +9,7 @@ TUTORIAL VITOLLINO
   É vitoLLino com dois *LL's*
   
   
- Sumário
+ SUMÁRIO
 ----------
 
 #. IMPORTANDO O VITOLLINO
@@ -51,8 +51,8 @@ Outra forma de também importar é:
     """A abreviação do nome da classe pode auxiliar na organização e clareza do código posteriormente ;)"""
     from _spy.vitollino.main import  Classe_Desejada as abreviação_qualquer
     
-IMPORTAÇÃO DE SALA MÓDYLOS 
---------------------------
+IMPORTANDO MÓDULOS (SALAS)
+---------------------------
 
 
 STYLE 
