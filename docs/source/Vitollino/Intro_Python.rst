@@ -25,7 +25,7 @@ Espero que tão logo este documento seja parco frente à sua fome pythônica e v
 
  * `Variáveis`_
  * `Dados: Type e Id`_
-    * `Booleans`
+    * `Booleans`_
     * `Integer e Float`_
     * `String`_
  * `Estrutura de Dados`_
@@ -171,6 +171,7 @@ Variáveis
 Dados: Type e Id
 ------------------
 * Boolean
+----------
 .. code:: python
 
 * Integer e Float
