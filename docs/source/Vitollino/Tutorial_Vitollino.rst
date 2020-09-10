@@ -23,7 +23,7 @@ Importando o Vitollino
 
 
 .. |licencing| image:: https://img.shields.io/github/license/kwarwp/kwarwp
-   :target: https://github.com/kwarwp/kwarwp/blob/master/LICENSE
+   :target: https://github.com/kwarwp/_spy/blob/master/LICENSE
 
 .. |github| image:: https://img.shields.io/github/v/release/kwarwp/kwarwp
    :target: https://github.com/kwarwp/_spy/blob/master/vitollino/main.py
