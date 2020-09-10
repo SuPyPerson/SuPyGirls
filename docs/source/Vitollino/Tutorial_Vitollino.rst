@@ -5,7 +5,7 @@ TUTORIAL VITOLLINO
  
 .. image:: _static/6_plataf_pacote.png
 
-Acesse: `Documentação do Vitollino`
+Acesse: `Documentação do Vitollino`_
 ------------------------------------
 
 .. _Documentação do Vitollino: https://github.com/kwarwp/_spy/tree/master/vitollino
