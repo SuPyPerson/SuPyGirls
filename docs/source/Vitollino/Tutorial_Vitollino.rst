@@ -8,8 +8,10 @@ TUTORIAL VITOLLINO
 
 
 :Code Author:  Carlo E. T. Oliveira
+: Tutorial Author: Emanuelle M. P. Simas
 :Affiliation: Universidade Federal do Rio de Janeiro
 :Homepage: `Programa Superpython`_
+
 
 
 Importando o Vitollino
