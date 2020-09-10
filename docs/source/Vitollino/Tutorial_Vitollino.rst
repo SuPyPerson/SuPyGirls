@@ -22,6 +22,7 @@ A sintaxe de importação no python é:
 
 
 .. code:: python
+
     """É análogo ao caminho _spy/vitollino.main"""
     from _spy.vitollino.main  import Classe_Desejada, Classe_Desejada2
    
@@ -30,6 +31,7 @@ Outra forma de também importar é:
 
 
 .. code:: python
+
     """A abreviação do nome da classe pode auxiliar na organização e clareza do código ;)"""
     from _spy.vitollino.main import  Classe_Desejada as abreviação_qualquer
 
