@@ -176,7 +176,7 @@ Dados: Type e Id
 * Integer e Float
 .. code:: python
 
-*String
+* String
 .. code:: python
 
 Estrutura de Dados
@@ -217,11 +217,11 @@ Operators
 .. code:: python
 
 Funções
---------
+---------
 .. code:: python
 
 Iterações: Loops
-----------------
+-----------------
 * If and Else 
 .. code:: python
 * While 
