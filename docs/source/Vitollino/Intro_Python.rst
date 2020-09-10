@@ -35,18 +35,18 @@ Espero que tão logo este documento seja parco frente à sua fome pythônica e v
     * `String`
     * `Set`
  * `Operators`_
-    * `Operadores aritméticos`_
-    * `Operadores de atribuição`_
-    * `Operadores de atribuição`_
-    * `Operadores lógicos`_
-    * `Operadores de identidade`_
-    * `Operadores de associaçãos`_
+    * `Operadores aritméticos`
+    * `Operadores de atribuição`
+    * `Operadores de atribuição`
+    * `Operadores lógicos`
+    * `Operadores de identidade`
+    * `Operadores de associaçãos`
  * `Funções`_
  * `Iterações: Loops`_
-    * `If and Else`_
-    * `While`_
-    * `For`_
- * `Classe`_
+    * `If and Else`
+    * `While`
+    * `For`
+ * `Classe`
  *  `Referências`_
 
 
