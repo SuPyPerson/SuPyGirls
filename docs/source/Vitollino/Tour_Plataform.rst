@@ -20,6 +20,7 @@ Página Inicial da plataforma
 -----------------------------
 
 ACESSAR `PLATAFORMA SUPERPYTHON`_
+-----------------------------------
 
 Esta é a apresentação atual da plataforma:
 HGJASHGDPara acessar esta página principal basta acessar este link: `Plataforma SuperPython`_
