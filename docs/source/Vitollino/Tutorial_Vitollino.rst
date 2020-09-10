@@ -9,8 +9,8 @@ TUTORIAL VITOLLINO
   É vitoLLino com dois *LL's*
   
   
- SUMÁRIO
-----------
+SUMÁRIO
+--------
 
 #. IMPORTANDO O VITOLLINO
 #. IMPORTAÇÃO DE OUTRA SALA
@@ -34,17 +34,14 @@ TUTORIAL VITOLLINO
 IMPORTANDO O VITOLLINO
 -----------------------
 
+Para utilizar os recursos do vitollino é necessário, primeiramente, importá-lo para o módulo que está trabalhando.
+
 .. code:: python
 
-    """É análogo ao caminho _spy/vitollino/main
-       Lê-se, lá na pasta _spy, tem uma pasta vitollino que carrega um tal de main. 
-       Nesse main tem um Classe-Desejada. Separa esse último aí por favor! Vou usar.
-    """
+    """É análogo ao caminho _spy/vitollino/main.py """
     from _spy.vitollino.main  import Classe_Desejada, Classe_Desejada2
    
-
 Outra forma de também importar é:
-
 
 .. code:: python
 
@@ -54,6 +51,10 @@ Outra forma de também importar é:
 IMPORTANDO MÓDULOS (SALAS)
 ---------------------------
 
+.. code:: python
+
+   """ Exemplo from cenas.imix import Inicial"""
+    from  nome_do_pacote.nome_do_módulo import Classe_Desejada, Classe_Desejada2
 
 STYLE 
 -------
