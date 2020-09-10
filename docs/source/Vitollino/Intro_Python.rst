@@ -134,16 +134,56 @@ Exemplo do código anterior seguindo o paradigma OO:
 Python: Sintaxe Básica 
 ========================
 
-As informações abaixo e outras mais aprofundadas podem ser encontradas na `Documentação Python`_ 
+Esta seção do documento busca seguir, evolutivamente, o paradigma de programação Orientado a Objeto.
 
-.. _Documentação Python: https://docs.python.org/3/tutorial/index.html
+.. Note::
+  As informações abaixo e outras mais aprofundadas podem ser encontradas na `Documentação Python`_ 
 
 Variáveis
 ----------
 
-Type
------
-    
+Type e Id
+----------
+
+Operadores 
+-----------
+
+*Operadores aritméticos
+*Operadores de atribuição
+*Operadores de comparação
+*Operadores lógicos
+*Operadores de identidade
+*Operadores de associação
+
+
+Funções
+--------
+
+Iterações: Loops
+----------------
+* If and Else Loops
+* While Loops
+* For Loops
+
+Iterações: Condicionais
+------------------------
+
+Estruturas de dados
+---------------------
+
+Lista
+------
+
+Dicionário
+-----------
+
+Tupla
+------
+
+String
+------
+
+
 
 
 Referências 
@@ -153,8 +193,6 @@ Referências
 #. `Programação Orientada a Objeto`_
 #. `Linguagens de programação`_
 #. `Métodos Mágicos`_
-
-
 .. _Paradigma da Programação: https://pt.wikipedia.org/wiki/Paradigma_de_programa%C3%A7%C3%A3o
 .. _Programação Orientada a Objeto: https://pt.wikipedia.org/wiki/Orienta%C3%A7%C3%A3o_a_objetos
 .. _Programação Procedural: https://pt.wikipedia.org/wiki/Programa%C3%A7%C3%A3o_procedural
@@ -164,3 +202,4 @@ Referências
 .. _Python.org: https://www.python.org/doc/
 .. _Guido van Rossum: https://en.wikipedia.org/wiki/Guido_van_Rossum
 .. _Código Binário: https://www.invertexto.com/codigo-binario
+.. _Documentação Python: https://docs.python.org/3/tutorial/index.html
