@@ -19,11 +19,10 @@ O presente tutorial é **unicamente** um guia de acessos da plataforma.
 Página Inicial da plataforma
 -----------------------------
 
-ACESSAR `PLATAFORMA SUPERPYTHON`_
+ACESSO: `PLATAFORMA SUPERPYTHON`_
 -----------------------------------
 
 Esta é a apresentação atual da plataforma:
-HGJASHGDPara acessar esta página principal basta acessar este link: `Plataforma SuperPython`_
 
 .. _PLATAFORMA SUPERPYTHON: http://supygirls.pythonanywhere.com/
 
