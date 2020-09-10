@@ -4,14 +4,7 @@
 TUTORIAL VITOLLINO
 ===================
 
- |docs| |python| |github| |licencing|
-
-
-:Code Author:  Carlo E. T. Oliveira
-:Tutorial Author: Emanuelle M. P. Simas
-:Affiliation: Universidade Federal do Rio de Janeiro
-:Homepage: `Programa Superpython`_
-
+ 
 
 
 Importando o Vitollino
@@ -23,9 +16,13 @@ Importando o Vitollino
 
 
 
+|docs| |python| |github| |licencing|
 
 
-
+:Code Author:  Carlo E. T. Oliveira
+:Tutorial Author: Emanuelle M. P. Simas
+:Affiliation: Universidade Federal do Rio de Janeiro
+:Homepage: `Programa Superpython`_
 
 
 .. |licencing| image:: https://img.shields.io/github/license/kwarwp/kwarwp
