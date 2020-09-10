@@ -122,8 +122,7 @@ SALA
 .. code:: python
    
     from _spy.vitollino.main import Cena, Sala
-    """Importa a classe Sala e Cena do vitollino.
-       A Sala é uma COLEÇÃO de cenas organizados nos pontos cadeais norte, sul, leste e oeste 
+    """A Sala é uma COLEÇÃO de cenas organizadas nos pontos cadeais norte, sul, leste e oeste 
     """
     
     
@@ -137,10 +136,10 @@ SALA
     nome_da_cena_sul = Cena(IMAGEM_SUL) 
     nome_da_cena_leste = Cena(IMAGEM_LESTE) 
     nome_da_cena_oeste = Cena(IMAGEM_OESTE)
-    
+   
+   """ Bem como na composição na Cena, a ausencia de Cena em algum dos pontos cardeais direciona para a SalaCenaNula()"""
     nome_da_sala = Sala(n=nome_da_cena_norte, s=nome_da_cena_sul, l=nome_da_cena_leste, o=nome_da_cena_oeste)
-    """ Bem como na composição na Cena, a ausencia de Cena em algum dos pontos cardeais direciona para a SalaCenaNula()"""
-    
+     
     nome_da_sala.norte.vai() # A primeira Cena a ser visualizada
     #nome_da_sala.sul.vai()
     #nome_da_sala.leste.vai()
@@ -150,6 +149,46 @@ SALA
 LABIRINTO
 ----------
 
+.. code:: python
+   
+    from _spy.vitollino.main import Cena, Sala, Labirinto
+    """O Labirinto é uma coleção de Salas
+    """
+    
+    
+    IMAGEM_NORTE= "string_correspondente_a_url_e_extensao_da_imagem" # Extensões aceitas: png, jpg, jpeg e gif   
+    IMAGEM_LESTE = "string_correspondente_a_url_e_extensao_da_image" # Extensões aceitas: png, jpg, jpeg e gif
+    IMAGEM_OESTE = "string_correspondente_a_url_e_extensao_da_image" # Extensões aceitas: png, jpg, jpeg e gif
+    IMAGEM_SUL = "string_correspondente_a_url_e_extensao_da_image" # Extensões aceitas: png, jpg, jpeg e gif
+    
+    IMAGEM2_NORTE= "string_correspondente_a_url_e_extensao_da_imagem" # Extensões aceitas: png, jpg, jpeg e gif   
+    IMAGEM2_LESTE = "string_correspondente_a_url_e_extensao_da_image" # Extensões aceitas: png, jpg, jpeg e gif
+    IMAGEM2_OESTE = "string_correspondente_a_url_e_extensao_da_image" # Extensões aceitas: png, jpg, jpeg e gif
+    IMAGEM2_SUL = "string_correspondente_a_url_e_extensao_da_image" # Extensões aceitas: png, jpg, jpeg e gif
+    
+    """Cria as cenas da primeira sala"""
+    nome_da_cena1_norte = Cena(IMAGEM_NORTE) 
+    nome_da_cena1_sul = Cena(IMAGEM_SUL) 
+    nome_da_cena1_leste = Cena(IMAGEM_LESTE) 
+    nome_da_cena1_oeste = Cena(IMAGEM_OESTE)
+    
+    """Cria a sala com a primeira leva de cenas"""
+    nome_da_sala1 = Sala(n=nome_da_cena_norte, s=nome_da_cena_sul, l=nome_da_cena_leste, o=nome_da_cena_oeste)
+    
+    """Cria as cenas da segunda sala"""
+    nome_da_cena2_norte = Cena(IMAGEM2_NORTE) 
+    nome_da_cena2_sul = Cena(IMAGEM2_SUL) 
+    nome_da_cena2_leste = Cena(IMAGEM2_LESTE) 
+    nome_da_cena2_oeste = Cena(IMAGEM2_OESTE)
+   
+    """Cria a sala com as segunda leva de cenas"""
+    nome_da_sala2 = Sala(n=nome_da_cena2_norte, s=nome_da_cena2_sul, l=nome_da_cena2_leste, o=nome_da_cena2_oeste)
+    """Gera o Labirinto"""
+    resulta_labirito=Labirinto(c=nome_da_sala1,n=nome_da_sala2)
+    """Inicia o labirinto referenciando a Sala e a cena"""
+    resulta_labirinto.centro.norte.vai()
+    
+    
 ELEMENTO
 ---------
 
