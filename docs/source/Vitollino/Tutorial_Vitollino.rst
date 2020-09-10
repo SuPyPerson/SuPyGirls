@@ -47,7 +47,6 @@ Para utilizar os recursos do vitollino é necessário, primeiramente, importá-l
 
 .. code:: python
 
-    """É análogo ao caminho _spy/vitollino/main.py """
     from _spy.vitollino.main  import Classe_Desejada, Classe_Desejada2
    
 Outra forma de também importar é:
@@ -63,7 +62,7 @@ IMPORTANDO MÓDULOS (SALAS)
 .. code:: python
 
     """ Exemplo from cenas.imix import Inicial"""
-    from  nome_do_pacote.nome_do_módulo import Classe_Desejada, Classe_Desejada2
+    from  nome_do_principal.nome_do_módulo import Classe_Desejada, Classe_Desejada2
     .
     .
     .
@@ -103,13 +102,40 @@ CENA
     nome_da_cena = Cena(IMAGEM_QUALQUER, # Parâmetro obrigatório
                         esquerda=nome_da_cena_esquerda, # default = NADA = SalaCenaNula()
                         direita=nome_da_cena_direita,  # default = NADA = SalaCenaNula()
-                        meio=nome_da_cena_meio) # default = NADA = SalaCenaNula()
-                         
+                        meio=nome_da_cena_meio) # default = NADA = SalaCenaNula() 
                          )
     nome_da_cena.vai()
 
 SALA
 -----
+
+.. code:: python
+   
+    from _spy.vitollino.main import Cena, Sala
+    """Importa a classe Sala e Cena do vitollino.
+       A Sala é uma COLEÇÃO de cenas organizados nos pontos cadeais norte, sul, leste e oeste 
+    """
+    
+    
+    IMAGEM_NORTE= "string_correspondente_a_url_e_extensao_da_imagem" # Extensões aceitas: png, jpg, jpeg e gif   
+    IMAGEM_LESTE = "string_correspondente_a_url_e_extensao_da_image" # Extensões aceitas: png, jpg, jpeg e gif
+    IMAGEM_OESTE = "string_correspondente_a_url_e_extensao_da_image" # Extensões aceitas: png, jpg, jpeg e gif
+    IMAGEM_SUL = "string_correspondente_a_url_e_extensao_da_image" # Extensões aceitas: png, jpg, jpeg e gif
+    
+    
+    nome_da_cena_norte = Cena(IMAGEM_NORTE) 
+    nome_da_cena_sul = Cena(IMAGEM_SUL) 
+    nome_da_cena_leste = Cena(IMAGEM_LESTE) 
+    nome_da_cena_oeste = Cena(IMAGEM_OESTE)
+    
+    nome_da_sala = Sala(n=nome_da_cena_norte, s=nome_da_cena_sul, l=nome_da_cena_leste, o=nome_da_cena_oeste)
+    """ Bem como na composição na Cena, a ausencia de Cena em algum dos pontos cardeais direciona para a SalaCenaNula()"""
+    
+    nome_da_sala.norte.vai() # A primeira Cena a ser visualizada
+    #nome_da_sala.sul.vai()
+    #nome_da_sala.leste.vai()
+    #nome_da_sala.oeste.vai()
+
 
 LABIRINTO
 ----------
