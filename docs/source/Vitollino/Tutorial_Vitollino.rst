@@ -8,6 +8,9 @@ TUTORIAL VITOLLINO
 Importando o Vitollino
 -----------------------
 
+STYLE 
+-------
+
 
 Cena
 -----
@@ -21,8 +24,14 @@ Labirinto
 Elemento
 ---------
 
+PopUp
+-----
+
 Texto (PopUp)
 --------------
+
+Código
+-------
 
 Botão
 ------
@@ -33,7 +42,17 @@ Multipla-Escolha
 Inventário
 -----------
 
+Música
+-------
 
+Portal
+--------
+
+Dropper
+--------
+
+Droppable
+----------
 
 
 
