@@ -240,11 +240,11 @@ Referências
 #. `Programação Orientada a Objeto`_
 #. `Linguagens de programação`_
 
-#. `Variáveis`_
-#. `Estrutura de Dados`_
+#. `Variável`_
+#. `Estrutura de Dado`_
 #. `Operadores Python`_
-#. `Funções`_
-#. `Classes`_
+#. `Função`_
+#. `Classe`_
 
 
 .. _Paradigma da Programação: https://pt.wikipedia.org/wiki/Paradigma_de_programa%C3%A7%C3%A3o
@@ -253,11 +253,11 @@ Referências
 .. _Linguagens de programação: https://www.treinaweb.com.br/blog/linguagens-e-paradigmas-de-programacao/
 .. _Métodos Mágicos: https://www.python-course.eu/python3_magic_methods.php
 
-.. _Variáveis: https://www.devmedia.com.br/python-trabalhando-com-variaveis/38644
-.. _Estrutura de Dados: https://docs.python.org/pt-br/3/tutorial/datastructures.html
+.. _Variável: https://www.devmedia.com.br/python-trabalhando-com-variaveis/38644
+.. _Estrutura de Dado: https://docs.python.org/pt-br/3/tutorial/datastructures.html
 .. _Operadores Python: https://www.w3schools.com/python/python_operators.asp
-.. _Funções: https://docs.python.org/pt-br/3.8/library/functions.html
-.. _Classes: https://docs.python.org/3/tutorial/classes.html
+.. _Função: https://docs.python.org/pt-br/3.8/library/functions.html
+.. _Classe: https://docs.python.org/3/tutorial/classes.html
 
 .. _Python.org: https://www.python.org/doc/
 .. _Guido van Rossum: https://en.wikipedia.org/wiki/Guido_van_Rossum
