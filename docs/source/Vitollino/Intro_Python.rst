@@ -25,15 +25,15 @@ Espero que tão logo este documento seja parco frente à sua fome pythônica e v
 
  * `Variáveis`_
  * `Dados: Type e Id`_
-    * `Booleans`_
-    * `Integer e Float`_
-    * `String`_
+    * `Booleans`
+    * `Integer e Float`
+    * `String`
  * `Estrutura de Dados`_
-    * `Lista`_
-    * `Dicionário`_
-    * `Tuplas`_
-    * `String`_
-    * `Set`_
+    * `Lista`
+    * `Dicionário`
+    * `Tuplas`
+    * `String`
+    * `Set`
  * `Operators`_
     * `Operadores aritméticos`_
     * `Operadores de atribuição`_
