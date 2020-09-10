@@ -193,6 +193,7 @@ Referências
 #. `Programação Orientada a Objeto`_
 #. `Linguagens de programação`_
 #. `Métodos Mágicos`_
+
 .. _Paradigma da Programação: https://pt.wikipedia.org/wiki/Paradigma_de_programa%C3%A7%C3%A3o
 .. _Programação Orientada a Objeto: https://pt.wikipedia.org/wiki/Orienta%C3%A7%C3%A3o_a_objetos
 .. _Programação Procedural: https://pt.wikipedia.org/wiki/Programa%C3%A7%C3%A3o_procedural
