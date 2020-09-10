@@ -46,7 +46,7 @@ Espero que tão logo este documento seja parco frente à sua fome pythônica e v
     * `If and Else`
     * `While`
     * `For`
- * `Classe`_
+ * `Classes`_
 *  `Referências`_
 
 
@@ -158,8 +158,6 @@ Exemplo do código anterior seguindo o paradigma OO:
  
 Python: Sintaxe Básica 
 ========================
-
-Esta seção do documento busca seguir, evolutivamente, o paradigma de programação Orientado a Objeto.
 
 .. Note::
   Os Tópicos abaixo, e outros mais aprofundados, podem ser encontradas na `Documentação Python`_ 
