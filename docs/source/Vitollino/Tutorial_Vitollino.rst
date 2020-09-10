@@ -1,7 +1,5 @@
 .. _Tutorial_Vitollino:
 
-
-
 TUTORIAL VITOLLINO
 ===================
  
@@ -10,8 +8,10 @@ TUTORIAL VITOLLINO
 .. Warning:: 
   É vitoLLino com dois *LL's*
   
+  
  Sumário
 ----------
+
 #. IMPORTANDO O VITOLLINO
 #. IMPORTAÇÃO DE OUTRA SALA
 #. STYLE
