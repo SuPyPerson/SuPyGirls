@@ -142,18 +142,20 @@ Esta seção do documento busca seguir, evolutivamente, o paradigma de programa�
 Variáveis
 ----------
 
+.. code:: python
+
 Type e Id
 ----------
 
 Operadores 
 -----------
 
-*Operadores aritméticos
-*Operadores de atribuição
-*Operadores de comparação
-*Operadores lógicos
-*Operadores de identidade
-*Operadores de associação
+* Operadores aritméticos
+* Operadores de atribuição
+* Operadores de comparação
+* Operadores lógicos
+* Operadores de identidade
+* Operadores de associação
 
 
 Funções
@@ -204,3 +206,8 @@ Referências
 .. _Guido van Rossum: https://en.wikipedia.org/wiki/Guido_van_Rossum
 .. _Código Binário: https://www.invertexto.com/codigo-binario
 .. _Documentação Python: https://docs.python.org/3/tutorial/index.html
+
+Tutorial Vitollino
+===================
+
+Acesse aqui o :ref:`tutorial Vitollino` .
