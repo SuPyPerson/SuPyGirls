@@ -29,23 +29,23 @@ Espero que tão logo este documento seja parco frente à sua fome pythônica e v
     * `Integer e Float`_
     * `String`_
  * `Estrutura de Dados`_
-   * `Lista`_
-   * `Dicionário`_
-   * `Tuplas`_
-   * `String`_
-   * `Set`_
+    * `Lista`_
+    * `Dicionário`_
+    * `Tuplas`_
+    * `String`_
+    * `Set`_
  * `Operators`_
-   * `Operadores aritméticos`_
-   * `Operadores de atribuição`_
-   * `Operadores de atribuição`_
-   * `Operadores lógicos`_
-   * `Operadores de identidade`_
-   * `Operadores de associaçãos`_
+    * `Operadores aritméticos`_
+    * `Operadores de atribuição`_
+    * `Operadores de atribuição`_
+    * `Operadores lógicos`_
+    * `Operadores de identidade`_
+    * `Operadores de associaçãos`_
  * `Funções`_
  * `Iterações: Loops`_
-   * `If and Else `_
-   * `While `_
-   * `For`_
+    * `If and Else `_
+    * `While `_
+    * `For`_
  * `Classe`_
  *  `Referências`_
 
