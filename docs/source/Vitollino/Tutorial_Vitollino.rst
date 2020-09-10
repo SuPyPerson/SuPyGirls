@@ -10,8 +10,9 @@ TUTORIAL VITOLLINO
 Importando o Vitollino
 -----------------------
 
-.. code::
-   from _spy.vitollino.main import importe <CLASSES DESEJADAS>
+.. code:: python
+  
+   from _spy.vitollino.main import import <CLASSES DESEJADAS>
 
 STYLE 
 -------
