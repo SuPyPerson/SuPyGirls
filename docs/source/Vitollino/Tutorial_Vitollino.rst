@@ -12,7 +12,13 @@ Importando o Vitollino
 
 .. code:: python
   
-   from _spy.vitollino.main import import <CLASSES DESEJADAS>
+   from _spy.vitollino.main  import Classe_Dejada, Classe_Desejada2
+
+Outra forma de também importar é:
+
+.. code:: python
+  
+   from _spy.vitollino.main import  Classe_Dejada as abreviação_qualquer
 
 STYLE 
 -------
