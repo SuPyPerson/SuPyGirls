@@ -171,7 +171,6 @@ Variáveis
 Dados: Type e Id
 ------------------
 * Boolean
-----------
 .. code:: python
 
 * Integer e Float
