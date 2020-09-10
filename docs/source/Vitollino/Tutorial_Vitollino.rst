@@ -9,6 +9,27 @@ TUTORIAL VITOLLINO
 
 .. Warning:: 
   É vitoLLino com dois *LL's*
+  
+ Sumário
+----------
+#. IMPORTANDO O VITOLLINO
+#. IMPORTAÇÃO DE OUTRA SALA
+#. STYLE
+#. CENA
+#. SALA
+#. LABIRINTO
+#. ELEMENTO
+#. POPUP
+#. TEXTO (PopUp)
+#. CÓDIGO
+#. BOTÃO
+#. MÚLTIPLA-ESCOLHA
+#. INVENTÁRIO
+#. MÚSICA
+#. PORTAL
+#. DROPPER
+#. DROPPABLE
+
 
 IMPORTANDO O VITOLLINO
 -----------------------
@@ -30,7 +51,7 @@ Outra forma de também importar é:
     """A abreviação do nome da classe pode auxiliar na organização e clareza do código posteriormente ;)"""
     from _spy.vitollino.main import  Classe_Desejada as abreviação_qualquer
     
-IMPORTAÇÃO DE OUTRA SALA
+IMPORTAÇÃO DE SALA MÓDYLOS 
 --------------------------
 
 
