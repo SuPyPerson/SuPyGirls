@@ -1,10 +1,11 @@
 .. _Tutorial_Vitollino:
 
-.. image:: _static/6_plataf_pacote.png
+
 
 TUTORIAL VITOLLINO
 ===================
  
+.. image:: _static/6_plataf_pacote.png
 
 Importando o Vitollino
 -----------------------
