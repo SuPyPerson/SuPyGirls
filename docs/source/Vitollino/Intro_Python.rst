@@ -43,8 +43,8 @@ Espero que tão logo este documento seja parco frente à sua fome pythônica e v
     * `Operadores de associaçãos`_
  * `Funções`_
  * `Iterações: Loops`_
-    * `If and Else `_
-    * `While `_
+    * `If and Else`_
+    * `While`_
     * `For`_
  * `Classe`_
  *  `Referências`_
