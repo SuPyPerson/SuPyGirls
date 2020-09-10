@@ -62,8 +62,8 @@ O clique nestes botões direcionam para o "salão principal".
 .. image:: _static/5_plataf_IDE.png
 
 
-Acessando o Salão Principal de programação
--------------------------------------------
+Acessando o Salão Principal 
+-----------------------------
 Bem-vindo ao salão principal!
 Seu clique foi bem sucedido e agora você pode escolher o *pacote* correspondente ao projeto da qual você participa!
 É chamado pacote pois cada um dos 'quadrados' comporta, no mínimo, 40 sub-salas prontas para você codar!
@@ -80,8 +80,8 @@ P.S: Você reconhece os grandes nomes que batizam as salas da Plataforma? Fica a
 .. image:: _static/6_plataf_pacote.png
 
 
-Acessando a sala pessoal de programação
-----------------------------------------
+Acessando a Sala pessoal 
+--------------------------
 
 O clique **em qualquer uma** das salas da imagem anterior, redireciona para uma página **idêntica a esta**. 
 Agora você está vendo os módulos do pacote que você selecionou! Yuhaa!
