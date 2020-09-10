@@ -15,20 +15,17 @@ A plataforma se mantém de pé graças ao `prof.Carlo`_ que foi o idealizador e 
 
 O presente tutorial é **unicamente** um guia de acessos da plataforma. 
 
+ACESSO: `PLATAFORMA SUPERPYTHON`_
+-----------------------------------
+
+.. _PLATAFORMA SUPERPYTHON: http://supygirls.pythonanywhere.com/
 
 Página Inicial da plataforma
 -----------------------------
 
-ACESSO: `PLATAFORMA SUPERPYTHON`_
------------------------------------
-
 Esta é a apresentação atual da plataforma:
 
-.. _PLATAFORMA SUPERPYTHON: http://supygirls.pythonanywhere.com/
-
 .. image:: _static/1_plataforma_Vitollino.png
- 
-
 
 Retornando para a página principal
 -----------------------------------
