@@ -8,18 +8,10 @@ TUTORIAL VITOLLINO
 .. image:: _static/6_plataf_pacote.png
 
 .. Warning:: 
-  Cada vírgula, espaço, ponto, parênteses, respiro que você dá conta no python. 
-  Desvios mínimos de digitação podem dar uma baita dor de cabeça. ATENÇÃO!!
-  Adianto: É vitoLLino com dois *LL's*
+  É vitoLLino com dois *LL's*
 
-Importando o Vitollino
+IMPORTANDO O VITOLLINO
 -----------------------
-Para usar os recursos do Vitollino, faz-se necessário importá-lo na sua IDE.
-
-Arquivos são guardados dentro de outros arquivos recursivamente. Logo, para resgatar o arquivo certo precisamos descrever o caminho a ser percorrido (from) e a funcionalidade a ser resgatada (import).
-
-A sintaxe de importação no python é:
-
 
 .. code:: python
 
@@ -37,52 +29,69 @@ Outra forma de também importar é:
 
     """A abreviação do nome da classe pode auxiliar na organização e clareza do código posteriormente ;)"""
     from _spy.vitollino.main import  Classe_Desejada as abreviação_qualquer
+    
+IMPORTAÇÃO DE OUTRA SALA
+--------------------------
 
 
 STYLE 
 -------
-O Vitollino tem um canvas padrão que mede:
 
-Cena
+.. code:: python
+    
+    from _spy.vitollino.main import STYLE
+    .
+    .
+    .
+    STYLE["width"] = 900 # width = 300 (default) 
+    STYLE["heigth"] = "900px" # min-height = "300px"
+
+
+.. code:: python
+
+    """A abreviação do nome da classe pode auxiliar na organização e clareza do código posteriormente ;)"""
+    from _spy.vitollino.main import  Classe_Desejada as abreviação_qualquer
+
+CENA
 -----
 
-Sala
+SALA
 -----
 
-Labirinto
+LABIRINTO
 ----------
 
-Elemento
+ELEMENTO
 ---------
 
-PopUp
+POPUP
 -----
 
-Texto (PopUp)
+TEXTO (PopUp)
 --------------
 
-Código
+CÓDIGO
 -------
 
-Botão
+BOTÃO
 ------
 
-Multipla-Escolha
+MÚLTIPLA-ESCOLHA
 -----------------
 
-Inventário
+INVENTÁRIO
 -----------
 
-Música
+MÚSICA
 -------
 
-Portal
+PORTAL
 --------
 
-Dropper
+DROPPER
 --------
 
-Droppable
+DROPPABLE
 ----------
 
 
