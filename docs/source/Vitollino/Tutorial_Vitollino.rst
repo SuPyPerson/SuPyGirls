@@ -23,7 +23,9 @@ A sintaxe de importação no python é:
 
 .. code:: python
 
-    """É análogo ao caminho _spy/vitollino.main"""
+    """É análogo ao caminho _spy/vitollino/main
+       Lê-se, "lá na pasta _spy, tem uma pasta vitollino que carrega um tal de main. Separa esse main aí por favor. Vou usar!"
+    """
     from _spy.vitollino.main  import Classe_Desejada, Classe_Desejada2
    
 
