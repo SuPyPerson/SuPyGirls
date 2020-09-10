@@ -1,5 +1,6 @@
 .. _Tutorial_Vitollino:
 
+.. image:: _static/6_plataf_pacote.png
 
 TUTORIAL VITOLLINO
 ===================
