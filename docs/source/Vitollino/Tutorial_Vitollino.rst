@@ -79,7 +79,7 @@ IMPORTANDO MÓDULOS (SALAS)
 
    Justificativa extensa da linha  `if __name__ == "__main__"`_ 
  
-.. _if __name__ == "__main__" : http://moodle.escolapiloto.peq.coppe.ufrj.br/mod/assign/view.php?id=299
+.. _if __name__ == "__main__": http://moodle.escolapiloto.peq.coppe.ufrj.br/mod/assign/view.php?id=299
 
 STYLE 
 -------
