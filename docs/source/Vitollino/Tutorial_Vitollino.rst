@@ -24,7 +24,8 @@ A sintaxe de importação no python é:
 .. code:: python
 
     """É análogo ao caminho _spy/vitollino/main
-       Lê-se, lá na pasta _spy, tem uma pasta vitollino que carrega um tal de main. Nesse main tem um Classe-Desejada. Separa esse último aí por favor! Vou usar.
+       Lê-se, lá na pasta _spy, tem uma pasta vitollino que carrega um tal de main. 
+       Nesse main tem um Classe-Desejada. Separa esse último aí por favor! Vou usar.
     """
     from _spy.vitollino.main  import Classe_Desejada, Classe_Desejada2
    
@@ -40,7 +41,7 @@ Outra forma de também importar é:
 
 STYLE 
 -------
-O 
+O Vitollino tem um canvas padrão que mede:
 
 Cena
 -----
