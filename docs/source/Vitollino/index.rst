@@ -4,8 +4,8 @@
    contain the root `toctree` directive.
 
 
-Tutorial da Plataforma SuperPython
-====================================
+**Tutorial da Plataforma SuperPython**
+=======================================
 
 Este é um breve tutorial de imersão na plataforma SuperPython.
 
