@@ -15,7 +15,7 @@ Este é um breve tutorial de imersão na plataforma SuperPython.
 :Code Author:  Carlo E. T. Oliveira
 :Affiliation:  Universidade Federal do Rio de Janeiro
 :Homepage:  `Programa Superpython`_
-**Tutorial Author:**  Emanuelle M. P. Simas
+  **Tutorial Author:**  Emanuelle M. P. Simas
 
 CONTEÚDO
 ---------
@@ -23,7 +23,7 @@ CONTEÚDO
 .. Toctree::
   :maxdepth: 1
 
-   `Tour_Plataform`
+   :ref: `Tour da Plataforma <Tour_Plataform>`
    `Intro_Python`
    `Tutorial_Vitollino`
 
