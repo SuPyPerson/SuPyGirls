@@ -1,7 +1,7 @@
 .. _Tour_Plataforma:
 
-Tour da Plataforma SuperPython
-=====================
+**Tour da Plataforma SuperPython**
+====================================
 
 Olá! Seja muito bem-vindo ao Tour da plataforma SuperPython.
 
