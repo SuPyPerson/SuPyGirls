@@ -113,7 +113,7 @@ Programação Orientada a Objeto (OO)
 ------------------------------------
 
 .. seealso::
-   Você pode ver outra explicação sobre OO aqui:  :doc:`Orientado a Objeto <PythonOO>`   :ref:`Orientado a Objeto <PythonOO>` :any:`Orientado a Objeto <PythonOO>`
+   Você pode ver outra explicação sobre OO aqui:  :doc:`../intro_comp/PythonOO`   :ref:`Orientado a Objeto <PythonOO>` :any:`Orientado a Objeto <PythonOO>`
 
 Bem como o nome diz, se trata de uma programação centrada nos objetos.
 O objeto na OO é tudo aquilo que possui, conjuntamente, propriedades e operações.
