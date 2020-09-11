@@ -1,6 +1,6 @@
 .. _Intro_Python:
 
-Introdução ao Python
+**Introdução ao Python**
 ==========================
 
 .. image:: _static/Python_Logo.png
