@@ -56,9 +56,16 @@ IMPORTANDO MÓDULOS (SALAS)
    """ Exemplo from cenas.imix import Inicial"""
     from  nome_do_pacote.nome_do_módulo import Classe_Desejada, Classe_Desejada2
     
+    
+    """Essa linha impede cruzamentos indesejados entre os nomes dos repositórios."""
+    if __name__ == "__main__":
+        classe_principal()
+    
 .. seealso::
    
    Justificativa extensa da linha  `if __name__ == "__main__"`_
+
+.. _if __name__ == "__main__": https://www.geeksforgeeks.org/what-does-the-if-__name__-__main__-do/
 
 STYLE 
 -------
