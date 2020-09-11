@@ -23,8 +23,6 @@ CONTEÚDO
 
 .. toctree::
     :maxdepth: 1
-    :caption: Contents:
-
 
     **Tour da Plataforma SuperPyThon**
     
@@ -36,7 +34,7 @@ CONTEÚDO
     
     **Tutorial Vitollino**
     
-    Tutorial_Vitollino.rst
+    :ref: `Tutorial_Vitollino.rst`
     
 
 .. |licencing| image:: https://img.shields.io/github/license/kwarwp/kwarwp
