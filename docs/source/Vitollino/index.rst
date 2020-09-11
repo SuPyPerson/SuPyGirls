@@ -20,9 +20,11 @@ Este é um breve tutorial de imersão na plataforma SuperPython.
 CONTEÚDO
 ---------
 
-:ref:`Tour_Plataform.rst`
-:ref:`Intro_Python.rst`
-:ref:`Tutorial_Vitollino.rst`
+.. Toctree::
+
+   :ref:`Tour_Plataform.rst`
+   :ref:`Intro_Python.rst`
+   :ref:`Tutorial_Vitollino.rst`
 
     
 
