@@ -27,7 +27,7 @@ CONTEÚDO
    
    Intro_Python
    
-   `Tutorial_Vitollino`
+   `Tutorial_Vitollino.rst`
 
     
 **Tutorial Author:**  Emanuelle M. P. Simas
