@@ -138,24 +138,14 @@ Para ver sua obra-prima por completo basta clicar em run:
    
                       **F5** NELEEE!!!!
         
+        
+.. image:: _static/11.1_plata_sala_SAVE.png
+
 .. Warning::
    NEVER. MAI. NONCH NIE. Ποτέ. 決して. 
            
    NUNCA Saia da sala sem salvar o seu trabalho!
-           
-
-.. image:: _static/11.1_plata_sala_SAVE.png
-
-
-
-
-
-
 
 
 
 **MÃO NA MASSAAAA, DIGO, NO TECLADOOOOOOO!!**
-
-
-
-
