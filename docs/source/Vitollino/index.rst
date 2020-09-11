@@ -21,7 +21,7 @@ CONTEÚDO
 ---------
 
 .. Toctree::
-  : titlesonly:
+   :titlesonly:
 
    :ref: `Tour da Plataforma <Tour_Plataform>`
    
