@@ -47,7 +47,7 @@
     
     **Tutorial Teste Vitollino**
     
-    Vitollino.index.rst
+    Vitollino/index.rst
     
 
 
@@ -56,7 +56,7 @@ Indices and tables
 ==================
 
  +-----------+--------------+-------------+---------------+
- | |circus|  +  |introcmp|  + |supygirls| + |superpython| |
+ | |circus|  +  |introcomp|  + |supygirls| + |superpython| |
  +-----------+--------------+-------------+---------------+
 
 
