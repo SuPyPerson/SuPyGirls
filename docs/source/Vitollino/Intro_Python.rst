@@ -22,7 +22,6 @@ Espero que tão logo este documento seja parco frente à sua fome pythônica e v
 *  `O que é Python?`_
 *  `PROCEDURAL vs ORIENTADA A OBJETO`_
 *  `Python: Sintaxe Básica`_  
-
  * `Variáveis`_
  * `Dados: Type e Id`_
     * `Booleans`
@@ -114,7 +113,7 @@ Programação Orientada a Objeto (OO)
 ------------------------------------
 
 .. seealso::
-   Você pode ver outra explicação sobre OO aqui: :doc:`../intro_comp/PythonOO.rst` 
+   Você pode ver outra explicação sobre OO aqui: :ref:`../intro_comp/PythonOO.rst` 
 
 Bem como o nome diz, se trata de uma programação centrada nos objetos.
 O objeto na OO é tudo aquilo que possui, conjuntamente, propriedades e operações.
