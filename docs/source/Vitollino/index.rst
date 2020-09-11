@@ -23,11 +23,11 @@ CONTEÚDO
 .. Toctree::
    :titlesonly:
 
-   :ref: `Tour da Plataforma <Tour_Plataform>`
+   Tour_Plataform
    
    Intro_Python
    
-   `Tutorial_Vitollino.rst`
+   Tutorial_Vitollino
 
     
 **Tutorial Author:**  Emanuelle M. P. Simas
