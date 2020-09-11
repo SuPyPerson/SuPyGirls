@@ -69,11 +69,6 @@ STYLE
     STYLE["heigth"] = "900px" # min-height = "300px"
 
 
-.. code:: python
-
-    """A abreviação do nome da classe pode auxiliar na organização e clareza do código posteriormente ;)"""
-    from _spy.vitollino.main import  Classe_Desejada as abreviação_qualquer
-
 CENA
 -----
 
