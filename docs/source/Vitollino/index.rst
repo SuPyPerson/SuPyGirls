@@ -21,6 +21,10 @@ Este é um breve tutorial de imersão na plataforma SuperPython.
 CONTEÚDO
 ---------
 
+:ref:`Tour_Plataform.rst`
+:ref:`Intro_Python.rst`
+:ref:`Tutorial_Vitollino.rst`
+
 .. toctree::
 
     **Tour da Plataforma SuperPyThon**
@@ -33,7 +37,7 @@ CONTEÚDO
     
     **Tutorial Vitollino**
     
-    :ref: `Tutorial_Vitollino.rst`
+    Tutorial_Vitollino.rst
     
 
 .. |licencing| image:: https://img.shields.io/github/license/kwarwp/kwarwp
