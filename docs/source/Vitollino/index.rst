@@ -25,7 +25,7 @@ CONTEÚDO
     :maxdepth: 2
 
     Tour_Plataform.rst
-    IntroPython.rst
+    Intro_Python.rst
     Tutorial_Vitollino.rst
     
 
