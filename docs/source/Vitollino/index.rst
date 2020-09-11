@@ -13,7 +13,7 @@ Este é um breve tutorial de imersão na plataforma SuperPython.
 
 
 :Code Author:  Carlo E. T. Oliveira
-:Tutorial Author:  Emanuelle M. P. Simas
+:Tutorial Author:  Emanuelle Simas
 :Affiliation:  Universidade Federal do Rio de Janeiro
 :Homepage:  `Programa Superpython`_
 
