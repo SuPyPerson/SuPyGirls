@@ -22,7 +22,6 @@ CONTEÚDO
 ---------
 
 .. toctree::
-    :maxdepth: 1
 
     **Tour da Plataforma SuperPyThon**
     
