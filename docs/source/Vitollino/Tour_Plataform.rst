@@ -1,6 +1,6 @@
 .. _Tour_Plataforma:
 
-Plataforma SuperPython
+Tour da Plataforma SuperPython
 =====================
 
 Olá! Seja muito bem-vindo ao Tour da plataforma SuperPython.
@@ -15,19 +15,18 @@ A plataforma se mantém de pé graças ao `prof.Carlo`_ que foi o idealizador e 
 
 O presente tutorial é **unicamente** um guia de acessos da plataforma. 
 
+Acesse: `Plataforma SuperPython`_
+-----------------------------------
 
 Página Inicial da plataforma
 -----------------------------
 
 Esta é a apresentação atual da plataforma:
-Para acessar esta página principal basta acessar este link: `Plataforma SuperPython`_
 
 .. _Plataforma SuperPython: http://supygirls.pythonanywhere.com/
 
 .. image:: _static/1_plataforma_Vitollino.png
  
-
-
 Retornando para a página principal
 -----------------------------------
 
