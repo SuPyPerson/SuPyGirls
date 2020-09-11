@@ -45,7 +45,7 @@
     SuPyGirls/index.rst
     Kwarwp/index.rst
     
-    **Tutorial Teste Vitollino**
+    **Tutorial da Plataforma Vitollino**
     
     Vitollino/index.rst
     
