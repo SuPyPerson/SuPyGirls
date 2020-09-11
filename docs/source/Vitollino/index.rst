@@ -25,19 +25,6 @@ CONTEÚDO
 :ref:`Intro_Python.rst`
 :ref:`Tutorial_Vitollino.rst`
 
-.. toctree::
-
-    **Tour da Plataforma SuperPyThon**
-    
-    Tour_Plataform.rst
-    
-    **Introdução Python**
-    
-    Intro_Python.rst
-    
-    **Tutorial Vitollino**
-    
-    Tutorial_Vitollino.rst
     
 
 .. |licencing| image:: https://img.shields.io/github/license/kwarwp/kwarwp
