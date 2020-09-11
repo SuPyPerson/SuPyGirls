@@ -15,7 +15,7 @@ Este é um breve tutorial de imersão na plataforma SuperPython.
 :Code Author:  Carlo E. T. Oliveira
 :Affiliation:  Universidade Federal do Rio de Janeiro
 :Homepage:  `Programa Superpython`_
-  **Tutorial Author:**  Emanuelle M. P. Simas
+  
 
 CONTEÚDO
 ---------
@@ -30,6 +30,7 @@ CONTEÚDO
    `Tutorial_Vitollino`
 
     
+**Tutorial Author:**  Emanuelle M. P. Simas
 
 .. |licencing| image:: https://img.shields.io/github/license/kwarwp/kwarwp
    :target: https://github.com/kwarwp/_spy/blob/master/LICENSE
