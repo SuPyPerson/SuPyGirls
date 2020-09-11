@@ -24,7 +24,9 @@ CONTEÚDO
   :maxdepth: 1
 
    :ref: `Tour da Plataforma <Tour_Plataform>`
-   `Intro_Python`
+   
+   Intro_Python
+   
    `Tutorial_Vitollino`
 
     
