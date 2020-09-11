@@ -19,13 +19,23 @@ Este é um breve tutorial de imersão na plataforma SuperPython.
 
 
 CONTEÚDO
-=========
+---------
 
 .. toctree::
-    :maxdepth: 0
+    :maxdepth: 1
+    :caption: Contents:
 
+
+    **Tour da Plataforma SuperPyThon**
+    
     Tour_Plataform.rst
+    
+    **Introdução Python**
+    
     Intro_Python.rst
+    
+    **Tutorial Vitollino**
+    
     Tutorial_Vitollino.rst
     
 
