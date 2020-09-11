@@ -22,7 +22,7 @@ CONTEÚDO
 =========
 
 .. toctree::
-    :maxdepth: 2
+    :maxdepth: 1
 
     Tour_Plataform.rst
     Intro_Python.rst
