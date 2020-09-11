@@ -32,11 +32,10 @@
 
 
     **Tutorial de Introdução à Computação**
-
+    
     intro_comp/index.rst
 
     **Tutorial Circus de Introdução à Programação**
-
 
     circus/index.rst
     superpython/index.rst
@@ -45,6 +44,11 @@
 
     SuPyGirls/index.rst
     Kwarwp/index.rst
+    
+    **Tutorial da Plataforma Vitollino**
+    
+    Vitollino/index.rst
+    
 
 
 
@@ -52,7 +56,7 @@ Indices and tables
 ==================
 
  +-----------+--------------+-------------+---------------+
- | |circus|  +  |introcmp|  + |supygirls| + |superpython| |
+ | |circus|  +  |introcomp|  + |supygirls| + |superpython| |
  +-----------+--------------+-------------+---------------+
 
 
