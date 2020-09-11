@@ -60,8 +60,8 @@ Criado por `Guido van Rossum`_ e lançado em 1991, a estura de controle (sintaxe
 
 Você pode ler mais sobre no `Python.org`_
 
-PROCEDURAL vs ORIENTADA A OBJETO
-==================================
+**PROCEDURAL vs ORIENTADA A OBJETO**
+----------------------------------
     
 O Paradigma da Programação
 -----------------------------
@@ -113,7 +113,7 @@ Programação Orientada a Objeto (OO)
 ------------------------------------
 
 .. seealso::
-   Você pode ver outra explicação sobre OO aqui :doc:`PythonOO.rst`   :ref:`PythonOO.rst`
+   Você pode ver outra explicação sobre OO aqui  :doc:`PythonOO.rst`   :ref:`PythonOO.rst` :any:`PythonOO.rst`
 
 Bem como o nome diz, se trata de uma programação centrada nos objetos.
 O objeto na OO é tudo aquilo que possui, conjuntamente, propriedades e operações.
@@ -155,8 +155,8 @@ Exemplo do código anterior seguindo o paradigma OO:
     Numeros.opera_soma([1,4,5,6]) #Lista de inteiros
     Numeros.opera_soma([1.3,1.5.1.6]) #Lista de floats
  
-Python: Sintaxe Básica 
-========================
+**Python: Sintaxe Básica** 
+----------------------------
 
 .. Note::
   Os Tópicos abaixo, e outros mais aprofundados, podem ser encontradas na `Documentação Python`_ 
@@ -264,7 +264,7 @@ Referências
 .. _Documentação Python: https://docs.python.org/3/tutorial/index.html
 
 
-Tutorial Vitollino
+:ref:`Tutorial Vitollino <Tutorial_Vitollino>`
 ===================
 
 Acesse aqui o :ref:`Tutorial_Vitollino` .
