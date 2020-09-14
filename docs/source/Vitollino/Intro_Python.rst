@@ -14,7 +14,7 @@
 
 Este documento pretende tornar familiar, à primeira vista, contextualizações importantes e sintaxes frequentes no uso linguagem. 
 
-Espero que tão logo este documento seja parco frente à sua fome pythônica e você precise enfrentar o árduo plano das documentações :D
+Espero que tão logo este documento seja parco frente a sua fome pythônica e você precise enfrentar o árduo plano das documentações :D
 
 ÍNDICE
 ---------
@@ -84,11 +84,11 @@ Daí surgem as linguagens de **alto nível**! As de terceira geração seguiam o
 .. Note::
    Exemplo de linguagem alto nível (Terceira Geração): COBOL,FORTRAN...
 
-Observando, o nível da linguagem é dado de acordo com o grau de proximidade entre a estrura de programação e a estrutura da nossa língua! Nesse grupo estão as linguagens C, C++, JAVA, [...] e nosso amadinho PYTHON! 
+Observando, o nível da linguagem é dado de acordo com o grau de proximidade entre a estrutura de programação e a estrutura da nossa língua! Nesse grupo estão as linguagens C, C++, JAVA, [...] e nosso amadinho PYTHON! 
 
 Voltemos aos paradigmas...
 
-Como dito, existem diversos paradigmas! Mas neste documento focaremos e dois: Programação Procedural e a Programação Orientada a Objeto.
+Como dito, existem diversos paradigmas! Mas neste documento focaremos em dois: Programação Procedural e a Programação Orientada a Objeto.
    
 Programação Procedural
 -----------------------
