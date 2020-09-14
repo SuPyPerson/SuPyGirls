@@ -1,3 +1,5 @@
 PyGithub
 gunicorn
 bottle
+PyStemmer
+
