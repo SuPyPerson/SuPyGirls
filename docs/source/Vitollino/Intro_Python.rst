@@ -229,7 +229,8 @@ Dados: Type e Id
 * Boolean
 
 .. code:: python
-   
+
+   #teste o código abaixo no seu console
    """Booleano é um estado em python, composto de dois valores: Verdadeiro ou falso."""
    print(10 > 9)
    print(10 == 9)
@@ -240,6 +241,7 @@ Dados: Type e Id
 .. code:: python
 
    #teste o código abaixo no seu console
+   
    """ Numeros sem parte decimal recebem o tipo 'inteiro'(int) """
    inteiro_um = 12
    inteiro_dois = -45
@@ -267,8 +269,10 @@ Estrutura de Dados
 --------------------
 
 .. code:: python
-
-   """ Tudo que está entres colchetes [] é lista no python"""
+   
+   #teste o código abaixo no seu console
+   
+   """ Tudo que está entre colchetes [] é lista no python"""
    lista_um = [1,2,3,[1,2,3[1,2,3]]] #quantas listas tem aqui dentro?
    lista_dois = ["oi",1,4.3,4+9j]
    type(lista_um)
@@ -278,11 +282,11 @@ Estrutura de Dados
    type(dicionario_um["um"])
    type(dicionario_um["dois"])
    
-   """ Valores entre parêntesis são uma tupla no python. Elas são imutáveis!"""
+   """ Valores entre parêntesis () são uma tupla no python. Elas são imutáveis!"""
    tupla_um = (1,2,3,4,5) 
    type(tupla_um)
    
-   """ Valores entre chaves são um conjunto (set) em python"""
+   """ Valores entre chaves {} são um conjunto (set) em python"""
    set_um = {1,2,3,4,"5","e ae"} 
    type(set_um)
   
