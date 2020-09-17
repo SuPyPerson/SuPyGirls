@@ -60,13 +60,13 @@ Criado por `Guido van Rossum`_ e lançado em 1991, a estura de controle (sintaxe
 
 Você pode ler mais sobre no `Python.org`_
 
-**PROCEDURAL vs ORIENTADA A OBJETO**
-----------------------------------
+**PARADIGMAS DE PROGRAMAÇÃO**
+-------------------------------
     
 O Paradigma da Programação
 -----------------------------
 
-O Paradigma é um conglomerado de classificações que são atribuídos às estruturas de código (sintaxe) que o programador utiliza.
+O Paradigmas de programação são um conglomerado de classificações atribuidas às estruturas de código (sintaxe) que o programador utiliza.
 Para ser mais claro, existem diversas linguagens de programação e também diversas formas de externalizar suas soluções através delas; estas soluções resultam em uma estrutura que pode ser classificada como um determinado paradigma.
 
 Ahhhhhhh! Mas pra quê isso?
@@ -88,25 +88,71 @@ Observando, o nível da linguagem é dado de acordo com o grau de proximidade en
 
 Voltemos aos paradigmas...
 
-Como dito, existem diversos paradigmas! Mas neste documento focaremos em dois: Programação Procedural e a Programação Orientada a Objeto.
+Como dito, existem diversos paradigmas! Mas neste documento focaremos em três: Programação Procedural, Programação Estruturada e a Programação Orientada a Objeto.
    
 Programação Procedural
 -----------------------
 
 Bem como o nome diz, se trata de uma programação centrada em procedimentos.
+Este paradigma de programação apresenta-se comumente em scripts corridos que determinavam, diretamente, as ações a serem tomadas pelo computador.
+
+Exemplo de código seguindo o paradigma procedural na linguagem Assembly:
+
+.. code:: python
+    
+    lea si, string ; Atribui SI ao endereço de string.
+    call printf    ; Coloca o endereço atual na pilha e chama o processo printf
+
+    hlt            ; Encerra o computador.
+    string db "Ola mundo!", 0
+
+    printf PROC
+        mov AL, [SI] ; Atribui à AL o valor no endereço SI.
+        cmp AL, 0    ; Compara AL com nulo.
+        je pfend     ; Pula se comparação der igual.
+
+        mov AH, 0Eh
+        int 10h      ; Executa uma função da BIOS que imprime o caractere em AL.
+        inc SI       ; Incrementa em um o valor de SI.
+        jmp printf   ; Pula para o início do processo.
+
+        pfend:
+        ret          ; Retorna para o endereço na posição atual da pilha.
+   printf ENDP
+    
+Em python poderíamos conseguir o mesmo resultado:
+
+.. code :: python
+ 
+   print("Olá, Mundo!") #Teste aí no seu console! :D
+
+Programação Estruturada
+-----------------------
+
+Bem como o nome diz, se trata de uma programação centrada na estrutura.
 Este paradigma de programação apresenta-se comumente em blocos únicos, centrados na sequência, decisão e iteração (loops, condicionais...).
 
 Flui bem em projetos breves. Já em projetos extensos a chance de uma única alteração descarrilhar toodo o programa é relevante!
 
-Exemplo de código seguindo o paradigma procedural:
+Exemplo de código seguindo o paradigma estruturado:
 
-.. code :: python
-   
+.. code:: python
+  
     x,y = 3,4 # Determina variáveis
-    w,h= 5,7  # Determina variáveis
+    w=5 # Determina variáveis
+    h=7 # Determina variáveis
     z = x+y   # Determina variável que representa a operação
     r = w+h   # Determina variável que representa a operação
-    print("Esse é o valor de z:", z, "e esse é o valor de r:",r) # Retorno
+    print("Esse é o valor de z:", z, "e esse é o valor de r:",r) # Retorno    
+    
+    
+    def soma(*args):
+        resultado = 0
+        for numero  in args:
+            resultado += numero
+            print("Soma= ", resultado)
+ 
+    soma(1,2,3)
 
 
 Programação Orientada a Objeto (OO)
@@ -116,10 +162,12 @@ Programação Orientada a Objeto (OO)
    Você pode ver outra explicação sobre OO aqui:  :doc:`../intro_comp/PythonOO`  
 
 Bem como o nome diz, se trata de uma programação centrada nos objetos.
-O objeto na OO é tudo aquilo que possui, conjuntamente, propriedades e operações.
+O objeto na OO é tudo aquilo que carrega, conjuntamente, propriedades e operações de uma classe. Quando 
 
-Este paradigma de programação apresenta-se comumente em diversos blocos com comportamentos singulares e blocos de funcionamento conjunto. 
+Este paradigma de programação apresenta-se comumente em diversos blocos com comportamentos singulares, técnica denominada encapsulamento, e blocos de funcionamento conjunto. 
+
 Diferente da programação procedural, a estrutura de um código orientado a objeto permite a solução de problemas pontuais e a adição ou subtração de novos comportamentos a qualquer momento, sem que a porção funcional do código sofra.  
+Outro ganho no uso do paradigma OO é a reutilização do código (princípios de `HERANÇA`_ e `POLIMORFISMO`_) 
 
 Exemplo do código anterior seguindo o paradigma OO:
 
@@ -150,10 +198,21 @@ Exemplo do código anterior seguindo o paradigma OO:
             else:
                """ Se a verificação retorna 'False' uma mensagem educada alertará o usuário."""
                print("Eu preciso de números para trabalhar! Me adianta aí!")
+        def opera_soma_tambem(*args):
+            #print(sum(args))
+            return sum(args)
                
     """Chama o método opera_soma() da classe Numeros() para operar a lista"""
-    Numeros.opera_soma([1,4,5,6]) #Lista de inteiros
-    Numeros.opera_soma([1.3,1.5.1.6]) #Lista de floats
+    Numeros.opera_soma([1.3,1.5,1.6])
+
+    operacao_um = Numeros.opera_soma([1,4,5,6])  # objeto da classe Numeros
+    print("O tipo do 'operacao_um' é:", type(operacao_um)) #NoneType
+
+    opera = Numeros.opera_soma_tambem(1,2,3,4)
+    print("O tipo do 'opera' é:",type(opera)) #Type int
+
+    abacaxi = 5 #variável qualquer
+    print("O tipo do 'abacaxi' é:",type(abacaxi)) #Type int
  
 **Python: Sintaxe Básica** 
 ----------------------------
@@ -251,6 +310,10 @@ Referências
 .. _Programação Procedural: https://pt.wikipedia.org/wiki/Programa%C3%A7%C3%A3o_procedural
 .. _Linguagens de programação: https://www.treinaweb.com.br/blog/linguagens-e-paradigmas-de-programacao/
 .. _Métodos Mágicos: https://www.python-course.eu/python3_magic_methods.php
+
+.. _HERANÇA:
+.._POLIMORFISMO:
+
 
 .. _Variável: https://www.devmedia.com.br/python-trabalhando-com-variaveis/38644
 .. _Estrutura de Dado: https://docs.python.org/pt-br/3/tutorial/datastructures.html
