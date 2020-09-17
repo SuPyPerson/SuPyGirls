@@ -62,9 +62,6 @@ Você pode ler mais sobre no `Python.org`_
 
 **PARADIGMAS DE PROGRAMAÇÃO**
 -------------------------------
-    
-O Paradigma da Programação
------------------------------
 
 O Paradigmas de programação são um conglomerado de classificações atribuidas às estruturas de código (sintaxe) que o programador utiliza.
 Para ser mais claro, existem diversas linguagens de programação e também diversas formas de externalizar suas soluções através delas; estas soluções resultam em uma estrutura que pode ser classificada como um determinado paradigma.
@@ -98,7 +95,7 @@ Este paradigma de programação apresenta-se comumente em scripts corridos que d
 
 Exemplo de código seguindo o paradigma procedural na linguagem Assembly:
 
-.. code:: python
+.. code:: python 
     
     lea si, string ; Atribui SI ao endereço de string.
     call printf    ; Coloca o endereço atual na pilha e chama o processo printf
@@ -122,7 +119,7 @@ Exemplo de código seguindo o paradigma procedural na linguagem Assembly:
     
 Em python poderíamos conseguir o mesmo resultado:
 
-.. code :: python
+.. code:: python
  
    print("Olá, Mundo!") #Teste aí no seu console! :D
 
@@ -137,15 +134,7 @@ Flui bem em projetos breves. Já em projetos extensos a chance de uma única alt
 Exemplo de código seguindo o paradigma estruturado:
 
 .. code:: python
-  
-    x,y = 3,4 # Determina variáveis
-    w=5 # Determina variáveis
-    h=7 # Determina variáveis
-    z = x+y   # Determina variável que representa a operação
-    r = w+h   # Determina variável que representa a operação
-    print("Esse é o valor de z:", z, "e esse é o valor de r:",r) # Retorno    
-    
-    
+ 
     def soma(*args):
         resultado = 0
         for numero  in args:
@@ -164,7 +153,7 @@ Programação Orientada a Objeto (OO)
 Bem como o nome diz, se trata de uma programação centrada nos objetos.
 O objeto na OO é tudo aquilo que carrega, conjuntamente, propriedades e operações de uma classe. Quando 
 
-Este paradigma de programação apresenta-se comumente em diversos blocos com comportamentos singulares, técnica denominada encapsulamento, e blocos de funcionamento conjunto. 
+Este paradigma de programação apresenta-se, comumente, em diversos blocos com comportamentos singulares, técnica denominada encapsulamento, e blocos de funcionamento conjunto. 
 
 Diferente da programação procedural, a estrutura de um código orientado a objeto permite a solução de problemas pontuais e a adição ou subtração de novos comportamentos a qualquer momento, sem que a porção funcional do código sofra.  
 Outro ganho no uso do paradigma OO é a reutilização do código (princípios de `HERANÇA`_ e `POLIMORFISMO`_) 
@@ -207,10 +196,12 @@ Exemplo do código anterior seguindo o paradigma OO:
 
     operacao_um = Numeros.opera_soma([1,4,5,6])  # objeto da classe Numeros
     print("O tipo do 'operacao_um' é:", type(operacao_um)) #NoneType
-
+    
+    """Chama o método opera_soma() da classe Numeros() para operar a tupla"""
     opera = Numeros.opera_soma_tambem(1,2,3,4)
     print("O tipo do 'opera' é:",type(opera)) #Type int
-
+    
+    """Determina Variável"""
     abacaxi = 5 #variável qualquer
     print("O tipo do 'abacaxi' é:",type(abacaxi)) #Type int
  
@@ -224,73 +215,77 @@ Variáveis
 ----------
 .. code:: python
 
+   #Teste esse código no seu console
+  
+   nome_da_variavel = "valor da variavel"
+   nome_da_outra_variavel = 5362543
+   nome_da_outra_outa_variavel = [a,b,c,d,e,f,g,h]
+   
+   """Imprime na tela o valor da variavel"""
+   print(nome_da_variavel)
+   
 Dados: Type e Id
 ------------------
 * Boolean
+
+.. code:: python
+   
+   """Booleano é um estado em python, composto de dois valores: Verdadeiro ou falso."""
+   print(10 > 9)
+   print(10 == 9)
+   print(10 < 9)
+   
+* Inteiro,flutuante,complexo,string
+
 .. code:: python
 
-* Integer e Float
-.. code:: python
-
-* String
-.. code:: python
-
+   #teste o código abaixo no seu console
+   """ Numeros sem parte decimal recebem o tipo 'inteiro'(int) """
+   inteiro_um = 12
+   inteiro_dois = -45
+   type(inteiro_um)
+   
+   """ Numeros com parte decimal recebem o tipo 'flutuante'(float) """
+   flutuante_um = 12.4
+   flutuante_dois = -45.6
+   type(flutuante_um)
+   
+   """ Numeros com parte real e imaginnária recebem o tipo 'complex'"""
+   complexo_um = 12+3j
+   complexo_dois = 15-7j
+   type(complexo_um)
+   
+   """ Tudo, TUDO MESMO, que está entres aspas é string no python"""
+   string_um = "12+3j"
+   string_dois = "Oi! Espero que esteja tudo bem aí!"
+   type(string_um)
+   
+   """Tudo no python carrega uma identidade, um Id"""
+   id(insira_uma_variavel_aqui) # substitua por alguma variável qualquer
+   
 Estrutura de Dados
 --------------------
-* Lista
+
 .. code:: python
 
-* Dicionário
-.. code:: python
-
-* Tupla
-.. code:: python
-
-* String
-.. code:: python
-
-* Set
-.. code:: python
-
-Operators
------------
-* Operadores aritméticos
-.. code:: python
-
-* Operadores de atribuição
-.. code:: python
-
-* Operadores de comparação
-.. code:: python
-
-* Operadores lógicos
-.. code:: python
-
-* Operadores de identidade
-.. code:: python
-
-* Operadores de associação
-.. code:: python
-
-Funções
----------
-.. code:: python
-
-Iterações: Loops
------------------
-* If and Else 
-.. code:: python
-* While 
-.. code:: python
-* For 
-.. code:: python
-
-Classes
---------
-.. code:: python
-
-
-
+   """ Tudo que está entres colchetes [] é lista no python"""
+   lista_um = [1,2,3,[1,2,3[1,2,3]]] #quantas listas tem aqui dentro?
+   lista_dois = ["oi",1,4.3,4+9j]
+   type(lista_um)
+   
+   """ Tudo que tem uma chave e um valor é um dicionário no python"""
+   dicionario_um = {"um":"1","dois":2,"cachorro":"buldog"} 
+   type(dicionario_um["um"])
+   type(dicionario_um["dois"])
+   
+   """ Valores entre parêntesis são uma tupla no python. Elas são imutáveis!"""
+   tupla_um = (1,2,3,4,5) 
+   type(tupla_um)
+   
+   """ Valores entre chaves são um conjunto (set) em python"""
+   set_um = {1,2,3,4,"5","e ae"} 
+   type(set_um)
+  
 Referências 
 ------------
 #. `Paradigma da Programação`_
@@ -311,8 +306,8 @@ Referências
 .. _Linguagens de programação: https://www.treinaweb.com.br/blog/linguagens-e-paradigmas-de-programacao/
 .. _Métodos Mágicos: https://www.python-course.eu/python3_magic_methods.php
 
-.. _HERANÇA:
-.._POLIMORFISMO:
+.. _HERANÇA: https://www.treinaweb.com.br/blog/utilizando-heranca-no-python/
+.. _POLIMORFISMO: https://professormarcolan.com.br/polimorfismo-em-python/
 
 
 .. _Variável: https://www.devmedia.com.br/python-trabalhando-com-variaveis/38644
