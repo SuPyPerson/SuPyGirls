@@ -30,7 +30,7 @@ CONTEÚDO
    Tutorial_Vitollino
 
     
-**Tutorial Author:**  Emanuelle M. P. Simas
+**Tutorial Author:**  Emanuelle M. P. Simas;
 
 .. |licencing| image:: https://img.shields.io/github/license/kwarwp/kwarwp
    :target: https://github.com/kwarwp/_spy/blob/master/LICENSE
