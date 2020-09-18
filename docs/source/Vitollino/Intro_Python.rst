@@ -162,48 +162,19 @@ Exemplo do código anterior seguindo o paradigma OO:
 
 .. code:: python
 
-    class Numeros(): 
-        """Gera uma classe que permite operações numéricas
-    
-           :param val: Lista de números. -> int, float, complex  
-        """
-        def __init__(self, val):
-            """ O __init__ é um método mágico do python que funciona como um consrutor.
-                Toda vez que o Numeros() é chamado, o python cria um objeto e o passa como
-                o primeiro parâmetro.
-            """
-            self.val = val 
-            """Diz que o parâmetro self.val e análogo ao argumento que será atribuido na chamada da classe."""
+   class Boneca():
+        def __init__(self, cabelo, cor, roupa, modelo=""):
+            self.modelo = modelo
+            self.cabelo = cabelo
+            self.cor = cor
+            self.roupa = roupa
 
-        def opera_soma(val):
-            """Método da classe Numeros() que se reserva da somas dos argumentos dados
-            
-               :param val: Lista de números. -> int, float, complex 
-            """
-            if isinstance(val,list):
-                """A função isinstance() verifica se o valor dado é compatível com o Tipo de objeto requerido."""
-               print(sum(val))
-               """Se a verificação retorna 'True' segue para a operação."""
-            else:
-               """ Se a verificação retorna 'False' uma mensagem educada alertará o usuário."""
-               print("Eu preciso de números para trabalhar! Me adianta aí!")
-        def opera_soma_tambem(*args):
-            #print(sum(args))
-            return sum(args)
-               
-    """Chama o método opera_soma() da classe Numeros() para operar a lista"""
-    Numeros.opera_soma([1.3,1.5,1.6])
+        def fala(self):
+            # Codigo para a boneca falar
 
-    operacao_um = Numeros.opera_soma([1,4,5,6])  # objeto da classe Numeros
-    print("O tipo do 'operacao_um' é:", type(operacao_um)) #NoneType
-    
-    """Chama o método opera_soma() da classe Numeros() para operar a tupla"""
-    opera = Numeros.opera_soma_tambem(1,2,3,4)
-    print("O tipo do 'opera' é:",type(opera)) #Type int
-    
-    """Determina Variável"""
-    abacaxi = 5 #variável qualquer
-    print("O tipo do 'abacaxi' é:",type(abacaxi)) #Type int
+        def anda(self):
+            # Codigo para a boneca andar
+             
  
 **Python: Sintaxe Básica** 
 ----------------------------
