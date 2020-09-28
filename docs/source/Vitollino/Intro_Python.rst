@@ -41,11 +41,10 @@ Espero que tão logo este documento seja parco frente a sua fome pythônica e vo
     * `Operadores lógicos`
     * `Operadores de identidade`
     * `Operadores de associaçãos`
- * `Funções`_
  * `Iterações`_
-    * `If and Else`
-    * `While`
-    * `For`
+    * `Condicionais`
+    * `Loops`
+ * `Funções`_    
  * `Classes`_
 *  `Referências`_
 
@@ -424,7 +423,7 @@ A sintaxe de uma **condicional aninhada** é:
      print("operacao não é maior que valor_comparativo")
      
      
-* **LOOPS**
+* **LOOP FOR**
 
 Os Loops são laços de repetição (iterações) através de sequências (listas, tuplas, dicionários, conjuntos, strings...).
 
@@ -495,10 +494,17 @@ Uso de funções:
     for x in range(9):
       print(x)
 
+* **LOOP WHILE**
 
+.. code::
 
-
-
+      i = 1
+    while i < 6:
+      print(i)
+      if i == 3:
+        break
+      i += 1
+  
 Funções
 ---------
 .. code:: python
