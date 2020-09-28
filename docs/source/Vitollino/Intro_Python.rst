@@ -348,9 +348,6 @@ Operadores
 * Operadores de atribuição
 .. code:: python
 
-* Operadores de atribuição
-.. code:: python
-
 * Operadores lógicos
 .. code:: python
 
@@ -363,8 +360,29 @@ Operadores
 Iterações
 ----------
 * Condicionais
+
+São estruturas que executam a **verificação** do estado de "verdade" ou "mentira" com base nos argumentos passados.
+
+A sintaxe mais comum da condicional é:
+
 .. code:: python
 
+   nome_argumento_base = "valor do argumento base"
+   if nome_do_argumento_base OPERADOR argumento_de_comparação:
+     print("X é maior que 20")
+   else:
+     print("X não é maior que 20"
+     
+Exemplo de aplicação da Sintaxe anterior:
+
+.. code:: python
+
+   x = 15
+   if x > 20:
+     print("X é maior que 20")
+   else:
+     print("X não é maior que 20"
+     
 * Loops
 .. code:: python
 
