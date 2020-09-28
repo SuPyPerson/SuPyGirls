@@ -363,8 +363,14 @@ Iterar é repetir algo.
 
 * CONDICIONAIS
 
-São estruturas que executam a **verificação** do estado de "verdade" ou "mentira" com base nos argumentos passados.
+São estruturas que executam a **verificação** de estados com base nos argumentos passados.
+
 As verificações são feitas pelos operadores condicionais que comparam os valores passados e retornam Verdadeiro ou Falso. 
+
++----------------+
+|*SE* condição   |
+|*ENTÃO* comando |
++----------------+
 
 Veja alguns abaixo:
 
@@ -389,25 +395,33 @@ Veja alguns abaixo:
 +-----------+------------+---------------------------------------------------+
 
 
-A sintaxe mais comum da condicional é:
+A sintaxe de uma **condicional simples** é:
 
 .. code:: python
 
-   nome_argumento_base = "valor do argumento base"
-   if nome_do_argumento_base OPERADOR argumento_de_comparação:
-     print("X é maior que 20")
-   else:
-     print("X não é maior que 20"
+   if operacao > valor_comparativo:
+     print("operacao é maior que valor_comparativo")
      
-Exemplo de aplicação da Sintaxe anterior:
+A sintaxe de uma **condicional composta** é:
 
 .. code:: python
 
-   x = 15
-   if x > 20:
-     print("X é maior que 20")
+   if operacao > valor_comparativo:
+     print("operacao é maior que valor_comparativo")
    else:
-     print("X não é maior que 20"
+     print("operacao não é maior que valor_comparativo")
+     
+A sintaxe de uma **condicional aninhada** é:
+
+.. code:: python
+
+   if operacao > valor_comparativo:
+     print("operacao é maior que valor_comparativo")
+   elif operacao = valor_comparativo:
+     print("operacao é igual que valor_comparativo") 
+   else:
+     print("operacao não é maior que valor_comparativo")
+     
      
 * Loops
 .. code:: python
