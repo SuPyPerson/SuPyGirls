@@ -518,6 +518,8 @@ Referências
 #. `Variável`_
 #. `Estrutura de Dado`_
 #. `Operadores Python`_
+#. `Condicionais Python`_
+#. `Loop Python`_
 #. `Função`_
 #. `Classe`_
 
@@ -535,6 +537,8 @@ Referências
 .. _Variável: https://www.devmedia.com.br/python-trabalhando-com-variaveis/38644
 .. _Estrutura de Dado: https://docs.python.org/pt-br/3/tutorial/datastructures.html
 .. _Operadores Python: https://www.w3schools.com/python/python_operators.asp
+.._Condicionais Python: https://www.devmedia.com.br/aprendendo-a-programar-em-python-estruturas-condicionais-if/17358
+.._Loop Python: https://www.w3schools.com/python/python_for_loops.asp
 .. _Função: https://docs.python.org/pt-br/3.8/library/functions.html
 .. _Classe: https://docs.python.org/3/tutorial/classes.html
 
