@@ -41,11 +41,10 @@ Espero que tão logo este documento seja parco frente a sua fome pythônica e vo
     * `Operadores lógicos`
     * `Operadores de identidade`
     * `Operadores de associaçãos`
- * `Funções`_
  * `Iterações`_
-    * `If and Else`
-    * `While`
-    * `For`
+    * `Condicionais`
+    * `Loops`
+ * `Funções`_    
  * `Classes`_
 *  `Referências`_
 
@@ -348,9 +347,6 @@ Operadores
 * Operadores de atribuição
 .. code:: python
 
-* Operadores de atribuição
-.. code:: python
-
 * Operadores lógicos
 .. code:: python
 
@@ -362,12 +358,154 @@ Operadores
 
 Iterações
 ----------
-* Condicionais
+
+Iterar é repetir algo.
+
+* **CONDICIONAIS**
+
+São estruturas que executam a **verificação** de estados com base nos argumentos passados.
+
+As verificações são feitas pelos operadores condicionais que comparam os valores passados e retornam Verdadeiro ou Falso. 
+
++----------------+
+|*SE* condição   |
+|                |
+|*ENTÃO* comando |
++----------------+
+
+Veja alguns abaixo:
+
++----------------------------------------------------------------------------+
+|                         **OPERADORES CONDICIONAIS**                        |
++===========+============+===================================================+
+| *OPERADOR*|   *TIPO*   |                   *VALOR*                         |
++-----------+------------+---------------------------------------------------+
+|    ==     |  Igualdade |     Verifica a igualdade entre dois valores.      |
++-----------+------------+---------------------------------------------------+
+|    !=     | Igualdade  |     Verifica a diferença entre dois valores.      |
++-----------+------------+---------------------------------------------------+
+|     >     | Comparação |   Verificar se o valor A é maior que o valor B.   |
++-----------+------------+---------------------------------------------------+
+|     <     | Comparação |   Verifica se o valor A é menor que o valor B.    |
++-----------+------------+---------------------------------------------------+
+|    >=     | Comparação | Verifica se o valor A é maior ou igual ao valor B.|
++-----------+------------+---------------------------------------------------+
+|    <=     | Comparação | Verifica se o valor A é menor ou igual ao valor B.|
++-----------+------------+---------------------------------------------------+
+|    In     | Seqüência  | Verifica se o valor A está contido em um conjunto.|
++-----------+------------+---------------------------------------------------+
+
+
+A sintaxe de uma **condicional simples** é:
+
 .. code:: python
 
-* Loops
+   if operacao > valor_comparativo:
+     print("operacao é maior que valor_comparativo") # Observe a identação!!
+     
+A sintaxe de uma **condicional composta** é:
+
 .. code:: python
 
+   if operacao > valor_comparativo:
+     print("operacao é maior que valor_comparativo")
+   else:
+     print("operacao não é maior que valor_comparativo")
+     
+A sintaxe de uma **condicional aninhada** é:
+
+.. code:: python
+
+   if operacao > valor_comparativo:
+     print("operacao é maior que valor_comparativo")
+   elif operacao = valor_comparativo:
+     print("operacao é igual que valor_comparativo") 
+   else:
+     print("operacao não é maior que valor_comparativo")
+     
+     
+* **LOOP FOR**
+
+Os Loops são laços de repetição (iterações) através de sequências (listas, tuplas, dicionários, conjuntos, strings...).
+
+Com os loops é possível executar um conjuntos de instruções para cada item de um iterável.
+
+Exemplos simples abaixo:
+
+.. code:: python
+ 
+   animais = ["leão", "macaco", "águia"]
+   for x in animais:
+       print(x)
+       
+.. code:: python
+ 
+   for x in "paralelepipedo":
+      print(x)
+      
+Declaração de quebra:
+
+.. code:: python
+   #Print x até quando x for macaco
+   animais = ["leão", "macaco", "águia"]
+   for x in animais:
+       print(x) #leão, macaco
+       if x == "macaco":
+          break
+          
+.. code:: python
+   
+    # Pause o print de x quando x for macaco
+    caco = ["leão", "macaco", "águia"]
+    for x in caco:
+        if x == "macaco":
+           break
+        print(x) #leão
+
+
+Declaração de continuação:
+
+.. code:: python
+
+    caco = ["leão", "macaco", "águia"]
+    for x in caco:
+      if x == "macaco":
+        continue
+      print(x)
+
+Listas aninhadas:
+
+.. code:: python
+
+    lista = [[1,2,3,4,5],[6,7,8,9],[10,11,12],[13,14,15]]
+    
+   #print da lista
+   for x in lista: 
+       print(x)
+       
+    #print das listas aninhadas   
+    for x in lista:
+       for y in x:
+         print(y)
+
+Uso de funções:
+
+.. code:: python
+
+    for x in range(9):
+      print(x)
+
+* **LOOP WHILE**
+
+.. code:: python
+
+      i = 1
+    while i < 6:
+      print(i)
+      if i == 3:
+        break
+      i += 1
+  
 Funções
 ---------
 .. code:: python
@@ -387,6 +525,8 @@ Referências
 #. `Variável`_
 #. `Estrutura de Dado`_
 #. `Operadores Python`_
+#. `Condicionais Python`_
+#. `Loop Python`_
 #. `Função`_
 #. `Classe`_
 
@@ -404,6 +544,8 @@ Referências
 .. _Variável: https://www.devmedia.com.br/python-trabalhando-com-variaveis/38644
 .. _Estrutura de Dado: https://docs.python.org/pt-br/3/tutorial/datastructures.html
 .. _Operadores Python: https://www.w3schools.com/python/python_operators.asp
+.. _Condicionais Python: https://www.devmedia.com.br/aprendendo-a-programar-em-python-estruturas-condicionais-if/17358
+.. _Loop Python: https://www.w3schools.com/python/python_for_loops.asp
 .. _Função: https://docs.python.org/pt-br/3.8/library/functions.html
 .. _Classe: https://docs.python.org/3/tutorial/classes.html
 
