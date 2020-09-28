@@ -496,7 +496,7 @@ Uso de funções:
 
 * **LOOP WHILE**
 
-.. code::
+.. code:: python
 
       i = 1
     while i < 6:
