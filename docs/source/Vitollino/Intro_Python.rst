@@ -361,7 +361,7 @@ Iterações
 ----------
 Iterar é repetir algo.
 
-* CONDICIONAIS
+* **CONDICIONAIS**
 
 São estruturas que executam a **verificação** de estados com base nos argumentos passados.
 
@@ -369,6 +369,7 @@ As verificações são feitas pelos operadores condicionais que comparam os valo
 
 +----------------+
 |*SE* condição   |
+|                |
 |*ENTÃO* comando |
 +----------------+
 
@@ -400,7 +401,7 @@ A sintaxe de uma **condicional simples** é:
 .. code:: python
 
    if operacao > valor_comparativo:
-     print("operacao é maior que valor_comparativo")
+     print("operacao é maior que valor_comparativo") # Observe a identação!!
      
 A sintaxe de uma **condicional composta** é:
 
@@ -423,8 +424,80 @@ A sintaxe de uma **condicional aninhada** é:
      print("operacao não é maior que valor_comparativo")
      
      
-* Loops
+* **LOOPS**
+
+Os Loops são laços de repetição (iterações) através de sequências (listas, tuplas, dicionários, conjuntos, strings...).
+
+Com os loops é possível executar um conjuntos de instruções para cada item de um iterável.
+
+Exemplos simples abaixo:
+
 .. code:: python
+ 
+   animais = ["leão", "macaco", "águia"]
+   for x in animais:
+       print(x)
+       
+.. code:: python
+ 
+   for x in "paralelepipedo":
+      print(x)
+      
+Declaração de quebra:
+
+.. code:: python
+   #Print x até quando x for macaco
+   animais = ["leão", "macaco", "águia"]
+   for x in animais:
+       print(x) #leão, macaco
+       if x == "macaco":
+          break
+          
+.. code:: python
+   
+    # Pause o print de x quando x for macaco
+    caco = ["leão", "macaco", "águia"]
+    for x in caco:
+        if x == "macaco":
+           break
+        print(x) #leão
+
+
+Declaração de continuação:
+
+.. code:: python
+
+    caco = ["leão", "macaco", "águia"]
+    for x in caco:
+      if x == "macaco":
+        continue
+      print(x)
+
+Listas aninhadas:
+
+.. code:: python
+
+    lista = [[1,2,3,4,5],[6,7,8,9],[10,11,12],[13,14,15]]
+    
+   #print da lista
+   for x in lista: 
+       print(x)
+       
+    #print das listas aninhadas   
+    for x in lista:
+       for y in x:
+         print(y)
+
+Uso de funções:
+
+.. code:: python
+
+    for x in range(9):
+      print(x)
+
+
+
+
 
 Funções
 ---------
