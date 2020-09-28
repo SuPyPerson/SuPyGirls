@@ -359,15 +359,20 @@ Operadores
 
 Iterações
 ----------
-*Iterar é repetir algo.*
+Iterar é repetir algo.
 
-Operadores Condicionais
-------------------------
+* CONDICIONAIS
 
+São estruturas que executam a **verificação** do estado de "verdade" ou "mentira" com base nos argumentos passados.
+As verificações são feitas pelos operadores condicionais que comparam os valores passados e retornam Verdadeiro ou Falso. 
+
+Veja alguns abaixo:
 
 +-----------+------------+---------------------------------------------------+
+|                         **OPERADORES CONDICIONAIS**                        |
++===========+============+===================================================+
 | OPERADOR  |    TIPO    |                    VALOR                          |
-+========================+===================================================+
++===========+============+===================================================+
 |    ==     |  Igualdade |     Verifica a igualdade entre dois valores.      |
 +-----------+------------+---------------------------------------------------+
 |    !=     | Igualdade  |     Verifica a diferença entre dois valores.      |
@@ -383,9 +388,6 @@ Operadores Condicionais
 |    In     | Seqüência  | Verifica se o valor A está contido em um conjunto.|
 +-----------+------------+---------------------------------------------------+
 
-* Condicionais
-
-São estruturas que executam a **verificação** do estado de "verdade" ou "mentira" com base nos argumentos passados.
 
 A sintaxe mais comum da condicional é:
 
