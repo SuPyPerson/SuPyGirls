@@ -299,6 +299,3 @@ DROPPER
 
 DROPPABLE
 ----------
-
-
-    

@@ -358,6 +358,7 @@ Operadores
 
 Iterações
 ----------
+
 Iterar é repetir algo.
 
 * **CONDICIONAIS**
@@ -558,4 +559,3 @@ Referências
 
 :ref:`Tutorial Vitollino <Tutorial_Vitollino>`
 -----------------------------------------------
-
