@@ -20,13 +20,14 @@ Espero que tão logo este documento seja parco frente a sua fome pythônica e vo
 ---------
 
 *  `O que é Python?`_
-*  `PROCEDURAL vs ORIENTADA A OBJETO`_
+*  `Paradigmas de Programação`_
 *  `Python: Sintaxe Básica`_  
  * `Variáveis`_
+ * `Espaço de nome`_
+ * `Escopo`_ 
  * `Dados: Type e Id`_
-    * `Booleans`
-    * `Integer e Float`
-    * `String`
+    * `Boolean`
+    * `Inteiro,flutuante,complexo,string`
  * `Estrutura de Dados`_
     * `Lista`
     * `Dicionário`
@@ -41,7 +42,7 @@ Espero que tão logo este documento seja parco frente a sua fome pythônica e vo
     * `Operadores de identidade`
     * `Operadores de associaçãos`
  * `Funções`_
- * `Iterações: Loops`_
+ * `Iterações`_
     * `If and Else`
     * `While`
     * `For`
@@ -181,7 +182,7 @@ Exemplo do código anterior seguindo o paradigma OO:
 
 .. Note::
   Os Tópicos abaixo, e outros mais aprofundados, podem ser encontradas na `Documentação Python`_ 
-
+  
 Variáveis
 ----------
 .. code:: python
@@ -194,6 +195,84 @@ Variáveis
    
    """Imprime na tela o valor da variavel"""
    print(nome_da_variavel)
+
+Espaço de nome
+---------------
+**"Os namespaces são uma ótima ideia - vamos fazer mais disso!"** - `The zen of python`_
+
+Se imagine em uma sala de aula com mais 10 pessoas. 50% delas tem nome com grafia e sobrenomes idênticos e a outra metade são apenas idênticos na aparência. Seu trabalho é diferenciá-los. Qual seria sua estratégia?
+
+O mesmO pode acontecer quando programamos. Dentro do nosso módulo é fácil criarmos um script sem nomes repetidos, porém, bem mais trabalhoso quando estamos usando módulos externos. 
+
+
+Tudo no python (strings, listas, funções...) é um objeto, e todo objeto recebe um id equivalente tanto para o atributo quanto para a atribuição:
+
+.. code:: python
+
+  #teste o código abaixo no seu console
+  Maria_Maia = 4 
+  print('id(Maria_Maia) =', id(Maria_Maia)) # id 140071085578048
+
+  Maria_Maia= Maria_Maia + 1
+  print('id(Maria_Maia_plus_um) =', id(Maria_Maia)) # id 140071085578080
+  print('id(5) =', id(5)) # id 140071085578080
+    
+  Josefa = 4
+  print('id(Josefa) =', id(Josefa)) # id 140071085578048
+  print('id(4) =', id(4)) # id 140071085578048
+  
+Para evitar conflitos o Python tem um sistema, nomeado **namespace**, para **garantir que todos os nomes atribuidos aos objetos (variáveis, funções, classes...) do programa sejam exclusivos**, evitando qualquer conflito. Quando você nomeia algum objeto, este passa a ser mapeado com o nome determinado, podendo, também, nomes diferentes mapearem o mesmo objeto ou nomes iguais mapearem objetos diferentes: 
+
+.. code:: python
+
+  #teste o código abaixo no seu console
+  x = "Qual foi?" # namespace global
+  def mostra_o_X_ai():
+    x = "E aiiiiiiii!" #namespace local
+    print(x)
+
+  print(x) # Qual foi?
+  mostra_o_X_ai() # E aiiiiiiii!
+  
+Olha que situação interessante! Para o Python o que determina qual 'X' deve ser apresentado é o **Escopo**;
+
+Escopo
+-------
+O escopo do nome é o **local** onde determinada variável é acessível; sendo determinado pelo *bloco de instrução* a qual ele pertence.
+
+.. code:: python
+ 
+ #teste o código abaixo no seu console
+ zero = 0 # Bloco de instrução 0; variável global
+   um = 1 # Bloco de instrução 1; variável local
+    dois = 2 # Bloco de instrução 2; variável local
+     .
+     .
+     .
+                     número_indefinido = inf # Bloco de instrução n; variável local
+                      
+O escopo de nome tem a função de classificar quais nomes de variáveis, funções e classes estão acessíveis em cada bloco de instrução. Quanto mais próximo de n está o escopo da variável requerida, mais restrito é o acesso a este objeto.
+É importante ressaltar que cada variável é global internamente ao bloco que pertence, e local externamente ao bloco que pertence. Esta definição é O escopo é importante para expressão de hierarquias.
+
+
+.. code:: python
+
+    #teste o código abaixo no seu console
+    VAR_GLOBAL="Bóson Treinamentos em Tecnologia"
+    def escreve_texto():
+        VAR_LOCAL="Fábio dos Reis"
+        print("Variável global: ", VAR_GLOBAL)
+        print("Variável local: ", VAR_LOCAL)
+    print("Executando a função escreve_texto:")
+
+    escreve_texto()
+
+    print("Tentando acessar as variáveis diretamente:")
+    print("Variável global: ", VAR_GLOBAL)
+    print("Variável local: ", VAR_LOCAL) # Tentativa de chamar uma variável local como se fosse global
+
+Fonte exemplo: `Bosontreinamentos`_
+
    
 Dados: Type e Id
 ------------------
@@ -203,11 +282,11 @@ Dados: Type e Id
 
    #teste o código abaixo no seu console
    """Booleano é um estado em python, composto de dois valores: Verdadeiro ou falso."""
-   print(10 > 9)
-   print(10 == 9)
-   print(10 < 9)
+   print(10 > 9) # True
+   print(10 == 9) # False
+   print(10 < 9) # False
    
-* Inteiro,flutuante,complexo,string
+* Inteiro,flutuante,complexo e string
 
 .. code:: python
 
@@ -260,7 +339,44 @@ Estrutura de Dados
    """ Valores entre chaves {} são um conjunto (set) em python"""
    set_um = {1,2,3,4,"5","e ae"} 
    type(set_um)
-  
+
+Operadores
+-----------
+* Operadores aritméticos
+.. code:: python
+
+* Operadores de atribuição
+.. code:: python
+
+* Operadores de atribuição
+.. code:: python
+
+* Operadores lógicos
+.. code:: python
+
+* Operadores de identidade
+.. code:: python
+
+* Operadores de associaçãos
+.. code:: python
+
+Iterações
+----------
+* Condicionais
+.. code:: python
+
+* Loops
+.. code:: python
+
+Funções
+---------
+.. code:: python
+
+Classes
+---------
+.. code:: python
+
+
 Referências 
 ------------
 #. `Paradigma da Programação`_
@@ -295,6 +411,8 @@ Referências
 .. _Guido van Rossum: https://en.wikipedia.org/wiki/Guido_van_Rossum
 .. _Código Binário: https://www.invertexto.com/codigo-binario
 .. _Documentação Python: https://docs.python.org/3/tutorial/index.html
+.. _The zen of python: https://wiki.python.org.br/TheZenOfPythonExplained
+.. _Bosontreinamentos: http://www.bosontreinamentos.com.br/programacao-em-python/funcoes-em-python-escopos-de-variaveis/
 
 
 :ref:`Tutorial Vitollino <Tutorial_Vitollino>`
