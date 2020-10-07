@@ -21,29 +21,38 @@ Espero que tão logo este documento seja parco frente a sua fome pythônica e vo
 
 *  `O que é Python?`_
 *  `Paradigmas de Programação`_
-*  `Python: Sintaxe Básica`_  
+*  `Python: Sintaxe Básica`_
+
  * `Variáveis`_
  * `Espaço de nome`_
  * `Escopo`_ 
  * `Dados: Type e Id`_
+
     * `Boolean`
     * `Inteiro,flutuante,complexo,string`
+
  * `Estrutura de Dados`_
+
     * `Lista`
     * `Dicionário`
     * `Tuplas`
     * `String`
     * `Set`
- * `Operators`_
+
+ * `Operadores`_
+
     * `Operadores aritméticos`
     * `Operadores de atribuição`
     * `Operadores de atribuição`
     * `Operadores lógicos`
     * `Operadores de identidade`
     * `Operadores de associaçãos`
+
  * `Iterações`_
+
     * `Condicionais`
     * `Loops`
+
  * `Funções`_    
  * `Classes`_
 *  `Referências`_
