@@ -364,11 +364,11 @@ Veja alguns exemplos abaixo:
 +===========+===============+===============================================================+
 | *OPERADOR*|     *TIPO*    |                   *VALOR*                         | *EXEMPLO* |
 +-----------+---------------+---------------------------------------------------+-----------+
-|     +     |     Adição    |          Realiza a soma entre dois valores.       |   10+7+4  |
+|     `+`   |     Adição    |          Realiza a soma entre dois valores.       |   10+7+4  |
 +-----------+---------------+---------------------------------------------------+-----------+
-|     -     |    Subtração  |      Realiza a subtração entre dois valores.      |  -10-7-4  |
+|     `-`   |    Subtração  |      Realiza a subtração entre dois valores.      |  -10-7-4  |
 +-----------+---------------+---------------------------------------------------+-----------+
-|     *     | Multiplicação |     Realiza a multiplicação entre dois valores.   |    3*4    |
+|     `*`   | Multiplicação |     Realiza a multiplicação entre dois valores.   |    3*4    |
 +-----------+---------------+---------------------------------------------------+-----------+
 |     /     |    Divisão    |         Realiza a divisão entre dois valores.     |    10/5   |
 +-----------+---------------+---------------------------------------------------+-----------+
@@ -490,15 +490,12 @@ Combinações Or:
     #Teste no seu console
     print(0 and 1)
     print(0 and 2)
-    print(0 and 3)
     print("\n")
     print(1 and 1)
     print(1 and 2)
-    print(1 and 3)
     print("\n")
     print(2 and 0)
     print(2 and 1)
-    print(2 and 2)
     print("\n")
     print(4 and 5)
     print("\n")
