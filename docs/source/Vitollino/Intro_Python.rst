@@ -43,10 +43,10 @@ Espero que tão logo este documento seja parco frente a sua fome pythônica e vo
 
     * `Operadores aritméticos`
     * `Operadores de atribuição`
-    * `Operadores de atribuição`
     * `Operadores lógicos`
     * `Operadores de identidade`
-    * `Operadores de associaçãos`
+    * `Operadores de Comparação`
+    * `Operadores de Membro`
 
  * `Iterações`_
 
@@ -55,6 +55,7 @@ Espero que tão logo este documento seja parco frente a sua fome pythônica e vo
 
  * `Funções`_    
  * `Classes`_
+
 *  `Referências`_
 
 
@@ -350,20 +351,257 @@ Estrutura de Dados
 
 Operadores
 -----------
+
+Os operadores python servem para designar **relações** entre as variáveis desejadas.
+
+Veja alguns exemplos abaixo:
+
+
 * Operadores aritméticos
+
++-------------------------------------------------------------------------------------------+
+|                         **OPERADORES ARITIMÉTICOS**                                       |
++===========+===============+===============================================================+
+| *OPERADOR*|     *TIPO*    |                   *VALOR*                         | *EXEMPLO* |
++-----------+---------------+---------------------------------------------------+-----------+
+|     +     |     Adição    |          Realiza a soma entre dois valores.       |   10+7+4  |
++-----------+---------------+---------------------------------------------------+-----------+
+|     -     |    Subtração  |      Realiza a subtração entre dois valores.      |  -10-7-4  |
++-----------+---------------+---------------------------------------------------+-----------+
+|     *     | Multiplicação |     Realiza a multiplicação entre dois valores.   |    3*4    |
++-----------+---------------+---------------------------------------------------+-----------+
+|     /     |    Divisão    |         Realiza a divisão entre dois valores.     |    10/5   |
++-----------+---------------+---------------------------------------------------+-----------+
+|    //     |    Divisão    |         Retorna a parte inteira da divisão        |    10//5  |
++-----------+---------------+---------------------------------------------------+-----------+
+|     %     |     Módulo    |    Retorna o resto da divisão entre dois valores. |    4%2    |
++-----------+---------------+---------------------------------------------------+-----------+
+|    **     | Exponenciação | Multiplicação de um número por ele mesmo n vezes  |    4**2   |
++-----------+---------------+---------------------------------------------------+-----------+
+
 .. code:: python
+
+   # Teste esse código no seu console!
+   n = 2
+   z = 4
+
+   a = n+z
+   b = n-z
+   c = n*z
+   d = n/z
+   e = n%z
+   f = n**z
+
+   print(a)
+
 
 * Operadores de atribuição
+
+Os Operadores de Atribuição Compostos realizam uma operação e em seguida, atribuem o resultado da operação para a
+variável que está a esquerda do operador de atribuição.
+
++-------------------------------------------------------------------------------+
+|                         **OPERADORES DE ATRIBUIÇÃO**                          |
++===========+===============+===================================================+
+| *OPERADOR*|     *TIPO*    |                   *VALOR*                         |
++-----------+---------------+---------------------------------------------------+
+|     =     |  igualdade    | Atribui à variável da esquerda o valor à direita  |
++-----------+---------------+---------------------------------------------------+
+|     +=    |     Adição    |          Realiza a soma entre dois valores.       |
++-----------+---------------+---------------------------------------------------+
+|     -=    |    Subtração  |      Realiza a subtração entre dois valores.      |
++-----------+---------------+---------------------------------------------------+
+|     *=    | Multiplicação |     Realiza a multiplicação entre dois valores.   |
++-----------+---------------+---------------------------------------------------+
+|     /=    |    Divisão    |         Realiza a divisão entre dois valores.     |
++-----------+---------------+---------------------------------------------------+
+|     %=    |     Módulo    |    Retorna o resto da divisão entre dois valores. |
++-----------+---------------+---------------------------------------------------+
+|    **     | Exponenciação | Multiplicação de um número por ele mesmo n vezes  |
++-----------+---------------+---------------------------------------------------+
+|    &=     |               |                              Equivale a a = a & 8 |
++-----------+---------------+---------------------------------------------------+
+
 .. code:: python
+
+   # Teste esse código no seu console!
+   n = 2
+   z = 4
+
+   n += z # resultado igual a 6
+   n -= z # resultado igual a -2
+   n *= z # resultado igual a 8
+   n /= z
+   n %= z
+   n **= z
+
+   print(a)
 
 * Operadores lógicos
+
+Os operadores lógicos unem expressões lógicas retornando um valor lógico binário compreendido entre não atendimento
+da lógica (Falso) ou atendimento da lógica (Verdadeiro). Este tipo de dado (sim e não, zero e um, verdadeiro e falso) é
+chamado `Booleano`_ e, no python, as constantes True e False são reconhecidas como pertencentes ao tipo de dado bool:
+
 .. code:: python
+
+   #Teste no seu console
+   type(True) # <class 'bool'>
+   type(False) # <class 'bool'>
+   type(1 == 1) # <class 'bool'>
+
+
++----------------------------------------------------------------------------------------------------------------------------------------------------------+
+|                                    **OPERADORES LÓGICOS**                                                                                                |
++===========+=================================================================+============================================================================+
+| *OPERADOR*|                           *VALOR*                               |                           *RESULTADO*                                      |
++-----------+-----------------------------------------------------------------+----------------------------------------------------------------------------+
+|     and   |        True se as duas expressões forem verdadeiras             | Se a primeira expressão é verdadeira, o resultado será a segunda expressão.|
++-----------+-----------------------------------------------------------------+----------------------------------------------------------------------------+
+|     or    |      False se, e somente se, duas expressões forem falsas       |Se a primeira expressão é falsa, o resultado seré a segunda expressão.      |
++-----------+-----------------------------------------------------------------+----------------------------------------------------------------------------+
+|     not   | Muda o valor do argumento: not True é False, not False é True   |                                Booleano                                    |
++-----------+-----------------------------------------------------------------+----------------------------------------------------------------------------+
+|     in    |           True se receber um o item a ser verificado            |                                Booleano                                    |
++-----------+-----------------------------------------------------------------+----------------------------------------------------------------------------+
+
+Combinações And:
+
++------+--------+------+
+| AND  | False  | True |
++======+========+======+
+| False|  False |False |
++------+--------+------+
+| True | False  |True  |
++------+--------+------+
+
+Combinações Or:
+
++------+--------+------+
+| OR   | False  | True |
++======+========+======+
+| False|  False |True  |
++------+--------+------+
+| True | True   |True  |
++------+--------+------+
+
+.. code:: python
+
+    #Teste no seu console
+    print(0 and 1)
+    print(0 and 2)
+    print(0 and 3)
+    print("\n")
+    print(1 and 1)
+    print(1 and 2)
+    print(1 and 3)
+    print("\n")
+    print(2 and 0)
+    print(2 and 1)
+    print(2 and 2)
+    print("\n")
+    print(4 and 5)
+    print("\n")
+    print(20 and 13)
+    print("\n")
+    print(not 0)
+    print(not 1)
+    print(not 2)
+    print("\n")
+    print(2 in (2, 3)) # Saída True
+    print(2 is 3) # Saída False
+
+.. code:: python
+
+    #Teste no seu console
+    print('1. Idoso')
+    print('2. Gestante')
+    print('3. Cadeirante')
+    print('4. Nenhum destes')
+    resposta=int( input('Você é: ') )
+
+    if (resposta==1) or (resposta==2) or (resposta==3) :
+        print('Você tem direito a fila prioritária')
+    else:
+        print('Você não tem direito a nada. Vá pra fila e fique quieto')
+
+Exemplo resgatado em `Python Progressivo`_
 
 * Operadores de identidade
+
++---------------------------------------------------------------------------------------------------------------------+
+|                                    **OPERADORES DE IDENTIDADE**                                                     |
++============+========================================================================================================+
+| *OPERADOR* | *VALOR*                                                                                                |
++------------+--------------------------------------------------------------------------------------------------------+
+| is         |  Retorna verdadeiro quando as variáveis são idênticas (referem-se ao mesmo objeto)                     |
++------------+--------------------------------------------------------------------------------------------------------+
+| is not     | Retorna verdadeiro quando as variáveis nãp são idênticas (variáveis que não se referem ao mesmo objeto)|
++------------+--------------------------------------------------------------------------------------------------------+
+
 .. code:: python
 
-* Operadores de associaçãos
+    #Teste esse código no seu console
+    a = 3
+    b = 3
+    print(a is b) #True
+    print(a is not b) #False
+
+* Operadores de comparação
+
++----------------------------------------------------------------------------------------------------------------------------------------------------------+
+|                                    **OPERADORES COMPARATIVOS**                                                                                           |
++===========+=================================================================+============================================================================+
+| *OPERADOR*|                           *VALOR*                               |                           *RESULTADO*                                      |
++-----------+-----------------------------------------------------------------+----------------------------------------------------------------------------+
+|     >     |    True se o valor à esquerda é maior que o valor a direita     | Se a primeira expressão é verdadeira, o resultado será a segunda expressão.|
++-----------+-----------------------------------------------------------------+----------------------------------------------------------------------------+
+|     <     |      True se o valor à esquerda é menor que o valor a direita   | Se a primeira expressão é falsa, o resultado seré a segunda expressão.     |
++-----------+-----------------------------------------------------------------+----------------------------------------------------------------------------+
+|     ==    | True se o valores à esquerda e a direita são equivalentes       |                               Booleano                                     |
++-----------+-----------------------------------------------------------------+----------------------------------------------------------------------------+
+|     !=    |           True se o valor à esquerda é diferente ao da direita  |                    Booleano                                                |
++-----------+-----------------------------------------------------------------+----------------------------------------------------------------------------+
+|     >=    | True se o valor à esquerda é maior ou igual ao da  direita      |                                Booleano                                    |
++-----------+-----------------------------------------------------------------+----------------------------------------------------------------------------+
+|     <=    | True se o valor à esquerda é menor ou igual ao da  direita      |                                Booleano                                    |
++-----------+-----------------------------------------------------------------+----------------------------------------------------------------------------+
+
 .. code:: python
+
+    #Teste esse código no seu console
+    a = 3
+    b = 3
+    print(a>b) #True
+    print(a==b) #False
+
+* Operadores de Membro
+
++-----------------------------------------------------------------------------+
+|                                    **OPERADORES DE MEMBROS**                |
++===========+=================================================================+
+| *OPERADOR*|                           *VALOR*                               |
++-----------+-----------------------------------------------------------------+
+|     in    |    True se o valor está contido do conjunto investigado         |
++-----------+-----------------------------------------------------------------+
+| not in    |      True se o valor não está contido no conjunto investigado   |
++-----------+-----------------------------------------------------------------+
+
+.. code:: python
+
+    a = 10
+    b = 2
+    list = [1, 2, 3, 4, 5 ];
+
+    if ( a in list ):
+      print ("a - esta na lista")
+    else:
+      print ("a - não está na lista")
+
+    if ( b not in list ):
+      print ("b - não está na lista")
+    else:
+      print ("b - está na lista")
 
 Iterações
 ----------
@@ -517,10 +755,12 @@ Uso de funções:
   
 Funções
 ---------
+
 .. code:: python
 
 Classes
 ---------
+
 .. code:: python
 
 
@@ -554,6 +794,7 @@ Referências
 .. _Estrutura de Dado: https://docs.python.org/pt-br/3/tutorial/datastructures.html
 .. _Operadores Python: https://www.w3schools.com/python/python_operators.asp
 .. _Condicionais Python: https://www.devmedia.com.br/aprendendo-a-programar-em-python-estruturas-condicionais-if/17358
+.. _Booleano: https://pt.wikipedia.org/wiki/Boolean
 .. _Loop Python: https://www.w3schools.com/python/python_for_loops.asp
 .. _Função: https://docs.python.org/pt-br/3.8/library/functions.html
 .. _Classe: https://docs.python.org/3/tutorial/classes.html
@@ -564,6 +805,7 @@ Referências
 .. _Documentação Python: https://docs.python.org/3/tutorial/index.html
 .. _The zen of python: https://wiki.python.org.br/TheZenOfPythonExplained
 .. _Bosontreinamentos: http://www.bosontreinamentos.com.br/programacao-em-python/funcoes-em-python-escopos-de-variaveis/
+.. _Python Progressivo: https://www.pythonprogressivo.net/2018/02/Operadores-logicos-AND-OR-NOT.html
 
 
 :ref:`Tutorial Vitollino <Tutorial_Vitollino>`
