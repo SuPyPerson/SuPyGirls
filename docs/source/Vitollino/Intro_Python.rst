@@ -364,11 +364,11 @@ Veja alguns exemplos abaixo:
 +===========+===============+===============================================================+
 | *OPERADOR*|     *TIPO*    |                   *VALOR*                         | *EXEMPLO* |
 +-----------+---------------+---------------------------------------------------+-----------+
-|     +     |     Adição    |          Realiza a soma entre dois valores.       |   10+7+4  |
+|     `+`   |     Adição    |          Realiza a soma entre dois valores.       |   10+7+4  |
 +-----------+---------------+---------------------------------------------------+-----------+
-|     -     |    Subtração  |      Realiza a subtração entre dois valores.      |  -10-7-4  |
+|     `-`   |    Subtração  |      Realiza a subtração entre dois valores.      |  -10-7-4  |
 +-----------+---------------+---------------------------------------------------+-----------+
-|     *     | Multiplicação |     Realiza a multiplicação entre dois valores.   |    3*4    |
+|     `*`   | Multiplicação |     Realiza a multiplicação entre dois valores.   |    3*4    |
 +-----------+---------------+---------------------------------------------------+-----------+
 |     /     |    Divisão    |         Realiza a divisão entre dois valores.     |    10/5   |
 +-----------+---------------+---------------------------------------------------+-----------+
