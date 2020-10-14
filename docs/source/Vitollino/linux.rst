@@ -1,4 +1,4 @@
-**Sistema Operacional no Ubuntu**
+**Sistema Operacional Linux**
 =============================
 
 .. seealso::
@@ -9,6 +9,6 @@ Selecione o Tópico de sua Necessidade:
 .. Toctree::
    :titlesonly:
     
-   UBUNTU_SO
-   UBUNTU_APP
+   linux_so
+   linux_app
 
