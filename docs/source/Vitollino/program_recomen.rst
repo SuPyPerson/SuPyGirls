@@ -35,4 +35,11 @@ Selecione o sistema operacional de preferência:
 :ref:`Linux <linux>`
     
 :ref:`Windows <windows>`
+
+.. toctree::
+   :maxdepth: 1
+   
+   linux.rst
+   
+   windows.rst
     
