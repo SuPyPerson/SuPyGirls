@@ -1,6 +1,18 @@
 **Programação no Ubuntu**
 =============================
 
+SUMÁRIO
+-------
+
+#. `Informações Gerais`_
+#. `INSTALAÇÃO DA MÁQUINA VIRTUAL`_
+#. `INSTALAÇÃO DO UBUNTU NA MÁQUINA VIRTUAL`_
+
+
+Informações  Gerais
+--------------------
+
+
 O Ubuntu é uma - de muitas - distribuição do sistema operacional (SO) Linux produzida pela empresa Canonical.
 
 É uma distribuição gratuita e muito popular entre programadores pois possui uma estrutura de gestão, embora pouco intuitiva ao primeiro olhar, que entrega ao usuário a administração do sistema em troca de poucos comandos no console.
@@ -39,11 +51,6 @@ Vamos colocar na ponta do lápis:
 
 Sem mais delongas...
 
-SUMÁRIO
--------
-
-#. `INSTALAÇÃO DA MÁQUINA VIRTUAL`_
-#. `INSTALAÇÃO DO UBUNTU NA MÁQUINA VIRTUAL`_
 
 INSTALAÇÃO DA MÁQUINA VIRTUAL
 -------------------------------
@@ -96,15 +103,15 @@ INSTALAÇÃO DO UBUNTU NA MÁQUINA VIRTUAL
 
 1. Selecione abaixo um Linux compatível com o seu computador:
 
-+--------------------------------------------------------==---+
-|DISTRIBUÇÕES LINUX                                           |
++-------------------------------------------------------------+
+|DISTRIBUIÇÕES LINUX                                          |
 +=========================+=================+=================+
 |                         |REQUISITO        | 64BIT  | 32BIT  |
-+-------------------------+-----------------+-----------------+
++-------------------------+-----------------+--------+--------+
 |LUBUNTU                  | 700MBRAM;10GB HD| `L64`_ | `L32_` |
-+-------------------------+-----------+-----+-------+---------+
++-------------------------+-----------------+--------+--------+
 |UBUNTU 20.04             | 4GBRAM;25GB HD  | `U64`_ |        |
-+-------------------------+-----------------+-----------------+
++-------------------------+-----------------+--------+--------+
 |Elementary OS            |                 | `E64`_ |        |
 +-------------------------+-----------------+--------+--------+
 
