@@ -42,7 +42,8 @@ Sem mais delongas...
 SUMÁRIO
 -------
 
-#. INSTALAÇÃO DA MÁQUINA VIRTUAL
+#. `INSTALAÇÃO DA MÁQUINA VIRTUAL`_
+#. `INSTALAÇÃO DO UBUNTU NA MÁQUINA VIRTUAL`_
 
 INSTALAÇÃO DA MÁQUINA VIRTUAL
 -------------------------------
@@ -77,7 +78,7 @@ Clique em NEXT.
  
  .. image:: _static/vbox5.png
  
- 6. Essa é uma aba de atenção. Indica que para prosseguir com a instalção você será disconectado da internet. Salve o que for preciso e clique em NEXT.
+6. Essa é uma aba de atenção. Indica que para prosseguir com a instalção você será disconectado da internet. Salve o que for preciso e clique em NEXT.
 
 .. image:: _static/vbox6.png
 
@@ -196,8 +197,6 @@ Preencha e clique em NEXT:
 20. Dê OK na aba e seu Ubuntu estará instalado no seu VirtualBox.
 
 .. image:: _static/ubuntuH.png
-
-
 
 
 
