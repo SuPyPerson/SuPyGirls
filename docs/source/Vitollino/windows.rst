@@ -1,4 +1,4 @@
-**Sistema Operacional no Windows**
+**Sistema Operacional Windows**
 =============================
 
 .. seealso::
