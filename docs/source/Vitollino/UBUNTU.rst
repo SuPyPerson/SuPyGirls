@@ -9,27 +9,25 @@ Vamos colocar na ponta do lápis:
 
 
 +----------------------------------------------------+
-|**VANTAGENS E DESVANTAGENS                          |
+|VANTAGENS E DESVANTAGENS                          |
 +=========================+===========+==============+
-|                         |LINUX      |wINDOWS       |
+|                         |LINUX      |WINDOWS       |
 +-------------------------+-----------+--------------+
 |SIST. OPERACIONAL        |GRATUITO   |PAGO          | 
 +-------------------------+-----------+--------------+
 |ATUALIZAÇÃO DO SISTEMA   |SIM        |SIM           |
 +-------------------------+-----------+--------------+
-|SISTEMAS DIVERSIFICADOS  |SIM*       |              |
+|SISTEMAS DIVERSIFICADOS  |SIM*       |NÃO           |
 +-------------------------+-----------+--------------+
-|SEGURANÇA                |SEGURO     |              |
+|SEGURANÇA                |SEGURO     |ANTI-VÍRUS    |
 +-------------------------+-----------+--------------+
 |DRIVERS GERAIS           |SIM        |SIM           |
 +-------------------------+-----------+--------------+
 |DRIVERS "ESPECIAIS"      |EXTERNOS*  |SIM           |
 +-------------------------+-----------+--------------+
-|JOGOS                    |           |SIM           |
+|JOGOS                    |PRÓPRIOS   |SIM           |
 +-------------------------+-----------+--------------+
 |ADMINISTRAÇÃO            |TOTAL      |PARCIAL       |
-+-------------------------+-----------+--------------+
-|                         |           |              |
 +-------------------------+-----------+--------------+
 
 
