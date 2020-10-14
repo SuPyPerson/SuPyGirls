@@ -7,12 +7,12 @@
 SUMÁRIO
 -------
 
-#. `INFORMAÇÕES GERAIS`_
+#. `INFORMAÇÕES GERAIS`
 #. `INSTALAÇÃO DA MÁQUINA VIRTUAL`_
 #. `INSTALAÇÃO DO UBUNTU NA MÁQUINA VIRTUAL`_
 
 
-INFORMAÇOES GERAIS
+INFORMAÇÕES GERAIS
 --------------------
 
 
@@ -209,6 +209,9 @@ Preencha e clique em NEXT:
 
 .. image:: _static/ubuntuH.png
 
+
+:ref:`../Vitollino/UBUNTU_APP.rst`
+------------------------
 
 
 .. _Download VM VirtualBoX: https://download.virtualbox.org/virtualbox/6.1.14/VirtualBox-6.1.14-140239-Win.exe
