@@ -7,7 +7,7 @@
 SUMÁRIO
 -------
 
-#. `Informações Gerais`_
+#. `INFORMAÇÕES GERAIS`_
 #. `INSTALAÇÃO DA MÁQUINA VIRTUAL`_
 #. `INSTALAÇÃO DO UBUNTU NA MÁQUINA VIRTUAL`_
 
