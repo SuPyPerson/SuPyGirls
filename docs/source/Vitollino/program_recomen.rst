@@ -10,11 +10,25 @@
 Este setor compreende as etapas de instalação de softwares recomendados para o estudo da programação.
 
 .. Note::
-   O Tutorial do sistema operacional Ubuntu **INCLUI** a instalação do SO.
-
+   Para que os programas funcionem com *eficiência* será necessário:
+   
+   +---------------------------------+
+   |REQUISITOS MÍNIMOS               |
+   +===========+=========+===========+
+   |           |MÍNIMO   |RECOMENDADO|
+   ------------+---------+-----------+
+   |MEMÓRIA RAM| 2GB     |8GB        |
+   +-----------+---------+-----------+-
+   |ESPAÇO HD  |4 GB     |SSD        |
+   +-----------+---------+-----------+
+   |TELA       |1024x768 | -         |
+   +-----------+---------+-----------+
+   
 Selecione o sistema operacional de preferência:
 -------------------------------------------------
 
+.. Note::
+   O Tutorial do sistema operacional Ubuntu **INCLUI** a instalação do SO.
 
 .. toctree::
     :maxdepth: 2
