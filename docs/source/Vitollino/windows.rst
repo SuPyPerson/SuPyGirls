@@ -6,6 +6,10 @@
   
 Selecione o Tópico de sua Necessidade:
 
-* :ref:`Instalação do Python <windows_python>` 
+.. toctree::
+   :maxdepth: 1
 
-* :ref:`Instalação de Aplicativos recomendados <windows_app>`
+   windows_python.rst
+
+   windows_app.rst
+
