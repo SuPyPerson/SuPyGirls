@@ -1,7 +1,7 @@
 **Programação no Ubuntu**
 =============================
 
-O Ubuntu é uma - de muitos - distribuição do sistema operacional (SO) Linux produzida pela empresa Canonical.
+O Ubuntu é uma - de muitas - distribuição do sistema operacional (SO) Linux produzida pela empresa Canonical.
 
 É uma distribuição gratuita e muito popular entre programadores pois possui uma estrutura de gestão, embora pouco intuitiva ao primeiro olhar, que entrega ao usuário a administração do sistema em troca de poucos comandos no console.
 
@@ -59,7 +59,7 @@ Vamos ao passoa  passo:
    
 .. image:: _static/virtualbox1.png
 
-2. Clique no ícone do Virtualox na sua pasta de downloads.
+2. Clique no ícone do VirtualBox na sua pasta de downloads.
 
 .. image:: _static/vbox2.png
 
