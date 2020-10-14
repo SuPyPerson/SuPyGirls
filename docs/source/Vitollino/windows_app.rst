@@ -1,2 +1,2 @@
-**TUTORIAL DE INSTALAÇÃO DE SOFTWARES RECOMENDADOS**
-=====================================================
+**INSTALAÇÃO DE SOFTWARES RECOMENDADOS**
+=========================================
