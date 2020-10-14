@@ -9,7 +9,7 @@ Selecione o Tópico de sua Necessidade:
 .. Toctree::
    :titlesonly:
     
-   WINDOWS_PYTHON
-   WINDOWS_APPS
+   windows_python
+   windows_app
 
 
