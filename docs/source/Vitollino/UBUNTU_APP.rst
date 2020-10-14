@@ -23,7 +23,7 @@ Há muitas outras funções porém ditá-las aqui seria impossível!
 
 Vamos ao que interessa:
 
-1. Você tem acesso ao terminal teclando: **ctrl+Shift+T** (simultâneamente)
+1. Você tem acesso ao terminal teclando: ``ctrl+Shift+T`` (simultâneamente)
 
 .. image:: 
 
