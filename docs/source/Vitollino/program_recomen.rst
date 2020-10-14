@@ -33,7 +33,7 @@ Selecione o sistema operacional de preferência:
 
 
 .. toctree::
-   :maxdepth: 1
+   :titlesonly: 
    
    linux.rst
    
