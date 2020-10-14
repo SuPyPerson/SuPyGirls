@@ -6,10 +6,6 @@
   
 Selecione o Tópico de sua Necessidade:
 
-.. Toctree::
-   :titlesonly:
-    
-   windows_python
-   windows_app
+*:ref:`Instalação do Python <windows_python>` 
 
-
+*:ref:`Instalação de Aplicativos recomendados <windows_app>`
