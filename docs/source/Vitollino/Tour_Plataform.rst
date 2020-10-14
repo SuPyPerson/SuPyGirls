@@ -132,7 +132,7 @@ Para ver sua obra-prima por completo basta clicar em run:
 
 .. image:: _static/10_plata_sala_RUN.png
 
-.. Note::
+.. Tip::
    Caso o interpretador não responda, ou apresente respostas antigas, não se desespere:
    
                       **F5** NELEEE!!!!
