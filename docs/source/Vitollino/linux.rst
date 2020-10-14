@@ -6,10 +6,7 @@
   
 Selecione o Tópico de sua Necessidade:
 
-.. Toctree::
-   :titlesonly:
-    
-   linux_so
-   
-   linux_app
+* :ref:`Instalação do Linux <linux_so>`
+
+* :ref:`Instalação de aplicativos recomendados <linux_app>`
 
