@@ -32,12 +32,9 @@ Selecione o sistema operacional de preferência:
    O Tutorial do sistema operacional Ubuntu **INCLUI** a instalação do SO.
    
 
-.. Toctree::
-   :titlesonly:
-
-    linux
+    * :ref:` Linux <linux>`
     
-    windows
+    * :ref:`Windows <windows>`
     
     
   
