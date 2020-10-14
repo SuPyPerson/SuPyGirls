@@ -210,8 +210,8 @@ Preencha e clique em NEXT:
 .. image:: _static/ubuntuH.png
 
 
-:ref:`../Vitollino/UBUNTU_APP.rst`
-------------------------
+:ref:`INSTALAÇÃO DE PROGRAMAS <UBUNTU_APP>`
+---------------------------------------------
 
 
 .. _Download VM VirtualBoX: https://download.virtualbox.org/virtualbox/6.1.14/VirtualBox-6.1.14-140239-Win.exe
