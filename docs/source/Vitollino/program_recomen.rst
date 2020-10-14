@@ -16,13 +16,13 @@ Este setor compreende as etapas de instalação de softwares recomendados para o
    +---------------------------------+
    |REQUISITOS MÍNIMOS               |
    +===========+=========+===========+
-   |   *       |MÍNIMO   |RECOMENDADO|
+   |   -       |MÍNIMO   |RECOMENDADO|
    +-----------+---------+-----------+
    |MEMÓRIA RAM| 2GB     |8GB        |
    +-----------+---------+-----------+
    |ESPAÇO HD  |4 GB     |SSD        |
    +-----------+---------+-----------+
-   |TELA       |1024x768 |  *        |
+   |TELA       |1024x768 |  -        |
    +-----------+---------+-----------+
    
 Selecione o sistema operacional de preferência:
