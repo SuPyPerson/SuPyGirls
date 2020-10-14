@@ -6,7 +6,11 @@
   
 Selecione o Tópico de sua Necessidade:
 
-* :ref:`Instalação do Linux <linux_so>`
+.. toctree::
+   :maxdepth: 1
 
-* :ref:`Instalação de aplicativos recomendados <linux_app>`
+   linux_so.rst
+
+   linux_app.rst
+
 
