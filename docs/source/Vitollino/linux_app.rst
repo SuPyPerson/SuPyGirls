@@ -31,7 +31,7 @@ Este é o terminal. Inicialmente você está com as permissões superficiais de 
 
 2. Para acessar as permissões totais de gerenciamento (ser um root) tecle:
 
- .. code-tab:: bash
+.. code-tab:: bash
     
     sudo su 
 
@@ -46,7 +46,10 @@ Este é o terminal. Inicialmente você está com as permissões superficiais de 
 .. Warning:: 
    Quando o modo root está ativado toda e qualquer alteração é aceita.
    
-5. Para sair do modo root digite: exit
+5. Para sair do modo root digite: 
+ .. code-tab:: bash
+    
+    exit    
 
 .. Note:: Saia sempre do modo root quando não estiver precisando dele.
 
@@ -59,13 +62,22 @@ Geralmente o python já vem instalado no Linux. Mas vale a pena consultar!
 
 1. Abra o terminal
 
-2. Digite: python --version
+2. Digite: 
+
+.. code-tab:: bash
+    
+    python --version
 
 Se nenhum python for encontrado em seu computador siga para etapa 3.
 
 3. Digite: sudo apt-get install python3-pip
+ 
+.. code-tab:: bash
+    
+    sudo apt-get install python3-pip
 
 Com este comando você instala o gerenciador de pacotes conjuntamente.
+
 
 4. **Pronto! Python Instalado**
 
@@ -77,15 +89,28 @@ O Ubuntu make (u-make) é uma ferramenta que facilita a intalação de ferrament
 1. Abra o terminal digitando ctrl+Shift+t
 2. Digite **umake** para saber se o programa já está instalado no seu computador
 
+.. code-tab:: bash
+   
+   umake
+
 .. image:: _static/umaker1.jpg
 
-3. Atualize a biblioteca de repositórios
+3. Atualize a biblioteca de repositórios com os seguintes comandos:
 
-   1. Digite: Sudo su
-   2. Insira a sua senha e aperte enter
-   3. Digite: add-apt-repository ppa:ubuntu-desktop/ubuntu-make
-   4. Digite: apt-get update
+.. code-tab:: bash
    
+   Sudo su
+
+Insira a senha.  
+
+.. code-tab:: bash
+
+   add-apt-repository ppa:ubuntu-desktop/ubuntu-make
+   
+.. code-tab:: bash
+
+   apt-get update
+      
 .. image:: _static/umaker2.jpg
 
 4. Digite: sudo apt-get install ubuntu-maker
@@ -94,7 +119,11 @@ O Ubuntu make (u-make) é uma ferramenta que facilita a intalação de ferrament
   
 6. Agora o umake está instalado!
    
-7. Digite: umake --help
+7. Digite: 
+
+.. code-tab:: bash
+ 
+   umake --help
 
 Este comando dispõe informações sobre quais softwares podem ser instalados através do ubuntu.
 
@@ -102,7 +131,10 @@ Este comando dispõe informações sobre quais softwares podem ser instalados at
 INSTALANDO PYCHARM
 --------------------      
 
-1. Digite: umake ide pycharm
+.. code-tab:: bash
+  
+   umake ide pycharm
+   
 2. Pressione enter
 3. Digite a senha
 
