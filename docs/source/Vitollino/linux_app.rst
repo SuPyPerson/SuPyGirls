@@ -29,11 +29,9 @@ Vamos ao que interessa:
 
 Este é o terminal. Inicialmente você está com as permissões superficiais de gerenciamento.
 
-2. Para acessar as permissões totais de gerenciamento (ser um root) tecle:
+2. Para acessar as permissões totais de gerenciamento (ser um root) tecle::
 
-.. code-tab:: bash
-    
-    sudo su 
+   sudo su 
 
 .. image:: 
 
