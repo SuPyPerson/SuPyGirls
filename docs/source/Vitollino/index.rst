@@ -23,14 +23,15 @@ CONTEÚDO
 .. Toctree::
    :titlesonly:
 
-   Tour_Plataform
+   program_recomen
    
    Intro_Python
    
+   Tour_Plataform
+  
    Tutorial_Vitollino
    
-   program_recomen
-
+   
     
 **Tutorial Author:**  Emanuelle M. P. Simas;
 
