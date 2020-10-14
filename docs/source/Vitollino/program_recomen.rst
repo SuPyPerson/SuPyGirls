@@ -30,12 +30,9 @@ Selecione o sistema operacional de preferência:
 
 .. Note::
    O Tutorial do sistema operacional Ubuntu **INCLUI** a instalação do SO.
-   
 
-    * :ref:` Linux <linux>`
+
+* :ref:` Linux <linux>`
     
-    * :ref:`Windows <windows>`
+* :ref:`Windows <windows>`
     
-    
-  
-#teste
