@@ -31,8 +31,9 @@ Selecione o sistema operacional de preferência:
 .. Note::
    O Tutorial do sistema operacional Ubuntu **INCLUI** a instalação do SO.
 
-.. toctree::
-    :maxdepth: 2
+
+.. Toctree::
+   :titlesonly:
 
     UBUNTU.rst
     WINDOWS.rst
