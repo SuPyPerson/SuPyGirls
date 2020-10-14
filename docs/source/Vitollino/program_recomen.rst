@@ -32,10 +32,6 @@ Selecione o sistema operacional de preferência:
    O Tutorial do sistema operacional Ubuntu **INCLUI** a instalação do SO.
 
 
-:ref:`Linux <linux>`
-    
-:ref:`Windows <windows>`
-
 .. toctree::
    :maxdepth: 1
    
