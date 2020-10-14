@@ -35,7 +35,7 @@ Selecione o sistema operacional de preferência:
 .. Toctree::
    :titlesonly:
 
-    UBUNTU
+    linux
     
-    WINDOWS
+    windows
   
