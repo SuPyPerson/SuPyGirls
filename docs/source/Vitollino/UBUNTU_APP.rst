@@ -21,7 +21,7 @@ Vamos ao que interessa:
 
 1. Você tem acesso ao terminal teclando: *ctrl+alt+T* (simultâneamente)
 
-.. image:: _static/virtualbox1.png
+.. image:: 
 
 
 
