@@ -7,9 +7,10 @@ O Ubuntu é uma - de muitos - distribuição do sistema operacional (SO) Linux p
 
 Vamos colocar na ponta do lápis:
 
+
 +----------------------------------------------------+
 |**VANTAGENS E DESVANTAGENS                          |
-+========================+===========+==============+
++=========================+===========+==============+
 |                         |LINUX      |wINDOWS       |
 +-------------------------+-----------+--------------+
 |SIST. OPERACIONAL        |GRATUITO   |PAGO          | 
@@ -31,5 +32,7 @@ Vamos colocar na ponta do lápis:
 |                         |           |              |
 +-------------------------+-----------+--------------+
 
+
 *O linux tem sistemas diversos que podem ser escolhidos visando as possibilidades do computador. Por exemplo, a distribuição Lubuntu visa computadores com mínimo 2gb de memória e processadores antigos.
+
 *Quanto ao drivers especiais, há algumas dificuldades no uso de algumas placas de vídeo, monitores não vga e afins. É possível fazê-los funcionar na maioria das vezes, porém requer um esforço de pesquisa por drivers na internet.
