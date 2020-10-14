@@ -6,6 +6,6 @@
   
 Selecione o Tópico de sua Necessidade:
 
-*:ref:`Instalação do Python <windows_python>` 
+* :ref:`Instalação do Python <windows_python>` 
 
-*:ref:`Instalação de Aplicativos recomendados <windows_app>`
+* :ref:`Instalação de Aplicativos recomendados <windows_app>`
