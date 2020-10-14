@@ -30,6 +30,7 @@ Selecione o sistema operacional de preferência:
 
 .. Note::
    O Tutorial do sistema operacional Ubuntu **INCLUI** a instalação do SO.
+   
 
 
 .. Toctree::
