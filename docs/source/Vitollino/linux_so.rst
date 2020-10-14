@@ -1,5 +1,5 @@
-**INSTALAÇÃO UBUNTU**
-======================
+**INSTALAÇÃO do LINUX**
+========================
 
 .. seealso::
    Este documento é uma adaptação do seguinte tutorial existente: :doc:`../intro_comp/InstlProgrm.rst`
@@ -9,7 +9,7 @@ SUMÁRIO
 
 #. `INFORMAÇÕES GERAIS`
 #. `INSTALAÇÃO DA MÁQUINA VIRTUAL`_
-#. `INSTALAÇÃO DO UBUNTU NA MÁQUINA VIRTUAL`_
+#. `INSTALAÇÃO DO LINUX NA MÁQUINA VIRTUAL`_
 
 
 INFORMAÇÕES GERAIS
@@ -102,7 +102,7 @@ Clique em NEXT.
 .. image:: _static/ubuntu1.png
 
 
-INSTALAÇÃO DO UBUNTU NA MÁQUINA VIRTUAL
+INSTALAÇÃO DO LINUX NA MÁQUINA VIRTUAL
 ----------------------------------------
 
 1. Selecione abaixo um Linux compatível com o seu computador:
