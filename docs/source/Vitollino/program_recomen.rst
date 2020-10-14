@@ -36,6 +36,7 @@ Selecione o sistema operacional de preferência:
 .. Toctree::
    :titlesonly:
 
-    UBUNTU.rst
-    WINDOWS.rst
+    UBUNTU
+    
+    WINDOWS
   
