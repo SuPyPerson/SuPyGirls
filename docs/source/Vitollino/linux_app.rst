@@ -47,7 +47,8 @@ Este é o terminal. Inicialmente você está com as permissões superficiais de 
    Quando o modo root está ativado toda e qualquer alteração é aceita.
    
 5. Para sair do modo root digite: 
- .. code-tab:: bash
+ 
+.. code-tab:: bash
     
     exit    
 
