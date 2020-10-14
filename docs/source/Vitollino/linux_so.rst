@@ -7,7 +7,7 @@
 SUMÁRIO
 -------
 
-#. `INFORMAÇÕES GERAIS`
+#. `INFORMAÇÕES GERAIS`_
 #. `INSTALAÇÃO DA MÁQUINA VIRTUAL`_
 #. `INSTALAÇÃO DO LINUX NA MÁQUINA VIRTUAL`_
 
@@ -210,7 +210,7 @@ Preencha e clique em NEXT:
 .. image:: _static/ubuntuH.png
 
 
-:ref:`INSTALAÇÃO DE PROGRAMAS <UBUNTU_APP>`
+:ref:`INSTALAÇÃO DE PROGRAMAS <linux_app>`
 ---------------------------------------------
 
 
