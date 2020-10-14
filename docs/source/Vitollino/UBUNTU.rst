@@ -9,7 +9,7 @@ Vamos colocar na ponta do lápis:
 
 
 +----------------------------------------------------+
-|VANTAGENS E DESVANTAGENS                          |
+|VANTAGENS E DESVANTAGENS                            |
 +=========================+===========+==============+
 |                         |LINUX      |WINDOWS       |
 +-------------------------+-----------+--------------+
