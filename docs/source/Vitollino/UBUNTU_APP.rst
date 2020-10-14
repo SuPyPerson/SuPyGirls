@@ -54,7 +54,16 @@ INSTALANDO O PYTHON
 Geralmente o python já vem instalado no Linux. Mas vale a pena consultar!
 
 1. Abra o terminal
-2.
+
+2. Digite: python --version
+
+Se nenhum python for encontrado em seu computador siga para etapa 3.
+
+3. Digite: sudo apt-get install python3-pip
+
+Com este comando você instala o gerenciador de pacotes conjuntamente.
+
+4. **Pronto! Python Instalado**
 
 COMANDO U-MAKE
 -----------------
@@ -89,10 +98,9 @@ Este comando dispõe informações sobre quais softwares podem ser instalados at
 INSTALANDO PYCHARM
 --------------------      
 
-1. Digite: sudo su
-2. Insira a senha
-3. Digite: umake ide pycharm
-4. Pressione enter
+1. Digite: umake ide pycharm
+2. Pressione enter
+3. Digite a senha
 
  .. image:: _static/umaker4.jpg
 
