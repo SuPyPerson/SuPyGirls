@@ -57,5 +57,5 @@ Vamos ao passoa  passo:
 .. image:: _static/virtualbox1.png
 
 
-.. _Download VM VirtualBoX:: https://download.virtualbox.org/virtualbox/6.1.14/VirtualBox-6.1.14-140239-Win.exe
+.. _Download VM VirtualBoX: https://download.virtualbox.org/virtualbox/6.1.14/VirtualBox-6.1.14-140239-Win.exe
 
