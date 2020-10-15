@@ -23,13 +23,14 @@ CONTEÚDO
 .. Toctree::
    :titlesonly:
 
-   program_recomen
    
    Intro_Python
    
    Tour_Plataform
   
    Tutorial_Vitollino
+   
+   program_recomen
    
    
     
