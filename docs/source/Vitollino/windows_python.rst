@@ -35,7 +35,7 @@ Verificando a versão instalada
 
 7. Vá no ``iniciar`` e digite:
 
-.. code:: $
+.. code:: python
 
    prompt de comando
    
@@ -43,7 +43,7 @@ Verificando a versão instalada
 
 8. Após clicar em ``abrir`` uma tela preta aparecerá. Digite:
 
-.. code:: $
+.. code:: python
 
    python --version  
    
