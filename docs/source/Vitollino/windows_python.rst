@@ -57,6 +57,6 @@ Esta é a versão instalada no seu computador.
 .. image:: _static/install_py11.png
 
 
-:ref:`PROGRAMAS RECOMENDADOS <windows_app.rst>`
+:ref:`PROGRAMAS RECOMENDADOS <windows_app>`
 --------------------------------------------
 .. _python: https://www.python.org/
