@@ -9,9 +9,7 @@
 INSTALAÇÃO DO PYCHARM
 ----------------------
 
-1. Acesse o link e clique em ``Download``.
-
-**`Download do Pycharm`_**
+1. Acesse o link `Download do Pycharm`_ 
 
 .. image:: _static/P1.png
 
