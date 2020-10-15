@@ -4,6 +4,17 @@
 .. seealso::
    
    Este tutorial é uma adaptação do tutorial existente em: :doc:`../intro_comp/instalacao_programas`
+   
+SUMÁRIO
+--------
+
+#. `INSTALAÇÃO DO PYCHARM`_
+#. `CONFIGURAÇÃO DO PYCHARM`_
+#. `IMPORTANDO PROJETOS`_
+#. `CLONANDO PROJETOS ATRAVÉS DO LINK`_
+#. `CLONANDO PROJETOS ATRAVÉS DA CONTA`_
+
+ 
 
 
 INSTALAÇÃO DO PYCHARM
@@ -29,7 +40,7 @@ INSTALAÇÃO DO PYCHARM
 
 .. image:: _static/P6.png
 
-6. Selecione todas as caixinhas e clique em ``Next``
+6 Selecione todas as caixinhas e clique em ``Next``
 
 .. image:: _static/P7.PNG
 
@@ -173,7 +184,7 @@ Eu posso alterar para:
 .. image:: _static/P17.png  
 
 
-* **CLONANDO PROJETOS ATRAVÉS DO LINK**:
+* **CLONANDO PROJETOS ATRAVÉS DA CONTA**:
 
 1. Clique no ``GitHub`` à esquerda.
 
