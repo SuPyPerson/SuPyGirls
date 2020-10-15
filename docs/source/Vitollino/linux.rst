@@ -7,7 +7,7 @@
 Selecione o Tópico de sua Necessidade:
 
 .. toctree::
-   :maxdepth: 1
+   :titlesonly: 
 
    linux_so.rst
 
