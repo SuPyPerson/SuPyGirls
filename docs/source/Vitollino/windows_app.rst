@@ -119,15 +119,15 @@ Você verá esta tela:
 IMPORTANDO PROJETOS
 ---------------------
 
-14. Você deve estar vendo esta tela agora:
+19. Você deve estar vendo esta tela agora:
 
 .. image:: _static/confPC_8.png
 
-15. Clique em ``Get from Version Control`` e *depois** em ``GitHub``
+20. Clique em ``Get from Version Control`` e **depois** em ``GitHub``
 
 .. image:: _static/confPC_9.jpg
 
-15. Nesta tela clique em ``Download and Install``. 
+21. Nesta tela clique em ``Download and Install``. 
 
 .. image:: _static/confPC_10.png
 
@@ -136,7 +136,7 @@ depois:
 .. image:: _static/confPC_11.png
 
 
-15. Nesta tela há duas possibilidades: *clonar projetos através do link* e *clonar projetos da conta github*
+22. Nesta tela há duas possibilidades: *clonar projetos através do link* e *clonar projetos da conta github*
 
 .. image:: _static/confPC_11.png
 
