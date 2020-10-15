@@ -35,8 +35,6 @@ Este é o terminal. Inicialmente você está com as permissões superficiais de 
 
    sudo su 
 
- 
-
 3. Digite a senha que utilizou para acessar seu computador 
 
 .. image:: 
