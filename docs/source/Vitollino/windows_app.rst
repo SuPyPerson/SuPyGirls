@@ -252,7 +252,7 @@ As bibliotecas são repositórios/módulos que guardam códigos que podem ser re
 
 .. image:: _static/DEP3.png  
 
-5. Clique em ``PRojec: [...]`` e depois em ``Python Interpreter``
+5. Clique em ``Project: [...]`` e depois em ``Python Interpreter``
 
 .. image:: _static/DEP4.png  
 
