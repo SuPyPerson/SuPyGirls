@@ -100,9 +100,9 @@ O Ubuntu make (u-make) é uma ferramenta que facilita a intalação de ferrament
 
 .. prompt:: bash $
    
-   Sudo su
+   sudo su
 
-Insira a senha.  
+**Insira a senha.**  
 
 .. prompt:: bash $
 
@@ -114,7 +114,11 @@ Insira a senha.
       
 .. image:: _static/umaker2.jpg
 
-4. Digite: sudo apt-get install ubuntu-maker
+4. Digite: 
+
+.. prompt:: bash $
+
+   sudo apt-get install ubuntu-maker
 
 .. image:: _static/umaker3.jpg
   
