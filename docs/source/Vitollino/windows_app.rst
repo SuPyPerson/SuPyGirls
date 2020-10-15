@@ -15,13 +15,16 @@ SUMÁRIO
    #. `IMPORTANDO PROJETOS`_
    #. `CLONANDO PROJETOS ATRAVÉS DO LINK`_
    #. `CLONANDO PROJETOS ATRAVÉS DA CONTA`_
-   #. `IMPORTANDO BIBLIOTECAS`_
+   #. `IMPORTANDO BIBLIOTECAS NO PYCHARM`_
 
 #. `SPYDER`_
+#. `ANACONDA`_
 
  
 PYCHARM
 --------
+
+PyCharm é um ambiente de desenvolvimento integrado (IDE) usado em programação de computadores , especificamente para a linguagem Python . É desenvolvido pela empresa checa JetBrains. Ele fornece análise de código, um depurador gráfico, um testador de unidade integrado, integração com sistemas de controle de versão (VCSes) e suporta desenvolvimento web com Django , bem como ciência de dados com Anaconda . [7] (Wikipedia, 2020)
 
 INSTALAÇÃO DO PYCHARM
 ----------------------
@@ -225,5 +228,54 @@ CLONANDO PROJETOS ATRAVÉS DA CONTA
 
 .. image:: _static/P17.png  
 
+IMPORTANDO BIBLIOTECAS NO PYCHARM
+----------------------------------
+
+As bibliotecas são repositórios/módulos que guardam códigos que podem ser reutilizados posteriormente.
+
+1. Abra algum projeto no Pycharm.
+
+2. **Verifique se a biblioteca já está instalada** digitando ``import nome_da_biblioteca``
+
+.. code:: python
+   
+   # vamos testar a existência da biblioteca matplotlib
+   import matplotlib
+
+.. image:: _static/DEP1.png  
+
+3. Observando embaixo é possível ver a mensagem ``No module named matplotlib``, ou seja, o programa está reclamando que não há nenhum módulo instalado com esse nome.
+
+.. image:: _static/DEP2.png  
+
+4. Na barra superior clique em ``File`` e **depois** em ``settings``
+
+.. image:: _static/DEP3.png  
+
+5. Clique em ``PRojec: [...]`` e depois em ``Python Interpreter``
+
+.. image:: _static/DEP4.png  
+
+6. Clique no ``+`` ressaltado à direita
+
+.. image:: _static/DEP4.png  
+
+7. Escreva o nome da biblioteca que deseja no espaço:
+
+.. image:: _static/DEP5.png  
+
+8. Clique em ``Install Package`` na parte inferior da tela e aguarde (pode demorar)
+
+.. image:: _static/DEP6.png  
+
+8. A mensagem ``Package 'matplotlib' installed successfully`` confirma a instalação do pacote.
+
+.. image:: _static/DEP7.png  
+
+Feche as telinhas.
+
+9. Voltando a tela inicial é possível observar que o console **não** reclama mais da ausência do módulo:
+
+.. image:: _static/DEP8.png  
 
 .. _Download do Pycharm: https://www.jetbrains.com/pycharm/
