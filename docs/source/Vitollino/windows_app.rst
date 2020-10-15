@@ -116,7 +116,6 @@ Você verá esta tela:
 .. image:: _static/confPC_7.png
 
 
-
 IMPORTANDO PROJETOS
 ---------------------
 
@@ -141,7 +140,8 @@ depois:
 
 .. image:: _static/confPC_11.png
 
-* **CLONANDO PROJETOS ATRAVÉS DO LINK**:
+CLONANDO PROJETOS ATRAVÉS DO LINK
+----------------------------------
 
 1. Espere a conclusão do download do git.
 
@@ -184,7 +184,8 @@ Eu posso alterar para:
 .. image:: _static/P17.png  
 
 
-* **CLONANDO PROJETOS ATRAVÉS DA CONTA**:
+CLONANDO PROJETOS ATRAVÉS DA CONTA
+-----------------------------------
 
 1. Clique no ``GitHub`` à esquerda.
 
