@@ -11,7 +11,7 @@ INSTALAÇÃO DO PYCHARM
 
 1. Acesse o link e clique em ``Download``.
 
-`Download do Pycharm`_
+                                                 **`Download do Pycharm`_**
 
 .. image:: _static/P1.png
 
@@ -33,7 +33,7 @@ INSTALAÇÃO DO PYCHARM
 
 6 Selecione todas as caixinhas e clique em ``Next``
 
-.. image:: _static/P7.png
+.. image:: _static/P7.PNG
 
 7. Selecione ``Install``
 
@@ -102,7 +102,7 @@ Você verá esta tela:
    
    Esta etapa só foi possível pois instalamos previamente o python na máquina! :D
 
-18. Agora clique em ``Apply``e depois em ``ok``:
+18. Agora clique em ``Apply`` e depois em ``ok``:
 
 .. image:: _static/confPC_7.png
 
@@ -117,9 +117,9 @@ IMPORTANDO PROJETOS
 
 15. Clique em ``Get from Version Control`` e *depois** em ``GitHub``
 
-.. image:: _static/confPC_9.png
+.. image:: _static/confPC_9.jpg
 
-15. Nesta tela clique em ``Download ans Install``. 
+15. Nesta tela clique em ``Download and Install``. 
 
 .. image:: _static/confPC_10.png
 
@@ -130,9 +130,9 @@ depois:
 
 15. Nesta tela há duas possibilidades: *clonar projetos através do link* e *clonar projetos da conta github*
 
-.. image:: _static/confPC_10.png
+.. image:: _static/confPC_11.png
 
-* CLONANDO PROJETOS ATRAVÉS DO LINK:
+* **CLONANDO PROJETOS ATRAVÉS DO LINK**:
 
 1. Espere a conclusão do download do git.
 
@@ -142,7 +142,7 @@ depois:
 
 .. image:: _static/P14.png  
 
-3. No espaço ``Directory`` dê um nome ao seu novo projeto (clone) alterando **a última parte do caminho**
+3. No espaço ``Directory`` dê um nome ao seu novo projeto (clone) alterando **a última parte do caminho**.
 
 Exemplo:
 
@@ -175,7 +175,7 @@ Eu posso alterar para:
 .. image:: _static/P17.png  
 
 
-* CLONANDO PROJETOS ATRAVÉS DO LINK:
+* **CLONANDO PROJETOS ATRAVÉS DO LINK**:
 
 1. Clique no ``GitHub`` à esquerda.
 
@@ -195,11 +195,11 @@ Eu posso alterar para:
 
 5. Volte para o Pycharm e selecione o Repositório que deseja:
 
-.. image:: _static/confPC_18.png  
+.. image:: _static/P18.png  
 
 6. Aguarde o carregamento...
 
-.. image:: _static/confPC_15.png  
+.. image:: _static/P15.png  
 
 7. Posteriormente verá esta:
 
