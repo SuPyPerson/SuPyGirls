@@ -48,7 +48,7 @@ Este é o terminal. Inicialmente você está com as permissões superficiais de 
 
 .. code:: python
    
-   exit``    
+   exit
 
 .. Note:: Saia sempre do modo root quando não estiver precisando dele.
 
@@ -69,7 +69,7 @@ Geralmente o python já vem instalado no Linux. Mas vale a pena consultar!
 
 Se nenhum python for encontrado em seu computador siga para etapa 3.
 
-3. Digite: sudo apt-get install python3-pip
+3. Digite:
  
 .. code:: python
 
@@ -85,7 +85,7 @@ COMANDO U-MAKE
 
 O Ubuntu make (u-make) é uma ferramenta que facilita a intalação de ferramentas populares de programação e ainda instala todas as dependências necessárias!
 
-1. Abra o terminal digitando ctrl+Shift+t
+1. Abra o terminal digitando ``ctrl+Shift+t``
 2. Digite **umake** para saber se o programa já está instalado no seu computador
 
 .. code:: python
