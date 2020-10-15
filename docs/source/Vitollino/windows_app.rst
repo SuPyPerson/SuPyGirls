@@ -9,6 +9,7 @@ SUMÁRIO
 --------
 
 #. ``PYCHARM``_
+
    #. `INSTALAÇÃO DO PYCHARM`_
    #. `CONFIGURAÇÃO DO PYCHARM`_
    #. `IMPORTANDO PROJETOS`_
