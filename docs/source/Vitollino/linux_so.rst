@@ -218,5 +218,5 @@ Preencha e clique em NEXT:
 .. _Download VM VirtualBoX: https://download.virtualbox.org/virtualbox/6.1.14/VirtualBox-6.1.14-140239-Win.exe
 .. _U64: https://releases.ubuntu.com/20.04.1/ubuntu-20.04.1-desktop-amd64.iso
 .. _L32: http://cdimage.ubuntu.com/lubuntu/releases/18.04/release/lubuntu-18.04-alternate-i386.iso
-.. L64: http://cdimage.ubuntu.com/lubuntu/releases/18.04/release/lubuntu-18.04-alternate-amd64.iso
-.. E64: https://nyc3.dl.elementary.io/download/MTYwMjY4OTY2Nw==/elementaryos-5.1-stable.20200814.iso
+.. _L64: http://cdimage.ubuntu.com/lubuntu/releases/18.04/release/lubuntu-18.04-alternate-amd64.iso
+.. _E64: https://nyc3.dl.elementary.io/download/MTYwMjY4OTY2Nw==/elementaryos-5.1-stable.20200814.iso
