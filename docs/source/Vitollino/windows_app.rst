@@ -29,7 +29,7 @@ INSTALAÇÃO DO PYCHARM
 
 .. image:: _static/P6.png
 
-6 Selecione todas as caixinhas e clique em ``Next``
+6. Selecione todas as caixinhas e clique em ``Next``
 
 .. image:: _static/P7.PNG
 
