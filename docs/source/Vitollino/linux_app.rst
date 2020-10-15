@@ -46,7 +46,7 @@ Este é o terminal. Inicialmente você está com as permissões superficiais de 
    
 5. Para sair do modo root digite: 
  
-.. prompt:: bash $
+.. code:: $
     
     exit    
 
@@ -63,7 +63,7 @@ Geralmente o python já vem instalado no Linux. Mas vale a pena consultar!
 
 2. Digite: 
 
-.. prompt:: bash $
+.. code:: $
     
     python --version
 
@@ -71,7 +71,7 @@ Se nenhum python for encontrado em seu computador siga para etapa 3.
 
 3. Digite: sudo apt-get install python3-pip
  
-.. prompt:: bash $
+.. code:: $
     
     sudo apt-get install python3-pip
 
@@ -88,7 +88,7 @@ O Ubuntu make (u-make) é uma ferramenta que facilita a intalação de ferrament
 1. Abra o terminal digitando ctrl+Shift+t
 2. Digite **umake** para saber se o programa já está instalado no seu computador
 
-.. prompt:: bash $
+.. code:: $
    
    umake
 
@@ -96,17 +96,17 @@ O Ubuntu make (u-make) é uma ferramenta que facilita a intalação de ferrament
 
 3. Atualize a biblioteca de repositórios com os seguintes comandos:
 
-.. prompt:: bash $
+.. code:: $
    
    sudo su
 
 **Insira a senha.**  
 
-.. prompt:: bash $
+.. code:: $
 
    add-apt-repository ppa:ubuntu-desktop/ubuntu-make
    
-.. prompt:: bash $
+.. code:: $
 
    apt-get update
       
@@ -114,7 +114,7 @@ O Ubuntu make (u-make) é uma ferramenta que facilita a intalação de ferrament
 
 4. Digite: 
 
-.. prompt:: bash $
+.. code:: $
 
    sudo apt-get install ubuntu-maker
 
@@ -124,7 +124,7 @@ O Ubuntu make (u-make) é uma ferramenta que facilita a intalação de ferrament
    
 7. Digite: 
 
-.. prompt:: bash $
+.. code:: $
  
    umake --help
 
@@ -134,7 +134,7 @@ Este comando dispõe informações sobre quais softwares podem ser instalados at
 INSTALANDO PYCHARM
 --------------------      
 
-.. prompt:: bash $
+.. code:: $
   
    umake ide pycharm
    
