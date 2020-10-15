@@ -2,7 +2,7 @@
 ========================
 
 .. seealso::
-   Este documento é uma adaptação do seguinte tutorial existente: :doc:`../intro_comp/InstlProgrm.rst`
+   Este documento é uma adaptação do seguinte tutorial existente: :doc:`../intro_comp/instalacao_programas`
 
 SUMÁRIO
 -------
