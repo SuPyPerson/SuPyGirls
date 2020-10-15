@@ -39,7 +39,7 @@ Este é o terminal. Inicialmente você está com as permissões superficiais de 
 
 .. image:: 
 
-4. **PRONTO!** Vo
+4. **PRONTO!** 
 
 .. Warning:: 
    Quando o modo root está ativado toda e qualquer alteração é aceita.
