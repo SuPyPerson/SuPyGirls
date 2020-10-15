@@ -278,4 +278,10 @@ Feche as telinhas.
 
 .. image:: _static/DEP8.png  
 
+SPYDER
+-------
+
+ANACONDA
+---------
+
 .. _Download do Pycharm: https://www.jetbrains.com/pycharm/
