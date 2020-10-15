@@ -35,7 +35,7 @@ Verificando a versão instalada
 
 7. Vá no ``iniciar`` e digite:
 
-.. prompt:: bash $
+.. code:: $
 
    prompt de comando
    
@@ -43,7 +43,7 @@ Verificando a versão instalada
 
 8. Após clicar em ``abrir`` uma tela preta aparecerá. Digite:
 
-.. prompt:: bash $
+.. code:: $
 
    python --version  
    
@@ -57,7 +57,7 @@ Esta é a versão instalada no seu computador.
 .. image:: _static/install_py11.png
 
 
-:ref: `INSTALAÇÃO DE PROGRAMAS RECOMENDADOS <windows_app>`
+:ref:`PROGRAMAS RECOMENDADOS <windows_app>`
 -----------------------------------------------------------
 
 .. _python: https://www.python.org/
