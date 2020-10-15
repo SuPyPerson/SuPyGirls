@@ -31,8 +31,6 @@ Este é o terminal. Inicialmente você está com as permissões superficiais de 
 
 2. Para acessar as permissões totais de gerenciamento (ser um root) tecle::
 
-.. prompt:: bash $
-
    sudo su 
 
 3. Digite a senha que utilizou para acessar seu computador 
