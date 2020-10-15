@@ -85,9 +85,10 @@ Clique em NEXT.
 
 5. Faça suas escolhas e clique em NEXT.
 
- A aba abaixo indica se você quer um atalho para o seu Desktop ( primeiro quadrado selecionado) e para sua barra de ferramentas ( segundo quadrado selecionado). 
+A aba abaixo indica se você quer um atalho para o seu Desktop ( primeiro quadrado selecionado) e para sua barra de ferramentas ( segundo quadrado selecionado). 
  
- .. image:: _static/vbox5.png
+
+.. image:: _static/vbox5.png
  
 6. Essa é uma aba de atenção. Indica que para prosseguir com a instalção você será disconectado da internet. Salve o que for preciso e clique em NEXT.
 
