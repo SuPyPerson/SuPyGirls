@@ -58,6 +58,5 @@ Esta é a versão instalada no seu computador.
 
 
 :ref:`PROGRAMAS RECOMENDADOS <windows_app>`
------------------------------------------------------------
-
+--------------------------------------------
 .. _python: https://www.python.org/
