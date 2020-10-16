@@ -1,7 +1,7 @@
 **INSTALAÇÃO DO PYTHON**
 =========================
 
-Não é comum que o python já venha instalado nas distribuições Windows. O passo a passo abaixo te conduzirá a instalar o python no seu computador!
+Não é comum que o ``python`` já venha instalado nas distribuições Windows. O passo a passo abaixo te conduzirá a instalar o python no seu computador!
 
 
 1. Acesse o portal oficial do `python`_ .
