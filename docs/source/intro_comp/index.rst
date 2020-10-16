@@ -10,6 +10,8 @@
 Aqui vamos ter uma introdução básica dos preparativos e primeiros passos para programar jogos para Web usando Python.
 Vamos usar a IDE PyCharm.
 
+Selecione seu sistema operacional:
+------------------------------------
 
 .. toctree::
     :maxdepth: 2
