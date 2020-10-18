@@ -56,6 +56,7 @@ Espero que tão logo este documento seja parco frente a sua fome pythônica e vo
  * `Funções`_ 
  
    * Funções Lambda
+   * Parâmetros Ordinais e Nomeados
 
  * `Classes`_
 
