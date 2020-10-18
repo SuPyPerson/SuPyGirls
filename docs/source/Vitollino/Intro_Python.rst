@@ -53,8 +53,16 @@ Espero que tão logo este documento seja parco frente a sua fome pythônica e vo
     * `Condicionais`
     * `Loops`
 
- * `Funções`_    
+ * `Funções`_ 
+ 
+   * Funções Lambda
+
  * `Classes`_
+
+   * Herança
+   
+   * Polimorfismo
+
 
 *  `Referências`_
 
@@ -789,9 +797,9 @@ Observe o exemplo de função abaixo:
    diga_o_nome("Gabriela") #observe como a função é chamada.
                            # "Gabriela" é o ARGUMENTO da função 'diga_o_nome'
                                                    
-.. Tip::
+.. NOte::
 
-   Os parâmetros chamam-se ``parâmetro`` na estrutura da função. Quando chamamos a função, como em ``diga_o_nome_("Gabriela")``, o valor que fica dentro do parêntesis é chamado``argumento``.
+   Os parâmetros chamam-se ``parâmetro`` no cabeçalho da função. Quando chamamos a função, como em ``diga_o_nome_("Gabriela")``, o valor que fica dentro do parêntesis é chamado``argumento``.
   
 Você pode criar funções que não requerem parâmetros. Estas funções **sempre retornarão o mesmo resultado**.
 
@@ -875,6 +883,11 @@ Na função ``porcento`` pede: o **parâmetro ordinal** ``valor``, o **parâmetr
 .. Warning::
 
    Todo **parâmetro ordinal** precisa ser passado no chamamento da função.
+   
+Veja alguns exemplos de funções python: `Funções Python`_
+
+Funções Lambda
+---------------
 
 Classes
 ---------
@@ -930,6 +943,7 @@ Referências
 .. _The zen of python: https://wiki.python.org.br/TheZenOfPythonExplained
 .. _Bosontreinamentos: http://www.bosontreinamentos.com.br/programacao-em-python/funcoes-em-python-escopos-de-variaveis/
 .. _Python Progressivo: https://www.pythonprogressivo.net/2018/02/Operadores-logicos-AND-OR-NOT.html
+.. _Funções Python: https://docs.python.org/pt-br/3/library/functions.html
 
 
 :ref:`Tutorial Vitollino <Tutorial_Vitollino>`
