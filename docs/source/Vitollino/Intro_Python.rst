@@ -785,7 +785,7 @@ A estrutura da função requer ``nome da função``, ``parâmetro`` e um ``corpo
 
 .. Warning::
 
-   Observe o `Escopo`_ do ``corpo`` da função. A *identação* é interna ao def  
+   Observe o `Escopo`_ do ``corpo`` da função. A *identação* é interna ao ``def``.  
 
 Observe o exemplo de função abaixo:
 
@@ -800,7 +800,7 @@ Observe o exemplo de função abaixo:
                                                    
 .. NOte::
 
-   Os parâmetros chamam-se ``parâmetro`` no cabeçalho da função. Quando chamamos a função, como em ``diga_o_nome_("Gabriela")``, o valor que fica dentro do parêntesis é chamado``argumento``.
+   Os parâmetros chamam-se ``parâmetro`` no cabeçalho da função. Quando chamamos a função, como em ``diga_o_nome_("Gabriela")``, o valor que fica dentro do parêntesis é chamado ``argumento``.
   
 Você pode criar funções que não requerem parâmetros. Estas funções **sempre retornarão o mesmo resultado**.
 
@@ -837,7 +837,7 @@ Como dito acima, as funções também são usadas quando determinados comportame
     n1 = int(input('Digite o Primeiro Número:'))
     n2 = int(input('Digite o Segundo Número:'))
 
-    print(soma(n1, n2))
+    #print(soma(n1, n2))
    
 Parâmetros Ordinais e Nomeados
 --------------------------------
@@ -879,7 +879,7 @@ Vejamos um outro exemplo:
 
    Observe que no caso de **parâmetros ordinais** a ordem do chamado importa no resultado!!!!
 
-Na função ``porcento`` pede: o **parâmetro ordinal** ``valor``, o **parâmetro ordinal** ``descnt``, e o **parâmetro nomeado** ``porc`` que torna *100* o valor padrão/default da função.
+Na função ``porcento`` pede: o **parâmetro ordinal** ``valor``, o **parâmetro ordinal** ``descnt``, e o **parâmetro nomeado** ``porc`` que torna ``100`` o valor padrão/default da função.
 
 .. Warning::
 
