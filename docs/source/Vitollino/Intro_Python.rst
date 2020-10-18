@@ -759,6 +759,7 @@ A estrutura da função requer ``nome da função``, ``parâmetro`` e um ``corpo
 
 .. figure:: _static/Function_machine2.svg
    :scale: 50 %
+   :align: center
    :alt: Estrutura da função.
 
 * ``Nome da função``: É um nome arbitrário e será usado para **chamar** a função.
@@ -782,8 +783,7 @@ Observe o exemplo de função abaixo:
 .. code:: python
    
    # A função 'diga_o_nome' imprime sempre o nome que for digitado
-   def diga_o_nome(nome): # 'diga_o_nome é o Nome da função
-                          # 'nome' é o parâmetro da função
+   def diga_o_nome(nome): # 'diga_o_nome é o Nome da função; 'nome' é o parâmetro da função
        print(nome)        # função python print() é o corpo da função
        
    diga_o_nome("Gabriela") #observe como a função é chamada.
@@ -880,6 +880,12 @@ Classes
 ---------
 
 .. code:: python
+
+Herança
+--------
+
+Polimorfismo
+-------------
 
 
 Referências 
