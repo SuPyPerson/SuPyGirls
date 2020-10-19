@@ -53,8 +53,17 @@ Espero que tão logo este documento seja parco frente a sua fome pythônica e vo
     * `Condicionais`
     * `Loops`
 
- * `Funções`_    
+ * `Funções`_ 
+ 
+   * Funções Lambda
+   * Parâmetros Ordinais e Nomeados
+
  * `Classes`_
+
+   * Herança
+   
+   * Polimorfismo
+
 
 *  `Referências`_
 
@@ -753,12 +762,144 @@ Uso de funções:
 Funções
 ---------
 
+Na programação a função é um bloco de código que realiza determinada tarefa que precisam ser executadas diversas vezes ou em momentos específicos.
+
+A estrutura da função requer ``nome da função``, ``parâmetro`` e um ``corpo`` que representa o comportamento da função.
+
+.. figure:: _static/Function_machine2.svg
+   :scale: 50 %
+   :align: center
+   :alt: Estrutura da função.
+
+* ``Nome da função``: É um nome arbitrário e será usado para **chamar** a função.
+* ``parâmetro``: São os valores necessários para que o comportamento seja possível. O parâmetro pode ser uma lista, string, número... **dependerá** do comportamento esperado para a função.
+* ``corpo``: Corpo é a instrução da função. É as ações que ela deverá tomar sobre os parâmetros parâmetros passados.
+
 .. code:: python
+
+   #estrutura da função
+   def nome_da_função(parâmetro): # def é um termo reservado do python para dizer que é uma função
+       corpo
+       corpo
+       corpo
+
+.. Warning::
+
+   Observe o `Escopo`_ do ``corpo`` da função. A *identação* é interna ao ``def``.  
+
+Observe o exemplo de função abaixo:
+
+.. code:: python
+   
+   # A função 'diga_o_nome' imprime sempre o nome que for digitado
+   def diga_o_nome(nome): # 'diga_o_nome é o Nome da função; 'nome' é o parâmetro da função
+       print(nome)        # função python print() é o corpo da função
+       
+   diga_o_nome("Gabriela") #observe como a função é chamada.
+                           # "Gabriela" é o ARGUMENTO da função 'diga_o_nome'
+                                                   
+.. NOte::
+
+   Os parâmetros chamam-se ``parâmetro`` no cabeçalho da função. Quando chamamos a função, como em ``diga_o_nome_("Gabriela")``, o valor que fica dentro do parêntesis é chamado ``argumento``.
+  
+Você pode criar funções que não requerem parâmetros. Estas funções **sempre retornarão o mesmo resultado**.
+
+.. code:: python
+   
+   # A função 'diga_o_nome' imprime sempre o nome que for digitado
+   def diga_o_nome(): # 'diga_o_nome é o Nome da função
+       nome = Gabriela    # observe que na ausência de parâmetros alguns valores precisam ser declarados
+       print(nome)        # função python print() é o corpo da função
+       
+   diga_o_nome() #observe como a função é chamada
+   
+Como dito acima, as funções também são usadas quando determinados comportamento só deve ser chamado em horas oportunas. Observe o código abaixo:
+
+.. Tip::
+
+   Teste o código abaixo no seu console!
+
+.. code::
+
+    # Operação fora da função
+
+    # o código:
+    n1 = int(input('Chuta um número:'))
+    n2 = int(input('Chuta mais um número'))
+    soma = n1 + n2
+
+    print(soma)
+
+    # Mesma operação dentro da função
+    def soma(n1, n2):
+      return n1 + n2
+
+    n1 = int(input('Digite o Primeiro Número:'))
+    n2 = int(input('Digite o Segundo Número:'))
+
+    #print(soma(n1, n2))
+   
+Parâmetros Ordinais e Nomeados
+--------------------------------
+
+Retomando, parâmetros são **valores** que serão utilizados pelo corpo da função para exercer alguns comportamentos. Quando a função não pede parâmetros, geralmente, as variáveis do corpo exercem tal função.
+
+O parâmetros podem ser **ordinais** ou **nomeados**, ou seja, dependentes da posição ou do nome. Por exemplo:
+centagem
+
+.. code:: python
+ 
+   # Uma função que calcula a porcentagem de um valor.
+   def porcento(valor,porc=100):
+       print(valor*(porc/100))
+     
+       
+   porcento(100) # 100
+   porcento(100,50) # 50
+
+a função ``porcento`` pede: **parâmetro ordinal** ``valor`` e o **parâmetro nomeado** ``porc`` que, por ser nomeado, é o valor padrão/default da função, ou seja, sempre que chamarmos a função o argumento ``porc`` = ``100``
+
+Vejamos um outro exemplo:
+
+.. code:: python
+ 
+   # Uma função que calcula descontos e porcentagens acumulativas.  
+   def porcento_desconto(valor,descnt,porc=100):
+       prctgm = valor*(porc/100) 
+       print(int(prctgm-(prctgm*(descnt/100)))) # o int() é uma função python que retorna apenas os valores sem a casa decimal (inteiros).
+
+       
+   porcento(100) # TypeError: porcento() missing 1 required positional argument: 'descnt'
+   porcento(100,0) # 100
+   porcento(0,100) # 0 
+   porcento(100,50) # 50
+   porcento(100,50,50) # 25
+
+.. Tip::
+
+   Observe que no caso de **parâmetros ordinais** a ordem do chamado importa no resultado!!!!
+
+Na função ``porcento`` pede: o **parâmetro ordinal** ``valor``, o **parâmetro ordinal** ``descnt``, e o **parâmetro nomeado** ``porc`` que torna ``100`` o valor padrão/default da função.
+
+.. Warning::
+
+   Todo **parâmetro ordinal** precisa ser passado no chamamento da função.
+   
+Veja alguns exemplos de funções python: `Funções Python`_
+
+Funções Lambda
+---------------
 
 Classes
 ---------
 
 .. code:: python
+
+Herança
+--------
+
+Polimorfismo
+-------------
 
 
 Referências 
@@ -803,6 +944,7 @@ Referências
 .. _The zen of python: https://wiki.python.org.br/TheZenOfPythonExplained
 .. _Bosontreinamentos: http://www.bosontreinamentos.com.br/programacao-em-python/funcoes-em-python-escopos-de-variaveis/
 .. _Python Progressivo: https://www.pythonprogressivo.net/2018/02/Operadores-logicos-AND-OR-NOT.html
+.. _Funções Python: https://docs.python.org/pt-br/3/library/functions.html
 
 
 :ref:`Tutorial Vitollino <Tutorial_Vitollino>`
