@@ -831,12 +831,11 @@ Como dito acima, as funções também são usadas quando determinados comportame
     print(soma)
 
     # Mesma operação dentro da função
-    def soma(n1, n2):
-      return n1 + n2
-
-    n1 = int(input('Digite o Primeiro Número:'))
-    n2 = int(input('Digite o Segundo Número:'))
-
+    def soma():
+        n1 = int(input('Digite o Primeiro Número:'))
+        n2 = int(input('Digite o Segundo Número:'))
+        print(n1 += n2)
+        
     #print(soma(n1, n2))
    
 Parâmetros Ordinais e Nomeados
@@ -869,11 +868,11 @@ Vejamos um outro exemplo:
        print(int(prctgm-(prctgm*(descnt/100)))) # o int() é uma função python que retorna apenas os valores sem a casa decimal (inteiros).
 
        
-   porcento(100) # TypeError: porcento() missing 1 required positional argument: 'descnt'
-   porcento(100,0) # 100
-   porcento(0,100) # 0 
-   porcento(100,50) # 50
-   porcento(100,50,50) # 25
+   porcento_desconto(100) # TypeError: porcento() missing 1 required positional argument: 'descnt'
+   porcento_desconto(100,0) # 100
+   porcento_desconto(0,100) # 0 
+   porcento_desconto(100,50) # 50
+   porcento_desconto(100,50,50) # 25
 
 .. Tip::
 
