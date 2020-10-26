@@ -213,6 +213,21 @@ Variáveis
    
    """Imprime na tela o valor da variavel"""
    print(nome_da_variavel)
+   
+.. Warning:: 
+   
+   É indicado não começar sua variável com:
+   
+   * número
+  
+   
+.. Warning::
+
+   **O python tem alguns nomes reservados:**
+ 
+    ‘False’, ‘None’, ‘True’, ‘and’, ‘as’, ‘assert’, ‘async’, ‘await’, ‘break’, ‘class’, ‘continue’, 
+    ‘def’, ‘del’, ‘elif’, ‘else’, ‘except’, ‘finally’, ‘for’, ‘from’, ‘global’, ‘if’, ‘import’, ‘in’, 
+    ‘is’, ‘lambda’, ‘nonlocal’, ‘not’, ‘or’, ‘pass’, ‘raise’, ‘return’, ‘try’, ‘while’, ‘with’, ‘yield’
 
 Espaço de nome
 ---------------
@@ -383,7 +398,7 @@ Veja alguns exemplos abaixo:
 +-----------+---------------+---------------------------------------------------+-----------+
 |    //     |    Divisão    |         Retorna a parte inteira da divisão        |    10//5  |
 +-----------+---------------+---------------------------------------------------+-----------+
-|     %     |     Módulo    |    Retorna o resto da divisão entre dois valores. |    4%2    |
+|     %     |     resto     |    Retorna o resto da divisão entre dois valores. |    4%2    |
 +-----------+---------------+---------------------------------------------------+-----------+
 |    **     | Exponenciação | Multiplicação de um número por ele mesmo n vezes  |    4**2   |
 +-----------+---------------+---------------------------------------------------+-----------+
@@ -497,25 +512,57 @@ Combinações Or:
 .. code:: python
 
     #Teste no seu console
+    print("0 and 1:", bool(0 and 1))
     print(0 and 1)
+    print("\n")
+    
+    print("1 and 0:", bool(1 and 0))
+    print(1 and 0)
+    print("\n")
+    
+    print("0 and 2:",bool(0 and 2))
     print(0 and 2)
     print("\n")
-    print(1 and 1)
+    
+    print("2 and 0:",bool(2 and 0))
+    print(2 and 0)
+    print("\n")
+    
+    print("1 and 2:",bool(1 and 2))
     print(1 and 2)
     print("\n")
-    print(2 and 0)
-    print(2 and 1)
+    
+    print("3 and 2:",bool(3 and 2))
+    print(2 and 3)
     print("\n")
-    print(4 and 5)
+    
+    print("0 or 1:", bool(0 or 1))
+    print(0 or 1)
     print("\n")
-    print(20 and 13)
+    
+    print("0 or 0:", bool(0 or 0))
+    print(0 or 0)
     print("\n")
+    
+    print("\n")
+    print("not 0:", bool(not 0))
     print(not 0)
-    print(not 1)
-    print(not 2)
+    
     print("\n")
+    print("not 1:", bool(not 1))
+    print(not 1)
+    print("\n")
+
     print(2 in (2, 3)) # Saída True
     print(2 is 3) # Saída False
+    
+    
+.. Note::
+
+   #SyntaxWarning: "is" with a literal add ao python 3.8
+   O compilador agora produz um SyntaxWarning quando as verificações de identidade (is e is not) são usadas com certos tipos de literais (por exemplo, strings,    
+   números). Muitas vezes, eles podem funcionar por acidente no CPython, mas não são garantidos pela especificação da linguagem. 
+   O aviso aconselha os usuários a usarem testes de igualdade (== e! =). (Contribuição de Serhiy Storchaka em bpo-34850.)
 
 .. code:: python
 
@@ -530,8 +577,37 @@ Combinações Or:
         print('Você tem direito a fila prioritária')
     else:
         print('Você não tem direito a nada. Vá pra fila e fique quieto')
-
+        
 Exemplo resgatado em `Python Progressivo`_
+
+.. code:: python
+
+    #Teste no seu console
+    mes= input('Qual o mês?')
+    dia_um= int(input('Que dia é hoje?'))
+    dia_dois= int(input('Que dia é amanhã?'))
+
+    if dia_um and dia_dois < 30 :
+      print("Ainda estamos em", mes)
+    else:
+      print("Estamos próximos do próximo mês!")
+      
+      
+.. code:: python
+
+    int_x = int(input("Manda um inteiro aí!"))
+
+    int_y = int(input("Manda outro aí!"))
+
+
+    if (int_x == 10) or (int_y < 20):
+
+        print("Uma das duas expressões é verdadeira!")
+
+    else:
+
+        print("Ambas são falsas!")
+
 
 * Operadores de identidade
 
@@ -819,7 +895,7 @@ Como dito acima, as funções também são usadas quando determinados comportame
 
    Teste o código abaixo no seu console!
 
-.. code::
+.. code:: python
 
     # Operação fora da função
 
@@ -827,17 +903,15 @@ Como dito acima, as funções também são usadas quando determinados comportame
     n1 = int(input('Chuta um número:'))
     n2 = int(input('Chuta mais um número'))
     soma = n1 + n2
-
-    print(soma)
+    print("O resultado:", soma)
 
     # Mesma operação dentro da função
-    def soma(n1, n2):
-      return n1 + n2
+    def soma_FUN():
+        n1 = int(input('Digite o Primeiro Número:'))
+        n2 = int(input('Digite o Segundo Número:'))
+        print("O resultado da função soma_FUN:", n1 + n2)
 
-    n1 = int(input('Digite o Primeiro Número:'))
-    n2 = int(input('Digite o Segundo Número:'))
-
-    #print(soma(n1, n2))
+    soma_FUN()
    
 Parâmetros Ordinais e Nomeados
 --------------------------------
@@ -869,11 +943,11 @@ Vejamos um outro exemplo:
        print(int(prctgm-(prctgm*(descnt/100)))) # o int() é uma função python que retorna apenas os valores sem a casa decimal (inteiros).
 
        
-   porcento(100) # TypeError: porcento() missing 1 required positional argument: 'descnt'
-   porcento(100,0) # 100
-   porcento(0,100) # 0 
-   porcento(100,50) # 50
-   porcento(100,50,50) # 25
+   porcento_desconto(100) # TypeError: porcento() missing 1 required positional argument: 'descnt'
+   porcento_desconto(100,0) # 100
+   porcento_desconto(0,100) # 0 
+   porcento_desconto(100,50) # 50
+   porcento_desconto(100,50,50) # 25
 
 .. Tip::
 
