@@ -895,7 +895,7 @@ Como dito acima, as funções também são usadas quando determinados comportame
 
    Teste o código abaixo no seu console!
 
-.. code::
+.. code:: python
 
     # Operação fora da função
 
@@ -903,16 +903,15 @@ Como dito acima, as funções também são usadas quando determinados comportame
     n1 = int(input('Chuta um número:'))
     n2 = int(input('Chuta mais um número'))
     soma = n1 + n2
-
-    print(soma)
+    print("O resultado:", soma)
 
     # Mesma operação dentro da função
-    def soma():
+    def soma_FUN():
         n1 = int(input('Digite o Primeiro Número:'))
         n2 = int(input('Digite o Segundo Número:'))
-        print(n1 += n2)
-        
-    #print(soma(n1, n2))
+        print("O resultado da função soma_FUN:", n1 + n2)
+
+    soma_FUN()
    
 Parâmetros Ordinais e Nomeados
 --------------------------------
