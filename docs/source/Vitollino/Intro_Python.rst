@@ -213,6 +213,21 @@ Variáveis
    
    """Imprime na tela o valor da variavel"""
    print(nome_da_variavel)
+   
+.. Warning:: 
+   
+   É indicado não começar sua variável com:
+   
+   * número
+  
+   
+.. Warning::
+
+   **O python tem alguns nomes reservados:**
+ 
+    ‘False’, ‘None’, ‘True’, ‘and’, ‘as’, ‘assert’, ‘async’, ‘await’, ‘break’, ‘class’, ‘continue’, 
+    ‘def’, ‘del’, ‘elif’, ‘else’, ‘except’, ‘finally’, ‘for’, ‘from’, ‘global’, ‘if’, ‘import’, ‘in’, 
+    ‘is’, ‘lambda’, ‘nonlocal’, ‘not’, ‘or’, ‘pass’, ‘raise’, ‘return’, ‘try’, ‘while’, ‘with’, ‘yield’
 
 Espaço de nome
 ---------------
