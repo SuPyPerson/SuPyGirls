@@ -212,6 +212,45 @@ POPUP
 TEXTO (PopUp)
 --------------
 
+É uma mensagem que pulará na tela. 
+
+* Texto associado a abertura da Cena
+.. code:: python
+
+   from _spy.vitollino.main import Cena, Elemento, Texto
+   """ O objeto é o elemento clicável de alguma cena.
+   """
+   MINHA_CENA = "string_correspondente_a_url_e_extensao_da_imagem" # Extensões aceitas: png, jpg, jpeg e gif
+   MEU_ELEMENTO = "string_correspondente_a_url_e_extensao_da_imagem" # Extensões aceitas: png, jpg, jpeg e gif
+   
+   nome_da_cena = Cena(FUNDO)
+   nome_da_cena.vai()
+   texto_ = Texto(nome_da_cena, txt = "Mensagem desejada")
+   texto_.vai()
+
+
+   
+* Texto subordina aparecimento de Elemento
+
+.. code:: python
+
+   from _spy.vitollino.main import Cena, Elemento, Texto
+   """ O objeto é o elemento clicável de alguma cena.
+   """
+   MINHA_CENA = "string_correspondente_a_url_e_extensao_da_imagem" # Extensões aceitas: png, jpg, jpeg e gif
+   MEU_ELEMENTO = "string_correspondente_a_url_e_extensao_da_imagem" # Extensões aceitas: png, jpg, jpeg e gif
+   
+   nome_da_cena = Cena(FUNDO)
+   nome_da_cena.vai()
+   texto_ = Texto(nome_da_cena, txt = "Mensagem desejada", foi = funcao_do_elemento)
+   texto_.vai()
+   
+   def funcao_do_elemento(*_):
+       nome_do_elemento = Elemento(LIVRO, tit="título_do_elemento", 
+                                   style=dict(height=60,widht=60, left=600, top=20), # ou x=eixo_x, y=eixo_y, w=largura, h=altura
+                                   cena = nome_da_cena)
+       nome_do_elemento.entra(nome_da_cena)
+
 CÓDIGO
 -------
 
@@ -222,11 +261,7 @@ O botão é um elemento visualizado como portal. Criando um botão é possível 
 
 Existe algumas formas de criar um botão:
 
-* Usando a função ``vai()`` do Vitollino
-
-.. code:: python
-
-* Associando ao método vai() da classe Elemento 
+* Associando ao método ``vai()`` da classe Elemento 
 
 .. code:: python
    
@@ -236,38 +271,41 @@ Existe algumas formas de criar um botão:
    MINHA_CENA = "string_correspondente_a_url_e_extensao_da_imagem" # Extensões aceitas: png, jpg, jpeg e gif
    MEU_ELEMENTO = "string_correspondente_a_url_e_extensao_da_imagem" # Extensões aceitas: png, jpg, jpeg e gif
    
+   def funcao_de_acao_do_botao(event = None):
+       #Funcao chamada no clique
+       print("Você clicou no botão!") # evento associado ao clique: mensagem, cena, sala,módulo...   
+       
    nome_da_cena = Cena(MINHA_CENA)
+   nome_da_cena.vai() # instancia a cena 
    nome_do_elemento = Elemento(MEU_ELEMENTO, tit="título_do_elemento", 
                               style=dict(height=60,widht=60, left=600, top=20), # ou x=eixo_x, y=eixo_y, w=largura, h=altura
                               cena = nome_da_cena,
                               vai = funcao_de_acao_do_botao)
 
    
-   def funcao_de_acao_do_botao(event = None):
-       "Funcao chamada no clique"
-       print("Você clicou no botão!") # evento associado ao clique: mensagem, cena, sala,módulo...   
-       
+
 * Associando ao evento do browser
 
 .. code:: python
    
-   from _spy.vitollino.main import Cena, Elemento
-   """ O objeto é o elementoclicável de alguma cena.
+   from _spy.vitollino.main import Cena, Elemento, Texto
+   """ O objeto é o elemento clicável de alguma cena.
    """
    MINHA_CENA = "string_correspondente_a_url_e_extensao_da_imagem" # Extensões aceitas: png, jpg, jpeg e gif
    MEU_ELEMENTO = "string_correspondente_a_url_e_extensao_da_imagem" # Extensões aceitas: png, jpg, jpeg e gif
    
+   def funcao_de_acao_do_botao(event = None):
+       #Função chamada no clique resultará na chamada de um texto
+       texto_surpresa = Texto(nome_da_cena, txt ="Mensagem que você deseja passar!")
+       texto_surpresa.vai()
+   
    nome_da_cena = Cena(MINHA_CENA)
+   nome_da_cena.vai()
    nome_do_elemento = Elemento(MEU_ELEMENTO, tit="título_do_elemento", 
                               style=dict(height=60,widht=60, left=600, top=20), # ou x=eixo_x, y=eixo_y, w=largura, h=altura
                               cena = nome_da_cena)
                               
-   self.ik.elt.bind("click", self.funcao_de_acao_do_botao)
-
-   
-   def funcao_de_acao_do_botao(event = None):
-       "Funcao chamada no clique"
-       print("Você clicou no botão!") # evento associado ao clique: mensagem, cena, sala,módulo...   
+   nome_do_elemento.elt.bind("click", funcao_de_acao_do_botao)
 
 
 MÚLTIPLA-ESCOLHA
@@ -278,7 +316,7 @@ INVENTÁRIO
 
 Inventário é um espaço onde os elementos encontrados podem ser guardados. Há dois modos de criar um inventário:
 
-* Objeto não resgatável
+* Objeto **não** resgatável
 
 .. code:: python
 
@@ -304,7 +342,7 @@ Inventário é um espaço onde os elementos encontrados podem ser guardados. Há
       """Gera um função que será resgatada no vai() do elemento para associar o clique à entrada no inventário"""
       inv.bota(nome_do_elemento, True)  
       
-* Objeto Resgataável
+* Objeto Resgatável
 
 É possível resgatar o Elemento construindo uma classe que tenha o método de resgate
      
