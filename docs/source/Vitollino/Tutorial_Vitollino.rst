@@ -54,7 +54,7 @@ IMPORTANDO MÓDULOS (SALAS)
 .. code:: python
 
    """ Exemplo from cenas.imix import Inicial"""
-    from  nome_do_pacote.nome_do_módulo import Classe_Desejada, Classe_Desejada2
+    from  nome_do_pacote.nome_do_módulo import Classe_Desejada, funcao_Desejada
     
     
     
@@ -73,11 +73,12 @@ IMPORTANDO MÓDULOS (SALAS)
 STYLE 
 -------
 
+O é utilizado para regular a altura e a largura da imagem que será mostrada.
+
 .. code:: python
     
     from _spy.vitollino.main import STYLE
     
-   
     
     STYLE["width"] = 900 # width = 300 (default) 
     STYLE["heigth"] = "900px" # min-height = "300px"
@@ -85,6 +86,8 @@ STYLE
 
 CENA
 -----
+
+A cena é uma tela com possibilidade de clique à esquerda,direita e centro.
 
 .. code:: python
 
@@ -108,6 +111,8 @@ CENA
 
 SALA
 -----
+
+A sala é a formação de um ambiente formado de 4 cenas posicionadas em norte, sul, leste e oeste.
 
 .. code:: python
 
@@ -137,6 +142,8 @@ SALA
 
 LABIRINTO
 ----------
+
+O Labirinto é um conjunto de SALAS ligadas.
 
 .. code:: python
 
@@ -180,6 +187,12 @@ LABIRINTO
 ELEMENTO
 ---------
 
+O elemento é um objeto estático colocado em alguma parte da cena. Pode ser inserido no inventário.
+
+.. warning::
+
+   Só é possível colocar elemento se houver alguma cena que acomode-a.
+
 .. code:: python
 
    from _spy.vitollino.main import Cena, Elemento
@@ -191,8 +204,7 @@ ELEMENTO
    nome_da_cena = Cena(MINHA_CENA)
    nome_do_elemento = Elemento(MEU_ELEMENTO, tit="título_do_elemento", 
                               style=dict(height=60,widht=60, left=600, top=20), # ou x=eixo_x, y=eixo_y, w=largura, h=altura
-                              cena = nome_da_cena,
-                              vai = ação_executável_no_clique)
+                              cena = nome_da_cena)
 
 POPUP
 -----
@@ -206,11 +218,67 @@ CÓDIGO
 BOTÃO
 ------
 
+O botão é um elemento visualizado como portal. Criando um botão é possível associar o clique a algum acontecimento.
+
+Existe algumas formas de criar um botão:
+
+* Usando a função ``vai()`` do Vitollino
+
+.. code:: python
+
+* Associando ao método vai() da classe Elemento 
+
+.. code:: python
+   
+   from _spy.vitollino.main import Cena, Elemento
+   """ O objeto é o elementoclicável de alguma cena.
+   """
+   MINHA_CENA = "string_correspondente_a_url_e_extensao_da_imagem" # Extensões aceitas: png, jpg, jpeg e gif
+   MEU_ELEMENTO = "string_correspondente_a_url_e_extensao_da_imagem" # Extensões aceitas: png, jpg, jpeg e gif
+   
+   nome_da_cena = Cena(MINHA_CENA)
+   nome_do_elemento = Elemento(MEU_ELEMENTO, tit="título_do_elemento", 
+                              style=dict(height=60,widht=60, left=600, top=20), # ou x=eixo_x, y=eixo_y, w=largura, h=altura
+                              cena = nome_da_cena,
+                              vai = funcao_de_acao_do_botao)
+
+   
+   def funcao_de_acao_do_botao(event = None):
+       "Funcao chamada no clique"
+       print("Você clicou no botão!") # evento associado ao clique: mensagem, cena, sala,módulo...   
+       
+* Associando ao evento do browser
+
+.. code:: python
+   
+   from _spy.vitollino.main import Cena, Elemento
+   """ O objeto é o elementoclicável de alguma cena.
+   """
+   MINHA_CENA = "string_correspondente_a_url_e_extensao_da_imagem" # Extensões aceitas: png, jpg, jpeg e gif
+   MEU_ELEMENTO = "string_correspondente_a_url_e_extensao_da_imagem" # Extensões aceitas: png, jpg, jpeg e gif
+   
+   nome_da_cena = Cena(MINHA_CENA)
+   nome_do_elemento = Elemento(MEU_ELEMENTO, tit="título_do_elemento", 
+                              style=dict(height=60,widht=60, left=600, top=20), # ou x=eixo_x, y=eixo_y, w=largura, h=altura
+                              cena = nome_da_cena)
+                              
+   self.ik.elt.bind("click", self.funcao_de_acao_do_botao)
+
+   
+   def funcao_de_acao_do_botao(event = None):
+       "Funcao chamada no clique"
+       print("Você clicou no botão!") # evento associado ao clique: mensagem, cena, sala,módulo...   
+
+
 MÚLTIPLA-ESCOLHA
 -----------------
 
 INVENTÁRIO
 -----------
+
+Inventário é um espaço onde os elementos encontrados podem ser guardados. Há dois modos de criar um inventário:
+
+* Objeto não resgatável
 
 .. code:: python
 
@@ -223,7 +291,7 @@ INVENTÁRIO
    MEU_ELEMENTO = "string_correspondente_a_url_e_extensao_da_imagem" # Extensões aceitas: png, jpg, jpeg e gif
    
    
-   inv.inicia()
+   inv.inicia() # comando que starta o inventário
    nome_da_cena = Cena(MINHA_CENA)
    nome_do_elemento = Elemento(MEU_ELEMENTO, tit="título_do_elemento", 
                               style=dict(height=60,widht=60, left=600, top=20), # ou ,x=eixo_x, y=eixo_y, w=largura, h=altura,
@@ -236,9 +304,9 @@ INVENTÁRIO
       """Gera um função que será resgatada no vai() do elemento para associar o clique à entrada no inventário"""
       inv.bota(nome_do_elemento, True)  
       
-      
-É possível resgatar o Elemento construindo uma classe que tenha o método de resgate
+* Objeto Resgataável
 
+É possível resgatar o Elemento construindo uma classe que tenha o método de resgate
      
 .. code:: python
 
