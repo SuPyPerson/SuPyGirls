@@ -19,13 +19,12 @@ SUMÁRIO
 #. `SALA`_
 #. `LABIRINTO`_
 #. `ELEMENTO`_
-#. `POPUP`_
 #. `TEXTO (PopUp)`_
-#. `CÓDIGO`_
 #. `BOTÃO`_
 #. `MÚLTIPLA-ESCOLHA`_
 #. `INVENTÁRIO`_
 #. `MÚSICA`_
+#. `CÓDIGO`_
 #. `PORTAL`_
 #. `DROPPER`_
 #. `DROPPABLE`_
@@ -206,15 +205,13 @@ O elemento é um objeto estático colocado em alguma parte da cena. Pode ser ins
                               style=dict(height=60,widht=60, left=600, top=20), # ou x=eixo_x, y=eixo_y, w=largura, h=altura
                               cena = nome_da_cena)
 
-POPUP
------
-
 TEXTO (PopUp)
 --------------
 
-É uma mensagem que pulará na tela. 
+É uma mensagem que aparecerá na tela. 
 
 * Texto associado a abertura da Cena
+
 .. code:: python
 
    from _spy.vitollino.main import Cena, Elemento, Texto
@@ -240,19 +237,16 @@ TEXTO (PopUp)
    MINHA_CENA = "string_correspondente_a_url_e_extensao_da_imagem" # Extensões aceitas: png, jpg, jpeg e gif
    MEU_ELEMENTO = "string_correspondente_a_url_e_extensao_da_imagem" # Extensões aceitas: png, jpg, jpeg e gif
    
+   def chama_elemento(*args):
+       nome_do_elemento = Elemento(LIVRO, tit="título_do_elemento", 
+                                   style=dict(height=60,widht=60, left=600, top=20)) # ou x=eixo_x, y=eixo_y, w=largura, h=altura
+       nome_do_elemento.entra(nome_da_cena)   
+   
    nome_da_cena = Cena(FUNDO)
    nome_da_cena.vai()
-   texto_ = Texto(nome_da_cena, txt = "Mensagem desejada", foi = funcao_do_elemento)
+   texto_ = Texto(nome_da_cena, txt = "Mensagem desejada", foi = funcao_do_elemento) # o método foi() esconde o popup
    texto_.vai()
-   
-   def funcao_do_elemento(*_):
-       nome_do_elemento = Elemento(LIVRO, tit="título_do_elemento", 
-                                   style=dict(height=60,widht=60, left=600, top=20), # ou x=eixo_x, y=eixo_y, w=largura, h=altura
-                                   cena = nome_da_cena)
-       nome_do_elemento.entra(nome_da_cena)
-
-CÓDIGO
--------
+  
 
 BOTÃO
 ------
@@ -266,7 +260,7 @@ Existe algumas formas de criar um botão:
 .. code:: python
    
    from _spy.vitollino.main import Cena, Elemento
-   """ O objeto é o elementoclicável de alguma cena.
+   """ O botão é o elementoclicável de alguma cena.
    """
    MINHA_CENA = "string_correspondente_a_url_e_extensao_da_imagem" # Extensões aceitas: png, jpg, jpeg e gif
    MEU_ELEMENTO = "string_correspondente_a_url_e_extensao_da_imagem" # Extensões aceitas: png, jpg, jpeg e gif
@@ -289,7 +283,7 @@ Existe algumas formas de criar um botão:
 .. code:: python
    
    from _spy.vitollino.main import Cena, Elemento, Texto
-   """ O objeto é o elemento clicável de alguma cena.
+   """ O botão é o elemento clicável de alguma cena.
    """
    MINHA_CENA = "string_correspondente_a_url_e_extensao_da_imagem" # Extensões aceitas: png, jpg, jpeg e gif
    MEU_ELEMENTO = "string_correspondente_a_url_e_extensao_da_imagem" # Extensões aceitas: png, jpg, jpeg e gif
@@ -310,6 +304,32 @@ Existe algumas formas de criar um botão:
 
 MÚLTIPLA-ESCOLHA
 -----------------
+
+A múltipla escolha é implementada usando a classe Texto do Vitollino. Funciona como um popup onde o jogador pode selecionar algo (opção)
+
+.. code:: python
+
+   from _spy.vitollino.main import Cena, Texto
+   """ A multipla escolha é um popup com opções
+   """
+   
+   MINHA_CENA = "string_correspondente_a_url_e_extensao_da_imagem" # Extensões aceitas: png, jpg, jpeg e gif
+   MEU_ELEMENTO = "string_correspondente_a_url_e_extensao_da_imagem" # Extensões aceitas: png, jpg, jpeg e gif
+
+   def resultado(opcao_escolhida):
+       # O novo popupque será gerado quando o foi() do texto forchamado
+       dicionario = dict(A="Você clicou no A", B="Você clicou no B") # dicionário que guarda a devolutiva da opção escolhida
+       devolutiva = Texto(nome_da_cena, txt=dicionario[opcao_escolhida])
+       devolutiva.vai()   
+
+
+   nome_da_cena = Cena(MINHA_CENA)
+   nome_da_cena.vai()
+
+
+   pergunta = Texto(nome_da_cena, txt = "Seu enunciado aqui", foi = resultado, A= "resposta", B= "resposta")
+  pergunta.vai()
+   
 
 INVENTÁRIO
 -----------
@@ -379,7 +399,7 @@ Inventário é um espaço onde os elementos encontrados podem ser guardados. Há
           self.memento=memento
 
 
-  class Minha_cena():
+  class Main():
 
       def __init__(self):
           inv.inicia()
@@ -392,9 +412,24 @@ Inventário é um espaço onde os elementos encontrados podem ser guardados. Há
           self.minha_cena.vai()
 
   if __name__ == "__main__":
-      Minha_cena()     
+      Main()     
 
 MÚSICA
+-------
+
+.. code:: python
+
+   from _spy.vitollino.main import Cena, Elemento
+   
+   MINHA_CENA = "string_correspondente_a_url_e_extensao_da_imagem" # Extensões aceitas: png, jpg, jpeg e gif
+   MINHA_MUSICA = "string_correspondente_a_url_e_extensao_da_musica" # Extensões aceitas: mp3, mp4
+   
+   nome_da_cena = Cena(MINHA_CENA)
+   nome_da_cena.vai()
+   
+   nome_da_musica = Musica(MINHA_MUSICA, loop = True, autoplay = True)
+
+CÓDIGO
 -------
 
 PORTAL
