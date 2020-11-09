@@ -56,13 +56,12 @@ Espero que tão logo este documento seja parco frente a sua fome pythônica e vo
  * `Funções`_ 
  
    * Parâmetros Ordinais e Nomeados
+   * Funções Anônimas
 
  * `Classes`_
 
    * Herança
-   
    * Polimorfismo
-
 
 *  `Referências`_
 
@@ -952,7 +951,27 @@ Como dito acima, as funções também são usadas quando determinados comportame
         print("O resultado da função soma_FUN:", n1 + n2)
 
     soma_FUN()
+
+Funções Anônimas/Lambda
+-----------------
+
+Uma forma mais *elegante* de programar é a construção de *funções lambda* ou *função anônima*.
+
+A função lambda tem a seguinte sintaxe:
    
+.. code:: python
+   
+   lambda argumentos da função: expressão/ação da função
+   
+Observe o exemplo abaixo:
+
+.. code::
+   #exemplo
+      
+   dobro = lambda x: x*2
+   print(dobro(5))
+
+
 Parâmetros Ordinais e Nomeados
 --------------------------------
 
@@ -1001,34 +1020,13 @@ Na função ``porcento`` pede: o **parâmetro ordinal** ``valor``, o **parâmetr
    
 Veja alguns exemplos de funções python: `Funções Python`_
 
-.. Tip:: 
-
-   Uma forma mais *elegante* de programar é a construção de *funções lambda* ou *função anônima*.
-   A função lambda tem a sintaxe:
-   
-   .. code:: python
-   
-      lambda argumentos da função: expressão/ação da função
-      
-      #exemplo
-      
-      dobro = lambda x: x*2
-      
-      print(dobro(5))
       
 POO- Programação Orientado a Objeto
 ------------------------------------
 
 **TUDO NO PYTHON É OBJETO!**
 
-Grave esta frase. Retomaremos elamais tarde.
-
-A estrutura de da programação orientada a objeto
-
-Classes
----------
-
-.. code:: python
+Grave esta frase. Retomaremos ela mais tarde.
 
 Herança
 --------
