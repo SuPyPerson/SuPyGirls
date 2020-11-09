@@ -58,7 +58,7 @@ Espero que tão logo este documento seja parco frente a sua fome pythônica e vo
    * Parâmetros Ordinais e Nomeados
    * Funções Anônimas
 
- * `Classes`_
+ * `POO- Programação Orientado a Objeto`_
 
    * Herança
    * Polimorfismo
@@ -194,7 +194,7 @@ Exemplo do código anterior seguindo o paradigma OO:
             
 .. Tip:: 
 
-   Você pode acessar o conteúdo de Programação Orientada Objeto acessando o tópico `Classes`_
+   Você pode acessar o conteúdo de Programação Orientada Objeto acessando o tópico `POO- Programação Orientado a Objeto`_
  
  
 **Python: Sintaxe Básica** 
@@ -219,12 +219,7 @@ Variáveis
    """Imprime na tela o valor da variavel"""
    print(nome_da_variavel)
    
-   
-.. Tip::
-
-   A **declaração de múltiplas variáveis** é utilizada para tornar o código mais pythônico.
-   
-      
+         
 .. Warning:: 
    
    É indicado não começar sua variável com:
