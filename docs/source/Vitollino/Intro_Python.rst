@@ -960,9 +960,8 @@ A função lambda tem a seguinte sintaxe:
    
 Observe o exemplo abaixo:
 
-.. code::
-   #exemplo
-      
+.. code:: python
+
    dobro = lambda x: x*2
    print(dobro(5))
 
