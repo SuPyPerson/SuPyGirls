@@ -55,7 +55,6 @@ Espero que tão logo este documento seja parco frente a sua fome pythônica e vo
 
  * `Funções`_ 
  
-   * Funções Lambda
    * Parâmetros Ordinais e Nomeados
 
  * `Classes`_
@@ -170,7 +169,7 @@ Programação Orientada a Objeto (OO)
    Você pode ver outra explicação sobre OO aqui:  :doc:`../intro_comp/PythonOO`  
 
 Bem como o nome diz, se trata de uma programação centrada nos objetos.
-O objeto na OO é tudo aquilo que carrega, conjuntamente, propriedades e operações de uma classe. Quando 
+O objeto na OO é tudo aquilo que carrega, conjuntamente, propriedades e operações de uma classe. 
 
 Este paradigma de programação apresenta-se, comumente, em diversos blocos com comportamentos singulares, técnica denominada encapsulamento, e blocos de funcionamento conjunto. 
 
@@ -193,7 +192,11 @@ Exemplo do código anterior seguindo o paradigma OO:
 
         def anda(self):
             # Codigo para a boneca andar
-             
+            
+.. Tip:: 
+
+   Você pode acessar o conteúdo de Programação Orientada Objeto acessando o tópico `Classes`_
+ 
  
 **Python: Sintaxe Básica** 
 ----------------------------
@@ -209,11 +212,20 @@ Variáveis
   
    nome_da_variavel = "valor da variavel"
    nome_da_outra_variavel = 5362543
-   nome_da_outra_outa_variavel = [a,b,c,d,e,f,g,h]
+   nome_da_outra_outra_variavel = [a,b,c,d,e,f,g,h]
+   
+   #decalração de múltiplas variáveis
+   nome_da_variavel, nome_da_variavel_dois = "variavel_um", "variavel_dois"
    
    """Imprime na tela o valor da variavel"""
    print(nome_da_variavel)
    
+   
+.. Tip::
+
+   A **declaração de múltiplas variáveis** é utilizada para tornar o código mais pythônico.
+   
+      
 .. Warning:: 
    
    É indicado não começar sua variável com:
@@ -345,8 +357,21 @@ Dados: Type e Id
    string_dois = "Oi! Espero que esteja tudo bem aí!"
    type(string_um)
    
+   
    """Tudo no python carrega uma identidade, um Id"""
    id(insira_uma_variavel_aqui) # substitua por alguma variável qualquer
+   
+.. Tip::
+
+   Quando estiver brincando com strings busque explorar as funções:
+   
+   * `upper()`_
+   * `lower()`_
+   * `strip()`_
+   * `count()`_
+   * `find()`_
+   * `replace()`_
+   
    
 Estrutura de Dados
 --------------------
@@ -359,11 +384,26 @@ Estrutura de Dados
    lista_um = [1,2,3,[1,2,3[1,2,3]]] #quantas listas tem aqui dentro?
    lista_dois = ["oi",1,4.3,4+9j]
    type(lista_um)
+
+.. Tip::
+
+  
+   Quando estiver brincando com listas busque explorar as funções:
    
+   * `pop()`_
+   * `append()`_
+   * `remove()`_
+   * `len()`_
+
+.. code:: python
+
    """ Tudo que tem uma chave e um valor é um dicionário no python"""
    dicionario_um = {"um":"1","dois":2,"cachorro":"buldog"} 
    type(dicionario_um["um"])
    type(dicionario_um["dois"])
+   
+   dicionario_um.keys()
+   decionario_um.values()
    
    """ Valores entre parêntesis () são uma tupla no python. Elas são imutáveis!"""
    tupla_um = (1,2,3,4,5) 
@@ -874,7 +914,7 @@ Observe o exemplo de função abaixo:
    diga_o_nome("Gabriela") #observe como a função é chamada.
                            # "Gabriela" é o ARGUMENTO da função 'diga_o_nome'
                                                    
-.. NOte::
+.. Note::
 
    Os parâmetros chamam-se ``parâmetro`` no cabeçalho da função. Quando chamamos a função, como em ``diga_o_nome_("Gabriela")``, o valor que fica dentro do parêntesis é chamado ``argumento``.
   
@@ -961,8 +1001,29 @@ Na função ``porcento`` pede: o **parâmetro ordinal** ``valor``, o **parâmetr
    
 Veja alguns exemplos de funções python: `Funções Python`_
 
-Funções Lambda
----------------
+.. Tip:: 
+
+   Uma forma mais *elegante* de programar é a construção de *funções lambda* ou *função anônima*.
+   A função lambda tem a sintaxe:
+   
+   .. code:: python
+   
+      lambda argumentos da função: expressão/ação da função
+      
+      #exemplo
+      
+      dobro = lambda x: x*2
+      
+      print(dobro(5))
+      
+POO- Programação Orientado a Objeto
+------------------------------------
+
+**TUDO NO PYTHON É OBJETO!**
+
+Grave esta frase. Retomaremos elamais tarde.
+
+A estrutura de da programação orientada a objeto
 
 Classes
 ---------
@@ -997,6 +1058,19 @@ Referências
 .. _Programação Procedural: https://pt.wikipedia.org/wiki/Programa%C3%A7%C3%A3o_procedural
 .. _Linguagens de programação: https://www.treinaweb.com.br/blog/linguagens-e-paradigmas-de-programacao/
 .. _Métodos Mágicos: https://www.python-course.eu/python3_magic_methods.php
+
+
+.. _upper(): https://www.tutorialspoint.com/python/string_upper.htm
+.. _lower(): https://www.w3schools.com/python/ref_string_lower.asp
+.. _strip(): https://www.w3schools.com/python/ref_string_strip.asp
+.. _count(): https://www.askpython.com/python/string/python-count-method
+.. _find(): https://www.w3schools.com/python/ref_string_find.asp
+.. _replace(): https://www.w3schools.com/python/ref_string_replace.asp
+
+.. _pop(): https://www.tutorialspoint.com/python/list_pop.htm
+.. _append(): https://www.programiz.com/python-programming/methods/list/append
+.. _remove(): https://www.programiz.com/python-programming/methods/list/remove
+.. _len(): https://www.programiz.com/python-programming/methods/built-in/len
 
 .. _HERANÇA: https://www.treinaweb.com.br/blog/utilizando-heranca-no-python/
 .. _POLIMORFISMO: https://professormarcolan.com.br/polimorfismo-em-python/
