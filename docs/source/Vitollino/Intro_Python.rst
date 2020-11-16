@@ -38,10 +38,11 @@ Espero que tão logo este documento seja parco frente a sua fome pythônica e vo
     * `Tuplas`
     * `String`
     * `Set`
-    * Funcionalidades
+    * `Funcionalidades`
       
-      * Compreensão de Listas
-      * Compreensão de dicionários
+      * `Compreensão de Listas`
+      * `Compreensão de dicionários`
+      * `Compreensão de Conjuntos`
 
  * `Operadores`_
 
@@ -60,7 +61,7 @@ Espero que tão logo este documento seja parco frente a sua fome pythônica e vo
  * `Funções`_ 
  
    * Parâmetros Ordinais e Nomeados
-   * Funções Anônimas
+   * Funções Anônimas/Lambda
 
  * `POO- Programação Orientado a Objeto`_
 
@@ -410,6 +411,24 @@ Estrutura de Dados
    """ Valores entre chaves {} são um conjunto (set) em python"""
    set_um = {1,2,3,4,"5","e ae"} 
    type(set_um)
+   
+*Funcionalidades*
+------------------
+ 
+Como dito anteriormente, o Python é uma linguagem poderosíssima! E alguns conceitos permitem o uso de atalhos na resolução de problemas computacionais.
+
+Abaixo compilamos três funcionalidade muito poderosas da linguagem:
+
+Compreensão de Listas
+----------------------
+
+
+Compreensão de dicionários
+----------------------------
+
+
+Compreensão de Conjuntos
+--------------------------
 
 Operadores
 -----------
