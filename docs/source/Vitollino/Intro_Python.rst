@@ -320,6 +320,7 @@ Fonte exemplo: `Bosontreinamentos`_
    
 Dados: Type e Id
 ------------------
+
 * Boolean
 
 .. code:: python
@@ -330,7 +331,7 @@ Dados: Type e Id
    print(10 == 9) # False
    print(10 < 9) # False
    
-* Inteiro,flutuante,complexo e string
+* Inteiro
 
 .. code:: python
 
@@ -340,16 +341,31 @@ Dados: Type e Id
    inteiro_um = 12
    inteiro_dois = -45
    type(inteiro_um)
-   
+
+* Flutuante 
+
+.. code:: python
+
    """ Numeros com parte decimal recebem o tipo 'flutuante'(float) """
    flutuante_um = 12.4
    flutuante_dois = -45.6
    type(flutuante_um)
    
+
+
+* Complexo 
+
+.. code:: python
+   
    """ Numeros com parte real e imaginnária recebem o tipo 'complex'"""
    complexo_um = 12+3j
    complexo_dois = 15-7j
    type(complexo_um)
+   
+
+* String
+
+.. code:: python
    
    """ Tudo, TUDO MESMO, que está entres aspas é string no python"""
    string_um = "12+3j"
@@ -375,6 +391,8 @@ Dados: Type e Id
 Estrutura de Dados
 --------------------
 
+* Lista
+
 .. code:: python
    
    #teste o código abaixo no seu console
@@ -394,6 +412,9 @@ Estrutura de Dados
    * `remove()`_
    * `len()`_
 
+* Dicionário
+
+
 .. code:: python
 
    """ Tudo que tem uma chave e um valor é um dicionário no python"""
@@ -404,10 +425,14 @@ Estrutura de Dados
    dicionario_um.keys()
    decionario_um.values()
    
+* Tupla
+
    """ Valores entre parêntesis () são uma tupla no python. Elas são imutáveis!"""
    tupla_um = (1,2,3,4,5) 
    type(tupla_um)
    
+* Set
+
    """ Valores entre chaves {} são um conjunto (set) em python"""
    set_um = {1,2,3,4,"5","e ae"} 
    type(set_um)
@@ -419,16 +444,16 @@ Como dito anteriormente, o Python é uma linguagem poderosíssima! E alguns conc
 
 Abaixo compilamos três funcionalidade muito poderosas da linguagem:
 
-Compreensão de Listas
-----------------------
+* Compreensão de Listas
 
 
-Compreensão de dicionários
-----------------------------
+
+* Compreensão de dicionários
 
 
-Compreensão de Conjuntos
---------------------------
+
+* Compreensão de Conjuntos
+
 
 Operadores
 -----------
