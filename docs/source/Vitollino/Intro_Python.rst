@@ -38,11 +38,12 @@ Espero que tão logo este documento seja parco frente a sua fome pythônica e vo
     * `Tuplas`
     * `String`
     * `Set`
-    * `Funcionalidades`
+    * `Compreensão e Expressão Geradora`
       
       * `Compreensão de Listas`
       * `Compreensão de dicionários`
       * `Compreensão de Conjuntos`
+      * `Expressão Geradora`
 
  * `Operadores`_
 
@@ -380,9 +381,9 @@ Dados: Type e Id
 
    Quando estiver brincando com strings busque explorar as funções:
    
-   * _`join()`_
-   * _`translate()`_
-   * _`maketrans()`_
+   * `join()`_
+   * `translate()`_
+   * `maketrans()`_
    * `upper()`_
    * `lower()`_
    * `strip()`_
@@ -402,6 +403,7 @@ Estrutura de Dados
    #teste o código abaixo no seu console
    
    """ Tudo que está entre colchetes [] é lista no python"""
+   lista_vazia = []
    lista_um = [1,2,3,[1,2,3[1,2,3]]] #quantas listas tem aqui dentro?
    lista_dois = ["oi",1,4.3,4+9j]
    type(lista_um)
@@ -412,18 +414,17 @@ Estrutura de Dados
    
 
     * `len()`_
-    * _`index()`_
-    * _`append()`_
-    * _`extend()`_
-    * _`insert()`_
-    * _`remove()`_
-    * _`count()`_
-    * _`pop()`_
-    * _`reverse()`_
-    * _`sort()`_
-    * _`copy()`_
-    * _`clear()`_
-
+    * `index()`_
+    * `append()`_
+    * `extend()`_
+    * `insert()`_
+    * `remove()`_
+    * `count()`_
+    * `pop()`_
+    * `reverse()`_
+    * `sort()`_
+    * `copy()`_
+    * `clear()`_
 
 
 * Dicionário
@@ -433,6 +434,7 @@ Estrutura de Dados
 
    """ Tudo que tem uma chave e um valor é um dicionário no python"""
    dicionario_um = {"um":"1","dois":2,"cachorro":"buldog"} 
+   dict_vazia = {}
    type(dicionario_um["um"])
    type(dicionario_um["dois"])
    
@@ -445,6 +447,7 @@ Estrutura de Dados
 
    """ Valores entre parêntesis () são uma tupla no python. Elas são imutáveis!"""
    tupla_um = (1,2,3,4,5) 
+   tupla_vazia = (,)
    type(tupla_um)
    
 * Set
@@ -455,23 +458,46 @@ Estrutura de Dados
    set_um = {1,2,3,4,"5","e ae"} 
    type(set_um)
    
-*Funcionalidades*
-------------------
+*Compreensão e Expressão Geradora*
+------------------------------------
  
 Como dito anteriormente, o Python é uma linguagem poderosíssima! E alguns conceitos permitem o uso de atalhos na resolução de problemas computacionais.
 
 Abaixo compilamos três funcionalidade muito poderosas da linguagem:
 
 * Compreensão de Listas
+ 
+A compreensão de listas é utilizada onde comumente, na busca por uma lista como output, usaríamos um loop.
 
+Logo, onde antes nós faríamos:
 
+.. code:: python
+
+    lista = []
+    for i in range(13):
+        lista.append(i**2)
+
+    print(lista)
+    
+Com a compreensão de lista conseguimos atribuir a construção damesma lista da seguinte forma:
+
+.. code:: python
+
+    nueva_lista = [numero**2 for numero in range(13)]
+    print(nueva_lista)
+
+**A Sintaxe da compreensão de lista é:**
+
+   [expressão(variável) for variável in conjunto_input [predicate][, …]]
+   
 
 * Compreensão de dicionários
 
-
+.. code:: python
 
 * Compreensão de Conjuntos
 
+.. code:: python
 
 Operadores
 -----------
