@@ -464,9 +464,19 @@ Como dito anteriormente, o Python é uma linguagem poderosíssima! E alguns conc
 
 Abaixo compilamos três funcionalidade muito poderosas da linguagem:
 
+A compreensão é análoga a notação de conjuntos da matemática. Lembra?
+
+    #. {x ^ 2: x é um número natural menor que 10}
+    #. {x: x é um número inteiro menor que 20, x é ímpar}
+    #. {x: x é uma letra na palavra ‘MATEMÁTICA’, x é uma vogal}
+    
+    Exemplo: `Vooo -Insights`_
+
+O tipo de compreensão dependerá do tipo de dado (Type) que você quererá como output.
+
 * Compreensão de Listas
  
-A compreensão de listas é utilizada onde comumente, na busca por uma lista como output, usaríamos o loop.
+A compreensão de listas é utilizada onde, comumente, na busca por uma lista como output, usaríamos o loop.
 
 Logo, onde antes nós faríamos:
 
@@ -1189,7 +1199,7 @@ Referências
 .. _Bosontreinamentos: http://www.bosontreinamentos.com.br/programacao-em-python/funcoes-em-python-escopos-de-variaveis/
 .. _Python Progressivo: https://www.pythonprogressivo.net/2018/02/Operadores-logicos-AND-OR-NOT.html
 .. _Funções Python: https://docs.python.org/pt-br/3/library/functions.html
-
+.. _Vooo -Insights: "https://www.vooo.pro/insights/tutorial-compreensao-de-listas-python-com-exemplos/"_
 
 :ref:`Tutorial Vitollino <Tutorial_Vitollino>`
 -----------------------------------------------
