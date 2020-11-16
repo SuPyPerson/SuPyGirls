@@ -38,6 +38,10 @@ Espero que tão logo este documento seja parco frente a sua fome pythônica e vo
     * `Tuplas`
     * `String`
     * `Set`
+    * Funcionalidades
+      
+      * Compreensão de Listas
+      * Compreensão de dicionários
 
  * `Operadores`_
 
