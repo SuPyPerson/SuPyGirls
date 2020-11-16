@@ -380,12 +380,16 @@ Dados: Type e Id
 
    Quando estiver brincando com strings busque explorar as funções:
    
+   * _`join()`_
+   * _`translate()`_
+   * _`maketrans()`_
    * `upper()`_
    * `lower()`_
    * `strip()`_
    * `count()`_
    * `find()`_
    * `replace()`_
+
    
    
 Estrutura de Dados
@@ -404,13 +408,23 @@ Estrutura de Dados
 
 .. Tip::
 
-  
-   Quando estiver brincando com listas busque explorar as funções:
+   Quando estiver brincando com listas busque explorar os Metodos:
    
-   * `pop()`_
-   * `append()`_
-   * `remove()`_
-   * `len()`_
+
+    * `len()`_
+    * _`index()`_
+    * _`append()`_
+    * _`extend()`_
+    * _`insert()`_
+    * _`remove()`_
+    * _`count()`_
+    * _`pop()`_
+    * _`reverse()`_
+    * _`sort()`_
+    * _`copy()`_
+    * _`clear()`_
+
+
 
 * Dicionário
 
@@ -427,11 +441,15 @@ Estrutura de Dados
    
 * Tupla
 
+.. code:: python
+
    """ Valores entre parêntesis () são uma tupla no python. Elas são imutáveis!"""
    tupla_um = (1,2,3,4,5) 
    type(tupla_um)
    
 * Set
+
+.. code:: python
 
    """ Valores entre chaves {} são um conjunto (set) em python"""
    set_um = {1,2,3,4,"5","e ae"} 
@@ -1106,11 +1124,23 @@ Referências
 .. _count(): https://www.askpython.com/python/string/python-count-method
 .. _find(): https://www.w3schools.com/python/ref_string_find.asp
 .. _replace(): https://www.w3schools.com/python/ref_string_replace.asp
+.. _join(): https://www.programiz.com/python-programming/methods/string/join
+.. _translate(): https://www.programiz.com/python-programming/methods/string/translate
+.. _maketrans(): https://www.programiz.com/python-programming/methods/string/maketrans
+
 
 .. _pop(): https://www.tutorialspoint.com/python/list_pop.htm
 .. _append(): https://www.programiz.com/python-programming/methods/list/append
 .. _remove(): https://www.programiz.com/python-programming/methods/list/remove
 .. _len(): https://www.programiz.com/python-programming/methods/built-in/len
+.. _index(): https://www.programiz.com/python-programming/methods/list/index
+.. _extend(): https://www.programiz.com/python-programming/methods/list/extend
+.. _insert(): https://www.programiz.com/python-programming/methods/list/insert
+.. _count(): https://www.programiz.com/python-programming/methods/list/count
+.. _reverse(): https://www.programiz.com/python-programming/methods/list/reverse
+.. _sort(): https://www.programiz.com/python-programming/methods/list/sort
+.. _copy(): https://www.programiz.com/python-programming/methods/list/copy
+.. _clear(): https://www.programiz.com/python-programming/methods/list/clear
 
 .. _HERANÇA: https://www.treinaweb.com.br/blog/utilizando-heranca-no-python/
 .. _POLIMORFISMO: https://professormarcolan.com.br/polimorfismo-em-python/
