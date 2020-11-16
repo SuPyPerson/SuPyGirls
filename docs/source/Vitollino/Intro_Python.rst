@@ -461,13 +461,13 @@ Estrutura de Dados
 *Compreensão e Expressão Geradora*
 ------------------------------------
  
-Como dito anteriormente, o Python é uma linguagem poderosíssima! E alguns conceitos permitem o uso de atalhos na resolução de problemas computacionais.
+Como dito anteriormente, o Python é uma linguagem poderosíssima! E alguns conceitos do python funcionam como atalhos na resolução de problemas computacionais.
 
 Abaixo compilamos três funcionalidade muito poderosas da linguagem:
 
 * Compreensão de Listas
  
-A compreensão de listas é utilizada onde comumente, na busca por uma lista como output, usaríamos um loop.
+A compreensão de listas é utilizada onde comumente, na busca por uma lista como output, usaríamos o loop.
 
 Logo, onde antes nós faríamos:
 
@@ -479,7 +479,7 @@ Logo, onde antes nós faríamos:
 
     print(lista)
     
-Com a compreensão de lista conseguimos atribuir a construção damesma lista da seguinte forma:
+Com a compreensão de lista conseguimos atribuir a construção da mesma lista da seguinte forma:
 
 .. code:: python
 
@@ -488,7 +488,9 @@ Com a compreensão de lista conseguimos atribuir a construção damesma lista da
 
 **A Sintaxe da compreensão de lista é:**
 
-   [expressão(variável) for variável in conjunto_input [predicate][, …]]
+.. code:: python
+ 
+    [expressão(variável) for variável in conjunto_input [predicate][, …]]
    
 
 * Compreensão de dicionários
