@@ -38,6 +38,12 @@ Espero que tão logo este documento seja parco frente a sua fome pythônica e vo
     * `Tuplas`
     * `String`
     * `Set`
+    * `Compreensão e Expressão Geradora`
+      
+      * `Compreensão de Listas`
+      * `Compreensão de dicionários`
+      * `Compreensão de Conjuntos`
+      * `Expressão Geradora`
 
  * `Operadores`_
 
@@ -56,7 +62,7 @@ Espero que tão logo este documento seja parco frente a sua fome pythônica e vo
  * `Funções`_ 
  
    * Parâmetros Ordinais e Nomeados
-   * Funções Anônimas
+   * Funções Anônimas/Lambda
 
  * `POO- Programação Orientado a Objeto`_
 
@@ -315,6 +321,7 @@ Fonte exemplo: `Bosontreinamentos`_
    
 Dados: Type e Id
 ------------------
+
 * Boolean
 
 .. code:: python
@@ -325,7 +332,7 @@ Dados: Type e Id
    print(10 == 9) # False
    print(10 < 9) # False
    
-* Inteiro,flutuante,complexo e string
+* Inteiro
 
 .. code:: python
 
@@ -335,16 +342,31 @@ Dados: Type e Id
    inteiro_um = 12
    inteiro_dois = -45
    type(inteiro_um)
-   
+
+* Flutuante 
+
+.. code:: python
+
    """ Numeros com parte decimal recebem o tipo 'flutuante'(float) """
    flutuante_um = 12.4
    flutuante_dois = -45.6
    type(flutuante_um)
    
+
+
+* Complexo 
+
+.. code:: python
+   
    """ Numeros com parte real e imaginnária recebem o tipo 'complex'"""
    complexo_um = 12+3j
    complexo_dois = 15-7j
    type(complexo_um)
+   
+
+* String
+
+.. code:: python
    
    """ Tudo, TUDO MESMO, que está entres aspas é string no python"""
    string_um = "12+3j"
@@ -359,53 +381,125 @@ Dados: Type e Id
 
    Quando estiver brincando com strings busque explorar as funções:
    
+   * `join()`_
+   * `translate()`_
+   * `maketrans()`_
    * `upper()`_
    * `lower()`_
    * `strip()`_
    * `count()`_
    * `find()`_
    * `replace()`_
+
    
    
 Estrutura de Dados
 --------------------
+
+* Lista
 
 .. code:: python
    
    #teste o código abaixo no seu console
    
    """ Tudo que está entre colchetes [] é lista no python"""
+   lista_vazia = []
    lista_um = [1,2,3,[1,2,3[1,2,3]]] #quantas listas tem aqui dentro?
    lista_dois = ["oi",1,4.3,4+9j]
    type(lista_um)
 
 .. Tip::
 
-  
-   Quando estiver brincando com listas busque explorar as funções:
+   Quando estiver brincando com listas busque explorar os Metodos:
    
-   * `pop()`_
-   * `append()`_
-   * `remove()`_
-   * `len()`_
+
+    * `len()`_
+    * `index()`_
+    * `append()`_
+    * `extend()`_
+    * `insert()`_
+    * `remove()`_
+    * `count()`_
+    * `pop()`_
+    * `reverse()`_
+    * `sort()`_
+    * `copy()`_
+    * `clear()`_
+
+
+* Dicionário
+
 
 .. code:: python
 
    """ Tudo que tem uma chave e um valor é um dicionário no python"""
    dicionario_um = {"um":"1","dois":2,"cachorro":"buldog"} 
+   dict_vazia = {}
    type(dicionario_um["um"])
    type(dicionario_um["dois"])
    
    dicionario_um.keys()
    decionario_um.values()
    
+* Tupla
+
+.. code:: python
+
    """ Valores entre parêntesis () são uma tupla no python. Elas são imutáveis!"""
    tupla_um = (1,2,3,4,5) 
+   tupla_vazia = (,)
    type(tupla_um)
    
+* Set
+
+.. code:: python
+
    """ Valores entre chaves {} são um conjunto (set) em python"""
    set_um = {1,2,3,4,"5","e ae"} 
    type(set_um)
+   
+*Compreensão e Expressão Geradora*
+------------------------------------
+ 
+Como dito anteriormente, o Python é uma linguagem poderosíssima! E alguns conceitos do python funcionam como atalhos na resolução de problemas computacionais.
+
+Abaixo compilamos três funcionalidade muito poderosas da linguagem:
+
+* Compreensão de Listas
+ 
+A compreensão de listas é utilizada onde comumente, na busca por uma lista como output, usaríamos o loop.
+
+Logo, onde antes nós faríamos:
+
+.. code:: python
+
+    lista = []
+    for i in range(13):
+        lista.append(i**2)
+
+    print(lista)
+    
+Com a compreensão de lista conseguimos atribuir a construção da mesma lista da seguinte forma:
+
+.. code:: python
+
+    nueva_lista = [numero**2 for numero in range(13)]
+    print(nueva_lista)
+
+**A Sintaxe da compreensão de lista é:**
+
+.. code:: python
+ 
+    [expressão(variável) for variável in conjunto_input [predicate][, …]]
+   
+
+* Compreensão de dicionários
+
+.. code:: python
+
+* Compreensão de Conjuntos
+
+.. code:: python
 
 Operadores
 -----------
@@ -1058,11 +1152,23 @@ Referências
 .. _count(): https://www.askpython.com/python/string/python-count-method
 .. _find(): https://www.w3schools.com/python/ref_string_find.asp
 .. _replace(): https://www.w3schools.com/python/ref_string_replace.asp
+.. _join(): https://www.programiz.com/python-programming/methods/string/join
+.. _translate(): https://www.programiz.com/python-programming/methods/string/translate
+.. _maketrans(): https://www.programiz.com/python-programming/methods/string/maketrans
+
 
 .. _pop(): https://www.tutorialspoint.com/python/list_pop.htm
 .. _append(): https://www.programiz.com/python-programming/methods/list/append
 .. _remove(): https://www.programiz.com/python-programming/methods/list/remove
 .. _len(): https://www.programiz.com/python-programming/methods/built-in/len
+.. _index(): https://www.programiz.com/python-programming/methods/list/index
+.. _extend(): https://www.programiz.com/python-programming/methods/list/extend
+.. _insert(): https://www.programiz.com/python-programming/methods/list/insert
+.. _count(): https://www.programiz.com/python-programming/methods/list/count
+.. _reverse(): https://www.programiz.com/python-programming/methods/list/reverse
+.. _sort(): https://www.programiz.com/python-programming/methods/list/sort
+.. _copy(): https://www.programiz.com/python-programming/methods/list/copy
+.. _clear(): https://www.programiz.com/python-programming/methods/list/clear
 
 .. _HERANÇA: https://www.treinaweb.com.br/blog/utilizando-heranca-no-python/
 .. _POLIMORFISMO: https://professormarcolan.com.br/polimorfismo-em-python/
