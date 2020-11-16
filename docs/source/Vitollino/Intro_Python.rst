@@ -379,7 +379,7 @@ Dados: Type e Id
    
 .. Tip::
 
-   Quando estiver brincando com strings busque explorar as funções:
+   Quando estiver brincando com strings busque explorar os Metodos:
    
    * `join()`_
    * `translate()`_
@@ -387,7 +387,6 @@ Dados: Type e Id
    * `upper()`_
    * `lower()`_
    * `strip()`_
-   * `count()`_
    * `find()`_
    * `replace()`_
 
@@ -1149,7 +1148,6 @@ Referências
 .. _upper(): https://www.tutorialspoint.com/python/string_upper.htm
 .. _lower(): https://www.w3schools.com/python/ref_string_lower.asp
 .. _strip(): https://www.w3schools.com/python/ref_string_strip.asp
-.. _count(): https://www.askpython.com/python/string/python-count-method
 .. _find(): https://www.w3schools.com/python/ref_string_find.asp
 .. _replace(): https://www.w3schools.com/python/ref_string_replace.asp
 .. _join(): https://www.programiz.com/python-programming/methods/string/join
