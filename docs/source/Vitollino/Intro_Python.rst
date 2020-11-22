@@ -514,7 +514,32 @@ Com a compreensão de lista conseguimos atribuir a construção da mesma lista d
 
 * Compreensão de dicionários
 
+A compreensão de dicionarios é utilizada onde, comumente, na busca por um dicionário extenso, com padrão evidente ou fruto da concatenação entre dois objetos usaríamos o loop.
+Logo, onde antes nós faríamos:
+
 .. code:: python
+
+    dicionario = {}
+
+    for i in range(13):
+        new={i:i**2}
+        dicionario.update(new)
+        #print(dicionario)
+    print(dicionario)
+    
+Com a compreensão de lista conseguimos atribuir a construção da mesma lista da seguinte forma:
+
+.. code:: python
+
+    nuevo_dict = {i:i**2 for i in range(13)}
+    print(nuevo_dict)
+
+**A Sintaxe da compreensão de dicionário é:**
+
+.. code:: python
+ 
+    {chave:valor for chave in conjunto_input [predicate][, …]}
+   
 
 * Compreensão de Conjuntos
 
