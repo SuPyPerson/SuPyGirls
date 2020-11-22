@@ -431,15 +431,25 @@ Estrutura de Dados
 
 .. code:: python
 
-   """ Tudo que tem uma chave e um valor é um dicionário no python"""
-   dicionario_um = {"um":"1","dois":2,"cachorro":"buldog"} 
+   """ Tudo que tem uma chave e um valor é um dicionário no python """
+   dicionario_um = {"um":"1","dois":2,"cachorro":["buldog","poodle"]} # Observe os valores das chaves "um" e "dois"
+   dicionario = dict(c="cavalo",z="zebra",m="macaco") #criando o dicionário com o built-in dict()
    dict_vazia = {}
-   type(dicionario_um["um"])
-   type(dicionario_um["dois"])
    
-   dicionario_um.keys()
-   decionario_um.values()
+   dicionario_um.items() #retorna uma lista com tuplas (chave,valor)
+   print(dicionario_um)
+   dicionario_um.keys() #retorna lista com as chaves
+   decionario_um.values() #retorna lista com valores
    
+
+.. Tip::
+
+   Quando estiver brincando com dicionários busque explorar os Metodos:
+   
+
+    * `Dict Methods`_
+
+
 * Tupla
 
 .. code:: python
@@ -1177,6 +1187,7 @@ Referências
 .. _sort(): https://www.programiz.com/python-programming/methods/list/sort
 .. _copy(): https://www.programiz.com/python-programming/methods/list/copy
 .. _clear(): https://www.programiz.com/python-programming/methods/list/clear
+.. _Dict Methods: https://www.programiz.com/python-programming/methods/dictionary
 
 .. _HERANÇA: https://www.treinaweb.com.br/blog/utilizando-heranca-no-python/
 .. _POLIMORFISMO: https://professormarcolan.com.br/polimorfismo-em-python/
