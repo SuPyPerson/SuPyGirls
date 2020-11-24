@@ -44,6 +44,20 @@ Espero que tão logo este documento seja parco frente a sua fome pythônica e vo
       * `Compreensão de dicionários`
       * `Compreensão de Conjuntos`
       * `Expressão Geradora`
+      
+ * `Manipulação das Estruturas de dados`_
+
+    * `Lista`
+    * `Dicionário`
+    * `Tuplas`
+    * `String`
+    * `Set`
+    
+ * `Built-in`_
+ 
+    * `Print`_
+    * `Type`_
+    * `Slice`_
 
  * `Operadores`_
 
@@ -457,6 +471,17 @@ Estrutura de Dados
    set_um = {1,2,3,4,"5","e ae"} 
    type(set_um)
    
+Manipulação das Estruturas de dados
+------------------------------------
+
+* Lista
+
+* Tuplas
+
+* String
+
+* Set
+   
 *Compreensão e Expressão Geradora*
 ------------------------------------
  
@@ -509,6 +534,14 @@ Com a compreensão de lista conseguimos atribuir a construção da mesma lista d
 * Compreensão de Conjuntos
 
 .. code:: python
+
+Built-in
+----------
+
+* Print
+* Type
+* Slice
+
 
 Operadores
 -----------
