@@ -47,11 +47,11 @@ Espero que tão logo este documento seja parco frente a sua fome pythônica e vo
       
  * `Manipulação das Estruturas de dados`_
 
-    * `Lista`
-    * `Dicionário`
-    * `Tuplas`
-    * `String`
-    * `Set`
+    * `Lista`_
+    * `Dicionário`_
+    * `Tuplas`_
+    * `String`_
+    * `Set`_
     
  * `Built-in`_
  
