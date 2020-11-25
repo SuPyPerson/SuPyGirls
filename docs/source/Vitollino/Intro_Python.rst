@@ -55,8 +55,7 @@ Espero que tão logo este documento seja parco frente a sua fome pythônica e vo
     
  * `Built-in`_
  
-    * `Print`
-    * `Type`
+    * `Zip`
     * `Slice`
 
  * `Operadores`_
@@ -538,10 +537,76 @@ Com a compreensão de lista conseguimos atribuir a construção da mesma lista d
 Built-in
 ----------
 
-* Print
-* Type
+Os built-ins são funções integradas ao python prontinhas para uso!
+
+Veja mais em: `BUILT-IN PYTHON.ORG`_
+
+* Zip
+
+A função `zip()` toma como argumento iteráveis (list, dict, string...) e as agrega a uma tupla.
+
+.. code:: python
+
+  zip(*iteravel)
+  
+.. code:: python  
+
+    #gerando as variáveis 
+    lista_quantidade = [1, 2, 3]
+    lista_alimentos = ['banana', 'laranja', 'maca']
+    lista_qualidade =  ['estragado','maduro','verde']
+
+    #nenhum iterável foi passado
+    empty_zip = zip()
+    print(empty_zip)
+    # Converting iterator to list
+    resultado_empty_list = list(empty_zip)
+    print(resultado_empty_list)
+
+    # Iteraveis passados
+    lista_um = zip(lista_alimentos, lista_quantidade)
+    lista_dois = zip(lista_alimentos, lista_quantidade,lista_qualidade)
+
+
+    # Convertendo em conjunto de tuplas
+    primeiro_zip= set(lista_um)
+    segundo_zip = set(lista_dois)
+    print(primeiro_zip)
+    print(segundo_zip)
+    
+.. Tip::
+
+   Os iteráveis passados podem não corresponder em quantidade!
+   Teste no seu console:
+   
+   LISTA_GRANDE=['UM','DOIS','TRES','QUATRO']
+   LISTA_PEQUENA = [1,2,3]
+   
+
 * Slice
 
+A função `slice()` pode ser usado para fatiar obejtos sequenciais (strings, bytes, listas, tuplas, conjunto)...
+
+
+.. code:: python
+
+  slice(inicio, parar, pulo) 
+  
+
+.. code:: python
+
+    result1 = slice(1)
+    print(result1) # default
+
+    result2 = slice(1, 5, 2)
+    print(slice(1, 5, 2))
+
+    LISTA_GRANDE=['UM','DOIS','TRES','QUATRO','CINCO','SEIS']
+ 
+    fatia_lista = slice(1) # corte no index 1
+    #fatia_lista = slice(0,4) # corte do index 0 ao 4
+    #fatia_lista = slice(0,-1,2) # corte do index 0 ao ultimo index pulando 2
+    print(LISTA_GRANDE[fatia_lista])
 
 Operadores
 -----------
@@ -1214,6 +1279,7 @@ Referências
 .. _HERANÇA: https://www.treinaweb.com.br/blog/utilizando-heranca-no-python/
 .. _POLIMORFISMO: https://professormarcolan.com.br/polimorfismo-em-python/
 
+.. _BUILT-IN PYTHON.ORG: https://docs.python.org/3/library/functions.html
 
 .. _Variável: https://www.devmedia.com.br/python-trabalhando-com-variaveis/38644
 .. _Estrutura de Dado: https://docs.python.org/pt-br/3/tutorial/datastructures.html
