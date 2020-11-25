@@ -584,6 +584,7 @@ Aplicação da função:
    Teste no seu console:
    
    LISTA_GRANDE=['UM','DOIS','TRES','QUATRO']
+   
    LISTA_PEQUENA = [1,2,3]
    
 
@@ -591,11 +592,14 @@ Aplicação da função:
 
 A função `slice()` pode ser usado para fatiar obejtos sequenciais (strings, bytes, listas, tuplas, conjunto)...
 
+Sintaxe da função:
 
 .. code:: python
 
   slice(inicio, parar, pulo) 
   
+  
+Aplicação da função:
 
 .. code:: python
 
