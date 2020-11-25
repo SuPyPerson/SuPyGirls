@@ -545,9 +545,13 @@ Veja mais em: `BUILT-IN PYTHON.ORG`_
 
 A função `zip()` toma como argumento iteráveis (list, dict, string...) e as agrega a uma tupla.
 
+Sintaxe da função:
+
 .. code:: python
 
   zip(*iteravel)
+  
+Aplicação da função:
   
 .. code:: python  
 
