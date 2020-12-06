@@ -1296,27 +1296,27 @@ Os metacaracteres são os marcadores do seu stencil:
 +==============+==========================================================================+=========================================================================+
 |*METACARACTER*|                                *VALOR*                                   |                                *EXPRESSÃO*                              |                                  
 +--------------+--------------------------------------------------------------------------+-------------------------------------------------------------------------+
-|    []        |  Especifica um conjunto unitarios de caracteres que você deseja          | `[ABC]`; `[A-E]`equivale a [ABCDE]; `[^ABC]` complementa excluindo o set|
+|    `[]`      | Corresponde a uma lista de ocorrências dos caracteres desejados          | `[ABC]`; `[A-E]`equivale a [ABCDE]; `[^ABC]` complementa excluindo o set|
 +--------------+--------------------------------------------------------------------------+-------------------------------------------------------------------------+
-|     .        | Corresponde a quantidade de caracteres                                   | `.` ; `..`                                                              |
+|     `.`      | Corresponde a uma string de acordo com a quantidade de pontos            | `.` ; `..`                                                              |
 +--------------+--------------------------------------------------------------------------+-------------------------------------------------------------------------+
-|     ^        | Verifica se uma string **começa** com determinado conjunto de caracteres | `^A`; `^bE`                                                             |
+|     `^`      | Corresponde a string que **inicia** com determinado caracter ou sequência| `^A`; `^bE`                                                             |
 +--------------+--------------------------------------------------------------------------+-------------------------------------------------------------------------+
-|     $        | Verifica se uma string **termina** com determinado conjunto de caracteres|`A$`; ^bE$`                                                              |           
+|     `$`      |Corresponde a string que **termina** com certo conjunto de caractere      |`A$`; ^bE$`                                                             |           
 +--------------+--------------------------------------------------------------------------+-------------------------------------------------------------------------+
-|     `*`      | Verifica zero ou mais correspondências de uma ordem                      | `ma*n`                                                                  |
+|     `*`      | Verifica zero ou mais correspondências da ordem a esquerda do caracter   | `ma*n`                                                                  |
 +--------------+--------------------------------------------------------------------------+-------------------------------------------------------------------------+
-|     +        | Verifica uma ou mais correspondências de uma ordem                       | `ma+n`                                                                  |
+|     `+`      | Verifica uma ou mais correspondências da ordem a esquerda do caracter    | `ma+n`                                                                  |
 +--------------+--------------------------------------------------------------------------+-------------------------------------------------------------------------+
-|     ?        | Verifica zero ou uma correspondência de uma ordem                        |`ma?n`                                                                   |
+|     `?`      | Verifica zero ou uma correspondência de uma ordem                        |`ma?n`                                                                   |
 +--------------+--------------------------------------------------------------------------+-------------------------------------------------------------------------+
-|    {}        | Verifica repetições em uma string                                        | `a{n,m}` onde n e m correspondem, respectivamente, o mínimo e o máximo  |
+|    `{}`      | Verifica repetições em uma string                                        | `a{n,m}` onde n e m correspondem, respectivamente, o mínimo e o máximo  |
 +--------------+--------------------------------------------------------------------------+-------------------------------------------------------------------------+
-|    ()        | Verifica subpadrões                                                      | `(a|b|c)xz` combina qualquer string que corresponda a abc seguida de xz |
+|    `()`      | Verifica subpadrões                                                      | `(a|b|c)xz` combina qualquer string que corresponda a abc seguida de xz |
 +--------------+--------------------------------------------------------------------------+-------------------------------------------------------------------------+
-|     \        | Esta folga é usada para "escapar" de caracteres e matacaracteres         | `\$` torna o matacaracter `$` em um caracter comum                      |
+|     `\`      | Esta folga é usada para "escapar" de caracteres e matacaracteres         | `\$` torna o matacaracter `$` em um caracter comum                      |
 +--------------+--------------------------------------------------------------------------+-------------------------------------------------------------------------+
-|     |        | Verifica alternâncias                                                    | `a|a`                                                                   |
+|     `|`      | Verifica alternâncias                                                    | `a|a`                                                                   |
 +--------------+--------------------------------------------------------------------------+-------------------------------------------------------------------------+
 
 Algumas sequências especiais tornam alguns padrões mais fáceis e escrever:
@@ -1326,24 +1326,68 @@ Algumas sequências especiais tornam alguns padrões mais fáceis e escrever:
 +========================+=======================================================================================================================+
 |*SEQUÊNCIAS ESPECIAIS*  |                                *VALOR*                                                                                |                                  
 +------------------------+-----------------------------------------------------------------------------------------------------------------------+
-|    "\A "               | Verifica se uma string **começa** com determinado conjunto de caracteres                                              |
+|    `\A`                | Verifica se uma string **começa** com determinado conjunto de caracteres                                              |
 +------------------------+-----------------------------------------------------------------------------------------------------------------------+
-|     "\b "              | Corresponde aos caracteres que estão no início ou final                                                               |
+|     `\b`               | Corresponde aos caracteres que estão no início ou final                                                               |
 +------------------------+-----------------------------------------------------------------------------------------------------------------------+
-|     "\B "              | É o oposto de \b                                                                                                      |
+|     `\B`               | É o oposto de \b                                                                                                      |
 +------------------------+-----------------------------------------------------------------------------------------------------------------------+
-|     "\d"               | Corresponde a qualquer dígito decimal. Equivale a [0-9]                                                               |           
+|     `\d`               | Corresponde a qualquer dígito decimal. Equivale a [0-9]                                                               |           
 +------------------------+-----------------------------------------------------------------------------------------------------------------------+
-|     "\D"               | Corresponde a qualquer dígito não decimal. Equivale a [^0-9]                                                          |
+|     `\D`               | Corresponde a qualquer dígito não decimal. Equivale a [^0-9]                                                          |
 +------------------------+-----------------------------------------------------------------------------------------------------------------------+
-|     "\s"               | Corresponde a uma string que contenha caracter de espaço e branco                                                     |
+|     `\s`               | Corresponde a uma string que contenha caracter de espaço e branco                                                     |
 +------------------------+-----------------------------------------------------------------------------------------------------------------------+
-|     "\S"               | Corresponde a string que não correspondente ao espaço em branco                                                       |
+|     `\S`               | Corresponde a string que não correspondente ao espaço em branco                                                       |
 +------------------------+-----------------------------------------------------------------------------------------------------------------------+
-|    "\W"                | Verifica presença de qualquer caracter não alpha-numérico                                                             |
+|    `\W`                | Verifica presença de qualquer caracter não alpha-numérico                                                             |
 +------------------------+-----------------------------------------------------------------------------------------------------------------------+
 |     "\Z"               | Corresponde a caracteres específicos no final de uma string                                                           |
 +------------------------+-----------------------------------------------------------------------------------------------------------------------+
+
+Sigamos para alguns casos de uso:
+
+.. code:: python
+
+    import re
+    
+    string = 'Ola! Eu tenho 26 anos e carrego 2 bolsas'
+    #pattern = '[aeiou]' # ['a', 'u', 'e', 'o', 'a', 'o', 'e', 'a', 'e', 'o', 'o', 'a']
+    #pattern = '[^aeiou]'#['O', 'l', '!', ' ', 'E', ' ', 't', 'n', 'h', ' ', '2', '3', ' ', 'n', 's', ' ', ' ', 'c', 'r', 'r', 'g', ' ', '2', ' ', 'b', 'l', 's', 's']
+    #pattern = '[a-c]' # ['a', 'a', 'c', 'a', 'b', 'a']
+    #pattern = '.....' # ['Ola! ', 'Eu te', 'nho 2', '3 ano', 's e c', 'arreg', 'o 2 b', 'olsas']
+
+    result = re.findall(pattern, string) 
+    print(result)
+
+.. code:: python
+
+    import re
+    
+    string = 'Ola! Eu tenho 26 anos e carrego 2 bolsas'
+    pattern = 'sasxvdv$' # ['sas']
+    pattern = '[sas$]' # ['a', 'a', 's', 'a', 's', 'a', 's']
+    pattern = 'sasuie #' # []
+
+    result = re.findall(pattern, string) 
+    print(result)
+    
+.. code:: python
+
+    import re
+
+    string = "The rain in Spain falls maizly in the plain!"
+    pattern = 'ain*' #['ain', 'ain', 'ai', 'ain']
+    pattern = 'ai*n' #['ain', 'ain', 'ain']
+    pattern = 'a*in' #['ain', 'in', 'ain', 'in', 'ain']
+    pattern = 'ainhehe' #[]
+
+    result = re.findall(pattern, string) 
+    print(result)
+
+.. code:: python
+
+
 
 Vamos para os métodos do módulo:
 
