@@ -1296,9 +1296,9 @@ Os metacaracteres são os marcadores do seu stencil:
 +==============+==========================================================================+=========================================================================+
 |*METACARACTER*|                                *VALOR*                                   |                                *EXPRESSÃO*                              |                                  
 +--------------+--------------------------------------------------------------------------+-------------------------------------------------------------------------+
-|    []        |  Especifica um conjunto unitarios de caracteres que você deseja combinar | `[ABC]`; `[A-E]`equivale a [ABCDE]; `[^ABC]` complementa excluindo o set|
+|    []        |  Especifica um conjunto unitarios de caracteres que você deseja          | `[ABC]`; `[A-E]`equivale a [ABCDE]; `[^ABC]` complementa excluindo o set|
 +--------------+--------------------------------------------------------------------------+-------------------------------------------------------------------------+
-|     .        | Corresponde a qualquer caracter única. Pode verificar a quantidade.      | `.`; `..`                                                               |
+|     .        | Corresponde a quantidade de caracteres                                   | `.` ; `..`                                                              |
 +--------------+--------------------------------------------------------------------------+-------------------------------------------------------------------------+
 |     ^        | Verifica se uma string **começa** com determinado conjunto de caracteres | `^A`; `^bE`                                                             |
 +--------------+--------------------------------------------------------------------------+-------------------------------------------------------------------------+
@@ -1319,7 +1319,7 @@ Os metacaracteres são os marcadores do seu stencil:
 |     |        | Verifica alternâncias                                                    | `a|a`                                                                   |
 +--------------+--------------------------------------------------------------------------+-------------------------------------------------------------------------+
 
-Algumas sequências especiais tornam alguns padrõesmais fáceis e escrever:
+Algumas sequências especiais tornam alguns padrões mais fáceis e escrever:
 
 +-------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 |                         **SEQUENCIAS ESPECIAIS**                                                                                                                  |
@@ -1338,15 +1338,146 @@ Algumas sequências especiais tornam alguns padrõesmais fáceis e escrever:
 +--------------+--------------------------------------------------------------------------+-------------------------------------------------------------------------+
 |     \s       | Corresponde a uma string que contenha caracter de espaço e branco        | `\s`                                                                    |
 +--------------+--------------------------------------------------------------------------+-------------------------------------------------------------------------+
-|     \S       |          string que contenha qualquer caracter de espaço e branco que não| `\S`                                                                    |
+|     \S       | Corresponde a string que não correspondente ao espaço em branco          | `\S`                                                                    |
 +--------------+--------------------------------------------------------------------------+-------------------------------------------------------------------------+
-|    \w        | Verifica repetições em uma string                                        | `\w`                                                                    |
+|    \w        | Verifica presença de qualquer caracter alpha-numérico                    | `\w`                                                                    |
 +--------------+--------------------------------------------------------------------------+-------------------------------------------------------------------------+
-|    \W        | Verifica subpadrões                                                      | `\W`                                                                    |
+|    \W        | Verifica presença de qualquer caracter não alpha-numérico                | `\W`                                                                    |
 +--------------+--------------------------------------------------------------------------+-------------------------------------------------------------------------+
-|     \Z       | Esta folga é usada para "escapar" de caracteres e matacaracteres         | `\$` torna o matacaracter `$` em um caracter comum                     |
+|     \Z       | Corresponde a caracteres específicos no final de uma string              | `caracateres\Z`                                                         |
 +--------------+--------------------------------------------------------------------------+-------------------------------------------------------------------------+
 
+Vamos para os métodos do módulo:
+
+* re.findall()
+
+Retorna uma lista de strings contendo todas as correspondências.
+
+.. code:: python
+
+    import re
+
+    string = 'hello 12 hi 89. Howdy 34'
+    pattern = '\d+'
+
+    result = re.findall(pattern, string) 
+    print(result)
+
+    # Output: ['12', '89', '34']
+    
+* re.split()
+    
+Divide a string onde há correspondência e retornauma lista de strings onde as divisões ocorreram.
+
+.. code:: python
+
+    import re
+
+    string = 'Twelve:12 Eighty nine:89.'
+    pattern = '\d+'
+
+    result = re.split(pattern, string) 
+    print(result)
+
+    # Output: ['Twelve:', ' Eighty nine:', '.']
+    
+O método split() suporta o argumento maxsplit que retornará o número máximo de divisões que ocorrerão.
+    
+.. code:: python
+
+    import re
+
+    string = 'Twelve:12 Eighty nine:89 Nine:9.'
+    pattern = '\d+'
+
+    # maxsplit = 1
+    # split only at the first occurrence
+    result = re.split(pattern, string, 1) 
+    print(result)
+
+    # Output: ['Twelve:', ' Eighty nine:89 Nine:9.']
+    
+* re.sub
+
+.. code:: python 
+
+   #sintaxe do método
+   re.sub(pattern, replace, string)
+
+Retorna uma string em que todas as ocorrências correspondentes sãosubtituídas pelo conteúdo da variável substituta.
+    
+.. code:: python
+
+    # Program to remove all whitespaces
+    import re
+
+    # multiline string
+    string = 'abc 12\
+    de 23 \n f45 6'
+
+    # matches all whitespace characters
+    pattern = '\s+'
+
+    # empty string
+    replace = ''
+
+    new_string = re.sub(pattern, replace, string) 
+    print(new_string)
+
+    # Output: abc12de23f456
+     
+É possível também passar a contagem como um quarto parâmetros. Seu default é 0, retornando todas as ocorrências.
+
+* re.subn()
+
+É semelhando ao método anterior,porém retorna uma tupla de 2 itens: (nova string, número de substituições)
+
+.. code:: python
+    
+    # Program to remove all whitespaces
+    import re
+
+    # multiline string
+    string = 'abc 12\
+    de 23 \n f45 6'
+
+    # matches all whitespace characters
+    pattern = '\s+'
+
+    # empty string
+    replace = ''
+
+    new_string = re.subn(pattern, replace, string) 
+    print(new_string)
+
+    # Output: ('abc12de23f456', 4)
+    
+* search()
+
+O método search() procura um padrão em uma string. Ao encontrar o primeiro lugar, faz-se uma correspondência com a string. 
+Se bem sucedido retorna umobjeto de correspondências, do contrário retorna None
+
+.. code:: python
+   #sintaxe 
+   procure = re.search(pattern, str)
+   
+.. code:: python
+
+    import re
+
+    string = "Python is fun"
+
+    # check if 'Python' is at the beginning
+    match = re.search('\APython', string)
+
+    if match:
+      print("pattern found inside the string")
+    else:
+      print("pattern not found")  
+
+    # Output: pattern found inside the string
+
+    
 
 Para utilizar os recursos do módulo RegEx, primeiramente você precisará importá-lo:
 
