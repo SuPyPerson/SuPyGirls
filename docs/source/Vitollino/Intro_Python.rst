@@ -1302,11 +1302,11 @@ Os metacaracteres são os marcadores do seu stencil:
 +--------------+--------------------------------------------------------------------------+-------------------------------------------------------------------------+
 |     `^`      | Corresponde a string que **inicia** com determinado caracter ou sequência| `^A`; `^bE`                                                             |
 +--------------+--------------------------------------------------------------------------+-------------------------------------------------------------------------+
-|     `$`      |Corresponde a string que **termina** com certo conjunto de caractere      |`A$`; ^bE$`                                                             |           
+|     `$`      |Corresponde a string que **termina** com certo conjunto de caractere      |`A$`; ^bE$`                                                              |           
 +--------------+--------------------------------------------------------------------------+-------------------------------------------------------------------------+
-|     `*`      | Verifica zero ou mais correspondências da ordem a esquerda do caracter   | `ma*n`                                                                  |
+|     `*`      | Verifica zero ou mais correspondências do caracterer à esquerda          | `ma*n`                                                                  |
 +--------------+--------------------------------------------------------------------------+-------------------------------------------------------------------------+
-|     `+`      | Verifica uma ou mais correspondências da ordem a esquerda do caracter    | `ma+n`                                                                  |
+|     `+`      | Verifica uma ou mais correspondências da ordem à esquerda do `+`         | `ma+n`                                                                  |
 +--------------+--------------------------------------------------------------------------+-------------------------------------------------------------------------+
 |     `?`      | Verifica zero ou uma correspondência de uma ordem                        |`ma?n`                                                                   |
 +--------------+--------------------------------------------------------------------------+-------------------------------------------------------------------------+
@@ -1319,7 +1319,7 @@ Os metacaracteres são os marcadores do seu stencil:
 |     `|`      | Verifica alternâncias                                                    | `a|a`                                                                   |
 +--------------+--------------------------------------------------------------------------+-------------------------------------------------------------------------+
 
-Algumas sequências especiais tornam alguns padrões mais fáceis e escrever:
+Algumas sequências especiais tornam alguns padrões mais fáceis e escrever: 
 
 +------------------------------------------------------------------------------------------------------------------------------------------------+
 |                         **SEQUENCIAS ESPECIAIS**                                                                                               |
@@ -1342,7 +1342,7 @@ Algumas sequências especiais tornam alguns padrões mais fáceis e escrever:
 +------------------------+-----------------------------------------------------------------------------------------------------------------------+
 |    `\W`                | Verifica presença de qualquer caracter não alpha-numérico                                                             |
 +------------------------+-----------------------------------------------------------------------------------------------------------------------+
-|     "\Z"               | Corresponde a caracteres específicos no final de uma string                                                           |
+|     `\Z`               | Corresponde a caracteres específicos no final de uma string                                                           |
 +------------------------+-----------------------------------------------------------------------------------------------------------------------+
 
 Sigamos para alguns casos de uso:
@@ -1387,6 +1387,16 @@ Sigamos para alguns casos de uso:
 
 .. code:: python
 
+    import re
+
+    string = "The rain in Spain falls maizly in the plain!"
+    #pattern = 'ain+' #['ain', 'ain', 'ain'] 
+    #pattern = 'ai+n' #['ain', 'ain', 'ain']
+    #pattern = 'a+in' # ['ain', 'ain', 'ain']
+    #pattern = a+isdsf
+
+    result = re.findall(pattern, string) 
+    print(result)
 
 
 Vamos para os métodos do módulo:
