@@ -81,6 +81,10 @@ Espero que tão logo este documento seja parco frente a sua fome pythônica e vo
 
    * Herança
    * Polimorfismo
+   
+ * `Tópicos Avançados`_
+ 
+   * Expressão Regular 
 
 *  `Referências`_
 
@@ -1231,12 +1235,142 @@ POO- Programação Orientado a Objeto
 
 Grave esta frase. Retomaremos ela mais tarde.
 
+
+
 Herança
 --------
 
 Polimorfismo
 -------------
 
+Tópicos Avançados
+------------------
+
+Bem-vindo a seção de tópicos avançados!
+
+Não se assuste. Não é um espaço para tópicos difíceis, são apenas tópicos que requerem um conhecimento sólido sobre os tipos de dados e estruturas sintáticas que ele utiliza ;)
+
+* Expressão Regular (RE)
+
+A `expressão regular` corresponde a um módulo python que permite encontrar uma sequências, padrões, dentro de uma string.
+
+Imagine um stencil com padrão `ABC`:
+
+.. image:: _static/stencil.jpg
+
+Agora imagine uma string como esta abaixo:
+
+.. code:: python
+
+    texto = """ fbusfGFHHFdhbsfhbsjfjjfgjjbFHFHFHFGHsahbdshdFHFGJFGJFGHFGHFHbsfgjgjsfjjsfD
+                GhjshdvuvJfghfgjsgfgjfgjjjADABCHJFJFGFHFHHFHHgshfgjJdfhhHFHFHFGHFGsfghggDG
+                FDGHJHGjhfhgHGFHJGFhgfhgfhgfHFHGHGChgchgchgcCHGHjhvhvhgCHGCHJGChgcjhgcJHGCH
+            """
+            
+Como você faria para descobrir se o padrão do stencil `ABC` está na string `texto`?
+
+Existem diversas formas: iterações, fatiamento de string e lista, built-in zip, etc. E há a expressão regular!
+
+Ao utilizar o re a pergunta que queremos responder é: "Essa string corresponde a este padrão?" ou "Existealgum lugar nesta string que corresponda a este padrão?". O re também pode ser utilizados para manipular strings!
+
+Antes de prosseguirmos deixe-me familiar você a alguns detalhes:
+
+* METACARACTERES
+
+Em sua grande maioria as letras e os caracteres correspondem a si mesmos. Por exemplo, a letra `a` corresponderá a qualquer letra `a` presente na string `"Eu fui à feira e não sabia o que comprar, sabia que havia esquecido a lista"` independente de ser o `a` que você procura! 
+
+.. code:: python
+
+    string = "Eu fui à feira e não sabia o que comprAr, sabia que havia esquecido a lista"
+    stencil = "a"
+
+    print(stencil in string, string.count(stencil)) #True, 9
+    # Observe que a letra maiúscula foi ignorada pelo método count
+    
+Mas há descios a esta regra, O metacaracteres não correpondem a si mesmo mas sim a *marcadores* de exceções.
+
+Os metacaracteres são os marcadores do seu stencil:
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+|                         **METACARACTERES**                                                                                                                        |
++==============+==========================================================================+=========================================================================+
+|*METACARACTER*|                                *VALOR*                                   |                                *EXPRESSÃO*                              |                                  
++--------------+--------------------------------------------------------------------------+-------------------------------------------------------------------------+
+|    []        |  Especifica um conjunto unitarios de caracteres que você deseja combinar | `[ABC]`; `[A-E]`equivale a [ABCDE]; `[^ABC]` complementa excluindo o set|
++--------------+--------------------------------------------------------------------------+-------------------------------------------------------------------------+
+|     .        | Corresponde a qualquer caracter única. Pode verificar a quantidade.      | `.`; `..`                                                               |
++--------------+--------------------------------------------------------------------------+-------------------------------------------------------------------------+
+|     ^        | Verifica se uma string **começa** com determinado conjunto de caracteres | `^A`; `^bE`                                                             |
++--------------+--------------------------------------------------------------------------+-------------------------------------------------------------------------+
+|     $        | Verifica se uma string **termina** com determinado conjunto de caracteres|`A$`; ^bE$`                                                              |           
++--------------+--------------------------------------------------------------------------+-------------------------------------------------------------------------+
+|     *        | Verifica zero ou mais correspondências de uma ordem                      | `ma*n`                                                                  |
++--------------+--------------------------------------------------------------------------+-------------------------------------------------------------------------+
+|     +        | Verifica uma ou mais correspondências de uma ordem                       | `ma+n`                                                                  |
++--------------+--------------------------------------------------------------------------+-------------------------------------------------------------------------+
+|     ?        | Verifica zero ou uma correspondência de uma ordem                        |`ma?n`                                                                   |
++--------------+--------------------------------------------------------------------------+-------------------------------------------------------------------------+
+|    {}        | Verifica repetições em uma string                                        | `a{n,m}` onde n e m correspondem, respectivamente, o mínimo e o máximo  |
++--------------+--------------------------------------------------------------------------+-------------------------------------------------------------------------+
+|    ()        | Verifica subpadrões                                                      | `(a|b|c)xz` combina qualquer string que corresponda a abc seguida de xz |
++--------------+--------------------------------------------------------------------------+-------------------------------------------------------------------------+
+|     \        | Esta folga é usada para "escapar" de caracteres e matacaracteres         | `\$` torna o matacaracter `$` em um caracter comum                      |
++--------------+--------------------------------------------------------------------------+-------------------------------------------------------------------------+
+|     |        | Verifica alternâncias                                                    | `a|a`                                                                   |
++--------------+--------------------------------------------------------------------------+-------------------------------------------------------------------------+
+
+Algumas sequências especiais tornam alguns padrõesmais fáceis e escrever:
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+|                         **SEQUENCIAS ESPECIAIS**                                                                                                                  |
++==============+==========================================================================+=========================================================================+
+|*SEQ ESPECI*  |                                *VALOR*                                   |                                *EXPRESSÃO*                              |                                  
++--------------+--------------------------------------------------------------------------+-------------------------------------------------------------------------+
+|    \A        | Verifica se uma string **começa** com determinado conjunto de caracteres | `\A`;                                                                   |
++--------------+--------------------------------------------------------------------------+-------------------------------------------------------------------------+
+|     \b       | Corresponde aos caracteres que estão no início ou final                  | `\bKAKA` (início); `KAKA/b` (final)                                     |
++--------------+--------------------------------------------------------------------------+-------------------------------------------------------------------------+
+|     \B       | É o oposto de \b                                                         | `\BKAKA` (início); `KAKA/B` (final)                                     |
++--------------+--------------------------------------------------------------------------+-------------------------------------------------------------------------+
+|     \d       | Corresponde a qualquer dígito decimal. Equivale a [0-9]                  |`\d`;                                                                    |           
++--------------+--------------------------------------------------------------------------+-------------------------------------------------------------------------+
+|     \D       | Corresponde a qualquer dígito não decimal. Equivale a [^0-9]             | `\D`                                                                    |
++--------------+--------------------------------------------------------------------------+-------------------------------------------------------------------------+
+|     \s       | Corresponde a uma string que contenha caracter de espaço e branco        | `\s`                                                                    |
++--------------+--------------------------------------------------------------------------+-------------------------------------------------------------------------+
+|     \S       |          string que contenha qualquer caracter de espaço e branco que não| `\S`                                                                    |
++--------------+--------------------------------------------------------------------------+-------------------------------------------------------------------------+
+|    \w        | Verifica repetições em uma string                                        | `\w`                                                                    |
++--------------+--------------------------------------------------------------------------+-------------------------------------------------------------------------+
+|    \W        | Verifica subpadrões                                                      | `\W`                                                                    |
++--------------+--------------------------------------------------------------------------+-------------------------------------------------------------------------+
+|     \Z       | Esta folga é usada para "escapar" de caracteres e matacaracteres         | `\$` torna o matacaracter `$` em um caracter comum                     |
++--------------+--------------------------------------------------------------------------+-------------------------------------------------------------------------+
+
+
+Para utilizar os recursos do módulo RegEx, primeiramente você precisará importá-lo:
+
+.. code:: python
+
+    import re
+    
+posteriomente importar/colar seu texto 
+
+.. code:: python
+
+   import re
+   
+   minha_string = """blaBLAblablaBLAblablaBLAblablaBLAblablaBLAblablaBLAblablaBLAblablaBLAblablaBLAblablaBLAblablaBLAbla
+                  blaBLAblablaBLAblablaBLAblablaBLAblablaBLAblablaBLAblablaBLAblablaBLAblablaBLAblablaBLAblablaBLAblabla
+                  blaBLAblablaBLAblablaBLAblablaBLAblablaBLAblablaBLAblablaBLAblablaBLAblablaBLAblablaBLAblablaBLAblabla
+                  blaBLAblablaBLAblablaBLAblablaBLAblablaBLAblablaBLAblablaBLAblablaBLAblablaBLAblablaBLAblablaBLAblabla
+                  blaBLAblablaBLAblablaBLAblablaBLAblablaBLAblablaBLAblablaBLAblablaBLAblablaBLAblablaBLAblablaBLAblabla
+                  """
+                  
+Beleza! Agora precisará conhecer
+
+Expressão Regular no doc python: `Doc_Python Re`_ 
+            
 
 Referências 
 ------------
@@ -1286,6 +1420,7 @@ Referências
 
 .. _HERANÇA: https://www.treinaweb.com.br/blog/utilizando-heranca-no-python/
 .. _POLIMORFISMO: https://professormarcolan.com.br/polimorfismo-em-python/
+.. _Doc_Python Re:https://docs.python.org/3/howto/regex.html
 
 .. _BUILT-IN PYTHON.ORG: https://docs.python.org/3/library/functions.html
 
