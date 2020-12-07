@@ -1256,8 +1256,8 @@ A ``expressão regular`` corresponde a um módulo python que permite encontrar s
 Imagine um stencil com padrão *ABC*:
 
 .. image:: _static/stencil.jpg
-    :height: 50px
-    :width: 50px
+    :height: 90px
+    :width: 90px
     :align: center
 
 Agora imagine uma string como esta abaixo:
