@@ -1306,15 +1306,15 @@ Os metacaracteres são os marcadores do seu stencil:
 +--------------+--------------------------------------------------------------------------+-------------------------------------------------------------------------+
 |     `*`      | Verifica zero ou mais correspondências do caracterer à esquerda          | `ma*n`                                                                  |
 +--------------+--------------------------------------------------------------------------+-------------------------------------------------------------------------+
-|     `+`      | Verifica uma ou mais correspondências da ordem à esquerda do `+`         | `ma+n`                                                                  |
+|     `+`      | Verifica uma ou mais correspondências da ordem à esquerda                | `ma+n`                                                                  |
 +--------------+--------------------------------------------------------------------------+-------------------------------------------------------------------------+
-|     `?`      | Verifica zero ou uma correspondência de uma ordem                        |`ma?n`                                                                   |
+|     `?`      | Verifica zero ou uma correspondência de ordem à esquerda                 |`ma?n`                                                                   |
 +--------------+--------------------------------------------------------------------------+-------------------------------------------------------------------------+
 |    `{}`      | Verifica repetições em uma string                                        | `a{n,m}` onde n e m correspondem, respectivamente, o mínimo e o máximo  |
 +--------------+--------------------------------------------------------------------------+-------------------------------------------------------------------------+
 |    `()`      | Verifica subpadrões                                                      | `(a|b|c)xz` combina qualquer string que corresponda a abc seguida de xz |
 +--------------+--------------------------------------------------------------------------+-------------------------------------------------------------------------+
-|     `\`      | Esta folga é usada para "escapar" de caracteres e matacaracteres         | `\$` torna o matacaracter `$` em um caracter comum                      |
+|     `\\`      | Esta folga é usada para "escapar" de caracteres e matacaracteres         | `\$` torna o matacaracter `$` em um caracter comum                     |
 +--------------+--------------------------------------------------------------------------+-------------------------------------------------------------------------+
 |     `|`      | Verifica alternâncias                                                    | `a|a`                                                                   |
 +--------------+--------------------------------------------------------------------------+-------------------------------------------------------------------------+
@@ -1394,6 +1394,43 @@ Sigamos para alguns casos de uso:
     #pattern = 'ai+n' #['ain', 'ain', 'ain']
     #pattern = 'a+in' # ['ain', 'ain', 'ain']
     #pattern = a+isdsf
+
+    result = re.findall(pattern, string) 
+    print(result)
+
+.. code:: python
+
+    import re
+
+    string = "aaaaaah! The rain in Spaain falls maizly in the plaaaaain!"
+    pattern = 'a{1,5}' #['aaaaa', 'a', 'a', 'aa', 'a', 'a', 'aaaaa']
+    pattern = 'a{5}' #['aaaaa', 'aaaaa']
+
+    result = re.findall(pattern, string) 
+    print(result)
+ 
+.. code:: python
+
+    import re
+    
+    import re
+
+    string = "The rain in Spain falls maizly izamly zamily in the plain!"
+    #pattern = '(maiz)ly' #['maiz'] pois existe apenas uma correspondencia dessa ordem seguida de `ly`
+    #pattern = '(m|a|i|z)ly' #['z', 'm', 'i'] 
+
+    result = re.findall(pattern, string) 
+    print(result)
+
+.. code:: python
+
+    import re
+    
+    import re
+
+    string = "The rain in Spain falls maizly izamly zamily in the plain!"
+    #pattern = '(maiz)ly' #['maiz'] pois existe apenas uma correspondencia dessa ordem seguida de `ly`
+    #pattern = '(m|a|i|z)ly' #['z', 'm', 'i'] 
 
     result = re.findall(pattern, string) 
     print(result)
