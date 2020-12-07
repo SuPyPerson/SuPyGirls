@@ -1285,8 +1285,9 @@ Não se assuste. **Não é um espaço para tópicos difíceis**, são apenas tó
 
 * **EXPRESSÃO REGULAR (RE)**
 
+Expressões regulares (chamadas REs, ou regexes ou padrões de regex) são essencialmente uma pequena linguagem de programação altamente especializada embutida em Python e feita disponível através do ``re`` módulo. Através das expressões regulares é possível encontrar facilmente sequências, padrões, dentro de uma string.
 
-A ``expressão regular`` corresponde a um módulo python que permite encontrar sequências, padrões, dentro de uma string.
+Fonte: `Python org`_
 
 Imagine um stencil com padrão *ABC*:
 
@@ -1686,6 +1687,7 @@ Referências
 .. _Loop Python: https://www.w3schools.com/python/python_for_loops.asp
 .. _Função: https://docs.python.org/pt-br/3.8/library/functions.html
 .. _Classe: https://docs.python.org/3/tutorial/classes.html
+.. _Python org: https://docs.python.org/3/howto/regex.html
 
 .. _Python.org: https://www.python.org/doc/
 .. _Guido van Rossum: https://en.wikipedia.org/wiki/Guido_van_Rossum
