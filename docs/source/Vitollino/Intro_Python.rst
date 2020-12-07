@@ -1316,7 +1316,7 @@ Os metacaracteres são os marcadores do seu stencil:
 +--------------+--------------------------------------------------------------------------+-------------------------------------------------------------------------+
 |     `\\`     | Esta folga é usada para "escapar" de caracteres e matacaracteres         | `\$` torna o matacaracter `$` em um caracter comum                      |
 +--------------+--------------------------------------------------------------------------+-------------------------------------------------------------------------+
-|     `|`      | Verifica alternâncias                                                    | `a|a`                                                                   |
+|     `|`      | Verifica alternâncias                                                    | `a|b`                                                                   |
 +--------------+--------------------------------------------------------------------------+-------------------------------------------------------------------------+
 
 Algumas sequências especiais tornam alguns padrões mais fáceis e escrever: 
@@ -1326,23 +1326,23 @@ Algumas sequências especiais tornam alguns padrões mais fáceis e escrever:
 +========================+=======================================================================================================================+
 |*SEQUÊNCIAS ESPECIAIS*  |                                *VALOR*                                                                                |                                  
 +------------------------+-----------------------------------------------------------------------------------------------------------------------+
-|    `\A`                | Verifica se uma string **começa** com determinado conjunto de caracteres                                              |
+|    `\\A`                | Verifica se uma string **começa** com determinado conjunto de caracteres                                              |
 +------------------------+-----------------------------------------------------------------------------------------------------------------------+
-|     `\b`               | Corresponde aos caracteres que estão no início ou final                                                               |
+|     `\\b`               | Corresponde aos caracteres que estão no início ou final                                                               |
 +------------------------+-----------------------------------------------------------------------------------------------------------------------+
-|     `\B`               | É o oposto de \b                                                                                                      |
+|     `\\B`               | É o oposto de \b                                                                                                      |
 +------------------------+-----------------------------------------------------------------------------------------------------------------------+
-|     `\d`               | Corresponde a qualquer dígito decimal. Equivale a [0-9]                                                               |           
+|     `\\d`               | Corresponde a qualquer dígito decimal. Equivale a [0-9]                                                               |           
 +------------------------+-----------------------------------------------------------------------------------------------------------------------+
-|     `\D`               | Corresponde a qualquer dígito não decimal. Equivale a [^0-9]                                                          |
+|     `\\D`               | Corresponde a qualquer dígito não decimal. Equivale a [^0-9]                                                          |
 +------------------------+-----------------------------------------------------------------------------------------------------------------------+
-|     `\s`               | Corresponde a uma string que contenha caracter de espaço e branco                                                     |
+|     `\\s`               | Corresponde a uma string que contenha caracter de espaço e branco                                                     |
 +------------------------+-----------------------------------------------------------------------------------------------------------------------+
-|     `\S`               | Corresponde a string que não correspondente ao espaço em branco                                                       |
+|     `\\S`               | Corresponde a string que não correspondente ao espaço em branco                                                       |
 +------------------------+-----------------------------------------------------------------------------------------------------------------------+
-|    `\W`                | Verifica presença de qualquer caracter não alpha-numérico                                                             |
+|    `\\W`                | Verifica presença de qualquer caracter não alpha-numérico                                                             |
 +------------------------+-----------------------------------------------------------------------------------------------------------------------+
-|     `\Z`               | Corresponde a caracteres específicos no final de uma string                                                           |
+|     `\\Z`               | Corresponde a caracteres específicos no final de uma string                                                           |
 +------------------------+-----------------------------------------------------------------------------------------------------------------------+
 
 Sigamos para alguns casos de uso:
@@ -1426,11 +1426,59 @@ Sigamos para alguns casos de uso:
 
     import re
     
+    string = "The rain in Spain falls maizly izamly zamily in the plain!"
+    pattern = 'a|i' #['a', 'i', 'i', 'a', 'i', 'a', 'a', 'i', 'i', 'a', 'a', 'i', 'i', 'a', 'i']
+    #pattern = 'e|a|i' #['e', 'a', 'i', 'i', 'a', 'i', 'a', 'a', 'i', 'i', 'a', 'a', 'i', 'i', 'e', 'a', 'i']
+
+
+    result = re.findall(pattern, string) 
+    print(result)
+    
+.. code:: python
+
     import re
 
-    string = "The rain in Spain falls maizly izamly zamily in the plain!"
-    #pattern = '(maiz)ly' #['maiz'] pois existe apenas uma correspondencia dessa ordem seguida de `ly`
-    #pattern = '(m|a|i|z)ly' #['z', 'm', 'i'] 
+    string = "The rain in Spain falls maizly 9 izamly zamily in the plain!"
+    pattern = '\AThe'
+    pattern = '\Arain'
+    pattern = '\d' # ['9']
+    pattern =  '\D' #  ['T', 'h', 'e', ' ', 'r', 'a', 'i', 'n', ' ', 'i', 'n', ' ', 'S', 'p', 'a', 'i', 'n', ' ', 'f', 'a', 'l', 'l', 's', ' ', 'm', 'a', 'i', 'z', 'l', 'y', ' ', ' ', 'i', 'z', 'a', 'm', 'l', 'y', ' ', 'z', 'a', 'm', 'i', 'l', 'y', ' ', 'i', 'n', ' ', 't', 'h', 'e', ' ', 'p', 'l', 'a', 'i', 'n', '!']
+
+    result = re.findall(pattern, string) 
+    print(result)
+    
+.. code:: python
+
+    import re
+
+    string = "Therain"
+    pattern = \s #[]
+    
+    result = re.findall(pattern, string) 
+    print(result)
+
+    string_2 = "The rain"
+    pattern_2 = '\S' # ['T', 'h', 'e', 'r', 'a', 'i', 'n']
+
+    result_2 = re.findall(pattern_2, string_2) 
+    print(result_2)
+    
+.. code:: python
+
+    import re
+
+    string = "The rain * ^%$"
+    pattern = '\W' # [' ', ' ', '*', ' ', '^', '%', '$']
+
+    result = re.findall(pattern, string) 
+    print(result)
+
+.. code:: python
+
+    import re
+
+    string = "The rain"
+    pattern = 'rain\Z' # ['rain']
 
     result = re.findall(pattern, string) 
     print(result)
