@@ -1246,15 +1246,16 @@ Polimorfismo
 Tópicos Avançados
 ------------------
 
-Bem-vindo a seção de tópicos avançados!
+Bem-vindo a seção de tópicos avançados!!
 
-Não se assuste. Não é um espaço para tópicos difíceis, são apenas tópicos que requerem um conhecimento sólido sobre os tipos de dados e estruturas sintáticas que ele utiliza ;)
+Não se assuste. **Não é um espaço para tópicos difíceis**, são apenas tópicos que requerem um conhecimento sólido sobre os tipos de dados e estruturas sintáticas que ele utiliza.
 
 * Expressão Regular (RE)
+  =======================
 
-A `expressão regular` corresponde a um módulo python que permite encontrar uma sequências, padrões, dentro de uma string.
+A ``expressão regular`` corresponde a um módulo python que permite encontrar sequências, padrões, dentro de uma string.
 
-Imagine um stencil com padrão `ABC`:
+Imagine um stencil com padrão ``ABC``:
 
 .. image:: _static/stencil.jpg
 
@@ -1267,15 +1268,16 @@ Agora imagine uma string como esta abaixo:
                 FDGHJHGjhfhgHGFHJGFhgfhgfhgfHFHGHGChgchgchgcCHGHjhvhvhgCHGCHJGChgcjhgcJHGCH
             """
             
-Como você faria para descobrir se o padrão do stencil `ABC` está na string `texto`?
+Como você faria para descobrir se o padrão do stencil ``ABC`` está na string ``texto``?
 
-Existem diversas formas: iterações, fatiamento de string e lista, built-in zip, etc. E há a expressão regular!
+Existem diversas formas: iterações, fatiamento de string e lista, built-in zip, etc. E há a ``expressão regular``!
 
-Ao utilizar o re a pergunta que queremos responder é: "Essa string corresponde a este padrão?" ou "Existealgum lugar nesta string que corresponda a este padrão?". O re também pode ser utilizados para manipular strings!
+Ao utilizar o ``re`` a pergunta que queremos responder é: "Essa string corresponde a este padrão?" ou "Existe algum lugar nesta string que corresponda a este padrão?". O ``re`` também pode ser utilizados para manipular strings!
 
 Antes de prosseguirmos deixe-me familiar você a alguns detalhes:
 
 * METACARACTERES
+  ================
 
 Em sua grande maioria as letras e os caracteres correspondem a si mesmos. Por exemplo, a letra `a` corresponderá a qualquer letra `a` presente na string `"Eu fui à feira e não sabia o que comprar, sabia que havia esquecido a lista"` independente de ser o `a` que você procura! 
 
