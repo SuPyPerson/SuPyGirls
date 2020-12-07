@@ -1491,11 +1491,16 @@ Retorna uma lista de strings contendo todas as correspondências.
 .. code:: python
 
     import re
-    
-    string = "The rain in Spain falls maizly izamly zamily in the plain!"
-    pattern = 'a|i' #['a', 'i', 'i', 'a', 'i', 'a', 'a', 'i', 'i', 'a', 'a', 'i', 'i', 'a', 'i']
-    #pattern = 'e|a|i' #['e', 'a', 'i', 'i', 'a', 'i', 'a', 'a', 'i', 'i', 'a', 'a', 'i', 'i', 'e', 'a', 'i']
-    
+
+        string = 'Ola! Eu tenho 26 anos e carrego 2 bolsas'
+        #pattern = '[aeiou]' # ['a', 'u', 'e', 'o', 'a', 'o', 'e', 'a', 'e', 'o', 'o', 'a']
+        #pattern = '[^aeiou]'#['O', 'l', '!', ' ', 'E', ' ', 't', 'n', 'h', ' ', '2', '3', ' ', 'n', 's', ' ', ' ', 'c', 'r', 'r', 'g', ' ', '2', ' ', 'b', 'l', 's', 's']
+        #pattern = '[a-c]' # ['a', 'a', 'c', 'a', 'b', 'a']
+        #pattern = '.....' # ['Ola! ', 'Eu te', 'nho 2', '3 ano', 's e c', 'arreg', 'o 2 b', 'olsas']
+
+        result = re.findall(pattern, string) 
+        print(result)
+
 * **re.split()**
     
 Divide a string onde há correspondência e retorna uma lista de strings onde as divisões ocorreram.
