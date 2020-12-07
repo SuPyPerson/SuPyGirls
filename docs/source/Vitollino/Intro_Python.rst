@@ -81,6 +81,10 @@ Espero que tão logo este documento seja parco frente a sua fome pythônica e vo
 
    * Herança
    * Polimorfismo
+   
+ * `Tópicos Avançados`_
+ 
+   * Expressão Regular 
 
 *  `Referências`_
 
@@ -1272,6 +1276,354 @@ Herança
 Polimorfismo
 -------------
 
+Tópicos Avançados
+------------------
+
+Bem-vindo a seção de tópicos avançados!!
+
+Não se assuste. **Não é um espaço para tópicos difíceis**, são apenas tópicos que requerem um conhecimento sólido sobre os tipos de dados e estruturas sintáticas que ele utiliza.
+
+* **EXPRESSÃO REGULAR (RE)**
+
+
+A ``expressão regular`` corresponde a um módulo python que permite encontrar sequências, padrões, dentro de uma string.
+
+Imagine um stencil com padrão *ABC*:
+
+.. image:: _static/stencil.jpg
+    :height: 90px
+    :width: 90px
+    :align: center
+
+Agora imagine uma string como esta abaixo:
+
+.. code:: python
+
+    texto = """ fbusfGFHHFdhbsfhbsjfjjfgjjbFHFHFHFGHsahbdshdFHFGJFGJFGHFGHFHbsfgjgjsfjjsfD
+                GhjshdvuvJfghfgjsgfgjfgjjjADABCHJFJFGFHFHHFHHgshfgjJdfhhHFHFHFGHFGsfghggDG
+                FDGHJHGjhfhgHGFHJGFhgfhgfhgfHFHGHGChgchgchgcCHGHjhvhvhgCHGCHJGChgcjhgcJHGCH
+            """
+            
+Como você faria para descobrir se o padrão do stencil *ABC* está na string *texto*?
+
+Existem diversas formas: iterações, fatiamento de string e lista, built-in zip, etc. E há a ``expressão regular``!
+
+Ao utilizar o ``re`` a pergunta que queremos responder é: "Essa string corresponde a este padrão?" ou "Existe algum lugar nesta string que corresponda a este padrão?". O ``re`` também pode ser utilizados para manipular strings!
+
+Antes de prosseguirmos deixe-me familiar você a alguns detalhes:
+
+* **METACARACTERES**
+
+
+Em sua grande maioria as letras e os caracteres correspondem a si mesmos. Por exemplo, a letra `a` corresponderá a qualquer letra `a` presente na string `"Eu fui à feira e não sabia o que comprar, sabia que havia esquecido a lista"` independente de ser o `a` que você procura! 
+
+.. code:: python
+
+    string = "Eu fui à feira e não sabia o que comprAr, sabia que havia esquecido a lista"
+    stencil = "a"
+
+    print(stencil in string, string.count(stencil)) #True, 9
+    # Observe que a letra maiúscula foi ignorada pelo método count
+    
+Mas há desvios nesta esta regra, os metacaracteres não correpondem a si mesmo mas sim a *marcadores* de exceções.
+
+Os metacaracteres são os marcadores do seu stencil:
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+|                                                                            **METACARACTERES**                                                                     |
++==============+==========================================================================+=========================================================================+
+|*METACARACTER*|                                *VALOR*                                   |                                *EXPRESSÃO*                              |                                  
++--------------+--------------------------------------------------------------------------+-------------------------------------------------------------------------+
+|    `[]`      | Corresponde a uma lista de ocorrências dos caracteres desejados          | `[ABC]`; `[A-E]`equivale a [ABCDE]; `[^ABC]` complementa excluindo o set|
++--------------+--------------------------------------------------------------------------+-------------------------------------------------------------------------+
+|     `.`      | Corresponde a uma string de acordo com a quantidade de pontos            | `.` ; `..`                                                              |
++--------------+--------------------------------------------------------------------------+-------------------------------------------------------------------------+
+|     `^`      | Corresponde a string que **inicia** com determinado caracter ou sequência| `^A`; `^bE`                                                             |
++--------------+--------------------------------------------------------------------------+-------------------------------------------------------------------------+
+|     `$`      |Corresponde a string que **termina** com certo conjunto de caractere      |`A$`; ^bE$`                                                              |           
++--------------+--------------------------------------------------------------------------+-------------------------------------------------------------------------+
+|     `*`      | Verifica zero ou mais correspondências do caracterer à esquerda          | `ma*n`                                                                  |
++--------------+--------------------------------------------------------------------------+-------------------------------------------------------------------------+
+|     `+`      | Verifica uma ou mais correspondências da ordem à esquerda                | `ma+n`                                                                  |
++--------------+--------------------------------------------------------------------------+-------------------------------------------------------------------------+
+|     `?`      | Verifica zero ou uma correspondência de ordem à esquerda                 |`ma?n`                                                                   |
++--------------+--------------------------------------------------------------------------+-------------------------------------------------------------------------+
+|    `{}`      | Verifica repetições em uma string                                        | `a{n,m}` onde n e m correspondem, respectivamente, o mínimo e o máximo  |
++--------------+--------------------------------------------------------------------------+-------------------------------------------------------------------------+
+|    `()`      | Verifica subpadrões                                                      | `(a|b|c)xz` combina qualquer string que corresponda a abc seguida de xz |
++--------------+--------------------------------------------------------------------------+-------------------------------------------------------------------------+
+|     `\\`     | Esta folga é usada para "escapar" de caracteres e matacaracteres         | `\$` torna o matacaracter `$` em um caracter comum                      |
++--------------+--------------------------------------------------------------------------+-------------------------------------------------------------------------+
+|     `|`      | Verifica alternâncias                                                    | `a|b`                                                                   |
++--------------+--------------------------------------------------------------------------+-------------------------------------------------------------------------+
+
+Algumas sequências especiais tornam alguns padrões mais fáceis e escrever: 
+
++------------------------------------------------------------------------------------------------------------------------------------------------+
+|                         **SEQUENCIAS ESPECIAIS**                                                                                               |
++========================+=======================================================================================================================+
+|*SEQUÊNCIAS ESPECIAIS*  |                                *VALOR*                                                                                |                                  
++------------------------+-----------------------------------------------------------------------------------------------------------------------+
+|    `\\A`               | Verifica se uma string **começa** com determinado conjunto de caracteres                                              |
++------------------------+-----------------------------------------------------------------------------------------------------------------------+
+|     `\\b`              | Corresponde aos caracteres que estão no início ou final                                                               |
++------------------------+-----------------------------------------------------------------------------------------------------------------------+
+|     `\\B`              | É o oposto de \b                                                                                                      |
++------------------------+-----------------------------------------------------------------------------------------------------------------------+
+|     `\\d`              | Corresponde a qualquer dígito decimal. Equivale a [0-9]                                                               |           
++------------------------+-----------------------------------------------------------------------------------------------------------------------+
+|     `\\D`              | Corresponde a qualquer dígito não decimal. Equivale a [^0-9]                                                          |
++------------------------+-----------------------------------------------------------------------------------------------------------------------+
+|     `\\s`              | Corresponde a uma string que contenha caracter de espaço e branco                                                     |
++------------------------+-----------------------------------------------------------------------------------------------------------------------+
+|     `\\S`              | Corresponde a string que não correspondente ao espaço em branco                                                       |
++------------------------+-----------------------------------------------------------------------------------------------------------------------+
+|    `\\W`               | Verifica presença de qualquer caracter não alpha-numérico                                                             |
++------------------------+-----------------------------------------------------------------------------------------------------------------------+
+|     `\\Z`              | Corresponde a caracteres específicos no final de uma string                                                           |
++------------------------+-----------------------------------------------------------------------------------------------------------------------+
+
+Sigamos para alguns casos de uso dos metacaract:
+
+.. code:: python
+
+    import re
+    
+    string = 'Ola! Eu tenho 26 anos e carrego 2 bolsas'
+    #pattern = '[aeiou]' # ['a', 'u', 'e', 'o', 'a', 'o', 'e', 'a', 'e', 'o', 'o', 'a']
+    #pattern = '[^aeiou]'#['O', 'l', '!', ' ', 'E', ' ', 't', 'n', 'h', ' ', '2', '3', ' ', 'n', 's', ' ', ' ', 'c', 'r', 'r', 'g', ' ', '2', ' ', 'b', 'l', 's', 's']
+    #pattern = '[a-c]' # ['a', 'a', 'c', 'a', 'b', 'a']
+    #pattern = '.....' # ['Ola! ', 'Eu te', 'nho 2', '3 ano', 's e c', 'arreg', 'o 2 b', 'olsas']
+
+    result = re.findall(pattern, string) 
+    print(result)
+
+.. code:: python
+
+    import re
+    
+    string = 'Ola! Eu tenho 26 anos e carrego 2 bolsas'
+    pattern = 'sasxvdv$' # ['sas']
+    pattern = '[sas$]' # ['a', 'a', 's', 'a', 's', 'a', 's']
+    pattern = 'sasuie #' # []
+
+    result = re.findall(pattern, string) 
+    print(result)
+    
+.. code:: python
+
+    import re
+
+    string = "The rain in Spain falls maizly in the plain!"
+    pattern = 'ain*' #['ain', 'ain', 'ai', 'ain']
+    pattern = 'ai*n' #['ain', 'ain', 'ain']
+    pattern = 'a*in' #['ain', 'in', 'ain', 'in', 'ain']
+    pattern = 'ainhehe' #[]
+
+    result = re.findall(pattern, string) 
+    print(result)
+
+.. code:: python
+
+    import re
+
+    string = "The rain in Spain falls maizly in the plain!"
+    #pattern = 'ain+' #['ain', 'ain', 'ain'] 
+    #pattern = 'ai+n' #['ain', 'ain', 'ain']
+    #pattern = 'a+in' # ['ain', 'ain', 'ain']
+    #pattern = a+isdsf
+
+    result = re.findall(pattern, string) 
+    print(result)
+
+.. code:: python
+
+    import re
+
+    string = "aaaaaah! The rain in Spaain falls maizly in the plaaaaain!"
+    pattern = 'a{1,5}' #['aaaaa', 'a', 'a', 'aa', 'a', 'a', 'aaaaa']
+    pattern = 'a{5}' #['aaaaa', 'aaaaa']
+
+    result = re.findall(pattern, string) 
+    print(result)
+ 
+.. code:: python
+    
+    import re
+
+    string = "The rain in Spain falls maizly izamly zamily in the plain!"
+    #pattern = '(maiz)ly' #['maiz'] pois existe apenas uma correspondencia dessa ordem seguida de `ly`
+    #pattern = '(m|a|i|z)ly' #['z', 'm', 'i'] 
+
+    result = re.findall(pattern, string) 
+    print(result)
+
+.. code:: python
+
+    import re
+    
+    string = "The rain in Spain falls maizly izamly zamily in the plain!"
+    pattern = 'a|i' #['a', 'i', 'i', 'a', 'i', 'a', 'a', 'i', 'i', 'a', 'a', 'i', 'i', 'a', 'i']
+    #pattern = 'e|a|i' #['e', 'a', 'i', 'i', 'a', 'i', 'a', 'a', 'i', 'i', 'a', 'a', 'i', 'i', 'e', 'a', 'i']
+
+
+    result = re.findall(pattern, string) 
+    print(result)
+    
+.. code:: python
+
+    import re
+
+    string = "The rain in Spain falls maizly 9 izamly zamily in the plain!"
+    pattern = '\AThe'
+    pattern = '\Arain'
+    pattern = '\d' # ['9']
+    pattern =  '\D' #  ['T', 'h', 'e', ' ', 'r', 'a', 'i', 'n', ' ', 'i', 'n', ' ', 'S', 'p', 'a', 'i', 'n', ' ', 'f', 'a', 'l', 'l', 's', ' ', 'm', 'a', 'i', 'z', 'l', 'y', ' ', ' ', 'i', 'z', 'a', 'm', 'l', 'y', ' ', 'z', 'a', 'm', 'i', 'l', 'y', ' ', 'i', 'n', ' ', 't', 'h', 'e', ' ', 'p', 'l', 'a', 'i', 'n', '!']
+
+    result = re.findall(pattern, string) 
+    print(result)
+    
+.. code:: python
+
+    import re
+
+    string = "Therain"
+    pattern = \s #[]
+    
+    result = re.findall(pattern, string) 
+    print(result)
+
+    string_2 = "The rain"
+    pattern_2 = '\S' # ['T', 'h', 'e', 'r', 'a', 'i', 'n']
+
+    result_2 = re.findall(pattern_2, string_2) 
+    print(result_2)
+    
+.. code:: python
+
+    import re
+
+    string = "The rain * ^%$"
+    pattern = '\W' # [' ', ' ', '*', ' ', '^', '%', '$']
+
+    result = re.findall(pattern, string) 
+    print(result)
+
+.. code:: python
+
+    import re
+
+    string = "The rain"
+    pattern = 'rain\Z' # ['rain']
+
+    result = re.findall(pattern, string) 
+    print(result)
+
+
+Vamos para os métodos do módulo:
+
+* **re.findall()**
+
+Retorna uma lista de strings contendo todas as correspondências.
+
+.. code:: python
+
+    import re
+
+        string = 'Ola! Eu tenho 26 anos e carrego 2 bolsas'
+        #pattern = '[aeiou]' # ['a', 'u', 'e', 'o', 'a', 'o', 'e', 'a', 'e', 'o', 'o', 'a']
+        #pattern = '[^aeiou]'#['O', 'l', '!', ' ', 'E', ' ', 't', 'n', 'h', ' ', '2', '3', ' ', 'n', 's', ' ', ' ', 'c', 'r', 'r', 'g', ' ', '2', ' ', 'b', 'l', 's', 's']
+        #pattern = '[a-c]' # ['a', 'a', 'c', 'a', 'b', 'a']
+        #pattern = '.....' # ['Ola! ', 'Eu te', 'nho 2', '3 ano', 's e c', 'arreg', 'o 2 b', 'olsas']
+
+        result = re.findall(pattern, string) 
+        print(result)
+
+* **re.split()**
+    
+Divide a string onde há correspondência e retorna uma lista de strings onde as divisões ocorreram.
+
+.. code:: python
+
+    import re
+
+    string = "The rain 15 pain 20 spain"
+    pattern = '\d' # ['rain']
+
+    result = re.split(pattern, string) # ['The rain ', '', ' pain ', '', ' spain']
+    #result = re.split(pattern, string, 2) # ['The rain ', '', ' pain 20 spain']
+    print(result)
+
+.. Tip::
+
+   No casos onde o padrão não é encontrado, o split retorna um lista contendo a string original
+    
+.. Tip::
+
+   O método split() suporta o argumento maxsplit que retornará o número máximo de divisões que ocorrerão.
+  
+    
+* **re.sub**
+
+.. code:: python 
+
+   #sintaxe do método
+   re.sub(pattern, replace, string)
+
+Retorna uma string em que todas as ocorrências correspondentes são subtituídas pelo conteúdo da variável substituta.
+    
+.. code:: python
+
+    import re
+
+    string = "The rain 15 pain 20 spain"
+    pattern = '\s+' # ['rain']
+    replace = ''
+
+    result = re.sub(pattern,replace, string) # Therain15pain20spain
+    #result = re.sub(pattern,replace, string,2) # este quarto argumento permite ao método substituir apenas nas "n" primeiras ocorrências
+    print(result)
+     
+É possível também passar a contagem como um quarto parâmetros. Seu default é 0, retornando todas as ocorrências.
+
+* **re.subn()**
+
+É semelhante ao método anterior,porém retorna uma tupla de 2 itens: (nova string, número de substituições)
+
+.. code:: python
+    
+
+    import re
+
+    string = "The rain 15 pain 20 spain"
+    pattern = '\s+' # ['rain']
+    replace = ''
+
+    result = re.subn(pattern,replace, string) 
+    print(result) # ('Therain15pain20spain', 5)
+    
+* **re.search()**
+
+O método search() procura um padrão em uma string. Ao encontrar o primeiro lugar, faz-se uma correspondência com a string. 
+Se bem sucedido retorna um objeto de correspondências, do contrário retorna None.
+
+.. code:: python
+   #sintaxe 
+   procure = re.search(pattern, str)
+   
+.. code:: python
+
+    import re
+
+    string = "The rain 15 pain 20 spain"
+    pattern = 'rain' # ['rain']
+
+
+    result = re.search(pattern,string) 
+    print(result) # <re.Match object; span=(4, 8), match='rain'>
+
+Expressão Regular no doc python: `Doc_Python Re`_ 
+            
 
 Referências 
 ------------
@@ -1322,6 +1674,7 @@ Referências
 
 .. _HERANÇA: https://www.treinaweb.com.br/blog/utilizando-heranca-no-python/
 .. _POLIMORFISMO: https://professormarcolan.com.br/polimorfismo-em-python/
+.. _Doc_Python Re:https://docs.python.org/3/howto/regex.html
 
 .. _BUILT-IN PYTHON.ORG: https://docs.python.org/3/library/functions.html
 
