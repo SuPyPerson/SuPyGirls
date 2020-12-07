@@ -1248,12 +1248,12 @@ Bem-vindo a seção de tópicos avançados!!
 
 Não se assuste. **Não é um espaço para tópicos difíceis**, são apenas tópicos que requerem um conhecimento sólido sobre os tipos de dados e estruturas sintáticas que ele utiliza.
 
-* Expressão Regular (RE)
--------------------------
+* **EXPRESSÃO REGULAR (RE)**
+
 
 A ``expressão regular`` corresponde a um módulo python que permite encontrar sequências, padrões, dentro de uma string.
 
-Imagine um stencil com padrão ``ABC``:
+Imagine um stencil com padrão *ABC*:
 
 .. image:: _static/stencil.jpg
 
@@ -1266,7 +1266,7 @@ Agora imagine uma string como esta abaixo:
                 FDGHJHGjhfhgHGFHJGFhgfhgfhgfHFHGHGChgchgchgcCHGHjhvhvhgCHGCHJGChgcjhgcJHGCH
             """
             
-Como você faria para descobrir se o padrão do stencil ``ABC`` está na string ``texto``?
+Como você faria para descobrir se o padrão do stencil *ABC* está na string *texto*?
 
 Existem diversas formas: iterações, fatiamento de string e lista, built-in zip, etc. E há a ``expressão regular``!
 
@@ -1274,8 +1274,8 @@ Ao utilizar o ``re`` a pergunta que queremos responder é: "Essa string correspo
 
 Antes de prosseguirmos deixe-me familiar você a alguns detalhes:
 
-* METACARACTERES
------------------
+* **METACARACTERES**
+
 
 Em sua grande maioria as letras e os caracteres correspondem a si mesmos. Por exemplo, a letra `a` corresponderá a qualquer letra `a` presente na string `"Eu fui à feira e não sabia o que comprar, sabia que havia esquecido a lista"` independente de ser o `a` que você procura! 
 
@@ -1287,12 +1287,12 @@ Em sua grande maioria as letras e os caracteres correspondem a si mesmos. Por ex
     print(stencil in string, string.count(stencil)) #True, 9
     # Observe que a letra maiúscula foi ignorada pelo método count
     
-Mas há descios a esta regra, O metacaracteres não correpondem a si mesmo mas sim a *marcadores* de exceções.
+Mas há desvios nesta esta regra, os metacaracteres não correpondem a si mesmo mas sim a *marcadores* de exceções.
 
 Os metacaracteres são os marcadores do seu stencil:
 
 +-------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-|                         **METACARACTERES**                                                                                                                        |
+|                                                                            **METACARACTERES**                                                                     |
 +==============+==========================================================================+=========================================================================+
 |*METACARACTER*|                                *VALOR*                                   |                                *EXPRESSÃO*                              |                                  
 +--------------+--------------------------------------------------------------------------+-------------------------------------------------------------------------+
@@ -1326,26 +1326,26 @@ Algumas sequências especiais tornam alguns padrões mais fáceis e escrever:
 +========================+=======================================================================================================================+
 |*SEQUÊNCIAS ESPECIAIS*  |                                *VALOR*                                                                                |                                  
 +------------------------+-----------------------------------------------------------------------------------------------------------------------+
-|    `\\A`                | Verifica se uma string **começa** com determinado conjunto de caracteres                                              |
+|    `\\A`               | Verifica se uma string **começa** com determinado conjunto de caracteres                                              |
 +------------------------+-----------------------------------------------------------------------------------------------------------------------+
-|     `\\b`               | Corresponde aos caracteres que estão no início ou final                                                               |
+|     `\\b`              | Corresponde aos caracteres que estão no início ou final                                                               |
 +------------------------+-----------------------------------------------------------------------------------------------------------------------+
-|     `\\B`               | É o oposto de \b                                                                                                      |
+|     `\\B`              | É o oposto de \b                                                                                                      |
 +------------------------+-----------------------------------------------------------------------------------------------------------------------+
-|     `\\d`               | Corresponde a qualquer dígito decimal. Equivale a [0-9]                                                               |           
+|     `\\d`              | Corresponde a qualquer dígito decimal. Equivale a [0-9]                                                               |           
 +------------------------+-----------------------------------------------------------------------------------------------------------------------+
-|     `\\D`               | Corresponde a qualquer dígito não decimal. Equivale a [^0-9]                                                          |
+|     `\\D`              | Corresponde a qualquer dígito não decimal. Equivale a [^0-9]                                                          |
 +------------------------+-----------------------------------------------------------------------------------------------------------------------+
-|     `\\s`               | Corresponde a uma string que contenha caracter de espaço e branco                                                     |
+|     `\\s`              | Corresponde a uma string que contenha caracter de espaço e branco                                                     |
 +------------------------+-----------------------------------------------------------------------------------------------------------------------+
-|     `\\S`               | Corresponde a string que não correspondente ao espaço em branco                                                       |
+|     `\\S`              | Corresponde a string que não correspondente ao espaço em branco                                                       |
 +------------------------+-----------------------------------------------------------------------------------------------------------------------+
-|    `\\W`                | Verifica presença de qualquer caracter não alpha-numérico                                                             |
+|    `\\W`               | Verifica presença de qualquer caracter não alpha-numérico                                                             |
 +------------------------+-----------------------------------------------------------------------------------------------------------------------+
-|     `\\Z`               | Corresponde a caracteres específicos no final de uma string                                                           |
+|     `\\Z`              | Corresponde a caracteres específicos no final de uma string                                                           |
 +------------------------+-----------------------------------------------------------------------------------------------------------------------+
 
-Sigamos para alguns casos de uso:
+Sigamos para alguns casos de uso dos metacaract:
 
 .. code:: python
 
