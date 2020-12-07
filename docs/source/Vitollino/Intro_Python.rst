@@ -1235,8 +1235,6 @@ POO- Programação Orientado a Objeto
 
 Grave esta frase. Retomaremos ela mais tarde.
 
-
-
 Herança
 --------
 
@@ -1251,7 +1249,7 @@ Bem-vindo a seção de tópicos avançados!!
 Não se assuste. **Não é um espaço para tópicos difíceis**, são apenas tópicos que requerem um conhecimento sólido sobre os tipos de dados e estruturas sintáticas que ele utiliza.
 
 * Expressão Regular (RE)
-  =======================
+-------------------------
 
 A ``expressão regular`` corresponde a um módulo python que permite encontrar sequências, padrões, dentro de uma string.
 
@@ -1277,7 +1275,7 @@ Ao utilizar o ``re`` a pergunta que queremos responder é: "Essa string correspo
 Antes de prosseguirmos deixe-me familiar você a alguns detalhes:
 
 * METACARACTERES
-  ================
+-----------------
 
 Em sua grande maioria as letras e os caracteres correspondem a si mesmos. Por exemplo, a letra `a` corresponderá a qualquer letra `a` presente na string `"Eu fui à feira e não sabia o que comprar, sabia que havia esquecido a lista"` independente de ser o `a` que você procura! 
 
