@@ -1410,8 +1410,6 @@ Sigamos para alguns casos de uso dos metacaract:
     print(result)
  
 .. code:: python
-
-    import re
     
     import re
 
@@ -1486,113 +1484,85 @@ Sigamos para alguns casos de uso dos metacaract:
 
 Vamos para os métodos do módulo:
 
-* re.findall()
+* **re.findall()**
 
 Retorna uma lista de strings contendo todas as correspondências.
 
 .. code:: python
 
     import re
-
-    string = 'hello 12 hi 89. Howdy 34'
-    pattern = '\d+'
-
-    result = re.findall(pattern, string) 
-    print(result)
-
-    # Output: ['12', '89', '34']
     
-* re.split()
+    string = "The rain in Spain falls maizly izamly zamily in the plain!"
+    pattern = 'a|i' #['a', 'i', 'i', 'a', 'i', 'a', 'a', 'i', 'i', 'a', 'a', 'i', 'i', 'a', 'i']
+    #pattern = 'e|a|i' #['e', 'a', 'i', 'i', 'a', 'i', 'a', 'a', 'i', 'i', 'a', 'a', 'i', 'i', 'e', 'a', 'i']
     
-Divide a string onde há correspondência e retornauma lista de strings onde as divisões ocorreram.
+* **re.split()**
+    
+Divide a string onde há correspondência e retorna uma lista de strings onde as divisões ocorreram.
 
 .. code:: python
 
     import re
 
-    string = 'Twelve:12 Eighty nine:89.'
-    pattern = '\d+'
+    string = "The rain 15 pain 20 spain"
+    pattern = '\d' # ['rain']
 
-    result = re.split(pattern, string) 
+    result = re.split(pattern, string) # ['The rain ', '', ' pain ', '', ' spain']
+    #result = re.split(pattern, string, 2) # ['The rain ', '', ' pain 20 spain']
     print(result)
 
-    # Output: ['Twelve:', ' Eighty nine:', '.']
+.. Tip::
+
+   No casos onde o padrão não é encontrado, o split retorna um lista contendo a string original
     
-O método split() suporta o argumento maxsplit que retornará o número máximo de divisões que ocorrerão.
+.. Tip::
+
+   O método split() suporta o argumento maxsplit que retornará o número máximo de divisões que ocorrerão.
+  
     
-.. code:: python
-
-    import re
-
-    string = 'Twelve:12 Eighty nine:89 Nine:9.'
-    pattern = '\d+'
-
-    # maxsplit = 1
-    # split only at the first occurrence
-    result = re.split(pattern, string, 1) 
-    print(result)
-
-    # Output: ['Twelve:', ' Eighty nine:89 Nine:9.']
-    
-* re.sub
+* **re.sub**
 
 .. code:: python 
 
    #sintaxe do método
    re.sub(pattern, replace, string)
 
-Retorna uma string em que todas as ocorrências correspondentes sãosubtituídas pelo conteúdo da variável substituta.
+Retorna uma string em que todas as ocorrências correspondentes são subtituídas pelo conteúdo da variável substituta.
     
 .. code:: python
 
-    # Program to remove all whitespaces
     import re
 
-    # multiline string
-    string = 'abc 12\
-    de 23 \n f45 6'
-
-    # matches all whitespace characters
-    pattern = '\s+'
-
-    # empty string
+    string = "The rain 15 pain 20 spain"
+    pattern = '\s+' # ['rain']
     replace = ''
 
-    new_string = re.sub(pattern, replace, string) 
-    print(new_string)
-
-    # Output: abc12de23f456
+    result = re.sub(pattern,replace, string) # Therain15pain20spain
+    #result = re.sub(pattern,replace, string,2) # este quarto argumento permite ao método substituir apenas nas "n" primeiras ocorrências
+    print(result)
      
 É possível também passar a contagem como um quarto parâmetros. Seu default é 0, retornando todas as ocorrências.
 
-* re.subn()
+* **re.subn()**
 
-É semelhando ao método anterior,porém retorna uma tupla de 2 itens: (nova string, número de substituições)
+É semelhante ao método anterior,porém retorna uma tupla de 2 itens: (nova string, número de substituições)
 
 .. code:: python
     
-    # Program to remove all whitespaces
+
     import re
 
-    # multiline string
-    string = 'abc 12\
-    de 23 \n f45 6'
-
-    # matches all whitespace characters
-    pattern = '\s+'
-
-    # empty string
+    string = "The rain 15 pain 20 spain"
+    pattern = '\s+' # ['rain']
     replace = ''
 
-    new_string = re.subn(pattern, replace, string) 
-    print(new_string)
-
-    # Output: ('abc12de23f456', 4)
+    result = re.subn(pattern,replace, string) 
+    print(result) # ('Therain15pain20spain', 5)
     
-* search()
+* **re.search()**
 
 O método search() procura um padrão em uma string. Ao encontrar o primeiro lugar, faz-se uma correspondência com a string. 
-Se bem sucedido retorna umobjeto de correspondências, do contrário retorna None
+Se bem sucedido retorna um objeto de correspondências, do contrário retorna None.
 
 .. code:: python
    #sintaxe 
@@ -1602,40 +1572,12 @@ Se bem sucedido retorna umobjeto de correspondências, do contrário retorna Non
 
     import re
 
-    string = "Python is fun"
+    string = "The rain 15 pain 20 spain"
+    pattern = 'rain' # ['rain']
 
-    # check if 'Python' is at the beginning
-    match = re.search('\APython', string)
 
-    if match:
-      print("pattern found inside the string")
-    else:
-      print("pattern not found")  
-
-    # Output: pattern found inside the string
-
-    
-
-Para utilizar os recursos do módulo RegEx, primeiramente você precisará importá-lo:
-
-.. code:: python
-
-    import re
-    
-posteriomente importar/colar seu texto 
-
-.. code:: python
-
-   import re
-   
-   minha_string = """blaBLAblablaBLAblablaBLAblablaBLAblablaBLAblablaBLAblablaBLAblablaBLAblablaBLAblablaBLAblablaBLAbla
-                  blaBLAblablaBLAblablaBLAblablaBLAblablaBLAblablaBLAblablaBLAblablaBLAblablaBLAblablaBLAblablaBLAblabla
-                  blaBLAblablaBLAblablaBLAblablaBLAblablaBLAblablaBLAblablaBLAblablaBLAblablaBLAblablaBLAblablaBLAblabla
-                  blaBLAblablaBLAblablaBLAblablaBLAblablaBLAblablaBLAblablaBLAblablaBLAblablaBLAblablaBLAblablaBLAblabla
-                  blaBLAblablaBLAblablaBLAblablaBLAblablaBLAblablaBLAblablaBLAblablaBLAblablaBLAblablaBLAblablaBLAblabla
-                  """
-                  
-Beleza! Agora precisará conhecer
+    result = re.search(pattern,string) 
+    print(result) # <re.Match object; span=(4, 8), match='rain'>
 
 Expressão Regular no doc python: `Doc_Python Re`_ 
             
