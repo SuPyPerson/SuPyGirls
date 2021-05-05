@@ -12,7 +12,7 @@
 Aqui vamos ter uma introdução rápida de como programar jogos para Web usando Python.
 Na verdade vamos usar o Brython que é o Python que funciona dentro de um navegador web como o Firefox.
 
-.. image:: http://s19.postimg.org/ufgi8eztf/PPFC.jpg
+.. image:: https://i.imgur.com/b6iTrWL.jpg
 
 
 .. toctree::
